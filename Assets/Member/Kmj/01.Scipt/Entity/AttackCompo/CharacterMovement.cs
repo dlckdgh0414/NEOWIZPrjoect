@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour, IEntityComponet
 {
-    [SerializeField] private float moveSpeed = 1f, gravity = -9.81f
+    [SerializeField] private float moveSpeed = 1f, gravity = -9.81f;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float rotationSpeed = 8f;
     private float originMoveSpeed;

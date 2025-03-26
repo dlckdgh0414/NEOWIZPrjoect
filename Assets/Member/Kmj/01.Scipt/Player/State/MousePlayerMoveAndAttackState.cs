@@ -16,6 +16,9 @@ public class MousePlayerMoveAndAttackState : MousePlayerCanMove
         base.Enter();
         Debug.Log("MouseMove");
 
+        bool isHit = Physics.SphereCast(_entity.transform.position, _entity.transform.lossyScale.x * 0.5f,
+            _entity.transform.forward, out hit, maxDistatnce);
+
         dir = _player.MoveToMousePosition(_player);
     }
 
