@@ -11,7 +11,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private readonly int _attackSpeedHash = Animator.StringToHash("ATTACK_SPEED");
     private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
 
-    private float _attackSpeed = 1f;
+    private float _attackSpeed = 0.3f;
     private float _lastAttackTime;
 
     public bool useMouseDirection = false;
@@ -32,7 +32,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     {
         _entity = entity;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
-        AttackSpeed = 1f;
+        AttackSpeed = 0.45f;
     }
 
     public void Attack()
