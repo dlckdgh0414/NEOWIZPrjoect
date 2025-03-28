@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 {
     [Header("attack datas"), SerializeField] private AttackDataSO[] attackDataList;
+    [SerializeField] private DamageCaster damageCast;
 
     [SerializeField] private float comboWindow;
     private Entity _entity;
@@ -15,6 +16,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
 
     [field: SerializeField] public float atkDamage { get; private set; }
+    private EntityAnimatorTrigger _triggerCompo;
 
     private float _attackSpeed = 0.3f;
     private float _lastAttackTime;
@@ -38,6 +40,14 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         _entity = entity;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
         AttackSpeed = 0.45f;
+        damageCast.InitCaster(_entity);
+        _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
+        _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
+    }
+
+    private void OnDestroy()
+    {
+        _triggerCompo.OnAttackTriggerEnd -= HandleAttackTrigger;
     }
 
     public void Attack()
@@ -51,19 +61,16 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         _entityAnimator.SetParam(_comboCounterHash, ComboCounter);
     }
 
-    public void AttackEnemy(float atkDamage, float knockback)
+    private void HandleAttackTrigger()
     {
-        RaycastHit hit;
+        float damage = 5f;
+        Vector2 knockbackForce = new Vector2(3f, 6f);
 
-        bool isHit = Physics.SphereCast(_entity.transform.position, _entity.transform.lossyScale.x * 0.5f,
-            transform.forward, out hit, _whatIsEnemy);
+        bool success = damageCast.CastDamage(damage, knockbackForce);
 
-        if(isHit)
+        if (success)
         {
-            if(hit.transform.TryGetComponent(out IDamgable health))
-            {
-                health.ApplyDamage(atkDamage,Vector2.zero,_entity);
-            }
+            Debug.Log("nice");
         }
     }
 

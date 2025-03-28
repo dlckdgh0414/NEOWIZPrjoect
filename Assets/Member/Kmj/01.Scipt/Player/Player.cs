@@ -12,13 +12,12 @@ public class Player : Entity
 
     public bool _isSkilling { get;  set; }
     private EntityStateMachine _stateMachine;
-
+    public PlayerAttackCompo _attackCompo { get; private set; }
     public EntitySkillCompo _skillCompo { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
-
          _stateMachine = new EntityStateMachine(this,stateDatas);
         _skillCompo = GetCompo<EntitySkillCompo>();
         PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
