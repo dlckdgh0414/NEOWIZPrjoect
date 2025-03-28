@@ -6,6 +6,9 @@ public abstract class Entity : MonoBehaviour
 {
     protected Dictionary<Type, IEntityComponet> _componets;
 
+    public Action<float, Vector2, Entity> OnDamage;
+
+    public Action OnDead;
     protected virtual void Awake()
     {
         _componets = new Dictionary<Type, IEntityComponet>();

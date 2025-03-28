@@ -8,8 +8,13 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private Entity _entity;
     private EntityAnimator _entityAnimator;
 
+    [SerializeField] private LayerMask _whatIsEnemy;
+
     private readonly int _attackSpeedHash = Animator.StringToHash("ATTACK_SPEED");
     private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
+
+
+    [field: SerializeField] public float atkDamage { get; private set; }
 
     private float _attackSpeed = 0.3f;
     private float _lastAttackTime;
@@ -44,6 +49,22 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
             ComboCounter = 0;
         }
         _entityAnimator.SetParam(_comboCounterHash, ComboCounter);
+    }
+
+    public void AttackEnemy(float atkDamage, float knockback)
+    {
+        RaycastHit hit;
+
+        bool isHit = Physics.SphereCast(_entity.transform.position, _entity.transform.lossyScale.x * 0.5f,
+            transform.forward, out hit, _whatIsEnemy);
+
+        if(isHit)
+        {
+            if(hit.transform.TryGetComponent(out IDamgable health))
+            {
+                health.ApplyDamage(atkDamage,Vector2.zero,_entity);
+            }
+        }
     }
 
     public void EndAttack()

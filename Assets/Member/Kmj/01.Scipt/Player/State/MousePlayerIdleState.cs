@@ -1,7 +1,7 @@
 using UnityEditorInternal;
 using UnityEngine;
 
-public class MousePlayerIdleState : MousePlayerCanSkillState
+public class MousePlayerIdleState : MousePlayerCanMove
 {
     public MousePlayerIdleState(Entity entity, int animationHash) : base(entity, animationHash)
     {

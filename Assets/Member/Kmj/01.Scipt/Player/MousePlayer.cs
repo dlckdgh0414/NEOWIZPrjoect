@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayer : Entity
 {
@@ -10,13 +12,31 @@ public class MousePlayer : Entity
     private EntityStateMachine _stateMachine;
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
 
+    public bool _isSkilling { get;  set; } = false;
     public EntitySkillCompo _skillCompo { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
         rbCompo = GetComponentInChildren<Rigidbody>();
+        _skillCompo = GetCompo<EntitySkillCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
+        PlayerInput.OnSheldPressd += HandleSheldPressed;
+        _isSkilling = false;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerInput.OnSheldPressd -= HandleSheldPressed;
+    }
+    private void HandleSheldPressed()
+    {
+        if (_skillCompo.CanUseSkill("Sheld") && !_isSkilling)
+        {
+            ChangeState("SHELD");
+            _skillCompo.CurrentTimeClear("Sheld");
+            _isSkilling = true;
+        }
     }
 
     private void Start()

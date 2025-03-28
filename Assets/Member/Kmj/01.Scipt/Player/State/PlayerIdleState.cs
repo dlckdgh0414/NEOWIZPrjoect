@@ -1,7 +1,7 @@
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerCanSkillCompo
+public class PlayerIdleState : PlayerCanAttackState
 {
     private CharacterMovement _movement;
     public PlayerIdleState(Entity entity, int animationHash) : base(entity, animationHash)

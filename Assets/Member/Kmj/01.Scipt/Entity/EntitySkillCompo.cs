@@ -17,7 +17,6 @@ public class EntitySkillCompo : MonoBehaviour, IEntityComponet
     private void Awake()
     {
         AddSkillInDictionary();
-        skillList.ToList().ForEach(skill => skill.Value.currentcoolTime = 0);  
     }
 
 
@@ -47,6 +46,12 @@ public class EntitySkillCompo : MonoBehaviour, IEntityComponet
             return true;
         else
             return false;
+        
+    }
+
+    public void CurrentTimeClear(string name)
+    {
+        skillList.GetValueOrDefault(name).currentcoolTime = 0;
     }
 
 
