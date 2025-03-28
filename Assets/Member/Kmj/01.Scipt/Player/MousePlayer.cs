@@ -9,6 +9,9 @@ public class MousePlayer : Entity
     [field: SerializeField] public Rigidbody rbCompo;
     private EntityStateMachine _stateMachine;
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
+
+    public EntitySkillCompo _skillCompo { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();

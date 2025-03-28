@@ -9,6 +9,8 @@ public class Player : Entity
     public CharacterMovement _movement { get; private set; }
     private EntityStateMachine _stateMachine;
 
+    public EntitySkillCompo _skillCompo { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();

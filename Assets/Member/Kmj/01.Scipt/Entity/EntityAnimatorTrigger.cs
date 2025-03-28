@@ -6,6 +6,10 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 
     public Action OnAnimationEndTrigger;
 
+    public event Action OnAttackVFXTrigger;
+
+    public event Action<bool> OnRollingStatusChange;
+
     private Entity _entity;
 
     public void Initialize(Entity entity)
@@ -17,4 +21,8 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     {
         OnAnimationEndTrigger?.Invoke();
     }
+    private void RollingStart() => OnRollingStatusChange?.Invoke(true);
+    private void RollingEnd() => OnRollingStatusChange?.Invoke(true);
+
+    private void PlayAttackVFX() => OnAttackVFXTrigger?.Invoke();
 }

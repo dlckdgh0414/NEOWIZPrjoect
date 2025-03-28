@@ -1,17 +1,15 @@
-using UnityEditorInternal;
 using UnityEngine;
 
-public class MousePlayerIdleState : MousePlayerCanSkillState
+public class MousePlayerSheldState : EntityState
 {
-    public MousePlayerIdleState(Entity entity, int animationHash) : base(entity, animationHash)
+    public MousePlayerSheldState(Entity entity, int animationHash) : base(entity, animationHash)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        Debug.Log("MouseIdle");
+        Debug.Log("½¯µåµÊ");
     }
 
     public override void Update()

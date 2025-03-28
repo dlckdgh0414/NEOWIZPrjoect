@@ -1,17 +1,14 @@
-using UnityEditorInternal;
 using UnityEngine;
 
-public class MousePlayerIdleState : MousePlayerCanSkillState
+public class PlayerStrongAttackState : PlayerState
 {
-    public MousePlayerIdleState(Entity entity, int animationHash) : base(entity, animationHash)
+    public PlayerStrongAttackState(Entity entity, int animationHash) : base(entity, animationHash)
     {
     }
-
     public override void Enter()
     {
         base.Enter();
-
-        Debug.Log("MouseIdle");
+        Debug.Log("나 어택인데 된다");
     }
 
     public override void Update()

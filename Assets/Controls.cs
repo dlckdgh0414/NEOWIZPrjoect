@@ -89,6 +89,33 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SheldSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""c550e924-3484-4b47-ab4c-1a850e1f962f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rolling"",
+                    ""type"": ""Button"",
+                    ""id"": ""61cff902-291b-45df-be7d-cbf3a574f29d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StrongAttackSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""048bc804-b31b-4fa2-9015-c0ff541167bd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -265,6 +292,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ClickMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08f22ead-6228-45f3-a928-80b7396350d3"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SheldSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c5a37fc-b2d6-4dc7-854d-77a155b80fa6"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rolling"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a83f08f2-4a7e-41cf-8446-d0d66b811b40"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrongAttackSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -859,6 +919,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
         m_Player_ClickMove = m_Player.FindAction("ClickMove", throwIfNotFound: true);
+        m_Player_SheldSkill = m_Player.FindAction("SheldSkill", throwIfNotFound: true);
+        m_Player_Rolling = m_Player.FindAction("Rolling", throwIfNotFound: true);
+        m_Player_StrongAttackSkill = m_Player.FindAction("StrongAttackSkill", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -945,6 +1008,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_MousePos;
     private readonly InputAction m_Player_ClickMove;
+    private readonly InputAction m_Player_SheldSkill;
+    private readonly InputAction m_Player_Rolling;
+    private readonly InputAction m_Player_StrongAttackSkill;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -956,6 +1022,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
         public InputAction @ClickMove => m_Wrapper.m_Player_ClickMove;
+        public InputAction @SheldSkill => m_Wrapper.m_Player_SheldSkill;
+        public InputAction @Rolling => m_Wrapper.m_Player_Rolling;
+        public InputAction @StrongAttackSkill => m_Wrapper.m_Player_StrongAttackSkill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -986,6 +1055,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ClickMove.started += instance.OnClickMove;
             @ClickMove.performed += instance.OnClickMove;
             @ClickMove.canceled += instance.OnClickMove;
+            @SheldSkill.started += instance.OnSheldSkill;
+            @SheldSkill.performed += instance.OnSheldSkill;
+            @SheldSkill.canceled += instance.OnSheldSkill;
+            @Rolling.started += instance.OnRolling;
+            @Rolling.performed += instance.OnRolling;
+            @Rolling.canceled += instance.OnRolling;
+            @StrongAttackSkill.started += instance.OnStrongAttackSkill;
+            @StrongAttackSkill.performed += instance.OnStrongAttackSkill;
+            @StrongAttackSkill.canceled += instance.OnStrongAttackSkill;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1011,6 +1089,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @ClickMove.started -= instance.OnClickMove;
             @ClickMove.performed -= instance.OnClickMove;
             @ClickMove.canceled -= instance.OnClickMove;
+            @SheldSkill.started -= instance.OnSheldSkill;
+            @SheldSkill.performed -= instance.OnSheldSkill;
+            @SheldSkill.canceled -= instance.OnSheldSkill;
+            @Rolling.started -= instance.OnRolling;
+            @Rolling.performed -= instance.OnRolling;
+            @Rolling.canceled -= instance.OnRolling;
+            @StrongAttackSkill.started -= instance.OnStrongAttackSkill;
+            @StrongAttackSkill.performed -= instance.OnStrongAttackSkill;
+            @StrongAttackSkill.canceled -= instance.OnStrongAttackSkill;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1200,6 +1287,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnClickMove(InputAction.CallbackContext context);
+        void OnSheldSkill(InputAction.CallbackContext context);
+        void OnRolling(InputAction.CallbackContext context);
+        void OnStrongAttackSkill(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

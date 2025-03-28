@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMoveState : PlayerCanAttackState
+public class PlayerMoveState : PlayerCanSkillCompo
 {
 
     private CharacterMovement _movement;
