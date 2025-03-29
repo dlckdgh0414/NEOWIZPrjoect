@@ -27,4 +27,14 @@ public class Player : Entity
     }
 
     public void ChangeState(string newStateName) => _stateMachine.ChangeState(newStateName);
+
+    protected override void HandleHit()
+    {
+        
+    }
+
+    protected override void HandleDead()
+    {
+        
+    }
 }
