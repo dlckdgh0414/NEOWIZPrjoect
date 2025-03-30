@@ -11,27 +11,21 @@ public class DamageCaster : MonoBehaviour
 
     public bool CastDamage(float damage, Vector2 knockback)
     {
-        Debug.Log("ÀÏ´Ü ³Í ¾Æ´Ô");
         RaycastHit hit;
-        Debug.Log("³Êµµ ¾Æ´Ô");
         bool isHit = Physics.SphereCast(transform.position,transform.lossyScale.x * 0.5f, transform.forward,
-            out hit,3, _whatIsEnemy);
-
-        Debug.Log("³Ê±îÁø?");
+            out hit,0, _whatIsEnemy);
         Debug.Log(isHit);
 
         
         if(isHit && hit.transform != null)
         {
-            Debug.Log("³Î ¾Æ´Ô");
             Debug.Log(hit.transform.name);
-            if(hit.transform.TryGetComponent(out EntityHealth health))
+            if(hit.transform.TryGetComponent(out IDamgable health))
             {
                 health.ApplyDamage(damage, knockback);
             }
  
         }
-          Debug.Log("³Ê±¸³ª");
 
         return isHit;
     }

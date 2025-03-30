@@ -17,15 +17,11 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Attack");
         _attackCompo.Attack();
 
         _movement.CanManualMovement = false;
 
         ApplyAttackData();
-        
-
-
     }
 
   

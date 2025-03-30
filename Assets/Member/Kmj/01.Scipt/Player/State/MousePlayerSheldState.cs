@@ -11,7 +11,6 @@ public class MousePlayerSheldState : EntityState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("½¯µåµÊ");
     }
 
     public override void Update()

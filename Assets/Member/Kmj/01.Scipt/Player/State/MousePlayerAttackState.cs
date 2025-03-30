@@ -12,7 +12,6 @@ public class MousePlayerAttackState : EntityState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("MouseAttack");
 
         _player.rbCompo.AddForce(_entity.transform.forward * 12f, ForceMode.Impulse);
     }

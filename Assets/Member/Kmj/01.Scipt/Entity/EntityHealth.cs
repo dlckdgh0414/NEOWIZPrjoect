@@ -21,6 +21,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
 
     private void Awake()
     {
+        AfterInit();
         currentHealth = 10;
     }
 
@@ -39,7 +40,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
     public void AfterInit()
     {
         _statCompo.GetStat(hpStat).OnValueChange += HandleHpChange;
-        currentHealth = 10;//maxHealth = _statCompo.GetStat(hpStat).Value;
+        currentHealth = maxHealth = _statCompo.GetStat(hpStat).Value;
         _entity.OnDamage += ApplyDamage;
     }
 

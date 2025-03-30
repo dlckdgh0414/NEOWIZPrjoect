@@ -11,7 +11,6 @@ public class MousePlayerIdleState : MousePlayerCanMove
     {
         base.Enter();
 
-        Debug.Log("MouseIdle");
     }
 
     public override void Update()
