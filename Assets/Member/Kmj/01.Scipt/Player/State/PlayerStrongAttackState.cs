@@ -1,16 +1,14 @@
-using UnityEditorInternal;
 using UnityEngine;
 
-public class MousePlayerIdleState : MousePlayerCanMove
+public class PlayerStrongAttackState : PlayerState
 {
-    public MousePlayerIdleState(Entity entity, int animationHash) : base(entity, animationHash)
+    public PlayerStrongAttackState(Entity entity, int animationHash) : base(entity, animationHash)
     {
     }
-
     public override void Enter()
     {
         base.Enter();
-
+        Debug.Log("나 어택인데 된다");
     }
 
     public override void Update()
@@ -20,6 +18,7 @@ public class MousePlayerIdleState : MousePlayerCanMove
 
     public override void Exit()
     {
+        _player._isSkilling = false;
         base.Exit();
     }
 }

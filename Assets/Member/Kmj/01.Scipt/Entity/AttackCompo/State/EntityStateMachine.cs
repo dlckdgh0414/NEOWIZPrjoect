@@ -19,14 +19,16 @@ public class EntityStateMachine
         }
     }
 
-    public void ChangeState(string newStateName)
+    public void ChangeState(string newStateName, bool forced = false)
     {
         CurrentState?.Exit();
         EntityState newState = _states.GetValueOrDefault(newStateName);
-
         Debug.Assert(newState != null, $"State in null : {newStateName}");
 
-        CurrentState = newState;
+        if (forced == false && CurrentState == newState)
+            return;
+
+            CurrentState = newState;
         CurrentState.Enter();
     }
 

@@ -3,13 +3,20 @@ using UnityEngine;
 public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 {
     [Header("attack datas"), SerializeField] private AttackDataSO[] attackDataList;
+    [SerializeField] private DamageCaster damageCast;
 
     [SerializeField] private float comboWindow;
     private Entity _entity;
     private EntityAnimator _entityAnimator;
 
+    [SerializeField] private LayerMask _whatIsEnemy;
+
     private readonly int _attackSpeedHash = Animator.StringToHash("ATTACK_SPEED");
     private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
+
+
+    [field: SerializeField] public float atkDamage { get; private set; }
+    private EntityAnimatorTrigger _triggerCompo;
 
     private float _attackSpeed = 0.3f;
     private float _lastAttackTime;
@@ -33,6 +40,14 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         _entity = entity;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
         AttackSpeed = 0.45f;
+        damageCast.InitCaster(_entity);
+        _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
+        _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
+    }
+
+    private void OnDestroy()
+    {
+        _triggerCompo.OnAttackTriggerEnd -= HandleAttackTrigger;
     }
 
     public void Attack()
@@ -44,6 +59,19 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
             ComboCounter = 0;
         }
         _entityAnimator.SetParam(_comboCounterHash, ComboCounter);
+    }
+
+    private void HandleAttackTrigger()
+    {
+        float damage = 5f;
+        Vector2 knockbackForce = new Vector2(3f, 6f);
+
+        bool success = damageCast.CastDamage(damage, knockbackForce);
+
+        if (success)
+        {
+            Debug.Log("nice");
+        }
     }
 
     public void EndAttack()

@@ -17,6 +17,12 @@ public abstract class Entity : MonoBehaviour
 
     protected Dictionary<Type, IEntityComponet> _componets;
 
+    public Action<float, Vector2 > OnDamage;
+
+    public Action OnDead;
+
+    public bool IsDead { get; private set; } = false;
+
     protected virtual void Awake()
     {
         _componets = new Dictionary<Type, IEntityComponet>();

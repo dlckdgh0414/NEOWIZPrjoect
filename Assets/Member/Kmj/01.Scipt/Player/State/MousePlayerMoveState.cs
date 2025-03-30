@@ -12,7 +12,6 @@ public class MousePlayerMoveState : MousePlayerCanMove
     {
         base.Enter();
 
-        Debug.Log("MouseMove");
         _player.rbCompo.linearVelocity = Vector3.zero;
 
         dir = _player.MoveToMousePosition(_player);
