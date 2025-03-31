@@ -9,5 +9,13 @@ public class TestEnemy : Entity
         _heath = GetCompo<EntityHealth>();
     }
 
+    protected override void HandleDead()
+    {
+        throw new System.NotImplementedException();
+    }
 
+    protected override void HandleHit()
+    {
+        throw new System.NotImplementedException();
+    }
 }

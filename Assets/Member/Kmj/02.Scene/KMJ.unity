@@ -447,6 +447,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _animator: {fileID: 5866666020741452876}
+  _damage: 5
 --- !u!65 &719738595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -479,7 +480,7 @@ GameObject:
   - component: {fileID: 765082095}
   - component: {fileID: 765082096}
   m_Layer: 0
-  m_Name: Skill
+  m_Name: SkillCompo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,6 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814143824}
   - component: {fileID: 814143825}
+  - component: {fileID: 814143826}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -561,6 +563,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c1f4470e4acc4684e29c1e49188db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &814143826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814143823}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &899351213
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +638,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020a571f8fa5aab48a721a500094aed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   <PlayerInput>k__BackingField: {fileID: 11400000, guid: 04817a4455313464b98cc08ee69f17e9, type: 2}
   stateDatas:
   - {fileID: 11400000, guid: 023240e1e029acc449836e8a69a3c7bf, type: 2}
@@ -656,7 +691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1090972156}
   - component: {fileID: 1090972157}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +740,7 @@ GameObject:
   - component: {fileID: 1138688705}
   - component: {fileID: 1138688706}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: ATKCompo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -720,7 +755,7 @@ Transform:
   m_GameObject: {fileID: 1138688702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.56, z: 1.16}
+  m_LocalPosition: {x: 0, y: 0.56, z: 0.009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -865,6 +900,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1fa2a733c81dd744abee4f8f3981497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   <PlayerInput>k__BackingField: {fileID: 11400000, guid: 04817a4455313464b98cc08ee69f17e9, type: 2}
   stateDatas:
   - {fileID: 11400000, guid: 53616343927649a448d2c4f5dd0cc8e7, type: 2}
@@ -1098,9 +1139,9 @@ GameObject:
   - component: {fileID: 1793002655}
   - component: {fileID: 1793002654}
   - component: {fileID: 1793002657}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Renderer
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1211,6 +1252,7 @@ GameObject:
   - component: {fileID: 1886874170}
   - component: {fileID: 1886874169}
   - component: {fileID: 1886874168}
+  - component: {fileID: 1886874171}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: Untagged
@@ -1307,6 +1349,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -45, z: 0}
+--- !u!114 &1886874171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886874167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87e55f403d6cbe41af56957eca176b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerCompo: {fileID: 8805645755302748055}
+  _cam: {fileID: 1886874170}
 --- !u!1 &1893928718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,9 +1436,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1949438046}
   - component: {fileID: 1949438047}
-  - component: {fileID: 1949438048}
   - component: {fileID: 1949438049}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Health
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1418,27 +1473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: c7d72c92d575eb8408a9f8d4fb344732, type: 2}
   maxHealth: 10
---- !u!65 &1949438048
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949438045}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1949438049
 MonoBehaviour:
   m_ObjectHideFlags: 0

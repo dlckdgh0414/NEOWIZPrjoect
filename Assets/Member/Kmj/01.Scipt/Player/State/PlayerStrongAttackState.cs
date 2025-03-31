@@ -14,6 +14,8 @@ public class PlayerStrongAttackState : PlayerState
     public override void Update()
     {
         base.Update();
+        if (_isTriggerCall)
+            _player.ChangeState("IDLE");
     }
 
     public override void Exit()

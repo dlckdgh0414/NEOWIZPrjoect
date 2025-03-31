@@ -11,11 +11,14 @@ public class MousePlayerSheldState : EntityState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("½¯µå");
     }
 
     public override void Update()
     {
         base.Update();
+        if (_isTriggerCall)
+            _player.ChangeState("IDLE");
     }
 
     public override void Exit()

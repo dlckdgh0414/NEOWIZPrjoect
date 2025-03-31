@@ -23,7 +23,7 @@ public class Player : Entity
         PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         PlayerInput.OnStrongAttackPressed -= HandleStrongAttackPressed;
     }

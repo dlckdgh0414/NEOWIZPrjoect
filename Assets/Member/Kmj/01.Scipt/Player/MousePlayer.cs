@@ -25,7 +25,7 @@ public class MousePlayer : Entity
         _isSkilling = false;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         PlayerInput.OnSheldPressd -= HandleSheldPressed;
     }

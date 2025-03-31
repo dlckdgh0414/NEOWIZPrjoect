@@ -63,16 +63,15 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
     private void HandleAttackTrigger()
     {
-        float damage = 5f;
-        Vector2 knockbackForce = new Vector2(3f, 6f);
-
-        bool success = damageCast.CastDamage(damage, knockbackForce);
+        Vector2 knockbackForce = new Vector2(6,6);
+        bool success = damageCast.CastDamage(atkDamage, knockbackForce);
 
         if (success)
         {
             Debug.Log("nice");
         }
     }
+
 
     public void EndAttack()
     {

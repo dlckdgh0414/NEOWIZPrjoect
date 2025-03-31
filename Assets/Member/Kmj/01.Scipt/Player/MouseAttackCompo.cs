@@ -9,6 +9,7 @@ public class MouseAttackCompo : MonoBehaviour
    [SerializeField] private Animator _animator;
 
     private MousePlayer _player;
+    [SerializeField] private float _damage;
 
     private int animValue;
     private void Awake()
@@ -20,7 +21,7 @@ public class MouseAttackCompo : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            print(other.gameObject.name);
+            other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, Vector2.zero, _player);
             _player.ChangeState("ATTACK");
         }
     }

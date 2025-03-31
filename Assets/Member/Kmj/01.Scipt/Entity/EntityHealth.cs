@@ -50,7 +50,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
         currentHealth = Mathf.Clamp(currentHealth + current - previous, 1f, maxHealth);
     }
 
-    public void ApplyDamage(float damage, Vector2 knockbackPower)
+    public void ApplyDamage(float damage, Vector2 knockbackPowe,Entity delaer)
     {
         if (_entity.IsDead) return;
 

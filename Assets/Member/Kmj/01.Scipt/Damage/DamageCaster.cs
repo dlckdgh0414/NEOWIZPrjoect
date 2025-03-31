@@ -13,17 +13,15 @@ public class DamageCaster : MonoBehaviour
     {
         RaycastHit hit;
         bool isHit = Physics.SphereCast(transform.position,transform.lossyScale.x * 0.5f, transform.forward,
-            out hit,0, _whatIsEnemy);
+            out hit,3, _whatIsEnemy);
+
         Debug.Log(isHit);
 
         
-        if(isHit && hit.transform != null)
+        if(isHit)
         {
             Debug.Log(hit.transform.name);
-            if(hit.transform.TryGetComponent(out IDamgable health))
-            {
-                health.ApplyDamage(damage, knockback);
-            }
+            hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, knockback, _owner);
  
         }
 
