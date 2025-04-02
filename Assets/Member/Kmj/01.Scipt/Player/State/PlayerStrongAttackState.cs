@@ -8,7 +8,6 @@ public class PlayerStrongAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("나 어택인데 된다");
     }
 
     public override void Update()
