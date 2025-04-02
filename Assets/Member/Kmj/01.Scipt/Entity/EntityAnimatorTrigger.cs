@@ -6,7 +6,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 
     public Action OnAnimationEndTrigger;
 
-    public  Action OnAttackTriggerEnd;
+    public  Action OnAttackTriggerEnd, OnStrongAtk;
 
     public event Action OnAttackVFXTrigger;
 
@@ -30,4 +30,6 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 
 
     private void AttackEnd() => OnAttackTriggerEnd?.Invoke();
+
+    private void StrongSkill() => OnStrongAtk?.Invoke();
 }
