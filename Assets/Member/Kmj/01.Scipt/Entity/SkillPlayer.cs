@@ -14,13 +14,13 @@ public class SkillPlayer : MonoBehaviour
 
     private void Awake()
     {
-        _trigger.OnStrongAtk += StrongAttack;
+        _trigger.OnStrongAttackTrigger += StrongAttack;
         StrongSkillDam =_stat.GetStat(_skillAtkDamage).Value;
     }
 
     private void OnDestroy()
     {
-        _trigger.OnStrongAtk -= StrongAttack;
+        _trigger.OnStrongAttackTrigger -= StrongAttack;
     }
 
 
