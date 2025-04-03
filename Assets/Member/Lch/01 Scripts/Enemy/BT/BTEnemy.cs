@@ -1,7 +1,7 @@
 using Unity.Behavior;
 using UnityEngine;
 
-public class BTEnemy : Enemy
+public abstract class BTEnemy : Entity
 {
     protected BehaviorGraphAgent btAgent;
 
