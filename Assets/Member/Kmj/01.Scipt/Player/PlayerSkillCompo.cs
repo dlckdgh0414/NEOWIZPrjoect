@@ -15,6 +15,11 @@ public class PlayerSkillCompo : MonoBehaviour
     private void Awake()
     {
         _trigger.OnStrongAttackTrigger += StrongAttack;
+    }
+
+    private void Start()
+    {
+        
         _strongDamage = _stat.GetStat(_strongAttackDamage).Value;
     }
 
