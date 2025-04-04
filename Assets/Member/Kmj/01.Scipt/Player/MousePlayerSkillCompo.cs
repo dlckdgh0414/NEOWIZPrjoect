@@ -1,40 +1,62 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class MousePlayerSkillCompo : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _barrierEffect;
+    [SerializeField] private GameObject _barrierEffect;
 
     [SerializeField] private StatSO _barrierHp;
 
     [SerializeField] private EntityStat _stat;
 
-    [SerializeField] private EntityAnimatorTrigger _trigger;
+    [SerializeField] private PlayerInputSO _trigger;
+    [SerializeField] private Transform barrierTrans;
+
+    private bool _isSheld = false;
     public float BarrierHp { get; set; }
 
     private void Awake()
-    { 
-        _trigger.OnBarrierPressed += HandleBarrierPressed;
-        
+    {
+
+        _trigger.OnSheldPressd += HandleBarrierPressed;
+        _trigger.OnSheldCanceld += HandleBarrierCanceled;
     }
 
     private void OnDisable()
     {
-        _trigger.OnBarrierPressed -= HandleBarrierPressed;
+        _trigger.OnSheldPressd -= HandleBarrierPressed;
+        _trigger.OnSheldCanceld -= HandleBarrierCanceled;
     }
 
     private void Update()
     {
         if (BarrierHp <= 0)
-            _barrierEffect.Pause();
+            _barrierEffect.gameObject.SetActive(false);
+
+        if(_isSheld)
+        {
+            BarrierHp -= 10 * Time.deltaTime;
+        }
     }
 
     private void HandleBarrierPressed()
     {
-       _barrierEffect = Instantiate(_barrierEffect,transform.position, Quaternion.identity);
-
+        _isSheld = true;
         BarrierHp = _stat.GetStat(_barrierHp).Value;
 
-        _barrierEffect.Play();
+        if(BarrierHp < 0)
+        {
+            _isSheld = false;
+            _barrierEffect.SetActive(false);
+        }
+
+        _barrierEffect.SetActive(true);
+    }
+
+    private void HandleBarrierCanceled()
+    {
+        _isSheld = false;
+        _barrierEffect.SetActive(false);
     }
 }

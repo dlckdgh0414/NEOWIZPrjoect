@@ -14,8 +14,10 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private readonly int _attackSpeedHash = Animator.StringToHash("ATTACK_SPEED");
     private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
 
+    [SerializeField] private StatSO _atkDamage;
+    [SerializeField] private EntityStat _stat;
 
-    [field: SerializeField] public float atkDamage { get; private set; }
+    private float atkDamage;
     private EntityAnimatorTrigger _triggerCompo;
 
     private float _attackSpeed = 0.3f;
@@ -39,10 +41,15 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     {
         _entity = entity;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
-        AttackSpeed = 0.45f;
+        AttackSpeed = 0.23f;
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
         _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
+    }
+
+    private void Start()
+    {
+        atkDamage = _stat.GetStat(_atkDamage).Value;
     }
 
     private void OnDestroy()

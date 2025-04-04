@@ -1,13 +1,15 @@
 
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CharacterMovement : MonoBehaviour, IEntityComponet
 {
-    [SerializeField] private float moveSpeed = 1f, gravity = -9.81f;
+    [SerializeField] private float gravity = -9.81f;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float rotationSpeed = 8f;
     private float originMoveSpeed;
 
+    private float moveSpeed;
     public bool CanManualMovement { get; set; } = true;
     private Vector3 _autoMovement;
 
@@ -22,10 +24,16 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     private Entity _entity;
 
     [SerializeField] private StatSO _moveSpeedStat;
+    [SerializeField] private EntityStat _stat;
 
     public void Initialize(Entity entity)
     {
         _entity = entity;
+    }
+
+    private void Start()
+    {
+        moveSpeed = _stat.GetStat(_moveSpeedStat).Value;
     }
     public void SetMovementDirection(Vector2 movementInput)
     {
