@@ -21,22 +21,7 @@ public class MousePlayer : Entity
         rbCompo = GetComponentInChildren<Rigidbody>();
         _skillCompo = GetCompo<EntitySkillCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
-        PlayerInput.OnSheldPressd += HandleSheldPressed;
         _isSkilling = false;
-    }
-
-    protected override void OnDestroy()
-    {
-        PlayerInput.OnSheldPressd -= HandleSheldPressed;
-    }
-    private void HandleSheldPressed()
-    {
-        if (_skillCompo.CanUseSkill("Sheld") && !_isSkilling)
-        {
-            ChangeState("SHELD");
-            _skillCompo.CurrentTimeClear("Sheld");
-            _isSkilling = true;
-        }
     }
 
     private void Start()
