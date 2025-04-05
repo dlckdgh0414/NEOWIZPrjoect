@@ -16,7 +16,7 @@ public class MousePlayerEnergy : MonoBehaviour
 
     public void UseEnergyTimeAtTime(int useEnergy)
     {
-        energy -= useEnergy * (int)Time.deltaTime;
+        energy -= useEnergy * Time.deltaTime;
         print((int)Time.deltaTime);
     }
 
