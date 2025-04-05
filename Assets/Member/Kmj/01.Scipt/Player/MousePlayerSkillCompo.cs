@@ -31,10 +31,6 @@ public class MousePlayerSkillCompo : MonoBehaviour
     private void Update()
     {
         Debug.Log(_energyCompo.energy);
-        if (_isSheld)
-            _energyCompo.UseEnergyTimeAtTime(5);
-        else
-            return;
 
     }
 
