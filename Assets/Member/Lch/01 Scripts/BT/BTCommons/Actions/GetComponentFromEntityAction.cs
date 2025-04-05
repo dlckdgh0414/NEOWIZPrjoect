@@ -12,16 +12,21 @@ public partial class GetComponentFromEntityAction : Action
 
     protected override Status OnStart()
     {
-        return Status.Running;
-    }
-
-    protected override Status OnUpdate()
-    {
+        BTEnemy enemy = BtEnemy.Value;
+        Debug.Assert(enemy != null,$"에너미없다 이자식아");
+        SetVariableToBT(enemy, "Mover", enemy.GetComponentInChildren<EnemyMover>());
+        SetVariableToBT(enemy, "Renderer",enemy.GetComponentInChildren<EnemyRenderer>());
+        SetVariableToBT(enemy, "AnimTrigger",enemy.GetCompo<EntityAnimatorTrigger>());
+        SetVariableToBT(enemy, "Attack",enemy.GetComponentInChildren<Attack>());
+        SetVariableToBT(enemy, "MainAnim", enemy.GetComponentInChildren<Animator>());
         return Status.Success;
     }
 
-    protected override void OnEnd()
+    private void SetVariableToBT<T>(BTEnemy enemy, string variableName, T component)
     {
+        Debug.Assert(component != null, $"Check {variableName} component exist on {enemy.gameObject.name}");
+        BlackboardVariable<T> variable = enemy.GetBlackboardVariable<T>(variableName);
+        variable.Value = component;
     }
 }
 

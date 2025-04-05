@@ -3,26 +3,21 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
+using System.Collections.Generic;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "FindTarget", story: "[self] set [target] from finder", category: "Action", id: "f24d43abd5c639704598d1d213055747")]
+[NodeDescription(name: "FindTarget", story: "[self] set [targets] from finder", category: "Action", id: "f24d43abd5c639704598d1d213055747")]
 public partial class FindTargetAction : Action
 {
-    [SerializeReference] public BlackboardVariable<GameObject> Self;
-    [SerializeReference] public BlackboardVariable<Transform> Target;
-
+    [SerializeReference] public BlackboardVariable<BTEnemy> Self;
+    [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
     protected override Status OnStart()
     {
-        return Status.Running;
-    }
-
-    protected override Status OnUpdate()
-    {
+        foreach(var target in  Self.Value.PlayerFinder.Targets)
+        {
+            Targets.Value.Add(target.gameObject);
+        }
         return Status.Success;
-    }
-
-    protected override void OnEnd()
-    {
     }
 }
 

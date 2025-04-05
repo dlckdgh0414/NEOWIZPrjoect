@@ -5,6 +5,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 {
 
     public Action OnAnimationEndTrigger;
+    public Action OnAttackTrigger;
 
     private Entity _entity;
 
@@ -16,5 +17,10 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     private void AnimationEnd()
     {
         OnAnimationEndTrigger?.Invoke();
+    }
+
+    private void Attack()
+    {
+        OnAttackTrigger?.Invoke();
     }
 }
