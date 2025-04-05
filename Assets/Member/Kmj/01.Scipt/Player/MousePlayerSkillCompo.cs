@@ -1,24 +1,23 @@
-using System;
-using System.Collections;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayerSkillCompo : MonoBehaviour
 {
     [SerializeField] private GameObject _barrierEffect;
 
-    [SerializeField] private StatSO _barrierHp;
+    [SerializeField] private MousePlayerEnergy _energyCompo;
 
     [SerializeField] private EntityStat _stat;
 
     [SerializeField] private PlayerInputSO _trigger;
     [SerializeField] private Transform barrierTrans;
+    [SerializeField] private MousePlayer _player;
 
     private bool _isSheld = false;
     public float BarrierHp { get; set; }
 
     private void Awake()
     {
-
         _trigger.OnSheldPressd += HandleBarrierPressed;
         _trigger.OnSheldCanceld += HandleBarrierCanceled;
     }
@@ -31,31 +30,34 @@ public class MousePlayerSkillCompo : MonoBehaviour
 
     private void Update()
     {
-        if (BarrierHp <= 0)
-            _barrierEffect.gameObject.SetActive(false);
+        Debug.Log(_energyCompo.energy);
+        if (_isSheld)
+            _energyCompo.UseEnergyTimeAtTime(5);
+        else
+            return;
 
-        if(_isSheld)
-        {
-            BarrierHp -= 10 * Time.deltaTime;
-        }
     }
 
     private void HandleBarrierPressed()
     {
-        _isSheld = true;
-        BarrierHp = _stat.GetStat(_barrierHp).Value;
-
-        if(BarrierHp < 0)
+        if (_energyCompo.isEnergyNotzero && !_player._isSkilling)
         {
-            _isSheld = false;
-            _barrierEffect.SetActive(false);
+            _player.ChangeState("SHELD");
+            _player._isSkilling = true;
+            _isSheld = true;
+            _barrierEffect.SetActive(true);
+            _energyCompo.UseEnergy(10);
         }
-
-        _barrierEffect.SetActive(true);
+        else
+        {
+            HandleBarrierCanceled();
+        }
+            
     }
 
     private void HandleBarrierCanceled()
     {
+        _player.ChangeState("IDLE");
         _isSheld = false;
         _barrierEffect.SetActive(false);
     }
