@@ -7,7 +7,8 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
 {
     [SerializeField] private LayerMask whatIsGround;
 
-    public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd;
+    public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
+        ,OnSheldPressd,OnStrongAttackPressed,OnRollingPressed, OnSheldCanceld;
 
     public event Action OnClickMovePressed;
 
@@ -84,5 +85,27 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
             OnClickMovePressed?.Invoke();
+    }
+
+    public void OnSheldSkill(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnSheldPressd?.Invoke();
+        else if (context.canceled)
+            OnSheldCanceld?.Invoke();
+
+
+    }
+
+    public void OnRolling(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnRollingPressed?.Invoke();
+    }
+
+    public void OnStrongAttackSkill(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnStrongAttackPressed?.Invoke();
     }
 }

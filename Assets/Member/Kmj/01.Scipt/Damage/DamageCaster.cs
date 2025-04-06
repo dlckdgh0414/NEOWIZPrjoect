@@ -1,29 +1,37 @@
-
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamageCaster : MonoBehaviour
 {
-    [SerializeField] private Vector3 _attackRadius;
+    private Entity _owner;
     [SerializeField] private LayerMask _whatIsEnemy;
-    private Entity _entity;
-    public void InitCaster(Entity owener)
+    public void InitCaster(Entity owner)
     {
-        _entity = owener;
+        _owner = owner;
     }
 
     public bool CastDamage(float damage, Vector2 knockback)
     {
-        Collider[] collider = Physics.OverlapBox(_entity.transform.position,
-            _attackRadius,Quaternion.identity,_whatIsEnemy);
+        RaycastHit hit;
+        bool isHit = Physics.SphereCast(transform.position,transform.lossyScale.x * 0.5f, transform.forward,
+            out hit,3, _whatIsEnemy);
 
-        if(collider != null)
+        Debug.Log(isHit);
+
+        
+        if(isHit)
         {
-          /*7  collider.ToList().ForEach(collider => collider.GetComponent<EntityHealth>()
-            .ApplyDamage();*/
+            Debug.Log(hit.transform.name);
+            hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, knockback, _owner);
+ 
         }
 
-        return true;
+        return isHit;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x * 0.5f);
+        Gizmos.color = Color.white;
     }
 }

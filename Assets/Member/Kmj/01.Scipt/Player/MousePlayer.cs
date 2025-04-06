@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayer : Entity
 {
@@ -9,11 +11,17 @@ public class MousePlayer : Entity
     [field: SerializeField] public Rigidbody rbCompo;
     private EntityStateMachine _stateMachine;
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
+
+    public bool _isSkilling { get;  set; } = false;
+    public EntitySkillCompo _skillCompo { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
         rbCompo = GetComponentInChildren<Rigidbody>();
+        _skillCompo = GetCompo<EntitySkillCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
+        _isSkilling = false;
     }
 
     private void Start()

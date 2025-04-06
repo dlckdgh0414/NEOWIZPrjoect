@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerState
@@ -9,19 +10,21 @@ public class PlayerAttackState : PlayerState
     {
         _movement = entity.GetCompo<CharacterMovement>();
         _attackCompo = entity.GetCompo<PlayerAttackCompo>();
+        
     }
+
+    
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Attack");
         _attackCompo.Attack();
 
         _movement.CanManualMovement = false;
 
         ApplyAttackData();
-
-
     }
+
+  
 
     private void ApplyAttackData()
     {
