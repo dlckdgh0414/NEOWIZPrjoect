@@ -15,6 +15,12 @@ public abstract class BTEnemy : Entity
         Debug.Log("BT에너미 후 초기화");
     }
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        PlayerFinder.ClearSetTargets();
+    }
+
 
     public BlackboardVariable<T> GetBlackboardVariable<T>(string key)
     {

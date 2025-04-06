@@ -12,8 +12,8 @@ public class EntityFinderSO : ScriptableObject
         Targets.Add(entity);
     }
 
-    private void OnDestroy()
+    public void ClearSetTargets()
     {
-        Targets.Clear();    
+        Targets.Clear();
     }
 }

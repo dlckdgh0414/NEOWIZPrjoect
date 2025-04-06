@@ -1,10 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-    //모든 스크립트보다 빨리 실행돼.
-    [DefaultExecutionOrder(-20)]
-    public class SceneTransitionManager : MonoBehaviour
-    {
+   public class SceneTransitionManager : MonoBehaviour
+{
         [SerializeField] private EntityFinderSO playerFinder;
 
         private void Awake()
@@ -17,4 +15,4 @@ using UnityEngine;
                 playerFinder.SetPlayer(p);
             }
         }
-    }
+}

@@ -1418,6 +1418,37 @@ Transform:
   - {fileID: 1019712641}
   m_Father: {fileID: 1919096061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &305724140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 305724141}
+  m_Layer: 7
+  m_Name: EntityHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &305724141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305724140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1716513705}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &322382748
 GameObject:
   m_ObjectHideFlags: 0
@@ -6835,6 +6866,7 @@ MonoBehaviour:
   - rid: 4070495525162189494
   - rid: 4070495525162189495
   - rid: 4070495528948597418
+  - rid: 4070495545898041598
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -6872,6 +6904,14 @@ MonoBehaviour:
           m_Value1: 9820045163371008837
         Name: CurentAnim
         m_Value: IDLE
+    - rid: 4070495545898041598
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3632856259204285587
+          m_Value1: 11857164642831694203
+        Name: AtackCooldown
+        m_Value: 3
 --- !u!4 &1716513705
 Transform:
   m_ObjectHideFlags: 0
@@ -6889,6 +6929,7 @@ Transform:
   - {fileID: 1293877682}
   - {fileID: 2038749369}
   - {fileID: 610124422}
+  - {fileID: 305724141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1716513706
