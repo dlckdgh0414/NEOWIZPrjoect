@@ -8,7 +8,6 @@ public class MousePlayerEnergy : MonoBehaviour
     public float energy { get; private set; }
 
     public bool isEnergyNotzero { get; private set; } = true;
-
     private void Start()
     {
         energy = _stat.GetStat(_energy).Value;
@@ -27,15 +26,7 @@ public class MousePlayerEnergy : MonoBehaviour
 
     private void Update()
     {
-        EnergyIsFull();
-    }
-
-    private void EnergyIsFull()
-    {
-        if (energy < 0)
-            isEnergyNotzero = false;
-        else
-            isEnergyNotzero = true;
+        isEnergyNotzero = energy > 0;
     }
 
 
