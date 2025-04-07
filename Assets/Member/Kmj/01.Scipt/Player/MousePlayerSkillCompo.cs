@@ -28,8 +28,7 @@ public class MousePlayerSkillCompo : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_energyCompo.energy);
-
+       
     }
 
     private void HandleBarrierPressed()
@@ -51,5 +50,10 @@ public class MousePlayerSkillCompo : MonoBehaviour
             _player._isSkilling = false;
             _barrierEffect.SetActive(false);
         }
+    }
+
+    public void StopState()
+    {
+        _player.ChangeState("IDLE");
     }
 }

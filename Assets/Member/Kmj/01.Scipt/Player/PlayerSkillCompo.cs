@@ -11,6 +11,8 @@ public class PlayerSkillCompo : MonoBehaviour
 
     [SerializeField] private EntityStat _stat;
 
+    [SerializeField] private Vector3 boxSize;
+
     private float _strongDamage;
     private void Awake()
     {
@@ -27,8 +29,8 @@ public class PlayerSkillCompo : MonoBehaviour
     {
         RaycastHit hit;
 
-        bool ishit = Physics.SphereCast(transform.position, transform.lossyScale.x * 0.5f, transform.forward,
-            out hit, 3, _whatIsEnemy);
+        bool ishit = Physics.BoxCast(transform.position, boxSize,transform.position, out hit,
+            Quaternion.identity, 8, _whatIsEnemy);
 
         if(ishit)
         {
