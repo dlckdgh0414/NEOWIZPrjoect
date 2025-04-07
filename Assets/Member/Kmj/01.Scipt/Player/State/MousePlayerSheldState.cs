@@ -15,20 +15,24 @@ public class MousePlayerSheldState : EntityState
     public override void Enter()
     {
         base.Enter();
+        _player.LookAtMouse();
+        _energyCompo.StartSkill(5);
         Debug.Log("½¯µå");
     }
 
     public override void Update()
     {
         base.Update();
-        _energyCompo.UseEnergyTimeAtTime(10);
 
         if (!_energyCompo.isEnergyNotzero)
+        {
             _skillCompo.HandleBarrierCanceled();
+        }
     }
 
     public override void Exit()
     {
+        _energyCompo.CancelSkill();
         _player._isSkilling = false;
         base.Exit();
     }
