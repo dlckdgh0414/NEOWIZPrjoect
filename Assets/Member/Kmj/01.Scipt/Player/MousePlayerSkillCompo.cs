@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayerSkillCompo : MonoBehaviour
 {
@@ -13,7 +12,6 @@ public class MousePlayerSkillCompo : MonoBehaviour
     [SerializeField] private Transform barrierTrans;
     [SerializeField] private MousePlayer _player;
 
-    private bool _isSheld = false;
     public float BarrierHp { get; set; }
 
     private void Awake()
@@ -40,21 +38,18 @@ public class MousePlayerSkillCompo : MonoBehaviour
         {
             _player.ChangeState("SHELD");
             _player._isSkilling = true;
-            _isSheld = true;
             _barrierEffect.SetActive(true);
             _energyCompo.UseEnergy(10);
         }
-        else
-        {
-            HandleBarrierCanceled();
-        }
-            
     }
 
-    private void HandleBarrierCanceled()
+    public void HandleBarrierCanceled()
     {
-        _player.ChangeState("IDLE");
-        _isSheld = false;
-        _barrierEffect.SetActive(false);
+        if (_player._isSkilling)
+        {
+            _player.ChangeState("IDLE");
+            _player._isSkilling = false;
+            _barrierEffect.SetActive(false);
+        }
     }
 }
