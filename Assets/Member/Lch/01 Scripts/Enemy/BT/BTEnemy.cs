@@ -1,7 +1,7 @@
 using Unity.Behavior;
 using UnityEngine;
 
-public class BTEnemy : Enemy
+public abstract class BTEnemy : Entity
 {
     protected BehaviorGraphAgent btAgent;
 
@@ -13,6 +13,12 @@ public class BTEnemy : Enemy
         btAgent = GetComponent<BehaviorGraphAgent>();
         Debug.Assert(btAgent != null, $"{gameObject.name} does not have an BehaviorGraphAgent");
         Debug.Log("BT에너미 후 초기화");
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        PlayerFinder.ClearSetTargets();
     }
 
 

@@ -22,6 +22,7 @@ public abstract class Entity : MonoBehaviour
         _componets = new Dictionary<Type, IEntityComponet>();
         AddComponets();
         InitializeComponts();
+        AfterInitialize();
     }
 
     private void AddComponets()
