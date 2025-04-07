@@ -15,7 +15,6 @@ public partial class CheckPlayersCondition : Condition
 
     public override bool IsTrue()
     {
-        Debug.Log("Targets count: " + Targets.Value.Count);
         foreach (var target in Targets.Value)
         {
             if (Vector3.Distance(Self.Value.transform.position, target.transform.position) <= AttackRange)
