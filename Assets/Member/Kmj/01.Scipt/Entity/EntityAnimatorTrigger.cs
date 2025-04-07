@@ -7,6 +7,16 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     public Action OnAnimationEndTrigger;
     public Action OnAttackTrigger;
 
+    public Action OnAttackTriggerEnd;
+
+    public event Action OnAttackVFXTrigger;
+
+    public event Action OnStrongAttackTrigger;
+
+    public event Action OnBarrierPressed;
+
+    public event Action<bool> OnRollingStatusChange;
+
     private Entity _entity;
 
     public void Initialize(Entity entity)
@@ -18,6 +28,17 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     {
         OnAnimationEndTrigger?.Invoke();
     }
+    private void RollingStart() => OnRollingStatusChange?.Invoke(true);
+    private void RollingEnd() => OnRollingStatusChange?.Invoke(true);
+
+    private void PlayAttackVFX() => OnAttackVFXTrigger?.Invoke();
+
+    private void PlayerStrongAttack() => OnStrongAttackTrigger?.Invoke();
+    private void AttackEnd() => OnAttackTriggerEnd?.Invoke();
+
+
+    private void BarrierPressed() => OnBarrierPressed?.Invoke();
+
 
     private void Attack()
     {
