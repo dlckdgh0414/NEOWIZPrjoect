@@ -23,4 +23,11 @@ public class EnemyMover : MonoBehaviour
         _moveDir = Vector3.zero;
     }
 
+    public void BackStepEnemy(Transform target, float power,Transform enemy)
+    {
+         enemy.LookAt(target);
+        _rbCompo.AddForce(Vector3.up * 1.5f);
+        _rbCompo.AddForce(Vector3.back * power);
+    }
+
 }
