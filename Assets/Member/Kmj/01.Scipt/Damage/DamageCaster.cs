@@ -12,17 +12,17 @@ public class DamageCaster : MonoBehaviour
     public bool CastDamage(float damage, Vector2 knockback)
     {
         RaycastHit hit;
-        bool isHit = Physics.SphereCast(transform.position,transform.lossyScale.x * 0.5f, transform.forward,
-            out hit,3, _whatIsEnemy);
+        bool isHit = Physics.SphereCast(transform.position, transform.lossyScale.x * 0.5f, transform.forward,
+            out hit, 3, _whatIsEnemy);
 
         Debug.Log(isHit);
 
-        
-        if(isHit)
+
+        if (isHit)
         {
             Debug.Log(hit.transform.name);
-            hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, knockback, _owner);
- 
+            hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, false, _owner);
+
         }
 
         return isHit;
@@ -31,7 +31,7 @@ public class DamageCaster : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, transform.lossyScale.x * 0.5f);
+        Gizmos.DrawWireCube(transform.position, new Vector3(4, 4, 4));
         Gizmos.color = Color.white;
     }
 }

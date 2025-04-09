@@ -4,8 +4,13 @@ public class MousePlayerMoveState : MousePlayerCanMove
 {
 
     private Vector3 dir = Vector3.zero;
+
+    private MousePlayerEnergy _energyCompo;
+    private MousePlayerSkillCompo _skillCompo;
     public MousePlayerMoveState(Entity entity, int animationHash) : base(entity, animationHash)
     {
+        _energyCompo = _entity.GetComponentInChildren<MousePlayerEnergy>();
+        _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
     }
 
     public override void Enter()
@@ -15,18 +20,32 @@ public class MousePlayerMoveState : MousePlayerCanMove
         _player.rbCompo.linearVelocity = Vector3.zero;
 
         dir = _player.MoveToMousePosition(_player);
+
+        _energyCompo.UseEnergy(15);
+
+        _energyCompo.StartSkill(2);
+
+        if (_energyCompo.energy <= 0)
+        {
+            _player.ChangeState("IDLE");
+        }
+        _player.LookAtMouse();
+
     }
 
     public override void Update()
     {
         base.Update();
-
-        _player.transform.LookAt(dir);
-
+        
         _player.transform.position = Vector3.MoveTowards(_player.transform.position,
             dir, 15f * Time.deltaTime);
 
-        _player.transform.LookAt(dir);
+        if(_energyCompo.energy <= 0)
+        {
+            _player.ChangeState("IDLE");
+        }
+
+        
 
         if (_player.transform.position == dir)
         {
@@ -37,6 +56,7 @@ public class MousePlayerMoveState : MousePlayerCanMove
 
     public override void Exit()
     {
+        _energyCompo.CancelSkill();
         base.Exit();
     }
 }

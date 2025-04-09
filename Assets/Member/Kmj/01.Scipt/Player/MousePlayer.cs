@@ -44,6 +44,15 @@ public class MousePlayer : Entity
 
     public void ChangeState(string newStateName) => _stateMachine.ChangeState(newStateName);
 
+
+    public void LookAtMouse()
+    {
+        Vector3 targetPos = PlayerInput.GetWorldPosition();
+        Vector3 direction = targetPos - transform.position;
+        direction.y = 0;
+
+        transform.rotation = Quaternion.LookRotation(direction.normalized);
+    }
     protected override void HandleHit()
     {
         
