@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerSkillCompo : MonoBehaviour
@@ -12,7 +13,8 @@ public class PlayerSkillCompo : MonoBehaviour
     [SerializeField] private EntityStat _stat;
 
     [SerializeField] private Vector3 boxSize;
-
+    [SerializeField] private Player _player;
+ 
     private float _strongDamage;
     private void Awake()
     {
@@ -25,19 +27,17 @@ public class PlayerSkillCompo : MonoBehaviour
         _strongDamage = _stat.GetStat(_strongAttackDamage).Value;
     }
 
+    private void OnDestroy()
+    {
+        _trigger.OnStrongAttackTrigger -= StrongAttack;
+    }
+
     private void StrongAttack()
     {
-        RaycastHit hit;
+        Collider[] collider = Physics.OverlapBox(transform.position, boxSize,
+            Quaternion.identity, _whatIsEnemy);
 
-        bool ishit = Physics.BoxCast(transform.position, boxSize,transform.position, out hit,
-            Quaternion.identity, 8, _whatIsEnemy);
-
-        if(ishit)
-        {
-            if(hit.transform.TryGetComponent(out IDamgable damage))
-            {
-                damage.ApplyDamage(_strongDamage, Vector2.zero, null);
-            }
-        }
+        collider.ToList().ForEach(x => x.GetComponentInChildren<IDamgable>().
+        ApplyDamage(_strongDamage, false, _player));
     }
 }

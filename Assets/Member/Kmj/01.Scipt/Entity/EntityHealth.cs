@@ -50,12 +50,11 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
         currentHealth = Mathf.Clamp(currentHealth + current - previous, 1f, maxHealth);
     }
 
-    public void ApplyDamage(float damage, Vector2 knockbackPowe,Entity delaer)
+
+    public void ApplyDamage(float damage, bool isStop, Entity delear)
     {
         if (_entity.IsDead) return;
 
         currentHealth = Mathf.Clamp(currentHealth -= damage, 0, maxHealth);
-
-        print("³ª µÊ");
     }
 }
