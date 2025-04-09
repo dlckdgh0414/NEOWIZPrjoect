@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class BTEnemy : Entity
 {
     protected BehaviorGraphAgent btAgent;
+    protected Rigidbody _rbCompo;
 
     [field: SerializeField] public EntityFinderSO PlayerFinder { get; protected set; }
 
@@ -12,6 +13,7 @@ public abstract class BTEnemy : Entity
         base.AfterInitialize();
         btAgent = GetComponent<BehaviorGraphAgent>();
         Debug.Assert(btAgent != null, $"{gameObject.name} does not have an BehaviorGraphAgent");
+        _rbCompo = GetComponent<Rigidbody>();
         Debug.Log("BT에너미 후 초기화");
     }
 
