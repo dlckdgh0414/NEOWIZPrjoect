@@ -14,6 +14,7 @@ public partial class BackStepEnemyAction : Action
     [SerializeReference] public BlackboardVariable<EnemyMover> Mover;
     protected override Status OnStart()
     {
+        Mover.Value.CanMauanMove = false;
         Mover.Value.BackStepEnemy(Target.Value,Power.Value,Self.Value.transform);
         return Status.Success;
     }
