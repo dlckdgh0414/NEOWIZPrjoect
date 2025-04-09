@@ -21,7 +21,7 @@ public class DamageCaster : MonoBehaviour
         if (isHit)
         {
             Debug.Log(hit.transform.name);
-            hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, knockback, _owner);
+            hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, false, _owner);
 
         }
 

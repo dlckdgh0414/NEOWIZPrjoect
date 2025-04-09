@@ -21,7 +21,7 @@ public class MouseAttackCompo : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, Vector2.zero, _player);
+            other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, false, _player);
             _player.ChangeState("ATTACK");
         }
     }

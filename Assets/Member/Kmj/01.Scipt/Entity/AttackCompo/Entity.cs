@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public abstract class Entity : MonoBehaviour
 {
 
-    public delegate void OnDamageHandler(float damage, Vector2 direction, Entity dealer);
+    public delegate void OnDamageHandler(float damage, bool isStop, Entity dealer);
     public event OnDamageHandler OnDamage;
 
     public UnityEvent OnHit;
