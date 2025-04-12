@@ -14,6 +14,7 @@ public class Player : Entity
     private EntityStateMachine _stateMachine;
     public PlayerAttackCompo _attackCompo { get; private set; }
     public EntitySkillCompo _skillCompo { get; private set; }
+    public float rollingVelocity = 12f;
 
     protected override void Awake()
     {
@@ -21,11 +22,19 @@ public class Player : Entity
          _stateMachine = new EntityStateMachine(this,stateDatas);
         _skillCompo = GetCompo<EntitySkillCompo>();
         PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
+        PlayerInput.OnRollingPressed += HandleRollingPressed;
+    }
+
+
+    private void HandleRollingPressed()
+    {
+        ChangeState("ROLLING");
     }
 
     protected override void OnDestroy()
     {
         PlayerInput.OnStrongAttackPressed -= HandleStrongAttackPressed;
+        PlayerInput.OnRollingPressed -= HandleRollingPressed;
     }
     private void HandleStrongAttackPressed()
     {
