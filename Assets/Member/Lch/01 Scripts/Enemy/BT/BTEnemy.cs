@@ -1,36 +1,40 @@
 using Unity.Behavior;
 using UnityEngine;
 
-public abstract class BTEnemy : Entity
+public abstract class BTEnemy : Enemy
 {
-    protected BehaviorGraphAgent btAgent;
-    protected Rigidbody _rbCompo;
+    private StateChangeEvent _stateChannel;
+    private EntityFeedbackData _feedbackData;
+    private BlackboardVariable<BTEnemyState> _state;
 
-    [field: SerializeField] public EntityFinderSO PlayerFinder { get; protected set; }
-
-    protected override void AfterInitialize()
+    protected override void Start()
     {
-        base.AfterInitialize();
-        btAgent = GetComponent<BehaviorGraphAgent>();
-        Debug.Assert(btAgent != null, $"{gameObject.name} does not have an BehaviorGraphAgent");
-        _rbCompo = GetComponent<Rigidbody>();
-        Debug.Log("BT에너미 후 초기화");
+        BlackboardVariable<StateChangeEvent> stateChannelVariable =
+            GetBlackboardVariable<StateChangeEvent>("BossStateChangeEvent");
+        _stateChannel = stateChannelVariable.Value;
+        Debug.Assert(_stateChannel != null, $"StateChannel variable is null {gameObject.name}");
+
+        _state = GetBlackboardVariable<BTEnemyState>("BossState");
     }
 
-    protected override void OnDestroy()
+    protected override void HandleHit()
     {
-        base.OnDestroy();
-        PlayerFinder.ClearSetTargets();
-    }
+        if (IsDead) return;
 
+        if (_state.Value == BTEnemyState.STUN || _state.Value == BTEnemyState.HIT) return;
 
-    public BlackboardVariable<T> GetBlackboardVariable<T>(string key)
-    {
-        if (btAgent.GetVariable(key, out BlackboardVariable<T> result))
+        if (_feedbackData.IsLastStopHit)
         {
-            return result;
+            _stateChannel.SendEventMessage(BTEnemyState.HIT);
         }
+        else if (_state.Value == BTEnemyState.IDLE)
+        {
+            _stateChannel.SendEventMessage(BTEnemyState.CHASE);
+        }
+    }
 
-        return default;
+    protected override void HandleDead()
+    {
+
     }
 }
