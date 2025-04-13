@@ -30,8 +30,8 @@ public class SoulBullet : MonoBehaviour
         {
             if(other.TryGetComponent(out IDamgable damgable))
             {
-                damgable.ApplyDamage(damge,Vector2.zero,_entity);
-                Destroy(gameObject);
+                damgable.ApplyDamage(damge,false,_entity);
+                Destroy(gameObject); 
             }
         }
     }

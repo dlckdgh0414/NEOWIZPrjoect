@@ -22,14 +22,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
     private void Awake()
     {
         AfterInit();
-        currentHealth = 10;
     }
-
-    private void Update()
-    {
-        Debug.Log(currentHealth);
-    }
-
 
     public void Initialize(Entity entity)
     {

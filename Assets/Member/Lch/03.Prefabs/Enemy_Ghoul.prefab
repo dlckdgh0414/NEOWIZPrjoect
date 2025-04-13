@@ -1613,6 +1613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5727566027425903634}
+  - component: {fileID: 5172001060173573439}
   m_Layer: 7
   m_Name: EntityHealth
   m_TagString: Untagged
@@ -1635,6 +1636,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5250562529501654294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5172001060173573439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898097556740988379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad958a3d53db90d4ea16c5e54806578c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpStat: {fileID: 0}
+  maxHealth: 0
 --- !u!1 &6003962732571564528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +1977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rbCompo: {fileID: 2335919670627438303}
   speed: 3
+  CanMauanMove: 1
 --- !u!1 &7073984186876368736
 GameObject:
   m_ObjectHideFlags: 0
