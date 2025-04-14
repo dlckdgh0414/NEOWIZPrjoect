@@ -11,6 +11,8 @@ public class MouseAttackCompo : MonoBehaviour
     private MousePlayer _player;
     [SerializeField] private float _damage;
 
+    private MousePlayerEnergy _energyCompo;
+
     private int animValue;
     private void Awake()
     {
