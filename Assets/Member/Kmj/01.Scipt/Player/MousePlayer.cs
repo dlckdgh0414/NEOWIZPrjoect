@@ -62,4 +62,9 @@ public class MousePlayer : Entity
     {
         
     }
+
+    protected override void HandleStun()
+    {
+        throw new NotImplementedException();
+    }
 }

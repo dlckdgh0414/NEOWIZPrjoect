@@ -70,4 +70,9 @@ public class Player : Entity
     {
         
     }
+
+    protected override void HandleStun()
+    {
+        
+    }
 }
