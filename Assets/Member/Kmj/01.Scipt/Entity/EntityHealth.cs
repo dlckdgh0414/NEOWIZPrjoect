@@ -25,10 +25,12 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
         AfterInit();
     }
 
+
     public void Initialize(Entity entity)
     {
         _entity = entity;
         _statCompo = entity.GetCompo<EntityStat>();
+        _feedbackData = entity.GetCompo<EntityFeedbackData>();
     }
 
     public void AfterInit()
@@ -53,5 +55,11 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
 
         _feedbackData.IsLastStopHit = isHit;
         _feedbackData.LastEntityWhoHit = delear;
+
+        if(currentHealth <= 0)
+        {
+            Debug.Log("аж╠щ");
+            _entity.OnDead?.Invoke();
+        }
     }
 }

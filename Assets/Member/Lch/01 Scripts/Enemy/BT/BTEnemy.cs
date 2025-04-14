@@ -36,6 +36,7 @@ public abstract class BTEnemy : Enemy
 
     protected override void HandleDead()
     {
+        Debug.Log("È÷ÆR");
         if (IsDead) return;
         gameObject.layer = DeadBodyLayer;
         IsDead = true;
