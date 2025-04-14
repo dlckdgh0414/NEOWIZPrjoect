@@ -23,7 +23,7 @@ public class MousePlayerMoveState : MousePlayerCanMove
 
         _energyCompo.UseEnergy(15);
 
-        _energyCompo.StartSkill(2);
+        _energyCompo.StartSkill(0.2f);
 
         if (_energyCompo.energy <= 0)
         {

@@ -32,7 +32,7 @@ public class MousePlayerEnergy : MonoBehaviour
         }
     }
 
-    public void StartSkill(int useEnergy)
+    public void StartSkill(float useEnergy)
     {
         if (skillCoroutine == null)
         {
@@ -50,7 +50,7 @@ public class MousePlayerEnergy : MonoBehaviour
         }
     }
 
-    private IEnumerator UseSkill(int useEnergy)
+    private IEnumerator UseSkill(float useEnergy)
     {
         while (true)
         {
@@ -66,7 +66,7 @@ public class MousePlayerEnergy : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
