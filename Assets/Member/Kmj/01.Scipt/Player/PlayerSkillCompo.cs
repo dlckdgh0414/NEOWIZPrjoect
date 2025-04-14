@@ -38,6 +38,6 @@ public class PlayerSkillCompo : MonoBehaviour
             Quaternion.identity, _whatIsEnemy);
 
         collider.ToList().ForEach(x => x.GetComponentInChildren<IDamgable>().
-        ApplyDamage(_strongDamage, false, _player));
+        ApplyDamage(_strongDamage, false, 0,_player));
     }
 }

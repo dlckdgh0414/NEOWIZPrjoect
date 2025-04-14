@@ -6,11 +6,12 @@ using UnityEngine.Events;
 public abstract class Entity : MonoBehaviour
 {
 
-    public delegate void OnDamageHandler(float damage, bool isStop, Entity dealer);
+    public delegate void OnDamageHandler(float damage, bool isHit,int stunLevel,Entity dealer);
     public event OnDamageHandler OnDamage;
 
     public UnityEvent OnHit;
     public UnityEvent OnDead;
+    public UnityEvent OnStun;
 
     public bool IsDead { get; set; }
     public int DeadBodyLayer { get; private set; }
@@ -36,12 +37,14 @@ public abstract class Entity : MonoBehaviour
         _componets.Values.OfType<IAfterInit>().ToList().ForEach(compo => compo.AfterInit());
         OnHit.AddListener(HandleHit);
         OnDead.AddListener(HandleDead);
+        OnStun.AddListener(HandleStun);
     }
 
     protected virtual void OnDestroy()
     {
         OnHit.RemoveListener(HandleHit);
         OnDead.RemoveListener(HandleDead);
+        OnStun.RemoveListener(HandleStun);
     }
 
     private void InitializeComponts()
@@ -54,4 +57,5 @@ public abstract class Entity : MonoBehaviour
 
     protected abstract void HandleHit();
     protected abstract void HandleDead();
+    protected abstract void HandleStun();
 }
