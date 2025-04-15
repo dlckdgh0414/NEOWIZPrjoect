@@ -26,7 +26,7 @@ public abstract class BTBoss : Enemy
         {
             _stateChannel.SendEventMessage(BTBossState.HIT);
         }
-        else if (_state.Value == BTBossState.PATROL)
+        else if (_state.Value == BTBossState.CHASE)
         {
             _stateChannel.SendEventMessage(BTBossState.IDLE);
         }

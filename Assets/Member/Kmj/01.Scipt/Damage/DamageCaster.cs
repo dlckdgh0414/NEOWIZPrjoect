@@ -31,7 +31,7 @@ public class DamageCaster : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, new Vector3(4, 4, 4));
+        Gizmos.DrawRay(transform.position, transform.forward);
         Gizmos.color = Color.white;
     }
 }
