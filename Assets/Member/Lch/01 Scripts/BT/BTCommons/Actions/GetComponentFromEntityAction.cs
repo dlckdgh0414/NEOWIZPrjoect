@@ -13,11 +13,9 @@ public partial class GetComponentFromEntityAction : Action
     protected override Status OnStart()
     {
         BTEnemy enemy = BtEnemy.Value;
-        Debug.Assert(enemy != null,$"에너미없다 이자식아");
         SetVariableToBT(enemy, "Mover", enemy.GetComponentInChildren<EnemyMover>());
         SetVariableToBT(enemy, "Renderer",enemy.GetComponentInChildren<EnemyRenderer>());
         SetVariableToBT(enemy, "AnimTrigger",enemy.GetCompo<EntityAnimatorTrigger>());
-        SetVariableToBT(enemy, "Attack",enemy.GetComponentInChildren<Attack>());
         SetVariableToBT(enemy, "MainAnim", enemy.GetComponentInChildren<Animator>());
         return Status.Success;
     }
