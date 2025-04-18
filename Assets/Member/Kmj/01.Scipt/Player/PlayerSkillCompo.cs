@@ -40,4 +40,11 @@ public class PlayerSkillCompo : MonoBehaviour
         collider.ToList().ForEach(x => x.GetComponentInChildren<IDamgable>().
         ApplyDamage(_strongDamage, false, _player));
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position,boxSize);
+        Gizmos.color = Color.white;
+    }
 }
