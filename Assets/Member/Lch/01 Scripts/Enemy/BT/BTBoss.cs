@@ -10,11 +10,11 @@ public abstract class BTBoss : Enemy
     protected override void Start()
     {
         BlackboardVariable<BossStateChangeEvent> stateChannelVariable =
-            GetBlackboardVariable<BossStateChangeEvent>("StateChannel");
+            GetBlackboardVariable<BossStateChangeEvent>("BossStateChangeEvent");
         _stateChannel = stateChannelVariable.Value;
         Debug.Assert(_stateChannel != null, $"StateChannel variable is null {gameObject.name}");
 
-        _state = GetBlackboardVariable<BTBossState>("EnemyState");
+        _state = GetBlackboardVariable<BTBossState>("BossState");
     }
     protected override void HandleHit()
     {
@@ -33,6 +33,14 @@ public abstract class BTBoss : Enemy
     }
 
     protected override void HandleDead()
+    {
+        if (IsDead) return;
+        gameObject.layer = DeadBodyLayer;
+        IsDead = true;
+        _stateChannel.SendEventMessage(BTBossState.DEAD);
+    }
+
+    protected override void HandleStun()
     {
         
     }

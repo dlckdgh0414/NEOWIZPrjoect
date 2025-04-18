@@ -1,48 +1,79 @@
+using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 
 public class EntityStat : MonoBehaviour, IEntityComponet
 {
 
-    [SerializeField] private StatOverride[] statOverride;
-    private StatSO[] _stat;
+    [SerializeField] private StatOverride[] statOverrides;
+    private StatSO[] _stats; //real stat
 
-    public Entity owner { get; private set; }
+    public Entity Owner { get; private set; }
+
     public void Initialize(Entity entity)
     {
-        owner = entity;
-
-        _stat = statOverride.Select(stat => stat.CreateSet()).ToArray();
+        Owner = entity;
+        //스탯들을 복제하고 오버라이드해서 다시 저장해준다.
+        _stats = statOverrides.Select(stat => stat.CreateSet()).ToArray();
     }
 
-    public StatSO GetStat(StatSO targetState)
+    public StatSO GetStat(StatSO targetStat)
     {
-        return _stat.FirstOrDefault(stat => stat.statName == targetState.statName);
+        Debug.Assert(targetStat != null, "Stats::GetStat : target stat is null");
+        return _stats.FirstOrDefault(stat => stat.statName == targetStat.statName);
     }
 
-    public bool TryGetStat(StatSO statSO, out StatSO outstat)
+    public bool TryGetStat(StatSO targetStat, out StatSO outStat)
     {
-        outstat = _stat.FirstOrDefault(stat => stat.statName == statSO.statName);
+        Debug.Assert(targetStat != null, "Stats::GetStat : target stat is null");
 
-        return outstat;
+        outStat = _stats.FirstOrDefault(stat => stat.statName == targetStat.statName);
+        return outStat;
     }
 
-    public void SetBaseValue(StatSO statSO, float value) => GetStat(statSO).BaseValue = value;
-
-    public float GetBaseValue(StatSO statSO) => GetStat(statSO).BaseValue;
-
-
+    public void SetBaseValue(StatSO stat, float value) => GetStat(stat).BaseValue = value;
+    public float GetBaseValue(StatSO stat) => GetStat(stat).BaseValue;
     public void IncreaseBaseValue(StatSO stat, float value) => GetStat(stat).BaseValue += value;
-
     public void AddModifier(StatSO stat, object key, float value) => GetStat(stat).AddModifier(key, value);
-
-    public void RemoveModifier(StatSO stat, object key) => GetStat(stat).ReMoveModifier(key);
+    public void RemoveModifier(StatSO stat, object key) => GetStat(stat).RemoveModifier(key);
 
     public void CleanAllModifier()
     {
-        foreach (StatSO stat in _stat)
+        foreach (StatSO stat in _stats)
         {
             stat.ClearAllModifier();
         }
     }
+
+
+    #region Save logic
+
+    [Serializable]
+    public struct StatSaveData
+    {
+        public string statName;
+        public float baseValue;
+    }
+
+    public List<StatSaveData> GetSaveData()
+        => _stats.Aggregate(new List<StatSaveData>(), (saveList, stat) =>
+        {
+            saveList.Add(new StatSaveData { statName = stat.statName, baseValue = stat.BaseValue });
+            return saveList;
+        });
+
+
+    public void RestoreData(List<StatSaveData> loadedDataList)
+    {
+        foreach (StatSaveData loadData in loadedDataList)
+        {
+            StatSO targetStat = _stats.FirstOrDefault(stat => stat.statName == loadData.statName);
+            if (targetStat != default)
+            {
+                targetStat.BaseValue = loadData.baseValue;
+            }
+        }
+    }
+    #endregion
 }
