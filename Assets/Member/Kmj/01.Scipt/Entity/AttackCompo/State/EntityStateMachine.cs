@@ -26,7 +26,7 @@ public class EntityStateMachine
         Debug.Assert(newState != null, $"State in null : {newStateName}");
 
         if (forced == false && CurrentState == newState)
-            return;
+            CurrentState = CurrentState;
 
         CurrentState = newState;
         CurrentState.Enter();

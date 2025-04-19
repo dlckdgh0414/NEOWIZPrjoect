@@ -9,7 +9,7 @@ using System.Collections.Generic;
 [NodeDescription(name: "FindTarget", story: "[self] set [targets] from finder", category: "Action", id: "f24d43abd5c639704598d1d213055747")]
 public partial class FindTargetAction : Action
 {
-    [SerializeReference] public BlackboardVariable<BTEnemy> Self;
+    [SerializeReference] public BlackboardVariable<Enemy> Self;
     [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
     protected override Status OnStart()
     {

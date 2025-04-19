@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
 
-public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
+public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
 {
     [SerializeField] private StatSO hpStat;
     public float maxHealth;
 
-    private float currentHealth;
+    public float currentHealth { get; private set; }
     public event Action<Vector2> OnKnockback;
 
     private Entity _entity;
     private EntityStat _statCompo;
-
+    private EntityFeedbackData _feedbackData;
 
     private void OnDestroy()
     {
@@ -19,15 +19,17 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
         _entity.OnDamage -= ApplyDamage;
     }
 
-    private void Awake()
+    private void Start()
     {
         AfterInit();
     }
+
 
     public void Initialize(Entity entity)
     {
         _entity = entity;
         _statCompo = entity.GetCompo<EntityStat>();
+        _feedbackData = entity.GetCompo<EntityFeedbackData>();
     }
 
     public void AfterInit()
@@ -44,10 +46,20 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet
     }
 
 
-    public void ApplyDamage(float damage, bool isStop, Entity delear)
+    public void ApplyDamage(float damage, bool isHit,int StunLevel, Entity delear)
     {
         if (_entity.IsDead) return;
 
         currentHealth = Mathf.Clamp(currentHealth -= damage, 0, maxHealth);
+
+        _feedbackData.IsLastStopHit = isHit;
+        _feedbackData.LastEntityWhoHit = delear;
+        _feedbackData.LastStunLevel = StunLevel;
+
+        if(currentHealth <= 0)
+        {
+            Debug.Log("аж╠щ");
+            _entity.OnDead?.Invoke();
+        }
     }
 }

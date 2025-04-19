@@ -18,4 +18,9 @@ public class TestEnemy : Entity
     {
         throw new System.NotImplementedException();
     }
+
+    protected override void HandleStun()
+    {
+        throw new System.NotImplementedException();
+    }
 }
