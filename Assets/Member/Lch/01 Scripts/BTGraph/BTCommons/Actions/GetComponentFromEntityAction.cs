@@ -8,11 +8,11 @@ using Unity.Properties;
 [NodeDescription(name: "GetComponentFromEntity", story: "Get components from [btEnemy]", category: "Action", id: "7b26f18fcb48b2eacdd9324761fdf405")]
 public partial class GetComponentFromEntityAction : Action
 {
-    [SerializeReference] public BlackboardVariable<BTEnemy> BtEnemy;
+    [SerializeReference] public BlackboardVariable<Enemy> BtEnemy;
 
     protected override Status OnStart()
     {
-        BTEnemy enemy = BtEnemy.Value;
+        Enemy enemy = BtEnemy.Value;
         SetVariableToBT(enemy, "Mover", enemy.GetComponentInChildren<EnemyMover>());
         SetVariableToBT(enemy, "Renderer",enemy.GetComponentInChildren<EnemyRenderer>());
         SetVariableToBT(enemy, "AnimTrigger",enemy.GetCompo<EntityAnimatorTrigger>());
@@ -20,7 +20,7 @@ public partial class GetComponentFromEntityAction : Action
         return Status.Success;
     }
 
-    private void SetVariableToBT<T>(BTEnemy enemy, string variableName, T component)
+    private void SetVariableToBT<T>(Enemy enemy, string variableName, T component)
     {
         Debug.Assert(component != null, $"Check {variableName} component exist on {enemy.gameObject.name}");
         BlackboardVariable<T> variable = enemy.GetBlackboardVariable<T>(variableName);

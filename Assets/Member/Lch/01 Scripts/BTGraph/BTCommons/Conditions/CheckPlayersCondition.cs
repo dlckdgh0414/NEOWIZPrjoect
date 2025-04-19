@@ -8,7 +8,7 @@ using static Unity.Behavior.Node;
 [Condition(name: "CheckPlayers", story: "distance between [Self] and [Targets] than [AttackRange] in [Target]", category: "Conditions", id: "7f2a206d95e3acda3c8c4c989e1e1939")]
 public partial class CheckPlayersCondition : Condition
 {
-    [SerializeReference] public BlackboardVariable<BTEnemy> Self;
+    [SerializeReference] public BlackboardVariable<Enemy> Self;
     [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
     [SerializeReference] public BlackboardVariable<float> AttackRange;
     [SerializeReference] public BlackboardVariable<Transform> Target;
