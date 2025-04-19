@@ -38,13 +38,8 @@ public class PlayerSkillCompo : MonoBehaviour
             Quaternion.identity, _whatIsEnemy);
 
         collider.ToList().ForEach(x => x.GetComponentInChildren<IDamgable>().
-        ApplyDamage(_strongDamage, false, 0,_player));
-    }
+        ApplyDamage(_strongDamage, false, _player));
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position,boxSize);
-        Gizmos.color = Color.white;
+        CameraManager.Instance.ShakeCamera(_strongDamage / 3, 1);
     }
 }
