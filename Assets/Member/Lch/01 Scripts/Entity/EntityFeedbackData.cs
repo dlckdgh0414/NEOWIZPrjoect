@@ -6,6 +6,7 @@ public class EntityFeedbackData : MonoBehaviour,IEntityComponet
 
     [field: SerializeField] public bool IsLastHitCritical { get; set; } = false;
     [field: SerializeField] public bool IsLastStopHit { get; set; } = false;
+    [field: SerializeField] public int LastStunLevel { get; set; } = 0;
     [field: SerializeField] public Entity LastEntityWhoHit { get; set; }
 
     #endregion
