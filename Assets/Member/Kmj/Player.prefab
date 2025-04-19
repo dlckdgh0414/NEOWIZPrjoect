@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
   IsUseOverride: 1
-  overrideValue: 2.5
+  overrideValue: 4
 --- !u!1 &3786474571960527460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,6 +2902,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70e7f1dfd8fc11249bb38745b9d6f06a, type: 2}
   - {fileID: 11400000, guid: 19482deb321cddb49b36dc548e9b82a4, type: 2}
   - {fileID: 11400000, guid: 860ffe5628295f34ca5929852ab7112f, type: 2}
+  - {fileID: 11400000, guid: debb97a8fc02a7f4fa7a3e9142e32aac, type: 2}
+  rollingVelocity: 12
 --- !u!143 &5511030642431037073
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3760,7 +3762,7 @@ Transform:
   m_GameObject: {fileID: 9131525379987269386}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3798,6 +3800,8 @@ MonoBehaviour:
     m_Bits: 128
   _strongAttackDamage: {fileID: 11400000, guid: a9f34a1dd4fc5cb468b42110d8ceeb39, type: 2}
   _stat: {fileID: 3036315967863216786}
+  boxSize: {x: 4, y: 4, z: 4}
+  _player: {fileID: 0}
 --- !u!114 &5642977846022316530
 MonoBehaviour:
   m_ObjectHideFlags: 0
