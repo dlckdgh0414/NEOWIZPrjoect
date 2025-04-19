@@ -14,7 +14,7 @@ public partial class MoveToCenterAction : Action
     protected override Status OnStart()
     {
         Mover.Value.CanMauanMove =true;
-        Mover.Value.SetDir(Center.Value.position);
+        //Mover.Value.SetDir(Center.Value);
         return Status.Running;
     }
 

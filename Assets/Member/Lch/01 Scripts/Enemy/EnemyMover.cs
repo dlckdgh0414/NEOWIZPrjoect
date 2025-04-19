@@ -13,9 +13,16 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
     private Entity _entity;
 
 
-    public void SetDir(Vector3 targetDir)
+    public void SetDir(Transform targetDir)
     {
-        _moveDir = targetDir - transform.position;
+        _moveDir = targetDir.position - transform.position;
+        _moveDir.y = 0;
+        _moveDir.Normalize();
+    }
+
+    public void RushDir(Transform targetDir)
+    {
+        _moveDir = targetDir.forward;
         _moveDir.y = 0;
         _moveDir.Normalize();
     }

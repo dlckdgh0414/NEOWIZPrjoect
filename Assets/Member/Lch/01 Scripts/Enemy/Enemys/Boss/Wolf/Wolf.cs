@@ -11,7 +11,6 @@ public class Wolf : BTBoss
     private WolfPhase2AttackEnum _phase2Enum;
 
     private bool _isPhase2;
-    private bool _isTimerStart = true;
 
     [SerializeField] private float rushTimer;
     private float _currentTimer;
@@ -43,8 +42,8 @@ public class Wolf : BTBoss
         _phase2Enum = GetBlackboardVariable<WolfPhase2AttackEnum>("Phase2Attack");
         _isPhase2 = GetBlackboardVariable<bool>("IsPhase2");
         _isRush = GetBlackboardVariable<bool>("IsRush");
-        _hollwingHp = _health.maxHealth - 15f;
         _isRushStop = GetBlackboardVariable<bool>("IsStopRush");
+        _hollwingHp = _health.maxHealth - 15f;
         _lastHollwing = Time.time;
     }
 
@@ -60,6 +59,7 @@ public class Wolf : BTBoss
         {
             if (Time.time >= _lastHollwing + hollwingTime)
             {
+                Debug.Log("울부짖어");
                 if (_isPhase2)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
@@ -79,20 +79,18 @@ public class Wolf : BTBoss
     private void RushTimer()
     {
         _currentTimer += Time.deltaTime;
-        if (_currentTimer >= rushTimer && _isTimerStart)
+        if (_currentTimer >= rushTimer)
         {
             Debug.Log("달려가ㅏ");
             if (_isPhase2)
             {
                 _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Rush_Upgrade);
                 _currentTimer = 0;
-                _isTimerStart = false;
             }
             else
             {
                 _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Rush);
                 _currentTimer = 0;
-                _isTimerStart = false;
             }
 
         }

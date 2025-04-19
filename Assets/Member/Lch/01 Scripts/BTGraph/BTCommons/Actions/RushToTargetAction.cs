@@ -16,8 +16,8 @@ public partial class RushToTargetAction : Action
     protected override Status OnStart()
     {
         IsRush.Value = true;
-        Mover.Value.CanMauanMove = false;
-        Mover.Value.SetDir(Target.Value.position * MaxDistance.Value);
+        Mover.Value.Speed *= 2f;
+        Mover.Value.RushDir(Target.Value);
         return Status.Running;
     }
 
@@ -33,7 +33,6 @@ public partial class RushToTargetAction : Action
 
     protected override void OnEnd()
     {
-        Mover.Value.CanMauanMove = true;
         IsRush.Value = false;
     }
 }
