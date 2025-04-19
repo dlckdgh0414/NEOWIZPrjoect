@@ -73,9 +73,12 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         Vector2 knockbackForce = new Vector2(6,6);
         bool success = damageCast.CastDamage(atkDamage, knockbackForce);
 
+
         if (success)
         {
+            print(atkDamage);
             Debug.Log("nice");
+            CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
         }
     }
 
@@ -91,4 +94,6 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         Debug.Assert(attackDataList.Length > ComboCounter, "Combo counter is out of range");
         return attackDataList[ComboCounter];
     }
+
+
 }

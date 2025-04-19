@@ -39,5 +39,7 @@ public class PlayerSkillCompo : MonoBehaviour
 
         collider.ToList().ForEach(x => x.GetComponentInChildren<IDamgable>().
         ApplyDamage(_strongDamage, false, _player));
+
+        CameraManager.Instance.ShakeCamera(_strongDamage / 3, 1);
     }
 }
