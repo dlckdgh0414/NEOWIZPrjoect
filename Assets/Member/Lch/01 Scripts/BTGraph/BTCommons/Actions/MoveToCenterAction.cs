@@ -13,16 +13,26 @@ public partial class MoveToCenterAction : Action
 
     protected override Status OnStart()
     {
+        Mover.Value.CanMauanMove =true;
+        Mover.Value.SetDir(Center.Value.position);
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
-        return Status.Success;
+        if(Mover.Value.IsArrived)
+        {
+            Mover.Value.StopMover();
+            return Status.Success;
+        }
+
+        return Status.Running;
     }
 
     protected override void OnEnd()
     {
+        Mover.Value.CanMauanMove=false;
+        base.OnEnd();
     }
 }
 

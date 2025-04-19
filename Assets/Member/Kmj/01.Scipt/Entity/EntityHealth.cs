@@ -6,13 +6,12 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
     [SerializeField] private StatSO hpStat;
     public float maxHealth;
 
-    private float currentHealth;
+    public float currentHealth { get; private set; }
     public event Action<Vector2> OnKnockback;
 
     private Entity _entity;
     private EntityStat _statCompo;
     private EntityFeedbackData _feedbackData;
-
 
     private void OnDestroy()
     {

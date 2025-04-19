@@ -13,7 +13,12 @@ public partial class ChangeToTargetAction : Action
 
     protected override Status OnStart()
     {
-        Target.Value = LastAttacker.Value.LastEntityWhoHit.transform;
+        
+        if(LastAttacker.Value.LastEntityWhoHit != null)
+        {
+            Target.Value = LastAttacker.Value.LastEntityWhoHit.transform;
+            return Status.Success;
+        }
         return Status.Success;
     }
 }
