@@ -1,24 +1,34 @@
 using UnityEngine;
 
-public class EnemyMover : MonoBehaviour
+public class EnemyMover : MonoBehaviour,IEntityComponet
 {
 
     [SerializeField] private Rigidbody _rbCompo;
-    [SerializeField] private float speed;
+    [field: SerializeField] public float Speed { get; set; }
     private Vector3 _moveDir = Vector3.zero;
     public bool CanMauanMove = true;
+    private Vector3 _destination;
+    [SerializeField] private float stopThreshold = 0.8f;
+    public bool IsArrived => Vector3.Distance(_entity.transform.position, _moveDir) < stopThreshold;
+    private Entity _entity;
 
 
-    public void SetDir(Transform targetDir)
+    public void SetDir(Vector3 targetDir)
     {
-        _moveDir = targetDir.position - transform.position;
+        _moveDir = targetDir - transform.position;
+        _moveDir.y = 0;
+        _moveDir.Normalize();
     }
 
     private void FixedUpdate()
     {
         if(CanMauanMove)
         {
-            _rbCompo.linearVelocity = _moveDir * speed;
+            _rbCompo.linearVelocity = _moveDir * Speed;
+        }
+        else
+        {
+            _rbCompo.MovePosition(_entity.transform.position + _moveDir *(Speed *Time.fixedDeltaTime));
         }
     }
 
@@ -36,4 +46,8 @@ public class EnemyMover : MonoBehaviour
         Debug.Log("È÷ÆR");
     }
 
+    public void Initialize(Entity entity)
+    {
+        _entity = entity;
+    }
 }
