@@ -15,7 +15,7 @@ public partial class ChaseTargetAction : Action
     protected override Status OnUpdate()
     {
         Mover.Value.SetDir(Target.Value);
-        return Status.Running;
+        return Status.Success;
     }
 }
 

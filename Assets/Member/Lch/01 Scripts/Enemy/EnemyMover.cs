@@ -18,7 +18,7 @@ public class EnemyMover : MonoBehaviour
     {
         if(CanMauanMove)
         {
-            _rbCompo.linearVelocity = _moveDir * speed;
+            _rbCompo.linearVelocity = _moveDir.normalized * speed;
         }
     }
 
