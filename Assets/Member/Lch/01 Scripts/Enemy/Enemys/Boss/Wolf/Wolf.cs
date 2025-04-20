@@ -16,11 +16,11 @@ public class Wolf : BTBoss
     private float _currentTimer;
     private float _hollwingHp;
     private float _lastHollwing;
-    private bool _isRush;
-    private bool _isRushStop = false;
+    public bool IsRush {get; set;} = false;
+    public bool IsRushStop { get; set; } = false;
     private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
-
+    [SerializeField] private Transform _target;
     private EntityHealth _health;
 
     protected override void Awake()
@@ -42,8 +42,6 @@ public class Wolf : BTBoss
         _phase1Enum = GetBlackboardVariable<WolfPhase1AttackEnum>("AttackEnum");
         _phase2Enum = GetBlackboardVariable<WolfPhase2AttackEnum>("Phase2Attack");
         _isPhase2 = GetBlackboardVariable<bool>("IsPhase2");
-        _isRush = GetBlackboardVariable<bool>("IsRush");
-        _isRushStop = GetBlackboardVariable<bool>("IsStopRush");
         _hollwingHp = _health.maxHealth - 15f;
         _lastHollwing = Time.time;
     }
@@ -56,7 +54,6 @@ public class Wolf : BTBoss
         }
         HowlingTimer();
     }
-
     private void HowlingTimer()
     {
         if (_health.currentHealth == _hollwingHp)
@@ -116,7 +113,8 @@ public class Wolf : BTBoss
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("È÷ÆR");
+        if (IsRush)
+        {
             if (collision.gameObject.CompareTag("Player"))
             {
                 if (collision.gameObject.TryGetComponent(out IDamgable damgable))
@@ -126,8 +124,10 @@ public class Wolf : BTBoss
             }
             if (collision.gameObject.CompareTag("Wall"))
             {
-                _isRushStop = true;
+                 IsRushStop = true;
                 _iSRushTimerStart = true;
             }
+        }
+            
     }
 }

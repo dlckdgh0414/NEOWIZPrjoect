@@ -24,7 +24,7 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
     public void RushDir(Transform targetDir,float maxDistance)
     {
       
-        if (Physics.Raycast(_entity.transform.position,transform.forward, out RaycastHit hitInfo,maxDistance)) 
+        if (Physics.Raycast(_entity.transform.position,transform.forward, out RaycastHit hitInfo,maxDistance,whatIsWall)) 
         {
             _moveDir = hitInfo.point - transform.position;
             _moveDir.y = 0;
