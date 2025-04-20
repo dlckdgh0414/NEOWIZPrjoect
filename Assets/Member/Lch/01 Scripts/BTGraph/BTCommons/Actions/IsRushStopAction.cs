@@ -5,24 +5,22 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "MoveToCenter", story: "[Mover] to [Center]", category: "Action", id: "6a79034eebf019ece01888101ae04d5d")]
-public partial class MoveToCenterAction : Action
+[NodeDescription(name: "IsRushStop", story: "is stop check to [WolfEnemy] in [Mover]", category: "Action", id: "dd328d0099399387f213b64ae1db1dfa")]
+public partial class IsRushStopAction : Action
 {
+    [SerializeReference] public BlackboardVariable<Wolf> WolfEnemy;
     [SerializeReference] public BlackboardVariable<EnemyMover> Mover;
-    [SerializeReference] public BlackboardVariable<Transform> Center;
-
     protected override Status OnStart()
     {
-        Mover.Value.CanMauanMove =false;
-        Mover.Value.SetDir(Center.Value);
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
-        if(Mover.Value.IsArrived)
+        if (WolfEnemy.Value.IsRushStop)
         {
             Mover.Value.StopMover();
+            Mover.Value.Speed /= 2f;
             return Status.Success;
         }
 
@@ -31,8 +29,6 @@ public partial class MoveToCenterAction : Action
 
     protected override void OnEnd()
     {
-        Mover.Value.CanMauanMove=true;
-        base.OnEnd();
     }
 }
 

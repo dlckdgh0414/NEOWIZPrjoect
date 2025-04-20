@@ -66,7 +66,7 @@ public class MousePlayerEnergy : MonoBehaviour
             if (energy >= useEnergy)
             {
                 energy -= useEnergy;
-                Debug.Log($"Skill active. Energy left: {energy}");
+                //Debug.Log($"Skill active. Energy left: {energy}");
             }
             else
             {
