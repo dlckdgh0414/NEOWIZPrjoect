@@ -54,6 +54,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     private void FixedUpdate()
     {
         CalculateMovement();
+        ApplyGravity();
         Move();
     }
 
@@ -71,7 +72,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     {
         if (CanManualMovement)
         {
-            _velocity = Quaternion.Euler(0, 0, 0) * _movementDirection;
+            _velocity = Quaternion.Euler(0, -45f, 0) *  _movementDirection;
             _velocity *= moveSpeed;
         }
         else
@@ -85,6 +86,20 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
             Transform parent = _entity.transform;
             parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
         }
+    }
+
+    private void ApplyGravity()
+    {
+        if (IsGround && _verticalVelocity < 0)
+        {
+            _verticalVelocity = -0.03f;
+        }
+        else
+        {
+            _verticalVelocity += gravity * Time.fixedDeltaTime;
+        }
+
+        _velocity.y = _verticalVelocity;
     }
 
     public void SetAutoMovement(Vector3 autoMovement)

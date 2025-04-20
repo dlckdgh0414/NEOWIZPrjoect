@@ -12,6 +12,9 @@ public class MousePlayerEnergy : MonoBehaviour
 
     private Coroutine skillCoroutine;
 
+    public float Recover;
+    public float Mag;
+    public float MaxMag = 3;
 
     private void Start()
     {
@@ -30,12 +33,18 @@ public class MousePlayerEnergy : MonoBehaviour
         {
             energy = 0;
         }
+
+        if(Mag >= MaxMag)
+        {
+            Mag = MaxMag;
+        }
     }
 
     public void StartSkill(float useEnergy)
     {
         if (skillCoroutine == null)
         {
+            Mag = 0;
             skillCoroutine = StartCoroutine(UseSkill(useEnergy));
         }
     }
@@ -69,4 +78,24 @@ public class MousePlayerEnergy : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    /* private IEnumerator AutoFillEnergy()
+     {
+         while (true)
+         {
+             if (energy <= 200)
+             {
+                 energy += Mag * Recover;
+                 Debug.Log($"Skill active. Energy left: {energy}");
+             }
+             else
+             {
+                 Debug.Log("Not enough energy!");
+                 CancelSkill();
+                 yield break;
+             }
+
+             yield return new WaitForSeconds(0.1f);
+         }
+     }*/
 }
