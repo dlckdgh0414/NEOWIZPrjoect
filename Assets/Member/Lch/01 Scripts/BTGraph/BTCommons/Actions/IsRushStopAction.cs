@@ -5,12 +5,11 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "IsRushStop", story: "[Mover] to [isRushStop]", category: "Action", id: "dd328d0099399387f213b64ae1db1dfa")]
+[NodeDescription(name: "IsRushStop", story: "is stop check to [WolfEnemy] in [Mover]", category: "Action", id: "dd328d0099399387f213b64ae1db1dfa")]
 public partial class IsRushStopAction : Action
 {
+    [SerializeReference] public BlackboardVariable<Wolf> WolfEnemy;
     [SerializeReference] public BlackboardVariable<EnemyMover> Mover;
-    [SerializeReference] public BlackboardVariable<bool> IsRushStop;
-
     protected override Status OnStart()
     {
         return Status.Running;
@@ -18,9 +17,10 @@ public partial class IsRushStopAction : Action
 
     protected override Status OnUpdate()
     {
-        if (IsRushStop.Value)
+        if (WolfEnemy.Value.IsRushStop)
         {
             Mover.Value.StopMover();
+            Mover.Value.Speed /= 2f;
             return Status.Success;
         }
 
