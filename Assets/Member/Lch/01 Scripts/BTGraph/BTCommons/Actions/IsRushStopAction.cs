@@ -18,7 +18,13 @@ public partial class IsRushStopAction : Action
 
     protected override Status OnUpdate()
     {
-        return Status.Success;
+        if (IsRushStop.Value)
+        {
+            Mover.Value.StopMover();
+            return Status.Success;
+        }
+
+        return Status.Running;
     }
 
     protected override void OnEnd()

@@ -18,6 +18,7 @@ public class Wolf : BTBoss
     private float _lastHollwing;
     private bool _isRush;
     private bool _isRushStop = false;
+    private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
 
     private EntityHealth _health;
@@ -49,7 +50,10 @@ public class Wolf : BTBoss
 
     private void Update()
     {
-        RushTimer();
+        if (_iSRushTimerStart)
+        {
+            RushTimer();
+        }
         HowlingTimer();
     }
 
@@ -59,7 +63,13 @@ public class Wolf : BTBoss
         {
             if (Time.time >= _lastHollwing + hollwingTime)
             {
-                Debug.Log("¿ïºÎÂ¢¾î");
+                if (_phase1Enum == WolfPhase1AttackEnum.Rush
+               || _state.Value == BTBossState.STUN
+               || _state.Value == BTBossState.HIT
+               || _phase2Enum == WolfPhase2AttackEnum.Rush_Upgrade)
+                {
+                    return;
+                }
                 if (_isPhase2)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
@@ -81,7 +91,14 @@ public class Wolf : BTBoss
         _currentTimer += Time.deltaTime;
         if (_currentTimer >= rushTimer)
         {
-            Debug.Log("´Þ·Á°¡¤¿");
+            if (_phase1Enum == WolfPhase1AttackEnum.Howling 
+                ||_state.Value == BTBossState.STUN 
+                ||_state.Value == BTBossState.HIT 
+                || _phase2Enum == WolfPhase2AttackEnum.Howling)
+            {
+                return;
+            }
+
             if (_isPhase2)
             {
                 _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Rush_Upgrade);
@@ -92,14 +109,14 @@ public class Wolf : BTBoss
                 _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Rush);
                 _currentTimer = 0;
             }
+           _iSRushTimerStart = false;
 
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(_isRush)
-        {
+        Debug.Log("È÷ÆR");
             if (collision.gameObject.CompareTag("Player"))
             {
                 if (collision.gameObject.TryGetComponent(out IDamgable damgable))
@@ -109,9 +126,8 @@ public class Wolf : BTBoss
             }
             if (collision.gameObject.CompareTag("Wall"))
             {
-                Debug.Log("È÷È÷");
                 _isRushStop = true;
+                _iSRushTimerStart = true;
             }
-        }
     }
 }
