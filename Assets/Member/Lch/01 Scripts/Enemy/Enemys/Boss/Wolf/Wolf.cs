@@ -109,6 +109,7 @@ public class Wolf : BTBoss
             }
             if (collision.gameObject.CompareTag("Wall"))
             {
+                Debug.Log("È÷È÷");
                 _isRushStop = true;
             }
         }

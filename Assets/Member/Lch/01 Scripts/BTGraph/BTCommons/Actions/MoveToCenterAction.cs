@@ -13,8 +13,8 @@ public partial class MoveToCenterAction : Action
 
     protected override Status OnStart()
     {
-        Mover.Value.CanMauanMove =true;
-        //Mover.Value.SetDir(Center.Value);
+        Mover.Value.CanMauanMove =false;
+        Mover.Value.SetDir(Center.Value);
         return Status.Running;
     }
 
@@ -31,7 +31,7 @@ public partial class MoveToCenterAction : Action
 
     protected override void OnEnd()
     {
-        Mover.Value.CanMauanMove=false;
+        Mover.Value.CanMauanMove=true;
         base.OnEnd();
     }
 }

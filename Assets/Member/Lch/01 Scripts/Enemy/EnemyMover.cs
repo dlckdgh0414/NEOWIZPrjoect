@@ -8,6 +8,7 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
     private Vector3 _moveDir = Vector3.zero;
     public bool CanMauanMove = true;
     private Vector3 _destination;
+    [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private float stopThreshold = 0.8f;
     public bool IsArrived => Vector3.Distance(_entity.transform.position, _moveDir) < stopThreshold;
     private Entity _entity;
@@ -20,11 +21,16 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
         _moveDir.Normalize();
     }
 
-    public void RushDir(Transform targetDir)
+    public void RushDir(Transform targetDir,float maxDistance)
     {
-        _moveDir = targetDir.forward;
-        _moveDir.y = 0;
-        _moveDir.Normalize();
+      
+        if (Physics.Raycast(_entity.transform.position,transform.forward, out RaycastHit hitInfo,maxDistance)) 
+        {
+            _moveDir = hitInfo.point - transform.position;
+            _moveDir.y = 0;
+            _moveDir.Normalize();
+            Debug.Log(_moveDir);
+        }
     }
 
     private void FixedUpdate()

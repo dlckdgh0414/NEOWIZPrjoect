@@ -519,7 +519,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 344218418306719936, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.74
+      value: -85.9
       objectReference: {fileID: 0}
     - target: {fileID: 344218418306719936, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 594442566}
   - component: {fileID: 594442565}
   - component: {fileID: 594442564}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 594442563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.591542, y: 27.4478, z: -19}
+  m_LocalPosition: {x: -2.591542, y: 23.4, z: -19}
   m_LocalScale: {x: 116.23, y: -52.8356, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 790535027}
   - component: {fileID: 790535026}
   - component: {fileID: 790535025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ Transform:
   m_GameObject: {fileID: 790535024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 39.5, y: 27.4478, z: 37.5}
+  m_LocalPosition: {x: 39.5, y: 20.7522, z: 37.5}
   m_LocalScale: {x: 116.23, y: -52.8356, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1083,7 +1083,7 @@ GameObject:
   - component: {fileID: 802246155}
   - component: {fileID: 802246154}
   - component: {fileID: 802246153}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ Transform:
   m_GameObject: {fileID: 802246152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.591542, y: 27.4478, z: 94.3}
+  m_LocalPosition: {x: -2.591542, y: 23.4, z: 94.3}
   m_LocalScale: {x: 116.23, y: -52.8356, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1396,7 +1396,7 @@ MonoBehaviour:
       m_Calls: []
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
   RushDamge: 0
-  rushTimer: 20
+  rushTimer: 5
   hollwingTime: 30
 --- !u!114 &871793202
 MonoBehaviour:
@@ -1413,17 +1413,17 @@ MonoBehaviour:
   m_Graph: {fileID: -146333362564786102, guid: 7f3c1f00611e0734eacb5a9304fef315, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4070495699247562845
-  - rid: 4070495828503953408
-  - rid: 4070495840423641918
-  - rid: 4070495840423641919
-  - rid: 4070495840423641920
-  - rid: 4070495841050427700
-  - rid: 4070495841050427828
-  - rid: 4070495841050427829
-  - rid: 4070495842036089634
-  - rid: 4070495843315090358
-  - rid: 4070495844947984905
-  - rid: 4070495845804933695
+  - rid: 4070495857065328722
+  - rid: 4070495857065328723
+  - rid: 4070495857065328724
+  - rid: 4070495857065328725
+  - rid: 4070495857065328726
+  - rid: 4070495857065328727
+  - rid: 4070495857065328728
+  - rid: 4070495857065328730
+  - rid: 4070495857065328731
+  - rid: 4070495857065328732
+  - rid: 4070495857065328733
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -1437,71 +1437,23 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 871793197}
-    - rid: 4070495828503953408
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 4269011525305814541
-          m_Value1: 1086184627335786409
-        Name: BitingAttack
-        m_Value: {fileID: 126175449}
-    - rid: 4070495840423641918
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 8643212411176435942
-          m_Value1: 9359929365934603136
-        Name: RushAttack
-        m_Value: {fileID: 0}
-    - rid: 4070495840423641919
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 7289022057467444278
-          m_Value1: 17317530190336218688
-        Name: Scaratch
-        m_Value: {fileID: 263947273}
-    - rid: 4070495840423641920
-      type: {class: 'BlackboardVariable`1[[EntityFeedbackData, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1931192516883440643
-          m_Value1: 772320655167320469
-        Name: HitFeedbackData
-        m_Value: {fileID: 1884116247}
-    - rid: 4070495841050427700
+    - rid: 4070495857065328722
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 3632856259204285587
-          m_Value1: 11857164642831694203
-        Name: AtackCooldown
-        m_Value: 1
-    - rid: 4070495841050427828
+          m_Value0: 2362688088630938753
+          m_Value1: 18032864095426836331
+        Name: MaxDistance
+        m_Value: 999
+    - rid: 4070495857065328723
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 1888006722131403562
-          m_Value1: 2249348467468881975
-        Name: AttackRange
-        m_Value: 8
-    - rid: 4070495841050427829
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 11796456446166271674
-          m_Value1: 12880313040470640108
-        Name: DetectRange
-        m_Value: 20
-    - rid: 4070495842036089634
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17482137385749088481
-          m_Value1: 4832305268799709684
-        Name: Center
-        m_Value: {fileID: 439504878}
-    - rid: 4070495843315090358
+          m_Value0: 3310368184659911369
+          m_Value1: 14906843008837672211
+        Name: StunTime
+        m_Value: 2.5
+    - rid: 4070495857065328724
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -1509,22 +1461,70 @@ MonoBehaviour:
           m_Value1: 4872368475351699804
         Name: Soul
         m_Value: {fileID: 597664934574219263, guid: 52773df5068fa0e4c9c611012fe14468, type: 3}
-    - rid: 4070495844947984905
+    - rid: 4070495857065328725
+      type: {class: 'BlackboardVariable`1[[EntityFeedbackData, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1931192516883440643
+          m_Value1: 772320655167320469
+        Name: HitFeedbackData
+        m_Value: {fileID: 1884116247}
+    - rid: 4070495857065328726
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17482137385749088481
+          m_Value1: 4832305268799709684
+        Name: Center
+        m_Value: {fileID: 439504878}
+    - rid: 4070495857065328727
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7289022057467444278
+          m_Value1: 17317530190336218688
+        Name: Scaratch
+        m_Value: {fileID: 263947273}
+    - rid: 4070495857065328728
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4269011525305814541
+          m_Value1: 1086184627335786409
+        Name: BitingAttack
+        m_Value: {fileID: 126175449}
+    - rid: 4070495857065328730
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 4982681046860803189
-          m_Value1: 10313220831404851158
-        Name: SpawnRange
-        m_Value: 25
-    - rid: 4070495845804933695
+          m_Value0: 11796456446166271674
+          m_Value1: 12880313040470640108
+        Name: DetectRange
+        m_Value: 16
+    - rid: 4070495857065328731
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 3310368184659911369
-          m_Value1: 14906843008837672211
-        Name: StunTime
+          m_Value0: 1888006722131403562
+          m_Value1: 2249348467468881975
+        Name: AttackRange
+        m_Value: 6
+    - rid: 4070495857065328732
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3632856259204285587
+          m_Value1: 11857164642831694203
+        Name: AtackCooldown
         m_Value: 2
+    - rid: 4070495857065328733
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2758122370683908461
+          m_Value1: 17231996186908483483
+        Name: CatchValue
+        m_Value: 10
 --- !u!65 &871793203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1679,6 +1679,9 @@ MonoBehaviour:
   _rbCompo: {fileID: 871793200}
   <Speed>k__BackingField: 5
   CanMauanMove: 1
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 256
   stopThreshold: 0.8
 --- !u!114 &1311535760 stripped
 MonoBehaviour:
@@ -1703,7 +1706,7 @@ GameObject:
   - component: {fileID: 1472172065}
   - component: {fileID: 1472172064}
   - component: {fileID: 1472172063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1793,7 +1796,7 @@ Transform:
   m_GameObject: {fileID: 1472172062}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -59, y: 27.4478, z: 37.5}
+  m_LocalPosition: {x: -59, y: 23.4, z: 37.5}
   m_LocalScale: {x: 116.23, y: -52.8356, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
