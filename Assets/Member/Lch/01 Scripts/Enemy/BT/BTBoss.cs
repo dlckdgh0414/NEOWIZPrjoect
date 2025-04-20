@@ -5,7 +5,7 @@ public abstract class BTBoss : Enemy
 {
     private BossStateChangeEvent _stateChannel;
     private EntityFeedbackData _feedbackData;
-    private BlackboardVariable<BTBossState> _state;
+    protected BlackboardVariable<BTBossState> _state;
 
     protected override void Start()
     {
