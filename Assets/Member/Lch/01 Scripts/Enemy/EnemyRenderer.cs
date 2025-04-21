@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class EnemyRenderer : MonoBehaviour
 {
-    [SerializeField]private Wolf wolf;
+  
     public Transform target;
     private void FixedUpdate()
     {
-        if(target!= null)
-        {
-            LoockAtPlayer(target, wolf.gameObject);
-        }
         
     }
 
