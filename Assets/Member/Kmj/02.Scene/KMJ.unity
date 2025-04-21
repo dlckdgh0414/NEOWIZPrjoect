@@ -548,7 +548,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 200
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 200
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -600,8 +600,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: -1.8500061, y: 0}
+  m_SizeDelta: {x: 3.7, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539555989
 MonoBehaviour:
@@ -675,8 +675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_SizeDelta: {x: -5.0001, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &610634229
 MonoBehaviour:
@@ -1324,8 +1324,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000153, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083277055 stripped
 MonoBehaviour:
@@ -1983,6 +1983,22 @@ PrefabInstance:
     - target: {fileID: 361134102395811774, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: overrideValue
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 687543156485482679, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: MaxMag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 687543156485482679, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: Recover
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 862364645050684973, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: _whatIsEnemy.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277397608725083351, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2730187991562167932, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: m_Name
