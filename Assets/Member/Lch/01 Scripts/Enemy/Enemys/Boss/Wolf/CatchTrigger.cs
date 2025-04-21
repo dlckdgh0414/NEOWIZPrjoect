@@ -14,6 +14,7 @@ public class CatchTrigger : MonoBehaviour
             _player = player;
              _player._movement.CanMove = false;
             _player.transform.rotation = Quaternion.Euler(86f,0,0);
+            _wolf.mainAnim.speed = 0f;
             CatcingPlayer();
         }
     }
@@ -27,6 +28,8 @@ public class CatchTrigger : MonoBehaviour
     public void CatStopPlayer()
     {
         _player._movement.CanMove = true;
+        _player.transform.rotation = Quaternion.identity;
+        _wolf.mainAnim.speed = 1f;
     }
 
     private IEnumerator PlayerDamgeTimer(float timer)
