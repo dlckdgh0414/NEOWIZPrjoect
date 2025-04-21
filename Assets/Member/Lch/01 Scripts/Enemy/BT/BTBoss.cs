@@ -45,6 +45,6 @@ public abstract class BTBoss : Enemy
 
     protected override void HandleStun()
     {
-        
+        _stateChannel.SendEventMessage(BTBossState.STUN);
     }
 }

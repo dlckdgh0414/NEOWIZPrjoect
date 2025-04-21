@@ -7,7 +7,7 @@ public class WolfCatchAttackCompo : Attack
     {
         foreach (var trigger in catchTriggers)
         {
-            trigger.enabled = true;
+            trigger.gameObject.SetActive(true);
         }
     }
 
@@ -16,7 +16,7 @@ public class WolfCatchAttackCompo : Attack
         foreach(var trigger in catchTriggers)
         {
             trigger.CatStopPlayer();
-            trigger.enabled = false;
+            trigger.gameObject.SetActive(false);
         }
     }
 }
