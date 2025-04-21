@@ -10,7 +10,8 @@ public class MousePlayerIdleState : MousePlayerCanMove
     public override void Enter()
     {
         base.Enter();
-
+        _energyCompo.StartFill();
+        _energyCompo.StartFillMag();
     }
 
     public override void Update()
@@ -21,5 +22,7 @@ public class MousePlayerIdleState : MousePlayerCanMove
     public override void Exit()
     {
         base.Exit();
+        _energyCompo.StopHeal();
+        _energyCompo.StopMag();
     }
 }
