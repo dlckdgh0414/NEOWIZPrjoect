@@ -21,7 +21,7 @@ public class MouseAttackCompo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (((1 << other.gameObject.layer) & _whatIsEnemy) != 0)
         {
             CameraManager.Instance.ShakeCamera(_damage / 2, 1 / 2);
             print("±â¸ðµü");
