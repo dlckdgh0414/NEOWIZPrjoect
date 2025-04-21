@@ -53,9 +53,6 @@ public class Player : Entity
     private void Start()
     {
         _stateMachine.ChangeState("IDLE");
-
-
-        PlayerDie();
     }
 
     private void Update()
