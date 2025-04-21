@@ -21,11 +21,13 @@ public class Wolf : BTBoss
     private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
     private EntityHealth _health;
+    public Animator mainAnim;
 
     protected override void Awake()
     {
         base.Awake();
         _health = GetCompo<EntityHealth>();
+        mainAnim = GetComponentInChildren<Animator>();
     }
 
     protected override void Start()
