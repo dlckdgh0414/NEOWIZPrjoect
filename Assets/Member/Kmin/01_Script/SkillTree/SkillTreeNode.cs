@@ -3,15 +3,17 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class SkillTreeNode : MonoBehaviour, IFruits
 {
-    [FormerlySerializedAs("nodeSo")] [FormerlySerializedAs("fruitsSO")] [SerializeField] private NodeSO nodeSO;
-    [SerializeField] private Sprite fillNodeImage;
-    [FormerlySerializedAs("connectedFruits")] [SerializeField] private List<SkillTreeNode> connectedNodes;
-    [FormerlySerializedAs("isRootFruits")] [SerializeField] private bool isRootNode;
+    [SerializeField] private NodeSO nodeSO;
+    [SerializeField] private Image nodeImage;
+    [SerializeField] private List<SkillTreeNode> connectedNodes;
+    [SerializeField] private bool isRootNode;
     [SerializeField] private float width = 10;
-    [FormerlySerializedAs("connectColor")] [SerializeField] private Color branchColor = Color.magenta;
+    [SerializeField] private Sprite branchImage;
+    public Color branchColor = Color.magenta;
     
     [HideInInspector]
     [field:SerializeField] public List<Image> ConnectedBranch { get; private set; }
@@ -70,7 +72,7 @@ public class SkillTreeNode : MonoBehaviour, IFruits
             Vector2 node1Pos = Vector2.zero;
             Vector2 selfPos = rect.position;
             Vector2 fruitsPos = f.GetComponentInChildren<Image>().rectTransform.position;
-
+            
             int origin = 0;
 
             if (node1Pos == Vector2.zero)
@@ -98,9 +100,9 @@ public class SkillTreeNode : MonoBehaviour, IFruits
         fillImg.transform.SetParent(root, false);
         fillImg.rectTransform.anchoredPosition = target.rectTransform.anchoredPosition;
         fillImg.rectTransform.sizeDelta = target.rectTransform.sizeDelta;
+        fillImg.sprite = branchImage;
         fillImg.type = Image.Type.Filled;
         fillImg.fillAmount = 0;
-        fillImg.sprite = fillNodeImage;
         fillImg.transform.SetSiblingIndex(root.childCount);
 
         if (fillImg.rectTransform.sizeDelta.x > fillImg.rectTransform.sizeDelta.y)
@@ -149,6 +151,8 @@ public class SkillTreeNode : MonoBehaviour, IFruits
 
     private void OnValidate()
     {
+        nodeImage.sprite = nodeSO.icon;
+        
         if (FillBranch != null)
         {
             foreach (var node in FillBranch)

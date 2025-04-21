@@ -20,9 +20,7 @@ public enum ModifyType
 
 public class CurrencyManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI testTxt;
     private Dictionary<CurrencyType, int> _currencyDic;
-    
     public static CurrencyManager Instance;
 
     private void Awake()
@@ -43,12 +41,6 @@ public class CurrencyManager : MonoBehaviour
         
         CurrencyManager.Instance.ModifyCurrency(CurrencyType.Eon, ModifyType.Set, 10000);
     }
-
-    private void Update()
-    {
-        testTxt.text = _currencyDic[CurrencyType.Eon].ToString();
-    }
-
     public int GetCurrency(CurrencyType currencyType) => _currencyDic[currencyType];
 
     public void ModifyCurrency(CurrencyType currencyType, ModifyType modifyType, int amount)

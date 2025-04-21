@@ -15,8 +15,3 @@ public class SkillTreePurchaseEvent : GameEvent
 {
     public SkillTreeNode SkillTreeNode;
 }
-
-public class SkillTree : GameEvent
-{
-    public SkillTreeNode SkillTreeNode;
-}
