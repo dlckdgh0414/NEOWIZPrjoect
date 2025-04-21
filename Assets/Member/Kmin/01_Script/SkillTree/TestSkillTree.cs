@@ -34,7 +34,7 @@ public class TestSkillTree : MonoBehaviour
 
     private IEnumerator TestConnect(SkillTreeNode f)
     {
-        f.transform.SetSiblingIndex(f.transform.parent.childCount - 2);
+        f.transform.SetSiblingIndex(f.ParentNode.transform.GetSiblingIndex() - 1);
         
         for (int i = 0; i < 3; i++)
         {
@@ -45,6 +45,7 @@ public class TestSkillTree : MonoBehaviour
         
         Outline outline = f.GetComponentInChildren<Outline>();
         Color lineColor = outline.effectColor;
-        DOTween.To(() => lineColor, color => outline.effectColor = color, f.branchColor, 1f);
+        DOTween.To(() => lineColor, color => outline.effectColor = color, f.branchColor, 1.5f)
+            .SetEase(Ease.InBounce);
     }
 }

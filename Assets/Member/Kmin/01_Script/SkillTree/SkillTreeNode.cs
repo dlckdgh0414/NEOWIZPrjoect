@@ -18,13 +18,15 @@ public class SkillTreeNode : MonoBehaviour, IFruits
     [HideInInspector]
     [field:SerializeField] public List<Image> ConnectedBranch { get; private set; }
     [field:SerializeField] public List<Image> FillBranch { get; private set; }
+    public SkillTreeNode ParentNode { get; private set; }
     public Button NodeButton { get; private set; } = null;
     public bool CanPurchase { get; private set; } = false;
 
     public void Initialize()
     {
-        NodeButton = GetComponentInChildren<Button>();
         if(isRootNode) connectedNodes.ForEach(f => f.CanPurchase = true);
+        NodeButton = GetComponentInChildren<Button>();
+        connectedNodes.ForEach(f => f.ParentNode = this);
         nodeSO.SkillTreeNode = this;
     }
 
@@ -64,6 +66,7 @@ public class SkillTreeNode : MonoBehaviour, IFruits
                 obj[i] = new GameObject($"Node{i}");
                 nodes[i] = obj[i].AddComponent<Image>();
                 nodes[i].transform.SetParent(root, false);
+                nodes[i].raycastTarget = false;
                 nodes[i].transform.SetSiblingIndex(0);
                 f.ConnectedBranch.Add(nodes[i]);
             }
@@ -104,6 +107,7 @@ public class SkillTreeNode : MonoBehaviour, IFruits
         fillImg.type = Image.Type.Filled;
         fillImg.fillAmount = 0;
         fillImg.transform.SetSiblingIndex(root.childCount);
+        fillImg.raycastTarget = false;
 
         if (fillImg.rectTransform.sizeDelta.x > fillImg.rectTransform.sizeDelta.y)
             fillImg.fillMethod = Image.FillMethod.Horizontal;
