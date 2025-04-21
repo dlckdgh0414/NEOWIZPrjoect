@@ -22,9 +22,10 @@ public partial class CatchingAttackAction : Action
 
     protected override Status OnUpdate()
     {
-        if (WolfEnemy.Value.IsCatchingStop)
+        if (WolfEnemy.Value.IsHit)
         {
-
+            Attack.Value.CatchStop();
+            WolfEnemy.Value.IsHit = false;
              return Status.Success;
         }
         return Status.Running;

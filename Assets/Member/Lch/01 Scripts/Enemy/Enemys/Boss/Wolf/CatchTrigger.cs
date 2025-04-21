@@ -2,42 +2,43 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class CatchTrigger : MonoBehaviour,IEntityComponet
+public class CatchTrigger : MonoBehaviour
 {
-
-    private Wolf _wolf;
+    [SerializeField] private Wolf _wolf;
+    private Player _player;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out Player player))
         {
-            player._movement.CanMove = false;
-            player.transform.rotation = Quaternion.Euler(86f,0,0);
-            CatcingPlayer(player);
+            _player = player;
+             _player._movement.CanMove = false;
+            _player.transform.rotation = Quaternion.Euler(86f,0,0);
+            CatcingPlayer();
         }
     }
 
-    private void CatcingPlayer(Player player)
+    private void CatcingPlayer()
     {
-        StartCoroutine(PlayerDamgeTimer(1f,player));
+        StartCoroutine(PlayerDamgeTimer(1f));
       
     }
 
-    private IEnumerator PlayerDamgeTimer(float timer,Player player)
+    public void CatStopPlayer()
+    {
+        _player._movement.CanMove = true;
+    }
+
+    private IEnumerator PlayerDamgeTimer(float timer)
     {
         while(true)
         {
             yield return new WaitForSeconds(timer);
-            if (player.TryGetComponent(out IDamgable damgable))
+            if (_player.TryGetComponent(out IDamgable damgable))
             {
                 damgable.ApplyDamage(20, false, 0, _wolf);
             }
             yield return null;
         }
-    }
-
-    public void Initialize(Entity entity)
-    {
-        _wolf = entity as Wolf;
     }
 }

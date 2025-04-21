@@ -13,6 +13,10 @@ public class WolfCatchAttackCompo : Attack
 
     public void CatchStop()
     {
-
+        foreach(var trigger in catchTriggers)
+        {
+            trigger.CatStopPlayer();
+            trigger.enabled = false;
+        }
     }
 }

@@ -21,7 +21,6 @@ public class Wolf : BTBoss
     private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
     private EntityHealth _health;
-    public bool IsCatchingStop = false;
 
     protected override void Awake()
     {
