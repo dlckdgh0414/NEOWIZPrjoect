@@ -28,6 +28,7 @@ public class WolfBitingAttackCompo : Attack
         {
             if(other.TryGetComponent(out IDamgable damgable))
             {
+                Debug.Log("플레이어양");
                 damgable.ApplyDamage(damage, false, 0, _entity);
             }
         }

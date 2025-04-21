@@ -6,30 +6,23 @@ using Unity.Properties;
 using static UnityEngine.EventSystems.EventTrigger;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "LookAtTarget", story: "[Self] to [Target] Look with [Renderer]", category: "Action", id: "455fd0bec1f521ca6bb87e82410e0f2e")]
+[NodeDescription(name: "LookAtTarget", story: "[Self] to [Target] Look with [IsPhaseing]", category: "Action", id: "455fd0bec1f521ca6bb87e82410e0f2e")]
 public partial class LookAtTargetAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<Transform> Target;
-    [SerializeReference] public BlackboardVariable<EnemyRenderer> Renderer;
+    [SerializeReference] public BlackboardVariable<bool> IsPhaseing;
     protected override Status OnStart()
     {
-       
-        return Status.Running;
-    }
-
-    protected override Status OnUpdate()
-    {
-        if(Target.Value != null)
+        if (Target.Value != null&&IsPhaseing)
         {
-            Vector3 dir = Target.Value.position;
+            Vector3 dir = Target.Value.position - Self.Value.transform.position;
             dir.y = 0;
             Quaternion targetRotation = Quaternion.LookRotation(dir);
             Transform parent = Self.Value.transform;
-            parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * 8f);
+            parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * 4f);
         }
-        
-        return Status.Running;
+        return Status.Success;
     }
 }
 

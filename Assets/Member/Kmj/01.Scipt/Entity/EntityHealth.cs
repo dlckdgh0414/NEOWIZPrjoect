@@ -6,7 +6,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
     [SerializeField] private StatSO hpStat;
     public float maxHealth;
 
-    public float currentHealth { get; private set; }
+    [field : SerializeField] public float currentHealth { get; private set; }
     public event Action<Vector2> OnKnockback;
 
     private Entity _entity;

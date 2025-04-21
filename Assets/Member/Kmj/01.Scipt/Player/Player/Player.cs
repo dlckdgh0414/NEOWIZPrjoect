@@ -21,6 +21,7 @@ public class Player : Entity
         base.Awake();
          _stateMachine = new EntityStateMachine(this,stateDatas);
         _skillCompo = GetCompo<EntitySkillCompo>();
+        _movement = GetCompo<CharacterMovement>();
         PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
         PlayerInput.OnRollingPressed += HandleRollingPressed;
     }

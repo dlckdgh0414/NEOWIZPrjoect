@@ -10,7 +10,7 @@ public class Wolf : BTBoss
     private WolfPhase1AttackEnum _phase1Enum;
     private WolfPhase2AttackEnum _phase2Enum;
 
-    private bool _isPhase2;
+    public bool IsPhase2 { get; set; }
 
     [SerializeField] private float rushTimer;
     private float _currentTimer;
@@ -20,7 +20,6 @@ public class Wolf : BTBoss
     public bool IsRushStop { get; set; } = false;
     private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
-    [SerializeField] private Transform _target;
     private EntityHealth _health;
 
     protected override void Awake()
@@ -41,13 +40,17 @@ public class Wolf : BTBoss
         _phase2Change = phase2ChannelVariable.Value;
         _phase1Enum = GetBlackboardVariable<WolfPhase1AttackEnum>("AttackEnum");
         _phase2Enum = GetBlackboardVariable<WolfPhase2AttackEnum>("Phase2Attack");
-        _isPhase2 = GetBlackboardVariable<bool>("IsPhase2");
+        IsPhase2 = GetBlackboardVariable<bool>("IsPhase2");
         _hollwingHp = _health.maxHealth - 15f;
         _lastHollwing = Time.time;
     }
 
     private void Update()
     {
+        if(_health.maxHealth / 2 >= _health.currentHealth)
+        {
+            IsPhase2 = true;
+        }
         if (_iSRushTimerStart)
         {
             RushTimer();
@@ -63,11 +66,12 @@ public class Wolf : BTBoss
                 if (_phase1Enum == WolfPhase1AttackEnum.Rush
                || _state.Value == BTBossState.STUN
                || _state.Value == BTBossState.HIT
-               || _phase2Enum == WolfPhase2AttackEnum.Rush_Upgrade)
+               || _phase2Enum == WolfPhase2AttackEnum.Rush_Upgrade
+               || _phase2Enum == WolfPhase2AttackEnum.Catch)
                 {
                     return;
                 }
-                if (_isPhase2)
+                if (IsPhase2)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
                     _lastHollwing = Time.time;
@@ -91,12 +95,13 @@ public class Wolf : BTBoss
             if (_phase1Enum == WolfPhase1AttackEnum.Howling 
                 ||_state.Value == BTBossState.STUN 
                 ||_state.Value == BTBossState.HIT 
-                || _phase2Enum == WolfPhase2AttackEnum.Howling)
+                || _phase2Enum == WolfPhase2AttackEnum.Howling
+                || _phase2Enum == WolfPhase2AttackEnum.Catch)
             {
                 return;
             }
 
-            if (_isPhase2)
+            if (IsPhase2)
             {
                 _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Rush_Upgrade);
                 _currentTimer = 0;
