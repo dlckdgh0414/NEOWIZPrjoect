@@ -10,7 +10,7 @@ public class MouseAttackCompo : MonoBehaviour
     private MousePlayer _player;
     [SerializeField] private float _damage;
 
-    private MousePlayerEnergy _energyCompo;
+    [SerializeField] private MousePlayerEnergy _energyCompo;
 
     private int animValue;
 
@@ -23,7 +23,9 @@ public class MouseAttackCompo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            print(gameObject.name);
+            CameraManager.Instance.ShakeCamera(_damage / 2, 1 / 2);
+            print("±â¸ðµü");
+            print(other .name);
             _player.ChangeState("ATTACK");
             other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, false, 0, _player);
             _energyCompo.energy += 5f;
