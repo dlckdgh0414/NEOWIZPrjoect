@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MouseAttackCompo : MonoBehaviour
 {
@@ -22,10 +21,12 @@ public class MouseAttackCompo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == _whatIsEnemy)
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, false,0, _player);
+            print(gameObject.name);
             _player.ChangeState("ATTACK");
+            other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, false, 0, _player);
+            _energyCompo.energy += 5f;
         }
     }
 

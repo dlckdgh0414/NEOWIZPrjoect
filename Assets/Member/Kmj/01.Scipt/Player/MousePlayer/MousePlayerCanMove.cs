@@ -4,9 +4,11 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class MousePlayerCanMove : EntityState
 {
     protected MousePlayer _player;
+    protected MousePlayerEnergy _energyCompo;
     public MousePlayerCanMove(Entity entity, int animationHash) : base(entity, animationHash)
     {
         _player = entity as MousePlayer;
+        _energyCompo = entity.GetComponentInChildren<MousePlayerEnergy>(); 
     }
 
     public override void Enter()
