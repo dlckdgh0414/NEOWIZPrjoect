@@ -34,6 +34,7 @@ public partial class AttackTargetAction : Action
     private void HandleAttackTrigger()
     {
         Attack.Value.EnemyAttack(Target.Value,Dealer.Value);
+
         _isAttack = true;
     }
 }
