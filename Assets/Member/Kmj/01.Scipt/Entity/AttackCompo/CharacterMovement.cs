@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private float moveSpeed;
     public bool CanManualMovement { get; set; } = true;
+    public bool CanMove { get; set; } = true;
     private Vector3 _autoMovement;
 
     public bool IsGround => characterController.isGrounded;
@@ -70,22 +71,26 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private void CalculateMovement()
     {
-        if (CanManualMovement)
+        if (CanMove)
         {
-            _velocity = Quaternion.Euler(0, -45f, 0) *  _movementDirection;
-            _velocity *= moveSpeed;
-        }
-        else
-        {
-            _velocity += _autoMovement * Time.fixedDeltaTime;
-        }
+            if (CanManualMovement)
+            {
+                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity *= moveSpeed;
+            }
+            else
+            {
+                _velocity += _autoMovement * Time.fixedDeltaTime;
+            }
 
-        if (_velocity.magnitude > 0)
-        {
-            var targetRotation = Quaternion.LookRotation(_velocity);
-            Transform parent = _entity.transform;
-            parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+            if (_velocity.magnitude > 0)
+            {
+                var targetRotation = Quaternion.LookRotation(_velocity);
+                Transform parent = _entity.transform;
+                parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+            }
         }
+        
     }
 
     private void ApplyGravity()

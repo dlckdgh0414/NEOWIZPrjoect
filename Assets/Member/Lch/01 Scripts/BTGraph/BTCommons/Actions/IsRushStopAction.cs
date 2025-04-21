@@ -21,6 +21,7 @@ public partial class IsRushStopAction : Action
         {
             Mover.Value.StopMover();
             Mover.Value.Speed /= 2f;
+            WolfEnemy.Value.IsRushStop = false;
             return Status.Success;
         }
 
