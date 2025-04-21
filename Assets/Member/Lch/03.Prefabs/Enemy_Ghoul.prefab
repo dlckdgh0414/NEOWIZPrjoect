@@ -546,6 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsLastHitCritical>k__BackingField: 0
   <IsLastStopHit>k__BackingField: 0
+  <LastStunLevel>k__BackingField: 0
   <LastEntityWhoHit>k__BackingField: {fileID: 0}
 --- !u!1 &2510741305624787774
 GameObject:
@@ -591,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893ea680cc26ce94b97d87ed48c038eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &2550478964507695512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: 19a41d7c212397a4682936bee4599869, type: 2}
   maxHealth: 0
+  <currentHealth>k__BackingField: 0
 --- !u!114 &1656450988098138437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,6 +1931,7 @@ MonoBehaviour:
   - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
+  - rid: 6363091981924040893
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -1973,6 +1977,14 @@ MonoBehaviour:
           m_Value1: 11857164642831694203
         Name: AtackCooldown
         m_Value: 3
+    - rid: 6363091981924040893
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13150281035321179159
+          m_Value1: 14543011487693267292
+        Name: Attack
+        m_Value: {fileID: 6484570421705124941}
 --- !u!114 &5627939629584246030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,8 +2102,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rbCompo: {fileID: 2335919670627438303}
-  speed: 3
+  <Speed>k__BackingField: 2
   CanMauanMove: 1
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  stopThreshold: 0.8
 --- !u!1 &7073984186876368736
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,7 +133,6 @@ public class MousePlayerEnergy : MonoBehaviour
         yield return new WaitForSeconds(1f);
         while(energy <= 200 && !isUseEnergy)
         {
-
             energy += Recover * Mag / 50;
             yield return new WaitForSeconds(0.01f);
         

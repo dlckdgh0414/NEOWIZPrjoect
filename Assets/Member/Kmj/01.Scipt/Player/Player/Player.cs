@@ -16,6 +16,7 @@ public class Player : Entity
     public EntitySkillCompo _skillCompo { get; private set; }
     public float rollingVelocity = 12f;
 
+    
     protected override void Awake()
     {
         base.Awake();
@@ -52,6 +53,9 @@ public class Player : Entity
     private void Start()
     {
         _stateMachine.ChangeState("IDLE");
+
+
+        PlayerDie();
     }
 
     private void Update()
@@ -75,5 +79,11 @@ public class Player : Entity
     protected override void HandleStun()
     {
         
+    }
+
+    public void PlayerDie()
+    {
+        _isSkilling = true;
+        ChangeState("DIE");
     }
 }
