@@ -1226,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3036315967863216786, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: statOverrides.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3036315967863216786, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: 'statOverrides.Array.data[0]'
@@ -1240,6 +1240,10 @@ PrefabInstance:
       propertyPath: 'statOverrides.Array.data[2]'
       value: 
       objectReference: {fileID: 465694734}
+    - target: {fileID: 3036315967863216786, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: 'statOverrides.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1816689665}
     - target: {fileID: 6414677187495235117, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1957,6 +1961,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -120.860085
       objectReference: {fileID: 0}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: 'managedReferences[4070495888905339834]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[Attack, Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: managedReferences[4070495888905339834].Name
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: managedReferences[4070495888905339834].m_Value
+      value: 
+      objectReference: {fileID: 1415244728}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[5]'
+      value: 4070495888905339834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: managedReferences[4070495888905339834].GUID.m_Value0
+      value: 13150281035321179159
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716251526105433407, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: managedReferences[4070495888905339834].GUID.m_Value1
+      value: 14543011487693267292
+      objectReference: {fileID: 0}
     - target: {fileID: 8281673361866192227, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 5.7965217
@@ -2002,6 +2034,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+--- !u!114 &1415244728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6484570421705124941, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+  m_PrefabInstance: {fileID: 1415244719}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1793a6fc372de2a4f9db5a610eb01977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1472172062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,6 +2181,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1816689665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 26169930811045384, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+  m_PrefabInstance: {fileID: 1030654855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c1232795da3a247b688069161dbfec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

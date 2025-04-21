@@ -19,9 +19,9 @@ public class GhoulAttackCompo : Attack
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("°ø°ÝÇÒ°í¾ä");
-            if(other.TryGetComponent(out IDamgable damgable))
+            if(other.gameObject.TryGetComponent(out IDamgable damgable))
             {
+                Debug.Log("°ø°ÝÇÒ°í¾ä");
                 damgable.ApplyDamage(damge, false, 0, _entity);
             }
         }
