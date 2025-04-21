@@ -6,10 +6,13 @@ public class Chain : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if(other.TryGetComponent(out Entity boss))
+            if(other.TryGetComponent(out BTBoss boss))
             {
-                boss.OnStun?.Invoke();
-                gameObject.SetActive(false);
+                if (boss.IsStun)
+                {
+                    boss.OnStun?.Invoke();
+                    gameObject.SetActive(false);
+                }
             }
         }
     }

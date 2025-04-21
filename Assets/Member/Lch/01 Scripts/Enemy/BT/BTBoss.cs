@@ -7,7 +7,7 @@ public abstract class BTBoss : Enemy
     private EntityFeedbackData _feedbackData;
     protected BlackboardVariable<BTBossState> _state;
     public bool IsHit = false;
-    protected bool IsStun = false;
+    public bool IsStun = false;
 
     protected override void Start()
     {
