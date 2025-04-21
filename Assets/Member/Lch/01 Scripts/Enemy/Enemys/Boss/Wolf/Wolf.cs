@@ -114,7 +114,7 @@ public class Wolf : BTBoss
                 _currentTimer = 0;
             }
            _iSRushTimerStart = false;
-
+            IsStun = true;
         }
     }
 
@@ -133,6 +133,7 @@ public class Wolf : BTBoss
             {
                  IsRushStop = true;
                 _iSRushTimerStart = true;
+                IsStun = false;
             }
         }
             

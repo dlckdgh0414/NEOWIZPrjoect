@@ -1804,6 +1804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7058648200229165403}
   - component: {fileID: 6484570421705124941}
+  - component: {fileID: 3637649663224483218}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -1838,6 +1839,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1793a6fc372de2a4f9db5a610eb01977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damge: 5
+  _entity: {fileID: 5627939629584246030}
+--- !u!65 &3637649663224483218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010180328058015333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0406597, y: 0.6668321, z: 0.55716586}
+  m_Center: {x: -0.020329952, y: 0.74968284, z: 0.58853585}
 --- !u!1 &6171252489436856839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +1955,6 @@ MonoBehaviour:
   - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
-  - rid: 6363091981924040893
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -1977,14 +2000,6 @@ MonoBehaviour:
           m_Value1: 11857164642831694203
         Name: AtackCooldown
         m_Value: 3
-    - rid: 6363091981924040893
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13150281035321179159
-          m_Value1: 14543011487693267292
-        Name: Attack
-        m_Value: {fileID: 6484570421705124941}
 --- !u!114 &5627939629584246030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2102,7 +2117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rbCompo: {fileID: 2335919670627438303}
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 5
   CanMauanMove: 1
   whatIsWall:
     serializedVersion: 2
