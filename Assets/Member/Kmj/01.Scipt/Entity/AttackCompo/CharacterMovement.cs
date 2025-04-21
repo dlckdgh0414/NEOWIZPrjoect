@@ -17,6 +17,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private Vector3 _velocity;
     public Vector3 Velocity => _velocity;
+    public bool CanMove { get; set; } = true;
 
     private float _verticalVelocity;
     private Vector3 _movementDirection;
@@ -69,22 +70,26 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private void CalculateMovement()
     {
-        if (CanManualMovement)
+        if (CanMove)
         {
-            _velocity = Quaternion.Euler(0, 0, 0) * _movementDirection;
-            _velocity *= moveSpeed;
-        }
-        else
-        {
-            _velocity += _autoMovement * Time.fixedDeltaTime;
-        }
+            if (CanManualMovement)
+            {
+                _velocity = Quaternion.Euler(0, 0, 0) * _movementDirection;
+                _velocity *= moveSpeed;
+            }
+            else
+            {
+                _velocity += _autoMovement * Time.fixedDeltaTime;
+            }
 
-        if (_velocity.magnitude > 0)
-        {
-            var targetRotation = Quaternion.LookRotation(_velocity);
-            Transform parent = _entity.transform;
-            parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+            if (_velocity.magnitude > 0)
+            {
+                var targetRotation = Quaternion.LookRotation(_velocity);
+                Transform parent = _entity.transform;
+                parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+            }
         }
+       
     }
 
     public void SetAutoMovement(Vector3 autoMovement)
