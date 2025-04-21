@@ -7,6 +7,7 @@ public abstract class BTBoss : Enemy
     private EntityFeedbackData _feedbackData;
     protected BlackboardVariable<BTBossState> _state;
     public bool IsHit = false;
+    protected bool IsStun = false;
 
     protected override void Start()
     {
@@ -45,6 +46,9 @@ public abstract class BTBoss : Enemy
 
     protected override void HandleStun()
     {
-        _stateChannel.SendEventMessage(BTBossState.STUN);
+        if (IsStun)
+        {
+            _stateChannel.SendEventMessage(BTBossState.STUN);
+        }
     }
 }
