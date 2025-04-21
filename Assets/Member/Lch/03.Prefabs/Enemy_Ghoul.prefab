@@ -546,6 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsLastHitCritical>k__BackingField: 0
   <IsLastStopHit>k__BackingField: 0
+  <LastStunLevel>k__BackingField: 0
   <LastEntityWhoHit>k__BackingField: {fileID: 0}
 --- !u!1 &2510741305624787774
 GameObject:
@@ -591,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893ea680cc26ce94b97d87ed48c038eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &2550478964507695512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,6 +1746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: 19a41d7c212397a4682936bee4599869, type: 2}
   maxHealth: 0
+  <currentHealth>k__BackingField: 0
 --- !u!114 &1656450988098138437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,6 +1804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7058648200229165403}
   - component: {fileID: 6484570421705124941}
+  - component: {fileID: 3637649663224483218}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -1835,6 +1839,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1793a6fc372de2a4f9db5a610eb01977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damge: 5
+  _entity: {fileID: 5627939629584246030}
+--- !u!65 &3637649663224483218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010180328058015333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0406597, y: 0.6668321, z: 0.55716586}
+  m_Center: {x: -0.020329952, y: 0.74968284, z: 0.58853585}
 --- !u!1 &6171252489436856839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,8 +2117,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rbCompo: {fileID: 2335919670627438303}
-  speed: 3
+  <Speed>k__BackingField: 5
   CanMauanMove: 1
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  stopThreshold: 0.8
 --- !u!1 &7073984186876368736
 GameObject:
   m_ObjectHideFlags: 0
