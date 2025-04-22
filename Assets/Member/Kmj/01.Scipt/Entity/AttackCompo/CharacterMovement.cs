@@ -41,22 +41,16 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
         _movementDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
     }
 
-    public void Run(float runSpeed)
+    private void Update()
     {
-        originMoveSpeed = moveSpeed;
-        moveSpeed = runSpeed;
-    }
-
-    public void Walk()
-    {
-        moveSpeed = originMoveSpeed;
+        SetTransformXChange();
     }
 
     private void FixedUpdate()
     {
         CalculateMovement();
         ApplyGravity();
-        Move();
+        Move();   
     }
 
     private void Move()
@@ -86,6 +80,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
             if (_velocity.magnitude > 0)
             {
                 var targetRotation = Quaternion.LookRotation(_velocity);
+                targetRotation.z = 0;
                 Transform parent = _entity.transform;
                 parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
             }
@@ -109,5 +104,12 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     public void SetAutoMovement(Vector3 autoMovement)
         => _autoMovement = autoMovement;
+    private void SetTransformXChange()
+    {
+        Quaternion quaternion = _entity.transform.rotation;
 
+        quaternion.x = 0;
+
+        _entity.transform.rotation = quaternion;
+    }
 }
