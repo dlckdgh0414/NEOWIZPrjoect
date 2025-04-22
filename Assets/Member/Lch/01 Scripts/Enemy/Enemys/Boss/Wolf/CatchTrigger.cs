@@ -6,6 +6,7 @@ public class CatchTrigger : MonoBehaviour
 {
     [SerializeField] private Wolf _wolf;
     private Player _player;
+    private IDamgable damgable;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class CatchTrigger : MonoBehaviour
             _player = player;
              _player._movement.CanMove = false;
             _player.transform.rotation = Quaternion.Euler(86f,0,0);
+            damgable = _player.GetComponentInChildren<IDamgable>();
             _wolf.mainAnim.speed = 0f;
             CatcingPlayer();
         }
@@ -37,10 +39,7 @@ public class CatchTrigger : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(timer);
-            if (_player.TryGetComponent(out IDamgable damgable))
-            {
-                damgable.ApplyDamage(20, false, 0, _wolf);
-            }
+            damgable.ApplyDamage(20, false, 0, _wolf);
             yield return null;
         }
     }

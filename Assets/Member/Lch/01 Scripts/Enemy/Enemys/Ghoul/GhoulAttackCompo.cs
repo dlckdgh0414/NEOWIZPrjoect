@@ -2,28 +2,26 @@ using UnityEngine;
 
 public class GhoulAttackCompo : Attack
 {
-    private Collider _attackCollider;
     [SerializeField] private float damge;
     [SerializeField] private Entity _entity;
+    [SerializeField] private BoxCollider attackTrigger;
+
     private void Awake()
     {
-        _attackCollider = GetComponent<Collider>();
-        _attackCollider.enabled = false;
+        attackTrigger.enabled = false;
     }
     public override void EnemyAttack(Transform target, Entity entity)
     {
-        _attackCollider.enabled=true;
+        attackTrigger.enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.TryGetComponent(out Player player))
         {
-            if(other.gameObject.TryGetComponent(out IDamgable damgable))
-            {
-                Debug.Log("°ø°ÝÇÒ°í¾ä");
-                damgable.ApplyDamage(damge, false, 0, _entity);
-            }
+            IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+            damgable.ApplyDamage(damge,false,0,_entity);
+            attackTrigger.enabled = false;
         }
     }
 }

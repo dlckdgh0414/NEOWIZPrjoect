@@ -1645,6 +1645,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.733246
       objectReference: {fileID: 0}
+    - target: {fileID: 4426298546115412451, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: _whatIsEnemy.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 4673286529923912066, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -45.528687
@@ -1869,6 +1873,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 146.34738
       objectReference: {fileID: 0}
+    - target: {fileID: 6484570421705124941, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: _damageCasetr
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484570421705124941, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      propertyPath: attackTrigger
+      value: 
+      objectReference: {fileID: 1880575131}
     - target: {fileID: 6664449253240405959, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 6.8605604
@@ -2032,14 +2044,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6010180328058015333, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1880575131}
   m_SourcePrefab: {fileID: 100100000, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
 --- !u!114 &1415244728 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6484570421705124941, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
   m_PrefabInstance: {fileID: 1415244719}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1880575129}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1793a6fc372de2a4f9db5a610eb01977, type: 3}
@@ -2192,6 +2207,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c1232795da3a247b688069161dbfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1880575129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6010180328058015333, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
+  m_PrefabInstance: {fileID: 1415244719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1880575131
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880575129}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1939129, y: 0.6210636, z: 0.6639699}
+  m_Center: {x: -0.13968797, y: 0.1894682, z: -0.04242456}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
