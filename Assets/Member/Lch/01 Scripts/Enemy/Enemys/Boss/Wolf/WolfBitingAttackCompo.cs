@@ -24,13 +24,10 @@ public class WolfBitingAttackCompo : Attack
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.TryGetComponent(out Player player))
         {
-            if(other.TryGetComponent(out IDamgable damgable))
-            {
-                Debug.Log("플레이어양");
-                damgable.ApplyDamage(damage, false, 0, _entity);
-            }
+             IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+             damgable.ApplyDamage(damage, false, 0, _entity);
         }
     }
 }
