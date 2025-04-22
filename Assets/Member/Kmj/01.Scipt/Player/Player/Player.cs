@@ -10,6 +10,8 @@ public class Player : Entity
 
     public CharacterMovement _movement { get; private set; }
 
+    public EntityAnimatorTrigger _triggerCompo { get; private set; }
+
     public bool _isSkilling { get;  set; }
     private EntityStateMachine _stateMachine;
     public PlayerAttackCompo _attackCompo { get; private set; }
@@ -23,6 +25,7 @@ public class Player : Entity
          _stateMachine = new EntityStateMachine(this,stateDatas);
         _skillCompo = GetCompo<EntitySkillCompo>();
         _movement = GetCompo<CharacterMovement>();
+        _triggerCompo = GetCompo<EntityAnimatorTrigger>();
         PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
         PlayerInput.OnRollingPressed += HandleRollingPressed;
     }
