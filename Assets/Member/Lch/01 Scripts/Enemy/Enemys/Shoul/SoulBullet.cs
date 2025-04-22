@@ -26,13 +26,11 @@ public class SoulBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if(other.gameObject.TryGetComponent(out Player player))
         {
-            if(other.TryGetComponent(out IDamgable damgable))
-            {
-                damgable.ApplyDamage(damge,false,0, _entity);
-                Destroy(gameObject); 
-            }
+            IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+            damgable.ApplyDamage(damge, false, 0, _entity);
+            Destroy(gameObject);
         }
     }
 }
