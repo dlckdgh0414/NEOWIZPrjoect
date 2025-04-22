@@ -29,6 +29,7 @@ public class SoulBullet : MonoBehaviour
         if(other.gameObject.TryGetComponent(out Player player))
         {
             IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+            CameraManager.Instance.ShakeCamera(1, 0.15f);
             damgable.ApplyDamage(damge, false, 0, _entity);
             Destroy(gameObject);
         }

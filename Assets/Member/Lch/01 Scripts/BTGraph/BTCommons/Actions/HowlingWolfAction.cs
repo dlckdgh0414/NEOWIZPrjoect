@@ -16,9 +16,11 @@ public partial class HowlingWolfAction : Action
     private float _currentHowlingEndTime = 0f;
     private float _spawnTime = 0.3f;
     private float _howlingEnd = 7f;
+    private WolfHowlingSoul _soul;
 
     protected override Status OnStart()
     {
+        _soul = Soul.Value.GetComponent<WolfHowlingSoul>();
         return Status.Running;
     }
 
@@ -28,7 +30,8 @@ public partial class HowlingWolfAction : Action
         _currentHowlingEndTime += Time.deltaTime;
         if (_currentSpawnTime >= _spawnTime)
         {
-            GameObject.Instantiate(Soul,new Vector3(Random.Range(-10f,10f),0,Random.Range(-10f,10f)).normalized * SpawnRange,Quaternion.identity);
+            _soul = GameObject.Instantiate(Soul,new Vector3(Random.Range(-10f,10f),0,Random.Range(-10f,10f)).normalized * SpawnRange,Quaternion.identity) as WolfHowlingSoul;
+            _soul.SetDir(Self.Value.transform);
             _currentSpawnTime = 0f;
         }
         if(_currentHowlingEndTime >= _howlingEnd)

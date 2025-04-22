@@ -10,14 +10,16 @@ public class Wolf : BTBoss
     private WolfPhase1AttackEnum _phase1Enum;
     private WolfPhase2AttackEnum _phase2Enum;
 
-    public bool IsPhase2 { get; set; }
+    [SerializeField] private Pillar[] pillars;
+
+    public bool IsPhase2;
 
     [SerializeField] private float rushTimer;
     private float _currentTimer;
     private float _hollwingHp;
     private float _lastHollwing;
-    public bool IsRush {get; set;} = false;
-    public bool IsRushStop { get; set; } = false;
+    public bool IsRush  = false;
+    public bool IsRushStop  = false;
     private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
     private EntityHealth _health;
@@ -61,7 +63,7 @@ public class Wolf : BTBoss
     }
     private void HowlingTimer()
     {
-        if (_health.currentHealth == _hollwingHp)
+        if (_health.currentHealth <= _hollwingHp)
         {
             if (Time.time >= _lastHollwing + hollwingTime)
             {
@@ -76,15 +78,17 @@ public class Wolf : BTBoss
                 if (IsPhase2)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
-                    _lastHollwing = Time.time;
-                    _hollwingHp -= 15f;
                 }
                 else
                 {
                     _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Howling);
-                    _lastHollwing = Time.time;
-                    _hollwingHp -= 15f;
                 }
+                foreach(Pillar pillar in pillars)
+                {
+                    pillar.OffPillar();
+                }
+               _lastHollwing = Time.time;
+               _hollwingHp -= 15f;
             }
         }
     }
@@ -122,12 +126,10 @@ public class Wolf : BTBoss
     {
         if (IsRush)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if(collision.gameObject.TryGetComponent(out Player player))
             {
-                if (collision.gameObject.TryGetComponent(out IDamgable damgable))
-                {
-                    damgable.ApplyDamage(RushDamge, false, 0, this);
-                }
+                IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+                damgable.ApplyDamage(RushDamge, false, 0, this);
             }
             if (collision.gameObject.CompareTag("Wall"))
             {

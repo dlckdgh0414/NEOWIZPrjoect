@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &693608961021389945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911541167497768877}
+  - component: {fileID: 3926017971445903577}
+  m_Layer: 9
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &911541167497768877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693608961021389945}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5601640026908043733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3926017971445903577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693608961021389945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b41097cf0d8ae4397f7d78d431213f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorMat: {fileID: 2100000, guid: 5e0fcdfcc46c89240a2ad02605c237b8, type: 2}
+  nearPillar: {fileID: 6308321523974018016}
+  nearPillar2: {fileID: 3025969237821516343}
+  chain: {fileID: 8261357998870088664}
+  chain2: {fileID: 4151352320740930218}
+  IsOnPillar: 0
 --- !u!1 &1338458825045728723
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,8 +62,8 @@ GameObject:
   - component: {fileID: 6667246935213188933}
   - component: {fileID: 6666258248313339499}
   - component: {fileID: 6762482039746508519}
-  - component: {fileID: 4989283835005733212}
-  m_Layer: 10
+  - component: {fileID: 261150370696737137}
+  m_Layer: 9
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +82,8 @@ Transform:
   m_LocalPosition: {x: 16.091206, y: -0.56595516, z: -51.87246}
   m_LocalScale: {x: 8, y: 20, z: 8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6169132596407998715}
   m_Father: {fileID: 214678404132498577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6667246935213188933
@@ -109,22 +160,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4989283835005733212
-MonoBehaviour:
+--- !u!54 &261150370696737137
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338458825045728723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b41097cf0d8ae4397f7d78d431213f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorMat: {fileID: 2100000, guid: 5e0fcdfcc46c89240a2ad02605c237b8, type: 2}
-  nearPillar: {fileID: 9007779581817223366}
-  chain: {fileID: 2568355953590477335}
-  IsOnPillar: 0
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1563985268060195411
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,8 +199,8 @@ GameObject:
   - component: {fileID: 5572857159993565540}
   - component: {fileID: 2945151025396935567}
   - component: {fileID: 2100012138269465768}
-  - component: {fileID: 520416575172383333}
-  m_Layer: 10
+  - component: {fileID: 5924911321587255857}
+  m_Layer: 9
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +219,8 @@ Transform:
   m_LocalPosition: {x: -10.108795, y: -0.56595516, z: 6.6275406}
   m_LocalScale: {x: 8, y: 20, z: 8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 911541167497768877}
   m_Father: {fileID: 214678404132498577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5572857159993565540
@@ -234,22 +297,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &520416575172383333
-MonoBehaviour:
+--- !u!54 &5924911321587255857
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563985268060195411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b41097cf0d8ae4397f7d78d431213f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorMat: {fileID: 2100000, guid: 5e0fcdfcc46c89240a2ad02605c237b8, type: 2}
-  nearPillar: {fileID: 4989283835005733212}
-  chain: {fileID: 8261357998870088664}
-  IsOnPillar: 0
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &2568355953590477335
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +338,7 @@ GameObject:
   - component: {fileID: 6184732874089280697}
   - component: {fileID: 3445326127070988316}
   m_Layer: 0
-  m_Name: Chain
+  m_Name: Chain3
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,6 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc838affa2648b145bebad5d13bb720a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pillar: {fileID: 6308321523974018016}
+  pillar2: {fileID: 3025969237821516343}
 --- !u!1 &3486416130494796279
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +459,7 @@ GameObject:
   - component: {fileID: 6872970783239588529}
   - component: {fileID: 5860662286923989370}
   - component: {fileID: 5910216155102339444}
-  - component: {fileID: 9007779581817223366}
+  - component: {fileID: 8461650155271910964}
   m_Layer: 9
   m_Name: Pillar
   m_TagString: Untagged
@@ -403,7 +479,8 @@ Transform:
   m_LocalPosition: {x: 45.417755, y: -0.56595516, z: 4.8275414}
   m_LocalScale: {x: 8, y: 20, z: 8}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4182820535819796135}
   m_Father: {fileID: 214678404132498577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6872970783239588529
@@ -480,22 +557,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9007779581817223366
-MonoBehaviour:
+--- !u!54 &8461650155271910964
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3486416130494796279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b41097cf0d8ae4397f7d78d431213f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorMat: {fileID: 2100000, guid: 5e0fcdfcc46c89240a2ad02605c237b8, type: 2}
-  nearPillar: {fileID: 520416575172383333}
-  chain: {fileID: 4151352320740930218}
-  IsOnPillar: 0
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &3494901359101010317
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,12 +635,12 @@ GameObject:
   - component: {fileID: 9091483732361173851}
   - component: {fileID: 4907324997739656912}
   m_Layer: 0
-  m_Name: Chain
+  m_Name: Chain1
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8190819274311172795
 Transform:
   m_ObjectHideFlags: 0
@@ -654,6 +742,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc838affa2648b145bebad5d13bb720a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pillar: {fileID: 3025969237821516343}
+  pillar2: {fileID: 3926017971445903577}
+--- !u!1 &7533581051831329766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4182820535819796135}
+  - component: {fileID: 3025969237821516343}
+  m_Layer: 9
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4182820535819796135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533581051831329766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7097307747213241456}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3025969237821516343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533581051831329766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b41097cf0d8ae4397f7d78d431213f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorMat: {fileID: 2100000, guid: 5e0fcdfcc46c89240a2ad02605c237b8, type: 2}
+  nearPillar: {fileID: 3926017971445903577}
+  nearPillar2: {fileID: 6308321523974018016}
+  chain: {fileID: 4151352320740930218}
+  chain2: {fileID: 2568355953590477335}
+  IsOnPillar: 0
 --- !u!1 &8261357998870088664
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +808,7 @@ GameObject:
   - component: {fileID: 5418049401720150026}
   - component: {fileID: 2063092380766091739}
   m_Layer: 0
-  m_Name: Chain
+  m_Name: Chain2
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,3 +915,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc838affa2648b145bebad5d13bb720a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pillar: {fileID: 3926017971445903577}
+  pillar2: {fileID: 6308321523974018016}
+--- !u!1 &8557543726821617116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6169132596407998715}
+  - component: {fileID: 6308321523974018016}
+  m_Layer: 9
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6169132596407998715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557543726821617116}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9011217367771353229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6308321523974018016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557543726821617116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b41097cf0d8ae4397f7d78d431213f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorMat: {fileID: 2100000, guid: 5e0fcdfcc46c89240a2ad02605c237b8, type: 2}
+  nearPillar: {fileID: 3025969237821516343}
+  nearPillar2: {fileID: 3926017971445903577}
+  chain: {fileID: 2568355953590477335}
+  chain2: {fileID: 8261357998870088664}
+  IsOnPillar: 0
