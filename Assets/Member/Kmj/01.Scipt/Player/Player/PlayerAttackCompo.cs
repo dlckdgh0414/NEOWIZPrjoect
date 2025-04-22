@@ -71,7 +71,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private void HandleAttackTrigger()
     {
         Vector2 knockbackForce = new Vector2(6,6);
-        bool success = damageCast.CastDamage(atkDamage, knockbackForce);
+        bool success = damageCast.CastDamage(atkDamage);
 
 
         if (success)
