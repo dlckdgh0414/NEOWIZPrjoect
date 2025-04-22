@@ -1,58 +1,53 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Serialization;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine.UI;
-using Random = System.Random;
 
-public class SkillTreeNode : MonoBehaviour, IFruits
+public class SkillTreeNode : MonoBehaviour, INode
 {
     [SerializeField] private NodeSO nodeSO;
     [SerializeField] private Image nodeImage;
-    [SerializeField] private List<SkillTreeNode> connectedNodes;
     [SerializeField] private bool isRootNode;
     [SerializeField] private float width = 10;
     [SerializeField] private Sprite branchImage;
-    public Color branchColor = Color.magenta;
-    
-    [HideInInspector]
-    [field:SerializeField] public List<Image> ConnectedBranch { get; private set; }
-    [field:SerializeField] public List<Image> FillBranch { get; private set; }
+
+    [field: SerializeField] public List<SkillTreeNode> ConnectedNodes;
+    [field: SerializeField, HideInInspector] public List<Image> ConnectedBranch { get; private set; }
+    [field: SerializeField, HideInInspector] public List<Image> FillBranch { get; private set; }
     public SkillTreeNode ParentNode { get; private set; }
-    public Button NodeButton { get; private set; } = null;
-    public bool CanPurchase { get; private set; } = false;
+    public Button NodeButton { get; private set; }
+    public Image NodeIcon { get; private set; }
+    
+    public Color branchColor = Color.magenta;
 
     public void Initialize()
     {
-        if(isRootNode) connectedNodes.ForEach(f => f.CanPurchase = true);
         NodeButton = GetComponentInChildren<Button>();
-        connectedNodes.ForEach(f => f.ParentNode = this);
+        NodeIcon = NodeButton.transform.Find("Icon").GetComponent<Image>();
         nodeSO.SkillTreeNode = this;
-    }
 
-    public void PurchaseFruits()
-    {
-        if (nodeSO.price <= CurrencyManager.Instance.GetCurrency(CurrencyType.Eon) && !nodeSO.isActive && CanPurchase)
-        { 
-            CurrencyManager.Instance.ModifyCurrency
-                (CurrencyType.Eon, ModifyType.Substract, nodeSO.price);
-            connectedNodes.ForEach(f => f.CanPurchase = true);
-            nodeSO.isActive = true;
+        ConnectedNodes.ForEach(f => { f.ParentNode = this; });
+        
+        if (isRootNode) {
+            NodeButton.interactable = true;
+            ConnectedNodes.ForEach(f => f.NodeButton.interactable = true);
         }
     }
 
     public NodeSO GetNodeSO() => nodeSO;
 
     #region ConnectLineOnEditor
+
     [ContextMenu("ConnectLine")]
     private void ConnectLine()
     {
-        foreach (SkillTreeNode f in connectedNodes)
+        foreach (SkillTreeNode f in ConnectedNodes)
         {
             if (f.ConnectedBranch.Count > 0)
             {
-                f.ConnectedBranch.ForEach(n => {if (n != null) DestroyImmediate(n.gameObject); });
+                f.ConnectedBranch.ForEach(n => { if (n != null) DestroyImmediate(n.gameObject); });
                 f.FillBranch.ForEach(n => { if (n != null) DestroyImmediate(n.gameObject); });
+                
                 f.ConnectedBranch.Clear();
                 f.FillBranch.Clear();
             }
@@ -63,11 +58,13 @@ public class SkillTreeNode : MonoBehaviour, IFruits
 
             for (int i = 0; i < 3; i++)
             {
-                obj[i] = new GameObject($"Node{i}");
+                obj[i] = new GameObject($"@Node{i}");
+                
                 nodes[i] = obj[i].AddComponent<Image>();
                 nodes[i].transform.SetParent(root, false);
                 nodes[i].raycastTarget = false;
                 nodes[i].transform.SetSiblingIndex(0);
+                
                 f.ConnectedBranch.Add(nodes[i]);
             }
 
@@ -75,7 +72,7 @@ public class SkillTreeNode : MonoBehaviour, IFruits
             Vector2 node1Pos = Vector2.zero;
             Vector2 selfPos = rect.position;
             Vector2 fruitsPos = f.GetComponentInChildren<Image>().rectTransform.position;
-            
+
             int origin = 0;
 
             if (node1Pos == Vector2.zero)
@@ -99,7 +96,7 @@ public class SkillTreeNode : MonoBehaviour, IFruits
 
     private void ConnectFillBranch(Image target, Transform root, SkillTreeNode parent, int origin)
     {
-        Image fillImg = new GameObject($"FillNode{parent.FillBranch.Count}").AddComponent<Image>();
+        Image fillImg = new GameObject($"@FillNode{parent.FillBranch.Count}").AddComponent<Image>();
         fillImg.transform.SetParent(root, false);
         fillImg.rectTransform.anchoredPosition = target.rectTransform.anchoredPosition;
         fillImg.rectTransform.sizeDelta = target.rectTransform.sizeDelta;
@@ -109,10 +106,8 @@ public class SkillTreeNode : MonoBehaviour, IFruits
         fillImg.transform.SetSiblingIndex(root.childCount);
         fillImg.raycastTarget = false;
 
-        if (fillImg.rectTransform.sizeDelta.x > fillImg.rectTransform.sizeDelta.y)
-            fillImg.fillMethod = Image.FillMethod.Horizontal;
-        else
-            fillImg.fillMethod = Image.FillMethod.Vertical;
+        fillImg.fillMethod = fillImg.rectTransform.sizeDelta.x > fillImg.rectTransform.sizeDelta.y ?
+            Image.FillMethod.Horizontal : Image.FillMethod.Vertical;
 
         fillImg.fillOrigin = origin;
         parent.FillBranch.Add(fillImg);
@@ -121,7 +116,7 @@ public class SkillTreeNode : MonoBehaviour, IFruits
     [ContextMenu("ClearAllBranch")]
     private void ClearAllBranch()
     {
-        foreach(var fruits in connectedNodes)
+        foreach (var fruits in ConnectedNodes)
         {
             fruits.ConnectedBranch.ForEach(n => DestroyImmediate(n.gameObject));
             fruits.FillBranch.ForEach(n => DestroyImmediate(n.gameObject));
@@ -138,31 +133,28 @@ public class SkillTreeNode : MonoBehaviour, IFruits
         ConnectedBranch.Clear();
         FillBranch.Clear();
     }
-    
+
     private void ConnectBranch(Vector3 pos1, Vector3 pos2, Image node, bool isVert)
     {
-        Vector3 centerPos = (pos1 + pos2) / 2f;
+        var rect = node.rectTransform;
+        rect.position = (pos1 + pos2) / 2f;
         float distance = Vector3.Distance(pos1, pos2);
-
-        node.rectTransform.position = centerPos;
-
-        if (isVert)
-            node.rectTransform.sizeDelta = new Vector2(width, distance + width);
-        else
-            node.rectTransform.sizeDelta = new Vector2(distance + width, width);
+        
+        rect.sizeDelta = isVert 
+            ? new Vector2(width, distance + width) 
+            : new Vector2(distance + width, width);
     }
+
     #endregion
 
     private void OnValidate()
     {
         nodeImage.sprite = nodeSO.icon;
-        
-        if (FillBranch != null)
-        {
-            foreach (var node in FillBranch)
-            {
-                node.color = branchColor;
-            }
-        }
+
+        if (FillBranch == null)
+            return;
+
+        foreach (var node in FillBranch)
+            node.color = branchColor;
     }
 }

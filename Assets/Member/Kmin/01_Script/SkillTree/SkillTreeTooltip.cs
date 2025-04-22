@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SkillTreeTooltip : MonoBehaviour
 {
     [SerializeField] private GameEventChannelSO eventChannel;
+    [SerializeField] private SkillTree skillTree;
 
     private Button _purchaseBtn;
     private Transform _background;
@@ -44,7 +45,6 @@ public class SkillTreeTooltip : MonoBehaviour
 
     private void HandleFruitsPurchase(SkillTreeEvent skillTreeEvent)
     {
-        skillTreeEvent.NodeSo.SkillTreeNode.PurchaseFruits();
         _treePurchaseEvent.SkillTreeNode = skillTreeEvent.NodeSo.SkillTreeNode;
         eventChannel.RaiseEvent(_treePurchaseEvent);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class TestSkillTree : MonoBehaviour
+public class SkillTree : MonoBehaviour
 {
     [SerializeField] private GameEventChannelSO eventChannelSO;
     private List<SkillTreeNode> _fruitsList;
@@ -22,17 +22,16 @@ public class TestSkillTree : MonoBehaviour
 
     private void HandleFruitsPurchase(SkillTreePurchaseEvent skillTreeEvent)
     {
-        StartCoroutine(TestConnect(skillTreeEvent.SkillTreeNode));
+        StartCoroutine(ConnectRoutine(skillTreeEvent.SkillTreeNode));
     }
 
     public void SelectFruits(NodeSO selectedNode)
     {
-        Debug.Log("SelectFruits");
         _skillTreeEvent.NodeSo = selectedNode;
         eventChannelSO.RaiseEvent(_skillTreeEvent);
     }
 
-    private IEnumerator TestConnect(SkillTreeNode f)
+    private IEnumerator ConnectRoutine(SkillTreeNode f)
     {
         f.transform.SetSiblingIndex(f.ParentNode.transform.GetSiblingIndex() - 1);
         
@@ -47,5 +46,14 @@ public class TestSkillTree : MonoBehaviour
         Color lineColor = outline.effectColor;
         DOTween.To(() => lineColor, color => outline.effectColor = color, f.branchColor, 1.5f)
             .SetEase(Ease.InBounce);
+        
+        f.NodeIcon.DOColor(f.branchColor, 1f);
+        f.NodeIcon.DOFade(1f, 1f);
+        f.ConnectedNodes.ForEach(f =>
+        {
+            f.NodeIcon.DOColor(Color.white, 1f);
+            f.NodeIcon.DOFade(1f, 1f);
+            f.NodeButton.interactable = true;
+        });
     }
 }
