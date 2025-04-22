@@ -8,7 +8,7 @@ public class Pillar : MonoBehaviour,IDamgable
     [SerializeField] GameObject chain;
     [SerializeField] GameObject chain2;
     private MeshRenderer _pillerRenderer;
-    private Material _beforMat;
+    [SerializeField] private Material _beforMat;
     public bool IsOnPillar;
 
     public void ApplyDamage(float damage, bool isHit, int stunLevel, Entity delear)
