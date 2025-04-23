@@ -19,7 +19,7 @@ public class MousePlayerMoveAndAttackState : MousePlayerCanMove
         bool isHit = Physics.SphereCast(_entity.transform.position, _entity.transform.lossyScale.x * 0.5f,
             _entity.transform.forward, out hit, maxDistatnce);
 
-        dir = _player.MoveToMousePosition(_player);
+       // dir = _player.MoveToMousePosition(_player);
     }
 
     public override void Update()
@@ -27,8 +27,8 @@ public class MousePlayerMoveAndAttackState : MousePlayerCanMove
         base.Update();
         _player.transform.LookAt(dir);
 
-        _player.transform.position = Vector3.MoveTowards(_player.transform.position,
-            dir, 3000 * Time.deltaTime);
+       // _player.transform.position = Vector3.MoveTowards(_player.transform.position,
+        //    dir, 3000 * Time.deltaTime);
 
         _player.transform.LookAt(dir);
 
