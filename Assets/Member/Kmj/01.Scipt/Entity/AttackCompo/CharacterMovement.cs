@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     public bool CanMove { get; set; } = true;
     private Vector3 _autoMovement;
 
-    private Vector3 _velocity;
+    public Vector3 _velocity { get; set; }
     public Vector3 Velocity => _velocity;
 
     public bool CanManualMovement { get; set; } = true;
