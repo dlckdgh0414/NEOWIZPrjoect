@@ -8,17 +8,22 @@ public class PlayerStrongAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        _player._movement.StopImmediately();
+        _player._movement.CanMove = false;
     }
 
     public override void Update()
     {
         base.Update();
         if (_isTriggerCall)
+        {
             _player.ChangeState("IDLE");
+        }    
     }
 
     public override void Exit()
     {
+            _player._movement.CanMove = true;
         _player._isSkilling = false;
         base.Exit();
     }

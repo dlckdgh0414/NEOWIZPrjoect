@@ -46,7 +46,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
         CalculateMovement();
 
 
-        _rbcompo.linearVelocity = _velocity;
+        _rbcompo.linearVelocity = new Vector3(_velocity.x, _rbcompo.linearVelocity.y, _velocity.z);
     }
 
     private void CalculateMovement()
