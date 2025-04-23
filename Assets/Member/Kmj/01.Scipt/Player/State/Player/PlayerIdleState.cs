@@ -14,7 +14,7 @@ public class PlayerIdleState : PlayerCanAttackState
     {
         base.Update();
         Vector2 movementKey = _player.PlayerInput.MovementKey;
-        _movement.SetMovementDirection(movementKey);
+        _movement.SetMove(movementKey.x ,movementKey.y);
         if (movementKey.magnitude > _inputThereshold)
         {
             _player.ChangeState("MOVE");
