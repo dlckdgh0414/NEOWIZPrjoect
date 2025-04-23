@@ -10,7 +10,7 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
     private Vector3 _destination;
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private float stopThreshold = 0.8f;
-    public bool IsArrived => Vector3.Distance(_entity.transform.position, _moveDir) < stopThreshold;
+    public bool IsArrived => Vector3.Distance(_entity.transform.position, _destination) < stopThreshold;
     private Entity _entity;
 
 
@@ -23,7 +23,7 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
 
     public void RushDir(Transform targetDir,float maxDistance)
     {
-      
+
         if (Physics.Raycast(_entity.transform.position,transform.forward, out RaycastHit hitInfo,maxDistance,whatIsWall)) 
         {
             _moveDir = hitInfo.point - transform.position;
@@ -31,6 +31,14 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
             _moveDir.Normalize();
             Debug.Log(_moveDir);
         }
+    }
+
+    public void CenterDir(Transform target)
+    {
+        _destination = target.position;
+        _moveDir = target.position - _entity.transform.position;
+        _moveDir.y = 0;
+        _moveDir.Normalize();
     }
 
     private void FixedUpdate()

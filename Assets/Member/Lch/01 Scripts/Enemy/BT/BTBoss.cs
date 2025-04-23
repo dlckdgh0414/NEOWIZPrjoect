@@ -6,6 +6,7 @@ public abstract class BTBoss : Enemy
     private BossStateChangeEvent _stateChannel;
     private EntityFeedbackData _feedbackData;
     protected BlackboardVariable<BTBossState> _state;
+    protected Collider _bossCollider;
     public bool IsHit = false;
     public bool IsStun = false;
 
@@ -15,6 +16,8 @@ public abstract class BTBoss : Enemy
             GetBlackboardVariable<BossStateChangeEvent>("BossStateChangeEvent");
         _stateChannel = stateChannelVariable.Value;
         Debug.Assert(_stateChannel != null, $"StateChannel variable is null {gameObject.name}");
+
+        _bossCollider = GetComponent<Collider>();
 
         _state = GetBlackboardVariable<BTBossState>("BossState");
     }
@@ -38,8 +41,8 @@ public abstract class BTBoss : Enemy
 
     protected override void HandleDead()
     {
-        if (IsDead) return;
         gameObject.layer = DeadBodyLayer;
+        _bossCollider.enabled = false;
         IsDead = true;
         _stateChannel.SendEventMessage(BTBossState.DEAD);
     }
