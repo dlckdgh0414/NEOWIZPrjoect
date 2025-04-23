@@ -4,6 +4,7 @@ using UnityEngine;
 public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
 {
     [SerializeField] private StatSO hpStat;
+    [SerializeField] private HealthGageAdjuster hpBar;
     public float maxHealth;
 
     [field : SerializeField] public float currentHealth { get; private set; }
@@ -55,6 +56,8 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
         _feedbackData.IsLastStopHit = isHit;
         _feedbackData.LastEntityWhoHit = delear;
         _feedbackData.LastStunLevel = StunLevel;
+
+        hpBar.ApplyHealth(currentHealth);
 
         if(currentHealth <= 0)
         {
