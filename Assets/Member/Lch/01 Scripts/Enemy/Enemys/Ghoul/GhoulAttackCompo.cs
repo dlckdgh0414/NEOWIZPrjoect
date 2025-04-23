@@ -20,7 +20,7 @@ public class GhoulAttackCompo : Attack
         if (other.gameObject.TryGetComponent(out Player player))
         {
             IDamgable damgable = player.GetComponentInChildren<IDamgable>();
-            CameraManager.Instance.ShakeCamera(1, 0.15f);
+            CameraManager.Instance.ShakeCamera(damge, 0.15f);
             damgable.ApplyDamage(damge,false,0,_entity);
             attackTrigger.enabled = false;
         }

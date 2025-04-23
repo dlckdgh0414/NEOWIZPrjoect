@@ -12,8 +12,7 @@ public class DamageCaster : MonoBehaviour
     public bool CastDamage(float damage)
     {
         RaycastHit hit;
-        bool isHit = Physics.SphereCast(transform.position, transform.lossyScale.x * 0.5f, transform.forward,
-            out hit, 3, _whatIsEnemy);
+        bool isHit = Physics.Raycast(transform.position,transform.forward, out hit,4,_whatIsEnemy);
 
         Debug.Log(isHit);
 
