@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerRollState : PlayerState
@@ -13,18 +14,13 @@ public class PlayerRollState : PlayerState
 
     public override void Enter()
     {
+        _movement.IsRolling = true;
         base.Enter();
-        _movement.CanManualMovement = false;
-        _isRolling = false;
-
-        _animatorTrigger.OnRollingStatusChange += HandleRollingStatusChange;
-        _rollingDirection = _player.transform.forward;
+       
     }
 
     public override void Exit()
     {
-        _movement.CanManualMovement = true;
-        _animatorTrigger.OnRollingStatusChange -= HandleRollingStatusChange;
         base.Exit();
     }
 
@@ -33,19 +29,9 @@ public class PlayerRollState : PlayerState
         base.Update();
 
         if (_isTriggerCall)
+        {
+            _movement.IsRolling = false;
             _player.ChangeState("IDLE");
-    }
-
-    private void HandleRollingStatusChange(bool isActive)
-    {
-        if (_isRolling != isActive && isActive)
-        {
-            _movement.SetAutoMovement(_rollingDirection * _player.rollingVelocity);
         }
-        else if (isActive == false)
-        {
-            _movement.SetAutoMovement(_rollingDirection * (_player.rollingVelocity * 0.2f));
-        }
-        _isRolling = isActive;
     }
 }
