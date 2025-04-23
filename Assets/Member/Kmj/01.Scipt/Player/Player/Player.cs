@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Entity
 {
@@ -61,6 +60,8 @@ public class Player : Entity
     private void Update()
     {
         _stateMachine.UpdateStateMachine();
+
+        
     }
 
 
