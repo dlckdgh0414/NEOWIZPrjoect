@@ -15,10 +15,17 @@ public class SkillTree : MonoBehaviour
     private void Awake()
     {
         _fruitsList = transform.GetComponentsInChildren<SkillTreeNode>(true).ToList();
-        _fruitsList.ForEach(f => f.Initialize());
+        _fruitsList.ForEach(f =>
+        {
+            f.Initialize();
+
+            if (f.IsRootNode)
+                SetColor(f);
+        });
         _fruitsList.ForEach(f => f.NodeButton.onClick.AddListener(() => SelectFruits(f.GetNodeSO())));
         eventChannelSO.AddListener<SkillTreePurchaseEvent>(HandleFruitsPurchase);
     }
+
 
     private void HandleFruitsPurchase(SkillTreePurchaseEvent skillTreeEvent)
     {
@@ -41,7 +48,12 @@ public class SkillTree : MonoBehaviour
                 .SetEase(Ease.OutQuad);
             yield return new WaitUntil(() => f.FillBranch[i].fillAmount == 1);
         }
-        
+
+        SetColor(f);
+    }
+
+    private void SetColor(SkillTreeNode f)
+    {
         Outline outline = f.GetComponentInChildren<Outline>();
         Color lineColor = outline.effectColor;
         DOTween.To(() => lineColor, color => outline.effectColor = color, f.branchColor, 1.5f)

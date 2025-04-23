@@ -7,11 +7,11 @@ public class SkillTreeNode : MonoBehaviour, INode
 {
     [SerializeField] private NodeSO nodeSO;
     [SerializeField] private Image nodeImage;
-    [SerializeField] private bool isRootNode;
     [SerializeField] private float width = 10;
     [SerializeField] private Sprite branchImage;
 
     [field: SerializeField] public List<SkillTreeNode> ConnectedNodes;
+    [field: SerializeField] public bool IsRootNode { get; private set; }
     [field: SerializeField, HideInInspector] public List<Image> ConnectedBranch { get; private set; }
     [field: SerializeField, HideInInspector] public List<Image> FillBranch { get; private set; }
     public SkillTreeNode ParentNode { get; private set; }
@@ -28,7 +28,7 @@ public class SkillTreeNode : MonoBehaviour, INode
 
         ConnectedNodes.ForEach(f => { f.ParentNode = this; });
         
-        if (isRootNode) {
+        if (IsRootNode) {
             NodeButton.interactable = true;
             ConnectedNodes.ForEach(f => f.NodeButton.interactable = true);
         }
