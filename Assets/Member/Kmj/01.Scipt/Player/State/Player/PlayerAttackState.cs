@@ -34,7 +34,7 @@ public class PlayerAttackState : PlayerState
         _player.transform.rotation = Quaternion.LookRotation(playerDiretion); //이거 나중에 쓰인다.
 
         Vector3 movement = playerDiretion * currentAtkData.movementPower;
-        _movement.SetAutoMovement(movement);
+    
     }
 
     private Vector3 GetPlayerDirection()
