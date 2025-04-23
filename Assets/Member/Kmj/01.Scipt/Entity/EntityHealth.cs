@@ -57,7 +57,10 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
         _feedbackData.LastEntityWhoHit = delear;
         _feedbackData.LastStunLevel = StunLevel;
 
-        hpBar.ApplyHealth(currentHealth);
+        if(hpBar != null)
+        {
+            hpBar.ApplyHealth(currentHealth);
+        }
 
         if(currentHealth <= 0)
         {
