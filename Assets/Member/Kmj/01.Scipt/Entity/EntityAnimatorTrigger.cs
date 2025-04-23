@@ -14,6 +14,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     public event Action OnStrongAttackTrigger;
 
     public event Action OnBarrierPressed;
+    public event Action OnAttackDash;
 
     public event Action<bool> OnRollingStatusChange;
 
@@ -28,6 +29,8 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     {
         OnAnimationEndTrigger?.Invoke();
     }
+
+    private void AttackDash() => OnAttackDash?.Invoke();
     private void RollingStart() => OnRollingStatusChange?.Invoke(true);
     private void RollingEnd() => OnRollingStatusChange?.Invoke(true);
 

@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private float moveSpeed;
     public bool CanManualMovement { get; set; } = true;
+    public bool CanMove { get; set; } = true;
     private Vector3 _autoMovement;
 
     public bool IsGround => characterController.isGrounded;
@@ -21,41 +22,41 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     private float _verticalVelocity;
     private Vector3 _movementDirection;
 
-    private Entity _entity;
+    private Player _entity;
 
     [SerializeField] private StatSO _moveSpeedStat;
     [SerializeField] private EntityStat _stat;
 
     public void Initialize(Entity entity)
     {
-        _entity = entity;
+        _entity = entity as Player;
     }
 
     private void Start()
     {
+        _entity._triggerCompo.OnAttackDash += AttackDash;
         moveSpeed = _stat.GetStat(_moveSpeedStat).Value;
+    }
+
+    private void OnDestroy()
+    {
+        _entity._triggerCompo.OnAttackDash -= AttackDash;
     }
     public void SetMovementDirection(Vector2 movementInput)
     {
         _movementDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
     }
 
-    public void Run(float runSpeed)
+    private void Update()
     {
-        originMoveSpeed = moveSpeed;
-        moveSpeed = runSpeed;
-    }
-
-    public void Walk()
-    {
-        moveSpeed = originMoveSpeed;
+        SetTransformXChange();
     }
 
     private void FixedUpdate()
     {
         CalculateMovement();
         ApplyGravity();
-        Move();
+        Move();   
     }
 
     private void Move()
@@ -70,22 +71,27 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private void CalculateMovement()
     {
-        if (CanManualMovement)
+        if (CanMove)
         {
-            _velocity = Quaternion.Euler(0, -45f, 0) *  _movementDirection;
-            _velocity *= moveSpeed;
-        }
-        else
-        {
-            _velocity += _autoMovement * Time.fixedDeltaTime;
-        }
+            if (CanManualMovement)
+            {
+                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity *= moveSpeed;
+            }
+            else
+            {
+                _velocity += _autoMovement * Time.fixedDeltaTime;
+            }
 
-        if (_velocity.magnitude > 0)
-        {
-            var targetRotation = Quaternion.LookRotation(_velocity);
-            Transform parent = _entity.transform;
-            parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+            if (_velocity.magnitude > 0)
+            {
+                var targetRotation = Quaternion.LookRotation(_velocity);
+                targetRotation.z = 0;
+                Transform parent = _entity.transform;
+                parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+            }
         }
+        
     }
 
     private void ApplyGravity()
@@ -105,4 +111,16 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     public void SetAutoMovement(Vector3 autoMovement)
         => _autoMovement = autoMovement;
 
+    public void AttackDash()
+    {
+        _entity.transform.position += Vector3.forward * 1000;
+    }
+    private void SetTransformXChange()
+    {
+        Quaternion quaternion = _entity.transform.rotation;
+
+        quaternion.x = 0;
+
+        _entity.transform.rotation = quaternion;
+    }
 }

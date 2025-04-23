@@ -10,23 +10,26 @@ public class Wolf : BTBoss
     private WolfPhase1AttackEnum _phase1Enum;
     private WolfPhase2AttackEnum _phase2Enum;
 
-    private bool _isPhase2;
+    [SerializeField] private Pillar[] pillars;
+
+    public bool IsPhase2;
 
     [SerializeField] private float rushTimer;
     private float _currentTimer;
     private float _hollwingHp;
     private float _lastHollwing;
-    public bool IsRush {get; set;} = false;
-    public bool IsRushStop { get; set; } = false;
+    public bool IsRush  = false;
+    public bool IsRushStop  = false;
     private bool _iSRushTimerStart = true;
     [SerializeField] private float hollwingTime;
-    [SerializeField] private Transform _target;
     private EntityHealth _health;
+    public Animator mainAnim;
 
     protected override void Awake()
     {
         base.Awake();
         _health = GetCompo<EntityHealth>();
+        mainAnim = GetComponentInChildren<Animator>();
     }
 
     protected override void Start()
@@ -41,13 +44,17 @@ public class Wolf : BTBoss
         _phase2Change = phase2ChannelVariable.Value;
         _phase1Enum = GetBlackboardVariable<WolfPhase1AttackEnum>("AttackEnum");
         _phase2Enum = GetBlackboardVariable<WolfPhase2AttackEnum>("Phase2Attack");
-        _isPhase2 = GetBlackboardVariable<bool>("IsPhase2");
+        IsPhase2 = GetBlackboardVariable<bool>("IsPhase2");
         _hollwingHp = _health.maxHealth - 15f;
         _lastHollwing = Time.time;
     }
 
     private void Update()
     {
+        if(_health.maxHealth / 2 >= _health.currentHealth)
+        {
+            IsPhase2 = true;
+        }
         if (_iSRushTimerStart)
         {
             RushTimer();
@@ -56,29 +63,32 @@ public class Wolf : BTBoss
     }
     private void HowlingTimer()
     {
-        if (_health.currentHealth == _hollwingHp)
+        if (_health.currentHealth <= _hollwingHp)
         {
             if (Time.time >= _lastHollwing + hollwingTime)
             {
                 if (_phase1Enum == WolfPhase1AttackEnum.Rush
                || _state.Value == BTBossState.STUN
                || _state.Value == BTBossState.HIT
-               || _phase2Enum == WolfPhase2AttackEnum.Rush_Upgrade)
+               || _phase2Enum == WolfPhase2AttackEnum.Rush_Upgrade
+               || _phase2Enum == WolfPhase2AttackEnum.Catch)
                 {
                     return;
                 }
-                if (_isPhase2)
+                if (IsPhase2)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
-                    _lastHollwing = Time.time;
-                    _hollwingHp -= 15f;
                 }
                 else
                 {
                     _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Howling);
-                    _lastHollwing = Time.time;
-                    _hollwingHp -= 15f;
                 }
+                foreach(Pillar pillar in pillars)
+                {
+                    pillar.OffPillar();
+                }
+               _lastHollwing = Time.time;
+               _hollwingHp -= 15f;
             }
         }
     }
@@ -91,12 +101,13 @@ public class Wolf : BTBoss
             if (_phase1Enum == WolfPhase1AttackEnum.Howling 
                 ||_state.Value == BTBossState.STUN 
                 ||_state.Value == BTBossState.HIT 
-                || _phase2Enum == WolfPhase2AttackEnum.Howling)
+                || _phase2Enum == WolfPhase2AttackEnum.Howling
+                || _phase2Enum == WolfPhase2AttackEnum.Catch)
             {
                 return;
             }
 
-            if (_isPhase2)
+            if (IsPhase2)
             {
                 _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Rush_Upgrade);
                 _currentTimer = 0;
@@ -107,7 +118,7 @@ public class Wolf : BTBoss
                 _currentTimer = 0;
             }
            _iSRushTimerStart = false;
-
+            IsStun = true;
         }
     }
 
@@ -115,17 +126,16 @@ public class Wolf : BTBoss
     {
         if (IsRush)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if(collision.gameObject.TryGetComponent(out Player player))
             {
-                if (collision.gameObject.TryGetComponent(out IDamgable damgable))
-                {
-                    damgable.ApplyDamage(RushDamge, false, 0, this);
-                }
+                IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+                damgable.ApplyDamage(RushDamge, false, 0, this);
             }
             if (collision.gameObject.CompareTag("Wall"))
             {
                  IsRushStop = true;
                 _iSRushTimerStart = true;
+                IsStun = false;
             }
         }
             

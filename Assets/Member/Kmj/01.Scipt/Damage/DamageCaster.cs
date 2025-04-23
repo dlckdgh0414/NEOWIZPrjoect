@@ -9,11 +9,10 @@ public class DamageCaster : MonoBehaviour
         _owner = owner;
     }
 
-    public bool CastDamage(float damage, Vector2 knockback)
+    public bool CastDamage(float damage)
     {
         RaycastHit hit;
-        bool isHit = Physics.SphereCast(transform.position, transform.lossyScale.x * 0.5f, transform.forward,
-            out hit, 3, _whatIsEnemy);
+        bool isHit = Physics.Raycast(transform.position,transform.forward, out hit,4,_whatIsEnemy);
 
         Debug.Log(isHit);
 
@@ -22,7 +21,6 @@ public class DamageCaster : MonoBehaviour
         {
             Debug.Log(hit.transform.name);
             hit.transform.GetComponentInChildren<IDamgable>().ApplyDamage(damage, false,0, _owner);
-
         }
 
         return isHit;

@@ -44,6 +44,7 @@ public class CameraManager : MonoBehaviour
     public float defaultShakeDuration = 0.2f;
 
     private Coroutine shakeCoroutine;
+    private bool isRunning = false;
 
     //Funcsions
     private void OnEnable()
@@ -77,6 +78,7 @@ public class CameraManager : MonoBehaviour
     public void ShakeCamera(float intensity, float duration)
     {
         if (noise == null) return;
+        if (isRunning) return;
 
         if (intensity < 0) intensity = defaultShakeIntensity;
         if (duration < 0) duration = defaultShakeDuration;
@@ -90,6 +92,7 @@ public class CameraManager : MonoBehaviour
     private IEnumerator ShakeRoutine(float intensity, float duration)
     {
         noise.AmplitudeGain = intensity;
+        isRunning = true;
 
         yield return new WaitForSeconds(duration / 3);
 
@@ -107,5 +110,6 @@ public class CameraManager : MonoBehaviour
         }
 
         noise.AmplitudeGain = 0f;
+        isRunning = false;
     }
 }

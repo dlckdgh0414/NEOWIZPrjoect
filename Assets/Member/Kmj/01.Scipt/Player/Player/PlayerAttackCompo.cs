@@ -41,7 +41,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     {
         _entity = entity;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
-        AttackSpeed = 0.35f;
+        AttackSpeed = 1f;
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
         _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
@@ -71,7 +71,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private void HandleAttackTrigger()
     {
         Vector2 knockbackForce = new Vector2(6,6);
-        bool success = damageCast.CastDamage(atkDamage, knockbackForce);
+        bool success = damageCast.CastDamage(atkDamage);
 
 
         if (success)
