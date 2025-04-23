@@ -30,7 +30,7 @@ public class MousePlayerEnergy : MonoBehaviour
     }
     public void UseEnergy(int useEnergy)
     {
-        energy -= useEnergy;
+       // energy -= useEnergy;
     }
 
 
@@ -115,7 +115,7 @@ public class MousePlayerEnergy : MonoBehaviour
         {
             if (energy >= useEnergy)
             {
-                energy -= useEnergy;
+                energy -= useEnergy + 3.8f;
             }
             else
             {

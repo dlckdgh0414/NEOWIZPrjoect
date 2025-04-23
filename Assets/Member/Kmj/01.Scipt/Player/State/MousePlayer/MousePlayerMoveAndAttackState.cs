@@ -26,8 +26,9 @@ public class MousePlayerMoveAndAttackState : MousePlayerCanMove
     {
         base.Update();
         _player.transform.LookAt(dir);
+
         _player.transform.position = Vector3.MoveTowards(_player.transform.position,
-            dir, 15f * Time.deltaTime);
+            dir, 3000 * Time.deltaTime);
 
         _player.transform.LookAt(dir);
 
