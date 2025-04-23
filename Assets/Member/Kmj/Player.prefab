@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -9.81
   characterController: {fileID: 5511030642431037073}
-  rotationSpeed: 5
+  rotationSpeed: 20
   _moveSpeedStat: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
   _stat: {fileID: 3036315967863216786}
 --- !u!114 &1311811295595450613
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
   IsUseOverride: 1
-  overrideValue: 4
+  overrideValue: 9
 --- !u!1 &3786474571960527460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +2987,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 860ffe5628295f34ca5929852ab7112f, type: 2}
   - {fileID: 11400000, guid: debb97a8fc02a7f4fa7a3e9142e32aac, type: 2}
   - {fileID: 11400000, guid: c73754f65a64e7e48b9ed434725baad6, type: 2}
-  rollingVelocity: 12
+  rollingVelocity: 20
 --- !u!143 &5511030642431037073
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3001,7 +3001,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
