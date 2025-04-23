@@ -34,13 +34,11 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     private void Start()
     {
-        _entity._triggerCompo.OnAttackDash += AttackDash;
         moveSpeed = _stat.GetStat(_moveSpeedStat).Value;
     }
 
     private void OnDestroy()
     {
-        _entity._triggerCompo.OnAttackDash -= AttackDash;
     }
     public void SetMovementDirection(Vector2 movementInput)
     {
@@ -66,7 +64,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
     public void StopImmediately()
     {
-        _movementDirection = Vector3.zero;
+        _velocity = Vector3.zero;
     }
 
     private void CalculateMovement()
@@ -108,13 +106,8 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
         _velocity.y = _verticalVelocity;
     }
 
-    public void SetAutoMovement(Vector3 autoMovement)
+      public void SetAutoMovement(Vector3 autoMovement)
         => _autoMovement = autoMovement;
-
-    public void AttackDash()
-    {
-        _entity.transform.position += Vector3.forward * 1000;
-    }
     private void SetTransformXChange()
     {
         Quaternion quaternion = _entity.transform.rotation;
@@ -122,5 +115,6 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
         quaternion.x = 0;
 
         _entity.transform.rotation = quaternion;
+
     }
 }

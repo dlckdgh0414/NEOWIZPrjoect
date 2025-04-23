@@ -19,6 +19,9 @@ public abstract class PlayerCanAttackState : PlayerState
     private void HandleAttackPressed()
     {
         if (!_player._isSkilling)
+        {
+            _player._movement.StopImmediately();
             _player.ChangeState("ATTACK");
+        }
     }
 }

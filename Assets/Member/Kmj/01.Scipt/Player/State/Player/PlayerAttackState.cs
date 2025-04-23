@@ -16,6 +16,7 @@ public class PlayerAttackState : PlayerState
     
     public override void Enter()
     {
+        _movement.StopImmediately();
         base.Enter();
         _attackCompo.Attack();
 

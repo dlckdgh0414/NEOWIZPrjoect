@@ -1597,7 +1597,6 @@ GameObject:
   - component: {fileID: 6232709990665232583}
   - component: {fileID: 6898085241401960678}
   - component: {fileID: 1311811295595450613}
-  - component: {fileID: 411806601920424045}
   m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
@@ -1634,7 +1633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -9.81
   characterController: {fileID: 5511030642431037073}
-  rotationSpeed: 5
+  rotationSpeed: 20
   _moveSpeedStat: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
   _stat: {fileID: 3036315967863216786}
 --- !u!114 &1311811295595450613
@@ -1651,34 +1650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
   IsUseOverride: 1
-  overrideValue: 4
---- !u!54 &411806601920424045
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3663406482586968474}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  overrideValue: 9
 --- !u!1 &3786474571960527460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +2987,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 860ffe5628295f34ca5929852ab7112f, type: 2}
   - {fileID: 11400000, guid: debb97a8fc02a7f4fa7a3e9142e32aac, type: 2}
   - {fileID: 11400000, guid: c73754f65a64e7e48b9ed434725baad6, type: 2}
-  rollingVelocity: 12
+  rollingVelocity: 20
 --- !u!143 &5511030642431037073
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3029,7 +3001,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
