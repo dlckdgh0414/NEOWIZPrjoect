@@ -26,13 +26,4 @@ public partial class CheckPlayersCondition : Condition
 
         return false;
     }
-
-    public override void OnStart()
-    {
-        
-    }
-
-    public override void OnEnd()
-    {
-    }
 }
