@@ -37,7 +37,7 @@ public class MousePlayer : Entity
     public Vector3 MoveToMousePosition(MousePlayer _player)
     {
         Vector3 targetPos = PlayerInput.GetWorldPosition();
-        targetPos.y = transform.position.y;
+        //targetPos.y = transform.position.y;
         return targetPos;
     }
 

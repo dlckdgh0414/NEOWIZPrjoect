@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 8611891612710685627}
   - component: {fileID: 6185204098645759490}
   - component: {fileID: 23920313713163332}
-  - component: {fileID: 3705064365156996013}
   m_Layer: 10
   m_Name: Renderer
   m_TagString: Untagged
@@ -149,29 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7625bac25ef367a42bf60d9c4fc8662a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &3705064365156996013
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537433584031489582}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.852153
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.81894284, z: 0}
 --- !u!1 &597214284618807084
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: c7d72c92d575eb8408a9f8d4fb344732, type: 2}
+  hpBar: {fileID: 0}
   maxHealth: 100
   <currentHealth>k__BackingField: 0
 --- !u!114 &26169930811045384
@@ -2942,6 +2919,8 @@ GameObject:
   - component: {fileID: 6232885789080637854}
   - component: {fileID: 264383454570593365}
   - component: {fileID: 4943169048851671264}
+  - component: {fileID: 5216166662746082073}
+  - component: {fileID: 5035951790457132044}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -3038,7 +3017,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6414677187495235117}
   serializedVersion: 4
-  m_Mass: 0.5
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3057,6 +3036,52 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &5216166662746082073
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414677187495235117}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.8237019
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.96656454, z: 0}
+--- !u!136 &5035951790457132044
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414677187495235117}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.8237019
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.96656454, z: 0}
 --- !u!1 &6516519182851933692
 GameObject:
   m_ObjectHideFlags: 0
