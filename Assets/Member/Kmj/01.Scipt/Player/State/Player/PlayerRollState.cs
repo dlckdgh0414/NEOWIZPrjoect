@@ -14,6 +14,7 @@ public class PlayerRollState : PlayerState
 
     public override void Enter()
     {
+        _movement._velocity = Vector3.zero;
         _movement.IsRolling = true;
         base.Enter();
        
