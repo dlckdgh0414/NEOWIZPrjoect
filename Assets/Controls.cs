@@ -116,6 +116,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenSkillTree"",
+                    ""type"": ""Button"",
+                    ""id"": ""488076d1-5f29-4adf-8120-c461aa2d6e70"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -327,6 +336,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""StrongAttackSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4b8bdf3-5b88-4df5-afe9-b4acb9060758"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenSkillTree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -356,7 +376,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""15cef263-9014-4fd5-94d9-4e4a6234a6ef"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -922,6 +942,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_SheldSkill = m_Player.FindAction("SheldSkill", throwIfNotFound: true);
         m_Player_Rolling = m_Player.FindAction("Rolling", throwIfNotFound: true);
         m_Player_StrongAttackSkill = m_Player.FindAction("StrongAttackSkill", throwIfNotFound: true);
+        m_Player_OpenSkillTree = m_Player.FindAction("OpenSkillTree", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1011,6 +1032,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SheldSkill;
     private readonly InputAction m_Player_Rolling;
     private readonly InputAction m_Player_StrongAttackSkill;
+    private readonly InputAction m_Player_OpenSkillTree;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1025,6 +1047,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @SheldSkill => m_Wrapper.m_Player_SheldSkill;
         public InputAction @Rolling => m_Wrapper.m_Player_Rolling;
         public InputAction @StrongAttackSkill => m_Wrapper.m_Player_StrongAttackSkill;
+        public InputAction @OpenSkillTree => m_Wrapper.m_Player_OpenSkillTree;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1064,6 +1087,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @StrongAttackSkill.started += instance.OnStrongAttackSkill;
             @StrongAttackSkill.performed += instance.OnStrongAttackSkill;
             @StrongAttackSkill.canceled += instance.OnStrongAttackSkill;
+            @OpenSkillTree.started += instance.OnOpenSkillTree;
+            @OpenSkillTree.performed += instance.OnOpenSkillTree;
+            @OpenSkillTree.canceled += instance.OnOpenSkillTree;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1098,6 +1124,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @StrongAttackSkill.started -= instance.OnStrongAttackSkill;
             @StrongAttackSkill.performed -= instance.OnStrongAttackSkill;
             @StrongAttackSkill.canceled -= instance.OnStrongAttackSkill;
+            @OpenSkillTree.started -= instance.OnOpenSkillTree;
+            @OpenSkillTree.performed -= instance.OnOpenSkillTree;
+            @OpenSkillTree.canceled -= instance.OnOpenSkillTree;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1290,6 +1319,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSheldSkill(InputAction.CallbackContext context);
         void OnRolling(InputAction.CallbackContext context);
         void OnStrongAttackSkill(InputAction.CallbackContext context);
+        void OnOpenSkillTree(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
