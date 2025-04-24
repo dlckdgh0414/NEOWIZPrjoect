@@ -10,6 +10,8 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
         ,OnSheldPressd,OnStrongAttackPressed,OnRollingPressed, OnSheldCanceld;
 
+    public event Action OnSkillTreeOpen;
+
     public event Action OnClickMovePressed;
 
     private Controls _control;
@@ -107,5 +109,11 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
             OnStrongAttackPressed?.Invoke();
+    }
+
+    public void OnOpenSkillTree(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            OnSkillTreeOpen?.Invoke();
     }
 }
