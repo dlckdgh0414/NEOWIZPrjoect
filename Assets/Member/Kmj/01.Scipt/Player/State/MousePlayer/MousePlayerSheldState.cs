@@ -9,14 +9,14 @@ public class MousePlayerSheldState : EntityState
     {
         _player = entity as MousePlayer;
         _energyCompo = entity.GetComponentInChildren<MousePlayerEnergy>();
-        _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
+     //   _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
     }
 
     public override void Enter()
     {
         base.Enter();
         _player.LookAtMouse();
-        _energyCompo.StartSkill(5);
+       // _energyCompo.StartSkill(5);
         Debug.Log("½¯µå");
     }
 
@@ -32,7 +32,7 @@ public class MousePlayerSheldState : EntityState
 
     public override void Exit()
     {
-        _energyCompo.CancelSkill();
+       // _energyCompo.CancelSkill();
         _player._isSkilling = false;
         base.Exit();
     }

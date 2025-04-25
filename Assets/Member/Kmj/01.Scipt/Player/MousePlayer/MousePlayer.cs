@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayer : Entity
 {
@@ -11,6 +10,8 @@ public class MousePlayer : Entity
     [field: SerializeField] public Rigidbody rbCompo;
     private EntityStateMachine _stateMachine;
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
+
+    public Transform player;
 
     public bool _isSkilling { get;  set; } = false;
     public EntitySkillCompo _skillCompo { get; private set; }
@@ -37,7 +38,6 @@ public class MousePlayer : Entity
     public Vector3 MoveToMousePosition(MousePlayer _player)
     {
         Vector3 targetPos = PlayerInput.GetWorldPosition();
-        //targetPos.y = transform.position.y;
         return targetPos;
     }
 

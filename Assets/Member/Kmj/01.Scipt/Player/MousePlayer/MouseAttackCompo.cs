@@ -10,7 +10,7 @@ public class MouseAttackCompo : MonoBehaviour
     private MousePlayer _player;
     [SerializeField] private float _damage;
 
-    [SerializeField] private MousePlayerEnergy _energyCompo;
+    //[SerializeField] private MousePlayerEnergy _energyCompo;
 
     private int animValue;
 
@@ -28,7 +28,7 @@ public class MouseAttackCompo : MonoBehaviour
             print(other .name);
             _player.ChangeState("ATTACK");
             other.gameObject.GetComponentInChildren<IDamgable>().ApplyDamage(_damage, false, 0, _player);
-            _energyCompo.energy += 5f;
+     //       _energyCompo.energy += 5f;
         }
     }
 
