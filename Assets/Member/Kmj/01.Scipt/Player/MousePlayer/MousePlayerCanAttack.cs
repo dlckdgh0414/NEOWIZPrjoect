@@ -1,11 +1,11 @@
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class MousePlayerCanMove : EntityState
+public class MousePlayerCanAttack : EntityState
 {
     protected MousePlayer _player;
     protected MousePlayerEnergy _energyCompo;
-    public MousePlayerCanMove(Entity entity, int animationHash) : base(entity, animationHash)
+    public MousePlayerCanAttack(Entity entity, int animationHash) : base(entity, animationHash)
     {
         _player = entity as MousePlayer;
         _energyCompo = entity.GetComponentInChildren<MousePlayerEnergy>(); 
@@ -14,7 +14,7 @@ public class MousePlayerCanMove : EntityState
     public override void Enter()
     {
         base.Enter();
-        _player.PlayerInput.OnClickMovePressed += HandleMovePressed;
+        _player.PlayerInput.OnClickAttackPressed += HandleAttackPressed;
     }
 
     public override void Update()
@@ -23,12 +23,12 @@ public class MousePlayerCanMove : EntityState
     }
     public override void Exit()
     {
-        _player.PlayerInput.OnClickMovePressed -= HandleMovePressed;
+        _player.PlayerInput.OnClickAttackPressed -= HandleAttackPressed;
         base.Exit();
     }
 
-    private void HandleMovePressed()
+    private void HandleAttackPressed()
     {
-        _player.ChangeState("MOVE");
+        _player.ChangeState("ATTACK");
     }
 }

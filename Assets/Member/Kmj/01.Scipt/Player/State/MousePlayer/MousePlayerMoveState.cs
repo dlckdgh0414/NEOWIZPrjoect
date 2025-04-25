@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MousePlayerMoveState : MousePlayerCanMove
+public class MousePlayerMoveState : MousePlayerCanAttack
 {
 
     private Vector3 dir = Vector3.zero;
@@ -9,8 +9,6 @@ public class MousePlayerMoveState : MousePlayerCanMove
     private MousePlayerSkillCompo _skillCompo;
     public MousePlayerMoveState(Entity entity, int animationHash) : base(entity, animationHash)
     {
-        _energyCompo = _entity.GetComponentInChildren<MousePlayerEnergy>();
-        _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
     }
 
     public override void Enter()
@@ -21,14 +19,6 @@ public class MousePlayerMoveState : MousePlayerCanMove
 
         dir = _player.MoveToMousePosition(_player);
 
-        _energyCompo.UseEnergy(15);
-
-        _energyCompo.StartSkill(0.2f);
-
-        if (_energyCompo.energy <= 0)
-        {
-            _player.ChangeState("IDLE");
-        }
         _player.LookAtMouse();
 
     }
@@ -39,11 +29,6 @@ public class MousePlayerMoveState : MousePlayerCanMove
         
         _player.transform.position = Vector3.MoveTowards(_player.transform.position,
             dir, 25f * Time.deltaTime);
-
-        if(_energyCompo.energy <= 0)
-        {
-            _player.ChangeState("IDLE");
-        }
 
         
 
@@ -56,7 +41,7 @@ public class MousePlayerMoveState : MousePlayerCanMove
 
     public override void Exit()
     {
-        _energyCompo.CancelSkill();
+       // _energyCompo.CancelSkill();
         base.Exit();
     }
 }

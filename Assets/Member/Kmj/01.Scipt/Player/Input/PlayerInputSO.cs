@@ -10,7 +10,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
         ,OnSheldPressd,OnStrongAttackPressed,OnRollingPressed, OnSheldCanceld;
 
-    public event Action OnClickMovePressed;
+    public event Action OnClickAttackPressed;
 
     private Controls _control;
     private Vector2 _screenPos;
@@ -81,11 +81,6 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
         return _worldPos;
     }
 
-    public void OnClickMove(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-            OnClickMovePressed?.Invoke();
-    }
 
     public void OnSheldSkill(InputAction.CallbackContext context)
     {
@@ -107,5 +102,11 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
             OnStrongAttackPressed?.Invoke();
+    }
+
+    public void OnClickAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnClickAttackPressed?.Invoke();
     }
 }

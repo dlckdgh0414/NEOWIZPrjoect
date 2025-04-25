@@ -4,6 +4,6 @@ public class BarrerCompo : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        
+        //if(collision.)
     }
 }
