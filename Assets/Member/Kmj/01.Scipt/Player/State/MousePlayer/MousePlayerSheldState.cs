@@ -5,6 +5,8 @@ public class MousePlayerSheldState : EntityState
     private MousePlayer _player;
     private MousePlayerEnergy _energyCompo;
     private MousePlayerSkillCompo _skillCompo;
+
+    private float time;
     public MousePlayerSheldState(Entity entity, int animationHash) : base(entity, animationHash)
     {
         _player = entity as MousePlayer;
@@ -15,7 +17,9 @@ public class MousePlayerSheldState : EntityState
     {
         base.Enter();
         _player.LookAtMouse();
+        time = 0;
         // _energyCompo.StartSkill(5);
+        _player._useSkillCompo.isPalling = true;
         _player.player.ChangeState("IDLE");
         _player.transform.position = _player.player.transform.position;
         _player.player._movement.StopImmediately();
@@ -26,8 +30,10 @@ public class MousePlayerSheldState : EntityState
     {
         base.Update();
 
-        float time = 0;
         time += Time.deltaTime;
+
+        if (time >= 1)
+            _player._useSkillCompo.isPalling = false;
 
         _player.player._movement.CanMove = false;
 

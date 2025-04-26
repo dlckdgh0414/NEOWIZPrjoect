@@ -12,6 +12,8 @@ public class MousePlayerSkillCompo : MonoBehaviour
     [SerializeField] private Transform barrierTrans;
     [SerializeField] private MousePlayer _player;
 
+    public bool isPalling { get; set; }
+
     public float BarrierHp { get; set; }
 
     private void Awake()
@@ -27,10 +29,6 @@ public class MousePlayerSkillCompo : MonoBehaviour
         _trigger.OnSheldCanceld -= HandleBarrierCanceled;
     }
 
-    private void Update()
-    {
-       
-    }
 
     private void HandleBarrierPressed()
     {
