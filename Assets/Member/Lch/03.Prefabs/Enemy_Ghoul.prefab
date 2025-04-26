@@ -359,6 +359,53 @@ Transform:
   - {fileID: 9100053511584898015}
   m_Father: {fileID: 5963963597249978793}
   m_LocalEulerAnglesHint: {x: 16.949007, y: 8.338037, z: -3.244668}
+--- !u!1 &1508901713245576611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6211545359632792748}
+  - component: {fileID: 1969987874728173038}
+  m_Layer: 7
+  m_Name: NavMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6211545359632792748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508901713245576611}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5250562529501654294}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1969987874728173038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508901713245576611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14efaeb4faf29434f9e12061a13f384f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  moveSpeed: 4
+  stopOffset: 0.05
 --- !u!1 &1808285739370390813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpStat: {fileID: 11400000, guid: 19a41d7c212397a4682936bee4599869, type: 2}
+  hpBar: {fileID: 0}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
 --- !u!114 &1656450988098138437
@@ -1908,6 +1956,7 @@ GameObject:
   - component: {fileID: 5627939629584246030}
   - component: {fileID: 2335919670627438303}
   - component: {fileID: 8265642636014969698}
+  - component: {fileID: 6445593251360775065}
   m_Layer: 7
   m_Name: Enemy_Ghoul
   m_TagString: Untagged
@@ -1929,12 +1978,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2571138362876073555}
-  - {fileID: 7543109385384949091}
   - {fileID: 3591066635414685087}
   - {fileID: 7058648200229165403}
   - {fileID: 4536923975563499334}
   - {fileID: 5727566027425903634}
   - {fileID: 7187096783161629598}
+  - {fileID: 6211545359632792748}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7716251526105433407
@@ -2082,57 +2131,28 @@ CapsuleCollider:
   m_Height: 1.5640808
   m_Direction: 1
   m_Center: {x: 0, y: 0.6724114, z: 0}
---- !u!1 &6741296474368026140
-GameObject:
+--- !u!195 &6445593251360775065
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7543109385384949091}
-  - component: {fileID: 7772322054979056283}
-  m_Layer: 0
-  m_Name: Mover
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7543109385384949091
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6741296474368026140}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5250562529501654294}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7772322054979056283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6741296474368026140}
+  m_GameObject: {fileID: 6714865481784068244}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850f488691acab84e8de53e8d339b93a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rbCompo: {fileID: 2335919670627438303}
-  <Speed>k__BackingField: 5
-  CanMauanMove: 1
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 0
-  stopThreshold: 0.8
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.48
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7073984186876368736
 GameObject:
   m_ObjectHideFlags: 0

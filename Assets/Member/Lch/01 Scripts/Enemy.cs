@@ -5,6 +5,8 @@ public abstract class Enemy : Entity
 {
     protected BehaviorGraphAgent btAgent;
     protected Rigidbody _rbCompo;
+    [SerializeField] private float delectRange;
+    [SerializeField] private float attackRange;
 
     [field: SerializeField] public EntityFinderSO PlayerFinder { get; protected set; }
 
@@ -36,5 +38,13 @@ public abstract class Enemy : Entity
         }
 
         return default;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, delectRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

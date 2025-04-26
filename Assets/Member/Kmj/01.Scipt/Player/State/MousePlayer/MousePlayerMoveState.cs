@@ -38,7 +38,7 @@ public class MousePlayerMoveState : MousePlayerCanMove
         base.Update();
         
         _player.transform.position = Vector3.MoveTowards(_player.transform.position,
-            dir, 25f * Time.deltaTime);
+            dir, 10f * Time.deltaTime);
 
         if(_energyCompo.energy <= 0)
         {
