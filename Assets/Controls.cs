@@ -82,7 +82,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ClickMove"",
+                    ""name"": ""ClickAttack"",
                     ""type"": ""Button"",
                     ""id"": ""12b8d1a0-6f06-4291-a002-99d749a8e1a0"",
                     ""expectedControlType"": """",
@@ -300,7 +300,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ClickMove"",
+                    ""action"": ""ClickAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -938,7 +938,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_MousePos = m_Player.FindAction("MousePos", throwIfNotFound: true);
-        m_Player_ClickMove = m_Player.FindAction("ClickMove", throwIfNotFound: true);
+        m_Player_ClickAttack = m_Player.FindAction("ClickAttack", throwIfNotFound: true);
         m_Player_SheldSkill = m_Player.FindAction("SheldSkill", throwIfNotFound: true);
         m_Player_Rolling = m_Player.FindAction("Rolling", throwIfNotFound: true);
         m_Player_StrongAttackSkill = m_Player.FindAction("StrongAttackSkill", throwIfNotFound: true);
@@ -1028,7 +1028,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_MousePos;
-    private readonly InputAction m_Player_ClickMove;
+    private readonly InputAction m_Player_ClickAttack;
     private readonly InputAction m_Player_SheldSkill;
     private readonly InputAction m_Player_Rolling;
     private readonly InputAction m_Player_StrongAttackSkill;
@@ -1043,7 +1043,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @MousePos => m_Wrapper.m_Player_MousePos;
-        public InputAction @ClickMove => m_Wrapper.m_Player_ClickMove;
+        public InputAction @ClickAttack => m_Wrapper.m_Player_ClickAttack;
         public InputAction @SheldSkill => m_Wrapper.m_Player_SheldSkill;
         public InputAction @Rolling => m_Wrapper.m_Player_Rolling;
         public InputAction @StrongAttackSkill => m_Wrapper.m_Player_StrongAttackSkill;
@@ -1075,9 +1075,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
-            @ClickMove.started += instance.OnClickMove;
-            @ClickMove.performed += instance.OnClickMove;
-            @ClickMove.canceled += instance.OnClickMove;
+            @ClickAttack.started += instance.OnClickAttack;
+            @ClickAttack.performed += instance.OnClickAttack;
+            @ClickAttack.canceled += instance.OnClickAttack;
             @SheldSkill.started += instance.OnSheldSkill;
             @SheldSkill.performed += instance.OnSheldSkill;
             @SheldSkill.canceled += instance.OnSheldSkill;
@@ -1112,9 +1112,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
-            @ClickMove.started -= instance.OnClickMove;
-            @ClickMove.performed -= instance.OnClickMove;
-            @ClickMove.canceled -= instance.OnClickMove;
+            @ClickAttack.started -= instance.OnClickAttack;
+            @ClickAttack.performed -= instance.OnClickAttack;
+            @ClickAttack.canceled -= instance.OnClickAttack;
             @SheldSkill.started -= instance.OnSheldSkill;
             @SheldSkill.performed -= instance.OnSheldSkill;
             @SheldSkill.canceled -= instance.OnSheldSkill;
@@ -1315,7 +1315,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
-        void OnClickMove(InputAction.CallbackContext context);
+        void OnClickAttack(InputAction.CallbackContext context);
         void OnSheldSkill(InputAction.CallbackContext context);
         void OnRolling(InputAction.CallbackContext context);
         void OnStrongAttackSkill(InputAction.CallbackContext context);
