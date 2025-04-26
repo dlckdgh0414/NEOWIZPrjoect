@@ -36,7 +36,7 @@ public class MousePlayerEnergy : MonoBehaviour
 
     private void Update()
     {
-        isEnergyNotzero = energy > 0;
+        isEnergyNotzero = energy >= 0;
 
         if (energy <= 0)
         {

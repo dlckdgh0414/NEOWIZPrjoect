@@ -7,12 +7,9 @@ using UnityEngine;
 
         private void Awake()
         {
-            GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
             Debug.Assert(player != null, "player does not exist in this scene");
 
-            foreach (var p in player)
-            {
-                playerFinder.SetPlayer(p);
-            }
+            playerFinder.SetPlayer(player);
         }
 }
