@@ -18,6 +18,8 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 
     public event Action<bool> OnRollingStatusChange;
 
+    public event Action<bool> OnManualRotationTrigger;
+
     private Entity _entity;
 
     public void Initialize(Entity entity)
@@ -47,4 +49,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     {
         OnAttackTrigger?.Invoke();
     }
+
+    private void StartManualRotation() => OnManualRotationTrigger?.Invoke(true);
+    private void StopManualRotation() => OnManualRotationTrigger?.Invoke(false);
 }

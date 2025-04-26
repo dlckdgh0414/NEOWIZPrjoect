@@ -5,8 +5,8 @@ public abstract class Enemy : Entity
 {
     protected BehaviorGraphAgent btAgent;
     protected Rigidbody _rbCompo;
-    [SerializeField] private float delectRange;
-    [SerializeField] private float attackRange;
+    [field:SerializeField] public float delectRange;
+    [field:SerializeField] public float attackRange;
 
     [field: SerializeField] public EntityFinderSO PlayerFinder { get; protected set; }
 
@@ -27,7 +27,6 @@ public abstract class Enemy : Entity
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        PlayerFinder.ClearSetTargets();
     }
 
     public BlackboardVariable<T> GetBlackboardVariable<T>(string key)
