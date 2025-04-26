@@ -24,6 +24,12 @@ public class SoulBullet : MonoBehaviour
         _rbCompo.linearVelocity = _mover * bulletSpeed;
     }
 
+    public void ReflectDir(Vector3 hitNormal)
+    {
+        Vector3 reflectedVelocity = Vector3.Reflect(_rbCompo.linearVelocity, hitNormal);
+        _rbCompo.linearVelocity = reflectedVelocity * bulletSpeed;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.TryGetComponent(out Player player))
