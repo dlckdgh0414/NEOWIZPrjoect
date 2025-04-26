@@ -9,9 +9,12 @@ public class MousePlayer : Entity
 
     [field: SerializeField] public Rigidbody rbCompo;
     private EntityStateMachine _stateMachine;
+    public MouseAttackCompo _attackCompo { get; private set; }
+    public MouseMoveCompo _moveCompo { get; private set; }
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
 
-    public Transform player;
+    public Player player;
+
 
     public bool _isSkilling { get;  set; } = false;
     public EntitySkillCompo _skillCompo { get; private set; }
@@ -21,6 +24,8 @@ public class MousePlayer : Entity
         base.Awake();
         rbCompo = GetComponentInChildren<Rigidbody>();
         _skillCompo = GetCompo<EntitySkillCompo>();
+        _attackCompo = GetComponentInChildren<MouseAttackCompo>();
+        _moveCompo = GetCompo<MouseMoveCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
         _isSkilling = false;
     }
@@ -37,7 +42,7 @@ public class MousePlayer : Entity
 
     public Vector3 MoveToMousePosition(MousePlayer _player)
     {
-        Vector3 targetPos = PlayerInput.GetWorldPosition();
+        Vector3 targetPos = PlayerInput.GetWorldPosition(out RaycastHit hitInfo);
         return targetPos;
     }
 
@@ -47,7 +52,7 @@ public class MousePlayer : Entity
 
     public void LookAtMouse()
     {
-        Vector3 targetPos = PlayerInput.GetWorldPosition();
+        Vector3 targetPos = PlayerInput.GetWorldPosition(out RaycastHit hitInfo);
         Vector3 direction = targetPos - transform.position;
         direction.y = 0;
 

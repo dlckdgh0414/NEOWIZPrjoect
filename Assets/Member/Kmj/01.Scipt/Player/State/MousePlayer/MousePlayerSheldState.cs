@@ -8,15 +8,17 @@ public class MousePlayerSheldState : EntityState
     public MousePlayerSheldState(Entity entity, int animationHash) : base(entity, animationHash)
     {
         _player = entity as MousePlayer;
-        _energyCompo = entity.GetComponentInChildren<MousePlayerEnergy>();
-     //   _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
+        _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
     }
 
     public override void Enter()
     {
         base.Enter();
         _player.LookAtMouse();
-       // _energyCompo.StartSkill(5);
+        // _energyCompo.StartSkill(5);
+        _player.player.ChangeState("IDLE");
+        _player.transform.position = _player.player.transform.position;
+        _player.player._movement.StopImmediately();
         Debug.Log("½¯µå");
     }
 
@@ -24,16 +26,20 @@ public class MousePlayerSheldState : EntityState
     {
         base.Update();
 
-        if (!_energyCompo.isEnergyNotzero)
-        {
+        float time = 0;
+        time += Time.deltaTime;
+
+        _player.player._movement.CanMove = false;
+
+        if (time >= 10)
             _skillCompo.HandleBarrierCanceled();
-        }
     }
 
     public override void Exit()
     {
-       // _energyCompo.CancelSkill();
+        // _energyCompo.CancelSkill();
         _player._isSkilling = false;
+        _player.player._movement.CanMove = true;
         base.Exit();
     }
 }
