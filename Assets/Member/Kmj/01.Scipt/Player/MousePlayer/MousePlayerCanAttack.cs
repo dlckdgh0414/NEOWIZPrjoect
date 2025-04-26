@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayerCanAttack : EntityState
 {
@@ -8,13 +7,13 @@ public class MousePlayerCanAttack : EntityState
     public MousePlayerCanAttack(Entity entity, int animationHash) : base(entity, animationHash)
     {
         _player = entity as MousePlayer;
-        _energyCompo = entity.GetComponentInChildren<MousePlayerEnergy>(); 
+        _energyCompo = entity.GetComponentInChildren<MousePlayerEnergy>();
     }
 
     public override void Enter()
     {
         base.Enter();
-        _player.PlayerInput.OnClickAttackPressed += HandleAttackPressed;
+        _player.PlayerInput.OnMouseAttackkeyPressed += HandleAttackPressed;
     }
 
     public override void Update()
@@ -23,12 +22,17 @@ public class MousePlayerCanAttack : EntityState
     }
     public override void Exit()
     {
-        _player.PlayerInput.OnClickAttackPressed -= HandleAttackPressed;
+        _player.PlayerInput.OnMouseAttackkeyPressed -= HandleAttackPressed;
         base.Exit();
     }
 
     private void HandleAttackPressed()
     {
-        _player.ChangeState("ATTACK");
+        Vector3 worldPosition = _player.PlayerInput.GetWorldPosition(out RaycastHit hitInfo);
+
+        if (hitInfo.collider != null && ((1 << hitInfo.transform.gameObject.layer) & _player._whatIsEnemy) != 0)
+        {
+            _player.ChangeState("MOVE");
+        }
     }
 }

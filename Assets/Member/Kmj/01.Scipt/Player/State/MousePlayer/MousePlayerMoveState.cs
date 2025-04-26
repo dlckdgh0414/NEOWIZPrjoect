@@ -5,7 +5,6 @@ public class MousePlayerMoveState : MousePlayerCanAttack
 
     private Vector3 dir = Vector3.zero;
 
-    private MousePlayerEnergy _energyCompo;
     private MousePlayerSkillCompo _skillCompo;
     public MousePlayerMoveState(Entity entity, int animationHash) : base(entity, animationHash)
     {
@@ -17,7 +16,7 @@ public class MousePlayerMoveState : MousePlayerCanAttack
 
         _player.rbCompo.linearVelocity = Vector3.zero;
 
-        dir = _player.MoveToMousePosition(_player);
+        dir = _player.PlayerInput.GetWorldPosition(out RaycastHit hit);
 
         _player.LookAtMouse();
 
@@ -26,22 +25,22 @@ public class MousePlayerMoveState : MousePlayerCanAttack
     public override void Update()
     {
         base.Update();
-        
-        _player.transform.position = Vector3.MoveTowards(_player.transform.position,
-            dir, 25f * Time.deltaTime);
+
+        _player._moveCompo.MoveToAttackEntity(dir);
 
         
 
-        if (_player.transform.position == dir)
+        if (Vector3.Distance(_player.transform.position, dir) <= 1)
         {
-            _player.ChangeState("IDLE");
+            _player.ChangeState("ATTACK");
         }
 
     }
 
     public override void Exit()
     {
-       // _energyCompo.CancelSkill();
+        // _energyCompo.CancelSkill();
+        _player._moveCompo.StopImmediately();
         base.Exit();
     }
 }

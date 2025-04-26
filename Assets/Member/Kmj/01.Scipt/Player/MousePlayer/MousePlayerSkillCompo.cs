@@ -4,7 +4,7 @@ public class MousePlayerSkillCompo : MonoBehaviour
 {
     [SerializeField] private GameObject _barrierEffect;
 
-    [SerializeField] private MousePlayerEnergy _energyCompo;
+   // [SerializeField] private MousePlayerEnergy _energyCompo;
 
     [SerializeField] private EntityStat _stat;
 
@@ -16,6 +16,7 @@ public class MousePlayerSkillCompo : MonoBehaviour
 
     private void Awake()
     {
+        _barrierEffect.SetActive(false);
         _trigger.OnSheldPressd += HandleBarrierPressed;
         _trigger.OnSheldCanceld += HandleBarrierCanceled;
     }
@@ -33,12 +34,11 @@ public class MousePlayerSkillCompo : MonoBehaviour
 
     private void HandleBarrierPressed()
     {
-        if (_energyCompo.isEnergyNotzero && !_player._isSkilling)
+        if (!_player._isSkilling)
         {
             _player.ChangeState("SHELD");
-            _player._isSkilling = true;
             _barrierEffect.SetActive(true);
-            _energyCompo.UseEnergy(10);
+            _player._isSkilling = true;
         }
     }
 
