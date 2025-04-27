@@ -455,6 +455,10 @@ PrefabInstance:
       value: MousePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 2730187991562167932, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2730187991562167932, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -471,6 +475,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+--- !u!114 &249304065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1194718214228201221, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+  m_PrefabInstance: {fileID: 1539153280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14efaeb4faf29434f9e12061a13f384f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &385296836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 361134102395811774, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
@@ -882,18 +897,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3476397998053631150, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4399790372074181656, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 4399790372074181656, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12.29
-      objectReference: {fileID: 0}
     - target: {fileID: 5250562529501654294, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -933,26 +936,6 @@ PrefabInstance:
     - target: {fileID: 5250562529501654294, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5532964206471705174, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5532964206471705174, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -11.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 5551690569714698071, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 5627939629584246030, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: attackRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5627939629584246030, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
-      propertyPath: delectRange
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6714865481784068244, guid: 657eee86fb2faf7458043fa1abb28c2f, type: 3}
       propertyPath: m_Name
@@ -1809,9 +1792,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Soul
       objectReference: {fileID: 0}
-    - target: {fileID: 816204851502467766, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 3390664746246960178, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390664746246960178, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: delectRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: 'managedReferences[4070496017517903969]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[Blade.Enemies.NavMovement,
+        Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: managedReferences[4070496017517903969].Name
+      value: Movement
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: managedReferences[4070496017517903969].m_Value
+      value: 
+      objectReference: {fileID: 249304065}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[7]'
+      value: 4070496017517903969
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: managedReferences[4070496017517903969].GUID.m_Value0
+      value: 6492889734436589717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5421250785688940312, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
+      propertyPath: managedReferences[4070496017517903969].GUID.m_Value1
+      value: 4786631047925819785
       objectReference: {fileID: 0}
     - target: {fileID: 7431736952956971290, guid: 3dd4b6b4f1ddb7248955f969d5fed83a, type: 3}
       propertyPath: m_LocalPosition.x
