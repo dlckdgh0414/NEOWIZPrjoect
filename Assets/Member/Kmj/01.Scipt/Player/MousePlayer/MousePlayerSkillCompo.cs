@@ -4,7 +4,6 @@ public class MousePlayerSkillCompo : MonoBehaviour
 {
     [SerializeField] private GameObject _barrierEffect;
 
-   // [SerializeField] private MousePlayerEnergy _energyCompo;
 
     [SerializeField] private EntityStat _stat;
 

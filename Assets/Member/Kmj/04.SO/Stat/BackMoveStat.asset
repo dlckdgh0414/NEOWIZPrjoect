@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e7463397e0ec8e4794ebe84d4b367ce, type: 3}
-  m_Name: StrongAttackState
+  m_Script: {fileID: 11500000, guid: 7dbd0d10f24cb134882a38a8b5d1e310, type: 3}
+  m_Name: BackMoveStat
   m_EditorClassIdentifier: 
-  skillName: StrongAttack
-  skillUIImage: {fileID: 0}
-  skillDamage: 3
-  skillCoolTime: 5
-  currentcoolTime: 5
+  statName: BackMoveStat
+  description: PlayerMoveStat
+  icon: {fileID: 0}
+  displayName: BackMoveStat
+  baseValue: 15
+  minValue: 0
+  maxValue: 10
+  <IsPercent>k__BackingField: 0

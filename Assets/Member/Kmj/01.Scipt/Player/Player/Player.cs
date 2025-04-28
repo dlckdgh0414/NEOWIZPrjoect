@@ -25,7 +25,7 @@ public class Player : Entity
         _skillCompo = GetCompo<EntitySkillCompo>();
         _movement = GetCompo<CharacterMovement>();
         _triggerCompo = GetCompo<EntityAnimatorTrigger>();
-        PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
+ 
         PlayerInput.OnRollingPressed += HandleRollingPressed;
     }
 
@@ -37,20 +37,9 @@ public class Player : Entity
 
     protected override void OnDestroy()
     {
-        PlayerInput.OnStrongAttackPressed -= HandleStrongAttackPressed;
         PlayerInput.OnRollingPressed -= HandleRollingPressed;
     }
-    private void HandleStrongAttackPressed()
-    {
-        if (_skillCompo.CanUseSkill("StrongAttack") && !_isSkilling)
-        {
-            ChangeState("STRONGATTACK");
-            _skillCompo.CurrentTimeClear("StrongAttack");
-            _isSkilling = true;
-        }
-        else
-            return;
-    }
+   
 
     private void Start()
     {
@@ -60,8 +49,6 @@ public class Player : Entity
     private void Update()
     {
         _stateMachine.UpdateStateMachine();
-
-        
     }
 
 
