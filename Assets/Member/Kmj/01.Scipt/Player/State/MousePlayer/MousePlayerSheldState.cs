@@ -21,7 +21,6 @@ public class MousePlayerSheldState : EntityState
         // _energyCompo.StartSkill(5);
         _player._useSkillCompo.isPalling = true;
         _player.player.ChangeState("IDLE");
-        _player.transform.position = _player.player.transform.position;
         _player.player._movement.StopImmediately();
         Debug.Log("½¯µå");
     }
@@ -32,13 +31,14 @@ public class MousePlayerSheldState : EntityState
 
         time += Time.deltaTime;
 
-        if (time >= 1)
-            _player._useSkillCompo.isPalling = false;
-
+        _player.transform.position = _player.player.transform.position;
         _player.player._movement.CanMove = false;
 
         if (time >= 10)
             _skillCompo.HandleBarrierCanceled();
+        else if (time >= 0.8f)
+            _player._useSkillCompo.isPalling = false;
+
     }
 
     public override void Exit()
