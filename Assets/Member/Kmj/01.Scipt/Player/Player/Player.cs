@@ -1,5 +1,7 @@
 using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Entity
 {
@@ -16,6 +18,11 @@ public class Player : Entity
     public PlayerAttackCompo _attackCompo { get; private set; }
     public EntitySkillCompo _skillCompo { get; private set; }
     public float rollingVelocity = 12f;
+
+    public bool isDoingFollow { get; set; }
+    [field : SerializeField] public MousePlayer _soul { get; private set; }
+
+    [SerializeField] private LayerMask _whatIsEnemey;
 
     
     protected override void Awake()
@@ -73,5 +80,13 @@ public class Player : Entity
     {
         _isSkilling = true;
         ChangeState("DIE");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (((1 << collision.gameObject.layer) & _whatIsEnemey) != 0 && isDoingFollow)
+        {
+            ChangeState("STRONGATTACK");
+        }
     }
 }
