@@ -52,8 +52,8 @@ public abstract class BTEnemy : Enemy
     {
         enemy.LookAt(target);
         _rbCompo.AddForce(Vector3.up * 1.5f, ForceMode.Impulse);
-
         _rbCompo.AddForce(-enemy.forward * power, ForceMode.Impulse);
+
         Debug.Log("È÷ÆR");
     }
 }
