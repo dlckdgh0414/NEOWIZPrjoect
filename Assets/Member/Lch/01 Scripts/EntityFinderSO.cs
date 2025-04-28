@@ -5,15 +5,10 @@ using UnityEngine;
 public class EntityFinderSO : ScriptableObject
 {
     [SerializeField] private string targetTag;
-    public List<GameObject> Targets;
+    public GameObject Targets;
 
     public void SetPlayer(GameObject entity)
     {
-        Targets.Add(entity);
-    }
-
-    public void ClearSetTargets()
-    {
-        Targets.Clear();
+        Targets = entity;
     }
 }

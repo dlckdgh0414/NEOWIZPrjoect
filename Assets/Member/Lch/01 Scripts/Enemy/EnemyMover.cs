@@ -58,15 +58,6 @@ public class EnemyMover : MonoBehaviour,IEntityComponet
         _moveDir = Vector3.zero;
     }
 
-    public void BackStepEnemy(Transform target, float power,Transform enemy)
-    {
-         enemy.LookAt(target);
-        _rbCompo.AddForce(Vector3.up * 1.5f, ForceMode.Impulse);
-
-        _rbCompo.AddForce(-enemy.forward * power, ForceMode.Impulse);
-        Debug.Log("È÷ÆR");
-    }
-
     public void Initialize(Entity entity)
     {
         _entity = entity;
