@@ -9,7 +9,7 @@ public class SoulBullet : MonoBehaviour
     private Entity _entity;
     [SerializeField] private LayerMask _whatIsSheld;
     [SerializeField] private LayerMask _whatIsEnemy;
-    private bool _isReflect = false;
+    public bool _isReflect { get; set; } = false;
 
     public void SetDir(Transform target,Entity entity)
     {
@@ -31,20 +31,7 @@ public class SoulBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (((1 << other.transform.gameObject.layer) & _whatIsSheld) != 0 && 
-            other.GetComponent<BarrerCompo>().isPalling)
-        {
-            Vector3 reflectDir = (_entity.transform.position - transform.position).normalized;
-            _rbCompo.linearVelocity = reflectDir * _rbCompo.linearVelocity.magnitude; 
-            _entity = null;
-            _isReflect = true;
-        }
-        else if (((1 << other.transform.gameObject.layer) & _whatIsSheld) != 0)
-        {
-            gameObject.SetActive(false);
-        }
-        else if((1 << other.transform.gameObject.layer & _whatIsEnemy) != 0 && _isReflect)
+        if((1 << other.transform.gameObject.layer & _whatIsEnemy) != 0 && _isReflect)
         {
             IDamgable damgable = other.GetComponentInChildren<IDamgable>();
             CameraManager.Instance.ShakeCamera(1, 0.15f);

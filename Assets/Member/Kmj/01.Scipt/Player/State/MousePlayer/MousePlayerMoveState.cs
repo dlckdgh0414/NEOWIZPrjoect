@@ -19,6 +19,7 @@ public class MousePlayerMoveState : MousePlayerCanAttack
         dir = _player.PlayerInput.GetWorldPosition(out RaycastHit hit);
 
         _player.LookAtMouse();
+        _player.isUseDashSkill = true;
 
     }
 
@@ -28,7 +29,7 @@ public class MousePlayerMoveState : MousePlayerCanAttack
 
         _player._moveCompo.MoveToAttackEntity(dir);
 
-        
+        _player.LookAtMouse();
 
         if (Vector3.Distance(_player.transform.position, dir) <= 1)
         {
