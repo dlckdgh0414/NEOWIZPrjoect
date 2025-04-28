@@ -8,7 +8,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     [SerializeField] private LayerMask whatIsGround;
 
     public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
-        ,OnSheldPressd,OnStrongAttackPressed,OnRollingPressed, OnSheldCanceld
+        ,OnSheldPressd,OnHandleFollowSoulPressed,OnRollingPressed, OnSheldCanceld
         ,OnMouseAttackkeyPressed;
 
     public event Action OnSkillTreeOpen;
@@ -103,7 +103,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public void OnStrongAttackSkill(InputAction.CallbackContext context)
     {
         if (context.performed)
-            OnStrongAttackPressed?.Invoke();
+            OnHandleFollowSoulPressed?.Invoke();
     }
 
     public void OnOpenSkillTree(InputAction.CallbackContext context)

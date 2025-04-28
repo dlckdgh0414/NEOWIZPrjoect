@@ -1930,7 +1930,6 @@ MonoBehaviour:
   - rid: 4070495565551240138
   - rid: 4070495594112352487
   - rid: 4070495594112352488
-  - rid: 6363091981924040894
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -1984,14 +1983,6 @@ MonoBehaviour:
           m_Value1: 4457010121442176603
         Name: BackSetpPower
         m_Value: 5
-    - rid: 6363091981924040894
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13150281035321179159
-          m_Value1: 14543011487693267292
-        Name: Attack
-        m_Value: {fileID: 1494939059}
 --- !u!136 &222256662
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4915,13 +4906,13 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1032
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &525332505
 GameObject:
@@ -5542,6 +5533,11 @@ Transform:
   - {fileID: 755065983}
   m_Father: {fileID: 1847725728}
   m_LocalEulerAnglesHint: {x: -7.9687276, y: -65.78413, z: 176.43225}
+--- !u!4 &635616676 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 344218418306719936, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+  m_PrefabInstance: {fileID: 1098673063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &636223641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5821,6 +5817,17 @@ Transform:
   - {fileID: 32657277}
   m_Father: {fileID: 156800322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &700425873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3036315967863216786, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+  m_PrefabInstance: {fileID: 1556794717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eadad8b11b946654896aebbdaa012932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &710542888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6042,6 +6049,17 @@ Transform:
   - {fileID: 1716855161}
   m_Father: {fileID: 499110926}
   m_LocalEulerAnglesHint: {x: -19.162336, y: 3.4976015, z: -11.7839575}
+--- !u!114 &728307290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 23920313713163332, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+  m_PrefabInstance: {fileID: 1556794717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7625bac25ef367a42bf60d9c4fc8662a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &733212348
 GameObject:
   m_ObjectHideFlags: 0
@@ -8491,8 +8509,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 977652589130931285, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 1024
+      value: 1032
       objectReference: {fileID: 0}
+    - target: {fileID: 977652589130931285, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015357227388345923, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175377976432855128, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: backMoveSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: c9df680860dcfcf48bb5aab2b68e409b, type: 2}
     - target: {fileID: 2730187991562167932, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       propertyPath: m_Name
       value: MousePlayer
@@ -8505,9 +8535,20 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1556794722}
+    - target: {fileID: 8192295402355313274, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: statOverrides.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192295402355313274, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      propertyPath: 'statOverrides.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1441762773}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 344218418306719936, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1441762772}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1015357227388345923, guid: 3b97084bf03800b43b5559f9d268d7d2, type: 3}
       insertIndex: -1
@@ -8793,6 +8834,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 268860086}
   m_LocalEulerAnglesHint: {x: 31.634964, y: 24.058521, z: 65.65897}
+--- !u!1 &1117260175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9131525379987269386, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+  m_PrefabInstance: {fileID: 1556794717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1117260181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117260175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0dde7f3d8aab5408507b3c59f191ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillList: []
+--- !u!114 &1117260184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117260175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54cae30f5c4aba40b67a52de4f54541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerCompo: {fileID: 728307290}
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 128
+  _skillDamage: {fileID: 11400000, guid: a9f34a1dd4fc5cb468b42110d8ceeb39, type: 2}
+  _stat: {fileID: 700425873}
+  _skillSize: {x: 3, y: 3, z: 3}
+  _entity: {fileID: 1556794722}
+  <skillCoolTime>k__BackingField: 0
+  <currentcoolTime>k__BackingField: 10
 --- !u!1 &1133721626
 GameObject:
   m_ObjectHideFlags: 0
@@ -9077,7 +9158,6 @@ MonoBehaviour:
   - rid: 4070495565551240138
   - rid: 4070495594112352487
   - rid: 4070495594112352488
-  - rid: 6363091981924040894
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -9131,14 +9211,6 @@ MonoBehaviour:
           m_Value1: 4457010121442176603
         Name: BackSetpPower
         m_Value: 5
-    - rid: 6363091981924040894
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13150281035321179159
-          m_Value1: 14543011487693267292
-        Name: Attack
-        m_Value: {fileID: 920845724}
 --- !u!136 &1193621868
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10309,7 +10381,6 @@ MonoBehaviour:
   - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
-  - rid: 4070495888905339834
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -10355,14 +10426,6 @@ MonoBehaviour:
           m_Value1: 11857164642831694203
         Name: AtackCooldown
         m_Value: 3
-    - rid: 4070495888905339834
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13150281035321179159
-          m_Value1: 14543011487693267292
-        Name: Attack
-        m_Value: {fileID: 811767839}
 --- !u!1 &1321488207
 GameObject:
   m_ObjectHideFlags: 0
@@ -11324,6 +11387,53 @@ MonoBehaviour:
   <IsLastStopHit>k__BackingField: 0
   <LastStunLevel>k__BackingField: 0
   <LastEntityWhoHit>k__BackingField: {fileID: 0}
+--- !u!1 &1441762771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1441762772}
+  - component: {fileID: 1441762773}
+  m_Layer: 10
+  m_Name: BackMoveStat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1441762772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441762771}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.14696503, y: 0.018835902, z: -2.5521812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 635616676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1441762773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441762771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c1232795da3a247b688069161dbfec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: c9df680860dcfcf48bb5aab2b68e409b, type: 2}
+  IsUseOverride: 1
+  overrideValue: 10
 --- !u!1 &1443699095
 GameObject:
   m_ObjectHideFlags: 0
@@ -11387,17 +11497,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1069469649}
   m_LocalEulerAnglesHint: {x: -8.297958, y: -0.009222319, z: -0.42197618}
---- !u!114 &1468410465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5069067968680304602, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
-  m_PrefabInstance: {fileID: 1556794717}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77c1232795da3a247b688069161dbfec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1470577075
 GameObject:
   m_ObjectHideFlags: 0
@@ -12040,11 +12139,31 @@ PrefabInstance:
     - target: {fileID: 3036315967863216786, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: 'statOverrides.Array.data[5]'
       value: 
-      objectReference: {fileID: 1468410465}
+      objectReference: {fileID: 0}
     - target: {fileID: 5116368027191275809, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 1784575815}
+    - target: {fileID: 6191766676548171197, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: _skill
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191766676548171197, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: _skillList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191766676548171197, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: '_skillList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232885789080637854, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: stateDatas.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232885789080637854, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: 'stateDatas.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 652268e0aa77ca645a0765d5b9ea01d1, type: 2}
     - target: {fileID: 6414677187495235117, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: m_Name
       value: Player
@@ -12091,9 +12210,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5035951790457132044, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+    - {fileID: 6191766676548171197, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+    - {fileID: 8143366389159495432, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9131525379987269386, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1117260184}
+    - targetCorrespondingSourceObject: {fileID: 9131525379987269386, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1117260181}
   m_SourcePrefab: {fileID: 100100000, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
 --- !u!114 &1556794718 stripped
 MonoBehaviour:
@@ -12517,6 +12644,52 @@ Transform:
   - {fileID: 67655966}
   m_Father: {fileID: 1345229692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1588108781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1588108782}
+  - component: {fileID: 1588108783}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1588108782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588108781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.061714, y: 3.7650385, z: -21.791704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1588108783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588108781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 725b7e3e3068b4549865c6a62782f9a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillCompo: {fileID: 1117260181}
+  _skillSO: {fileID: 11400000, guid: 4fbae1d52d415bb4498e2807c7a2b6ee, type: 2}
 --- !u!1 &1592407404
 GameObject:
   m_ObjectHideFlags: 0
@@ -12961,15 +13134,6 @@ MonoBehaviour:
   - rid: 4070495699247562845
   - rid: 4070495857065328722
   - rid: 4070495857065328723
-  - rid: 4070495857065328725
-  - rid: 4070495857065328726
-  - rid: 4070495857065328727
-  - rid: 4070495857065328728
-  - rid: 4070495857065328730
-  - rid: 4070495857065328731
-  - rid: 4070495857065328732
-  - rid: 4070495857065328733
-  - rid: 4070495886471332415
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -12999,78 +13163,6 @@ MonoBehaviour:
           m_Value1: 14906843008837672211
         Name: StunTime
         m_Value: 3
-    - rid: 4070495857065328725
-      type: {class: 'BlackboardVariable`1[[EntityFeedbackData, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1931192516883440643
-          m_Value1: 772320655167320469
-        Name: HitFeedbackData
-        m_Value: {fileID: 485710038}
-    - rid: 4070495857065328726
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17482137385749088481
-          m_Value1: 4832305268799709684
-        Name: Center
-        m_Value: {fileID: 0}
-    - rid: 4070495857065328727
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 7289022057467444278
-          m_Value1: 17317530190336218688
-        Name: Scaratch
-        m_Value: {fileID: 1210490959}
-    - rid: 4070495857065328728
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 4269011525305814541
-          m_Value1: 1086184627335786409
-        Name: BitingAttack
-        m_Value: {fileID: 481740447}
-    - rid: 4070495857065328730
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 11796456446166271674
-          m_Value1: 12880313040470640108
-        Name: DetectRange
-        m_Value: 6
-    - rid: 4070495857065328731
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1888006722131403562
-          m_Value1: 2249348467468881975
-        Name: AttackRange
-        m_Value: 6
-    - rid: 4070495857065328732
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 3632856259204285587
-          m_Value1: 11857164642831694203
-        Name: AtackCooldown
-        m_Value: 2
-    - rid: 4070495857065328733
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 2758122370683908461
-          m_Value1: 17231996186908483483
-        Name: CatchValue
-        m_Value: 100
-    - rid: 4070495886471332415
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 7586336547669311432
-          m_Value1: 1326847374849443233
-        Name: CatchAttack
-        m_Value: {fileID: 1046155850}
 --- !u!54 &1627765143
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15774,7 +15866,6 @@ MonoBehaviour:
   - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
-  - rid: 4070495888905339834
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -15820,14 +15911,6 @@ MonoBehaviour:
           m_Value1: 11857164642831694203
         Name: AtackCooldown
         m_Value: 3
-    - rid: 4070495888905339834
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13150281035321179159
-          m_Value1: 14543011487693267292
-        Name: Attack
-        m_Value: {fileID: 1155481062}
 --- !u!1 &1946691051
 GameObject:
   m_ObjectHideFlags: 0
@@ -15961,7 +16044,6 @@ MonoBehaviour:
   - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
-  - rid: 4070495888905339834
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -16007,14 +16089,6 @@ MonoBehaviour:
           m_Value1: 11857164642831694203
         Name: AtackCooldown
         m_Value: 3
-    - rid: 4070495888905339834
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 13150281035321179159
-          m_Value1: 14543011487693267292
-        Name: Attack
-        m_Value: {fileID: 1256897894}
 --- !u!1 &1951528252
 GameObject:
   m_ObjectHideFlags: 0
@@ -17686,3 +17760,4 @@ SceneRoots:
   - {fileID: 1098673063}
   - {fileID: 1556794717}
   - {fileID: 1784575814}
+  - {fileID: 1588108782}

@@ -49,6 +49,11 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
         _rbcompo.linearVelocity = new Vector3(_velocity.x, _rbcompo.linearVelocity.y, _velocity.z);
     }
 
+    public void MoveToEntity(Vector3 target)
+    {
+        _entity.transform.position =
+           Vector3.MoveTowards(_entity.transform.position, target, 50 * Time.deltaTime);
+    }
     private void CalculateMovement()
     {
         if (CanMove)

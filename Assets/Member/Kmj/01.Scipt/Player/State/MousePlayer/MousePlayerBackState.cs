@@ -28,7 +28,7 @@ public class MousePlayerBackState : EntityState
     {
         base.Update();
 
-        _player._moveCompo.MoveToAttackEntity(_player.player.transform.position);
+        _player._moveCompo.MoveBack(_player.player.transform.position);
 
 
         if (Vector3.Distance(_player.player.transform.position,
