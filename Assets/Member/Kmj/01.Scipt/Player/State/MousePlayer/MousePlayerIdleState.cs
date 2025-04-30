@@ -12,8 +12,9 @@ public class MousePlayerIdleState : MousePlayerCanAttack
 
     public override void Enter()
     {
+        _player.isUseSheld = true;
+        _player.isUseDashSkill = false;
         base.Enter();
-        //플레이어 한테 옴
         //_energyCompo.StartFill();
         //_energyCompo.StartFillMag();
     }
@@ -32,6 +33,7 @@ public class MousePlayerIdleState : MousePlayerCanAttack
 
     public override void Exit()
     {
+        _player.isUseSheld = false;
         base.Exit();
         //_energyCompo.StopHeal();
         //_energyCompo.StopMag();

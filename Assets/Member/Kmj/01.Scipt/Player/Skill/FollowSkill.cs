@@ -8,22 +8,22 @@ public class FollowSkill : SkillCompo
     private float _strongDamage;
 
     private Player _player;
-    private void Start()
+
+
+    [SerializeField] private MousePlayer _soul;
+    public override void GetSkill()
     {
         _player = _entity as Player;
         _strongDamage = _stat.GetStat(_skillDamage).Value;
-    }
-    public override void GetSkill()
-    {
         print(_player);
         print(_triggerCompo);
-        _player.PlayerInput.OnHandleFollowSoulPressed += HandleFollowSoul;
+        _player.PlayerInput.OnRollingPressed += HandleFollowSoul;
         _triggerCompo.OnStrongAttackTrigger += Skill;
     }
 
     private void HandleFollowSoul()
     {
-        if (CanUseSkill("MoveToSoul") && !_player._isSkilling)
+        if (CanUseSkill("MoveToSoul") && !_player._isSkilling && _player._soul.isUseDashSkill)
         {
             _player.ChangeState("FOLLOW");
             CurrentTimeClear("MoveToSoul");
@@ -36,7 +36,7 @@ public class FollowSkill : SkillCompo
 
     public override void EventDefault()
     {
-        _player.PlayerInput.OnHandleFollowSoulPressed -= HandleFollowSoul;
+        _player.PlayerInput.OnRollingPressed  -= HandleFollowSoul;
         _triggerCompo.OnStrongAttackTrigger -= Skill;
     }
 

@@ -23,7 +23,7 @@ public class PlayerStrongAttackState : PlayerState
 
     public override void Exit()
     {
-            _player._movement.CanMove = true;
+        _player._movement.CanMove = true;
         _player._isSkilling = false;
         base.Exit();
     }

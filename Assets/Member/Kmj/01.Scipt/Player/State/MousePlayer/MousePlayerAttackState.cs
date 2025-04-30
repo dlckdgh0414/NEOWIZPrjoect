@@ -14,6 +14,7 @@ public class MousePlayerAttackState : EntityState
     public override void Enter()
     {
         base.Enter();
+        _player.isUseDashSkill = true;
         _player._moveCompo.StopImmediately();
 
         Collider[] collider = Physics.OverlapBox(_player.transform.position, _player._attackCompo._boxSize,

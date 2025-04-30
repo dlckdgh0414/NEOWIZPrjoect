@@ -29,7 +29,7 @@ public class EntitySkillCompo : MonoBehaviour, IEntityComponet
                 var type = Type.GetType(skillSo.className);
 
                 if (type == null)
-                    Debug.Log("¾ø¾î¿ë");
+                    return;
 
                 var components = entity.GetComponentsInChildren(type, true);
 

@@ -52,7 +52,16 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     public void MoveToEntity(Vector3 target)
     {
         _entity.transform.position =
-           Vector3.MoveTowards(_entity.transform.position, target, 50 * Time.deltaTime);
+           Vector3.MoveTowards(_entity.transform.position, target, 60 * Time.deltaTime);
+    }
+
+    public void LookAt(Vector3 entity)
+    {
+        Vector3 targetPos = entity;
+        Vector3 direction = targetPos - transform.position;
+        direction.y = 0;
+
+        transform.rotation = Quaternion.LookRotation(direction.normalized);
     }
     private void CalculateMovement()
     {
