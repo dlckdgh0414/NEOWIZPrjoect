@@ -17,7 +17,7 @@ public class FollowSkill : SkillCompo
         _strongDamage = _stat.GetStat(_skillDamage).Value;
         print(_player);
         print(_triggerCompo);
-        _player.PlayerInput.OnHandleFollowSoulPressed += HandleFollowSoul;
+        _player.PlayerInput.OnRollingPressed += HandleFollowSoul;
         _triggerCompo.OnStrongAttackTrigger += Skill;
     }
 
@@ -36,7 +36,7 @@ public class FollowSkill : SkillCompo
 
     public override void EventDefault()
     {
-        _player.PlayerInput.OnHandleFollowSoulPressed -= HandleFollowSoul;
+        _player.PlayerInput.OnRollingPressed  -= HandleFollowSoul;
         _triggerCompo.OnStrongAttackTrigger -= Skill;
     }
 

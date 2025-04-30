@@ -23,6 +23,9 @@ public class MousePlayer : Entity
     public bool _isSkilling { get;  set; } = false;
 
     public bool isUseDashSkill { get; set; } = false;
+    
+    
+    public bool isUseSheld { get; set; }
 
 
 

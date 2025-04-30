@@ -24,10 +24,18 @@ public class PlayerFollowState : PlayerState
 
         _player._movement.MoveToEntity(_soulDir);
 
-        if(Vector3.Distance(_player.transform.position, _soulDir) <= 1.25f)
+        if(Vector3.Distance(_player.transform.position, _soulDir) <= 0.3f)
         {
-            _player.ChangeState("STRONGATTACK");
-            _player._soul.ChangeState("IDLE");
+            if (_player.isFollowingAttack == true)
+            {
+                _player.ChangeState("STRONGATTACK");
+                _player._soul.ChangeState("IDLE");
+            }
+            else
+            { 
+                _player.ChangeState("IDLE");
+                _player._soul.ChangeState("IDLE");
+            }
         }
         base.Update();
     }
@@ -35,6 +43,7 @@ public class PlayerFollowState : PlayerState
     public override void Exit()
     {
         _player.isDoingFollow = false;
+        _player._isSkilling = false;
         base.Exit();
     }
 }
