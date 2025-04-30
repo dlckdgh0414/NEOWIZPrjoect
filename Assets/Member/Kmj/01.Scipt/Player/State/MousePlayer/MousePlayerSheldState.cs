@@ -23,7 +23,6 @@ public class MousePlayerSheldState : EntityState
         _player._barrerSkill.isPalling = true;
         _player.player.ChangeState("IDLE");
         _player.player._movement.StopImmediately();
-        Debug.Log("½¯µå");
     }
 
     public override void Update()

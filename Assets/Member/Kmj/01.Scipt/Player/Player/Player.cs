@@ -13,16 +13,19 @@ public class Player : Entity
 
     public EntityAnimatorTrigger _triggerCompo { get; private set; }
 
-    public bool _isSkilling { get;  set; }
-    private EntityStateMachine _stateMachine;
     public PlayerAttackCompo _attackCompo { get; private set; }
+    
     public EntitySkillCompo _skillCompo { get; private set; }
     public float rollingVelocity = 12f;
+    public bool _isSkilling { get;  set; }
 
     public bool isDoingFollow { get; set; }
+
+    public bool isFollowingAttack { get; set; } = false;
     [field : SerializeField] public MousePlayer _soul { get; private set; }
 
     [SerializeField] private LayerMask _whatIsEnemey;
+    private EntityStateMachine _stateMachine;
 
     
     protected override void Awake()
@@ -39,7 +42,8 @@ public class Player : Entity
 
     private void HandleRollingPressed()
     {
-        ChangeState("ROLLING");
+        if(!_soul.isUseDashSkill)
+            ChangeState("ROLLING");
     }
 
     protected override void OnDestroy()

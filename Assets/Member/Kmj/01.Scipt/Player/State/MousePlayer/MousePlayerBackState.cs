@@ -11,7 +11,7 @@ public class MousePlayerBackState : EntityState
 
     public override void Enter()
     {
-        _player.isUseDashSkill = true;
+        _player.isUseDashSkill = false;
         base.Enter();
         Debug.Log("back");
         LookPlayer();
