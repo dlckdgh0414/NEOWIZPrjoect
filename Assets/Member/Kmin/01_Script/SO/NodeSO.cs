@@ -19,11 +19,13 @@ public class NodeSO : ScriptableObject
     public int price;
     public Sprite icon;
     public string upgradeValue;
+    public NodeType NodeType;
     public UpgradeType UpgradeType;
     [TextArea]
     public string description;
 
-    public bool isActive;
+    [HideInInspector] public bool isPurchase;
+    [HideInInspector] public bool isActive;
     public SkillTreeNode SkillTreeNode { get; set; }
 
     private void OnValidate()

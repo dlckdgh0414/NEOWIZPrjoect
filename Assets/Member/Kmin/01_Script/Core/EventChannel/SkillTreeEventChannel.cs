@@ -8,7 +8,7 @@ public class SkillTreeEventChannel : MonoBehaviour
 
 public class SkillTreeEvent : GameEvent
 {
-    public NodeSO NodeSo;
+    public NodeSO NodeSO;
 }
 
 public class SkillTreePurchaseEvent : GameEvent

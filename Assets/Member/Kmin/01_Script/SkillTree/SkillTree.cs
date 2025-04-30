@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SkillTree : MonoBehaviour
 {
+    public SkillTreeSO skillTreeSO;
     [SerializeField] private GameEventChannelSO eventChannelSO;
     private List<SkillTreeNode> _fruitsList;
     
@@ -34,10 +35,11 @@ public class SkillTree : MonoBehaviour
 
     public void SelectFruits(NodeSO selectedNode)
     {
-        _skillTreeEvent.NodeSo = selectedNode;
+        _skillTreeEvent.NodeSO = selectedNode;
         eventChannelSO.RaiseEvent(_skillTreeEvent);
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator ConnectRoutine(SkillTreeNode f)
     {
         f.transform.SetSiblingIndex(f.ParentNode.transform.GetSiblingIndex() - 1);

@@ -30,6 +30,9 @@ public class SkillTreeNode : MonoBehaviour, INode
         
         if (IsRootNode) {
             NodeButton.interactable = true;
+            nodeSO.isActive = true;
+            nodeSO.isPurchase = true;
+            
             ConnectedNodes.ForEach(f => f.NodeButton.interactable = true);
         }
     }
