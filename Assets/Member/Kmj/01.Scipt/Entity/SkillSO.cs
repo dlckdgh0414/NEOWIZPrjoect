@@ -1,19 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName ="Skill/So", fileName ="SKills")]
 
+public enum SkillType
+{
+    Attack,Defense,
+}
+[CreateAssetMenu(menuName = "Skill/So", fileName = "SKills")]
 public class SkillSO : ScriptableObject
 {
     public string skillName;
     public Image skillUIImage;
-    public float skillDamage;
-    public float skillCoolTime;
-    public float currentcoolTime;
+    public string className;
 
-    private void OnValidate()
-    {
-        if (currentcoolTime >= skillCoolTime)
-            currentcoolTime = skillCoolTime;
-    }
+    public SkillType skillType;
 }

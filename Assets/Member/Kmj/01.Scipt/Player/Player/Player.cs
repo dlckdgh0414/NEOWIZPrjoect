@@ -1,5 +1,7 @@
 using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : Entity
 {
@@ -17,6 +19,11 @@ public class Player : Entity
     public EntitySkillCompo _skillCompo { get; private set; }
     public float rollingVelocity = 12f;
 
+    public bool isDoingFollow { get; set; }
+    [field : SerializeField] public MousePlayer _soul { get; private set; }
+
+    [SerializeField] private LayerMask _whatIsEnemey;
+
     
     protected override void Awake()
     {
@@ -25,7 +32,7 @@ public class Player : Entity
         _skillCompo = GetCompo<EntitySkillCompo>();
         _movement = GetCompo<CharacterMovement>();
         _triggerCompo = GetCompo<EntityAnimatorTrigger>();
-        PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
+ 
         PlayerInput.OnRollingPressed += HandleRollingPressed;
     }
 
@@ -37,20 +44,9 @@ public class Player : Entity
 
     protected override void OnDestroy()
     {
-        PlayerInput.OnStrongAttackPressed -= HandleStrongAttackPressed;
         PlayerInput.OnRollingPressed -= HandleRollingPressed;
     }
-    private void HandleStrongAttackPressed()
-    {
-        if (_skillCompo.CanUseSkill("StrongAttack") && !_isSkilling)
-        {
-            ChangeState("STRONGATTACK");
-            _skillCompo.CurrentTimeClear("StrongAttack");
-            _isSkilling = true;
-        }
-        else
-            return;
-    }
+   
 
     private void Start()
     {
@@ -60,8 +56,6 @@ public class Player : Entity
     private void Update()
     {
         _stateMachine.UpdateStateMachine();
-
-        
     }
 
 
@@ -86,5 +80,13 @@ public class Player : Entity
     {
         _isSkilling = true;
         ChangeState("DIE");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (((1 << collision.gameObject.layer) & _whatIsEnemey) != 0 && isDoingFollow)
+        {
+            ChangeState("STRONGATTACK");
+        }
     }
 }

@@ -49,6 +49,20 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
         _rbcompo.linearVelocity = new Vector3(_velocity.x, _rbcompo.linearVelocity.y, _velocity.z);
     }
 
+    public void MoveToEntity(Vector3 target)
+    {
+        _entity.transform.position =
+           Vector3.MoveTowards(_entity.transform.position, target, 26 * Time.deltaTime);
+    }
+
+    public void LookAt(Vector3 entity)
+    {
+        Vector3 targetPos = entity;
+        Vector3 direction = targetPos - transform.position;
+        direction.y = 0;
+
+        transform.rotation = Quaternion.LookRotation(direction.normalized);
+    }
     private void CalculateMovement()
     {
         if (CanMove)

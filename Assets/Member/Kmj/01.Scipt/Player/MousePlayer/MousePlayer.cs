@@ -8,8 +8,10 @@ public class MousePlayer : Entity
     [SerializeField] private StateDataSO[] stateDatas;
 
     private EntityStateMachine _stateMachine;
-    public MousePlayerSkillCompo _useSkillCompo { get; private set; }
-    public EntitySkillCompo _skillCompo { get; private set; }
+
+    public MouseBarrerSkill _barrerSkill { get; private set;}
+   
+  //  public EntitySkillCompo _skillCompo { get; private set; }
     public MouseAttackCompo _attackCompo { get; private set; }
     public MouseMoveCompo _moveCompo { get; private set; }
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
@@ -20,14 +22,16 @@ public class MousePlayer : Entity
 
     public bool _isSkilling { get;  set; } = false;
 
+    public bool isUseDashSkill { get; set; } = false;
+
 
 
     protected override void Awake()
     {
         base.Awake();
         rbCompo = GetComponentInChildren<Rigidbody>();
-        _skillCompo = GetCompo<EntitySkillCompo>();
-        _useSkillCompo = GetComponentInChildren<MousePlayerSkillCompo>();
+    //    _skillCompo = GetCompo<EntitySkillCompo>();
+        _barrerSkill = GetComponentInChildren<MouseBarrerSkill>();
         _attackCompo = GetComponentInChildren<MouseAttackCompo>();
         _moveCompo = GetCompo<MouseMoveCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);

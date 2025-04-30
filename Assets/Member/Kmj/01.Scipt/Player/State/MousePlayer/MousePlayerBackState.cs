@@ -11,6 +11,7 @@ public class MousePlayerBackState : EntityState
 
     public override void Enter()
     {
+        _player.isUseDashSkill = true;
         base.Enter();
         Debug.Log("back");
         LookPlayer();
@@ -28,7 +29,7 @@ public class MousePlayerBackState : EntityState
     {
         base.Update();
 
-        _player._moveCompo.MoveToAttackEntity(_player.player.transform.position);
+        _player._moveCompo.MoveBack(_player.player.transform.position);
 
 
         if (Vector3.Distance(_player.player.transform.position,

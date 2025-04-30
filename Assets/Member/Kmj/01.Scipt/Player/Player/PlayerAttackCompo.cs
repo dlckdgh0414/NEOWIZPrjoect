@@ -27,6 +27,8 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
     public int ComboCounter { get; set; } = 0;
 
+    private Player _player;
+
     public float AttackSpeed
     {
         get => _attackSpeed;
@@ -40,6 +42,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     public void Initialize(Entity entity)
     {
         _entity = entity;
+        _player = entity as Player;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
         AttackSpeed = 0.7f;
         damageCast.InitCaster(_entity);
@@ -94,6 +97,5 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         Debug.Assert(attackDataList.Length > ComboCounter, "Combo counter is out of range");
         return attackDataList[ComboCounter];
     }
-
 
 }
