@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -12,11 +13,19 @@ public class Player : Entity
 
     public EntityAnimatorTrigger _triggerCompo { get; private set; }
 
-    public bool _isSkilling { get;  set; }
-    private EntityStateMachine _stateMachine;
     public PlayerAttackCompo _attackCompo { get; private set; }
+    
     public EntitySkillCompo _skillCompo { get; private set; }
     public float rollingVelocity = 12f;
+    public bool _isSkilling { get;  set; }
+
+    public bool isDoingFollow { get; set; }
+
+    public bool isFollowingAttack { get; set; } = false;
+    [field : SerializeField] public MousePlayer _soul { get; private set; }
+
+    [SerializeField] private LayerMask _whatIsEnemey;
+    private EntityStateMachine _stateMachine;
 
     
     protected override void Awake()
@@ -26,32 +35,22 @@ public class Player : Entity
         _skillCompo = GetCompo<EntitySkillCompo>();
         _movement = GetCompo<CharacterMovement>();
         _triggerCompo = GetCompo<EntityAnimatorTrigger>();
-        PlayerInput.OnStrongAttackPressed += HandleStrongAttackPressed;
+ 
         PlayerInput.OnRollingPressed += HandleRollingPressed;
     }
 
 
     private void HandleRollingPressed()
     {
-        ChangeState("ROLLING");
+        if(!_soul.isUseDashSkill)
+            ChangeState("ROLLING");
     }
 
     protected override void OnDestroy()
     {
-        PlayerInput.OnStrongAttackPressed -= HandleStrongAttackPressed;
         PlayerInput.OnRollingPressed -= HandleRollingPressed;
     }
-    private void HandleStrongAttackPressed()
-    {
-        if (_skillCompo.CanUseSkill("StrongAttack") && !_isSkilling)
-        {
-            ChangeState("STRONGATTACK");
-            _skillCompo.CurrentTimeClear("StrongAttack");
-            _isSkilling = true;
-        }
-        else
-            return;
-    }
+   
 
     private void Start()
     {
@@ -85,5 +84,13 @@ public class Player : Entity
     {
         _isSkilling = true;
         ChangeState("DIE");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (((1 << collision.gameObject.layer) & _whatIsEnemey) != 0 && isDoingFollow)
+        {
+            ChangeState("STRONGATTACK");
+        }
     }
 }

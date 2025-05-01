@@ -4,13 +4,14 @@ using UnityEngine;
 public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
 {
     [SerializeField] private StatSO hpStat;
+    [SerializeField] private HealthGageAdjuster hpBar;
     public float maxHealth;
 
     [field : SerializeField] public float currentHealth { get; private set; }
     public event Action<Vector2> OnKnockback;
 
     private Entity _entity;
-    private EntityStat _statCompo;
+    [SerializeField] private EntityStat _statCompo;
     private EntityFeedbackData _feedbackData;
 
     private void OnDestroy()
@@ -56,9 +57,14 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
         _feedbackData.LastEntityWhoHit = delear;
         _feedbackData.LastStunLevel = StunLevel;
 
+      /*  if(hpBar != null)
+        {
+            hpBar.ApplyHealth(currentHealth);
+        }*/
+
         if(currentHealth <= 0)
         {
-            Debug.Log("аж╠щ");
+            Debug.Log("О©╫ж╠О©╫");
             _entity.OnDead?.Invoke();
         }
     }

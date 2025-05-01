@@ -1,5 +1,7 @@
+
+
+using System.Linq;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayerAttackState : EntityState
 {
@@ -12,20 +14,31 @@ public class MousePlayerAttackState : EntityState
     public override void Enter()
     {
         base.Enter();
+        _player.isUseDashSkill = true;
+        _player._moveCompo.StopImmediately();
 
-        _player.rbCompo.AddForce(_entity.transform.forward * 12f, ForceMode.Impulse);
+        Collider[] collider = Physics.OverlapBox(_player.transform.position, _player._attackCompo._boxSize,
+             Quaternion.identity, _player._whatIsEnemy);
+
+        collider.ToList().ForEach(enemy => enemy.GetComponent<IDamgable>().
+        ApplyDamage(10, true, 0, _player));
+
     }
 
     public override void Update()
     {
         base.Update();
 
+        //Vector3.MoveTowards(_entity.transform.position, _attackPosition,)
+
+
         if (_isTriggerCall)
-            _player.ChangeState("IDLE");
+            _player.ChangeState("BACK");
     }
 
     public override void Exit()
     {
+        _player._moveCompo.StopImmediately();
         base.Exit();
     }
 }

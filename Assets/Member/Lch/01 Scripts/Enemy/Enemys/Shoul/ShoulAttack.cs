@@ -7,7 +7,8 @@ public class ShoulAttack : Attack
 
     public override void EnemyAttack(Transform target, Entity entity)
     {
-        soulBullet = Instantiate(soulBullet,transform.position,Quaternion.identity);
-        soulBullet.SetDir(target,entity);
+        SoulBullet bullet;
+        bullet = Instantiate(soulBullet, transform.position, Quaternion.identity);
+        bullet.SetDir(target,entity);
     }
 }

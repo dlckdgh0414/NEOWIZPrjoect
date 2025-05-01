@@ -9,13 +9,11 @@ using Unity.Properties;
 public partial class BackStepEnemyAction : Action
 {
     [SerializeReference] public BlackboardVariable<Transform> Target;
-    [SerializeReference] public BlackboardVariable<GameObject> Self;
+    [SerializeReference] public BlackboardVariable<BTEnemy> Self;
     [SerializeReference] public BlackboardVariable<float> Power;
-    [SerializeReference] public BlackboardVariable<EnemyMover> Mover;
     protected override Status OnStart()
     {
-        Mover.Value.CanMauanMove = false;
-        Mover.Value.BackStepEnemy(Target.Value,Power.Value,Self.Value.transform);
+        Self.Value.BackStepEnemy(Target.Value,Power.Value,Self.Value.transform);
         return Status.Success;
     }
 }
