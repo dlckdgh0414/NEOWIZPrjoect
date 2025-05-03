@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SkillTreeNode : MonoBehaviour, INode
 {
+    [Header("<color=blue>Setting</color>")]
     [SerializeField] private NodeSO nodeSO;
     [SerializeField] private Image nodeImage;
     [SerializeField] private float width = 10;
@@ -24,7 +25,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     {
         NodeButton = GetComponentInChildren<Button>();
         NodeIcon = NodeButton.transform.Find("Icon").GetComponent<Image>();
-        nodeSO.SkillTreeNode = this;
+        nodeSO.isPurchase = false;
 
         ConnectedNodes.ForEach(f => { f.ParentNode = this; });
         
@@ -100,6 +101,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     private void ConnectFillBranch(Image target, Transform root, SkillTreeNode parent, int origin)
     {
         Image fillImg = new GameObject($"@FillNode{parent.FillBranch.Count}").AddComponent<Image>();
+        
         fillImg.transform.SetParent(root, false);
         fillImg.rectTransform.anchoredPosition = target.rectTransform.anchoredPosition;
         fillImg.rectTransform.sizeDelta = target.rectTransform.sizeDelta;
@@ -111,8 +113,8 @@ public class SkillTreeNode : MonoBehaviour, INode
 
         fillImg.fillMethod = fillImg.rectTransform.sizeDelta.x > fillImg.rectTransform.sizeDelta.y ?
             Image.FillMethod.Horizontal : Image.FillMethod.Vertical;
-
         fillImg.fillOrigin = origin;
+        
         parent.FillBranch.Add(fillImg);
     }
 

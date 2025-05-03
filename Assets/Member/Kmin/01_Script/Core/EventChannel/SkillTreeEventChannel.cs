@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class SkillTreeEventChannel : MonoBehaviour
 {
-    public static SkillTreeEvent SkillTreeEvent = new SkillTreeEvent();
+    public static SkillTreeSelectEvent SkillTreeSelectEvent = new SkillTreeSelectEvent();
     public static SkillTreePurchaseEvent SkillTreePurchaseEvent = new SkillTreePurchaseEvent();
+    public static SkillTreeActiveEvent SkillTreeActiveEvent = new SkillTreeActiveEvent();
 }
 
-public class SkillTreeEvent : GameEvent
+public class SkillTreeSelectEvent : GameEvent
 {
-    public NodeSO NodeSO;
+    public SkillTreeNode node;
 }
 
 public class SkillTreePurchaseEvent : GameEvent
 {
-    public SkillTreeNode SkillTreeNode;
+    public SkillTreeNode node;
+}
+
+public class SkillTreeActiveEvent : GameEvent
+{
+    public bool isActive;
 }

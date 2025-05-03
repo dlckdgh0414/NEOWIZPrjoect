@@ -9,9 +9,10 @@ public class SkillTree : MonoBehaviour
 {
     public SkillTreeSO skillTreeSO;
     [SerializeField] private GameEventChannelSO eventChannelSO;
-    private List<SkillTreeNode> _fruitsList;
     
-    private SkillTreeEvent _skillTreeEvent = SkillTreeEventChannel.SkillTreeEvent;
+    private List<SkillTreeNode> _fruitsList;
+    private SkillTreeNode _selectedNode;
+    private SkillTreeSelectEvent _skillTreeSelectEvent = SkillTreeEventChannel.SkillTreeSelectEvent;
 
     private void Awake()
     {
@@ -21,23 +22,28 @@ public class SkillTree : MonoBehaviour
             f.Initialize();
 
             if (f.IsRootNode)
-                SetColor(f);
+                SetNodeColor(f);
         });
-        _fruitsList.ForEach(f => f.NodeButton.onClick.AddListener(() => SelectFruits(f.GetNodeSO())));
-        eventChannelSO.AddListener<SkillTreePurchaseEvent>(HandleFruitsPurchase);
+        
+        _fruitsList.ForEach(f => f.NodeButton.onClick.AddListener(() => SelectFruits(f)));
+        eventChannelSO.AddListener<SkillTreePurchaseEvent>(HandleNodePurchase);
+        eventChannelSO.AddListener<SkillTreeActiveEvent>(HandleNodeActive);
     }
 
+    private void HandleNodeActive(SkillTreeActiveEvent evt) => ActiveNodeColor(_selectedNode, evt.isActive);
 
-    private void HandleFruitsPurchase(SkillTreePurchaseEvent skillTreeEvent)
+    private void HandleNodePurchase(SkillTreePurchaseEvent evt)
     {
-        ConnectColor(skillTreeEvent.SkillTreeNode);
+        ConnectColor(evt.node);
     }
 
-    private void SelectFruits(NodeSO selectedNode)
+    private void SelectFruits(SkillTreeNode selectedNode)
     {
-        _skillTreeEvent.NodeSO = selectedNode;
-        eventChannelSO.RaiseEvent(_skillTreeEvent);
+        _selectedNode = selectedNode;
+        _skillTreeSelectEvent.node = selectedNode;
+        eventChannelSO.RaiseEvent(_skillTreeSelectEvent);
     }
+    
 
     private void ConnectColor(SkillTreeNode f)
     {
@@ -52,42 +58,47 @@ public class SkillTree : MonoBehaviour
                 0.2f).SetEase(Ease.OutQuad));
         }
     
-        seq.OnComplete(() => SetColor(f));
+        seq.OnComplete(() =>
+        {
+            SetNodeColor(f); 
+            
+            if (f.GetNodeSO().NodeType == NodeType.Choice)
+                ActiveNodeColor(f, false);
+        });
     }
 
-    private void SetColor(SkillTreeNode f)
+    public void SetNodeColor(SkillTreeNode f)
     {
         Sequence seq = DOTween.Sequence();
         Outline outline = f.GetComponentInChildren<Outline>();
         Color lineColor = outline.effectColor;
         
-        DOTween.To(() => lineColor, color => outline.effectColor = color, f.branchColor, 1.5f)
-            .SetEase(Ease.InCubic);
+        if (f.GetNodeSO().NodeType == NodeType.Normal)
+        {
+            seq.Join(DOTween.To(() => lineColor, color => outline.effectColor = color,
+                f.branchColor, 1.5f).SetEase(Ease.InCubic));
+            seq.Join(f.NodeIcon.DOColor(f.branchColor, 1f))
+                .Join(f.NodeIcon.DOFade(1f, 1f));
+        }
 
-        seq.Join(f.NodeIcon.DOColor(f.branchColor, 1f))
-            .Join(f.NodeIcon.DOFade(1f, 1f))
-            .OnComplete(() =>
+        seq.OnComplete(() =>
             {
                 f.ConnectedNodes.ForEach(n =>
                 {
-                    n.NodeIcon.DOColor(Color.white, 1f);
+                    n.NodeIcon.DOColor(Color.grey, 1f);
                     n.NodeIcon.DOFade(1f, 1f);
                     n.NodeButton.interactable = true;
                 });
             });
     }
 
-    private void ActiveNodeColor(SkillTreeNode node)
+    private void ActiveNodeColor(SkillTreeNode node, bool isActive)
     {
-        node.NodeIcon.DOColor(Color.white, 1f);
-        node.NodeIcon.DOFade(1f, 1f);
-        node.NodeButton.interactable = true;
-    }
-    
-    private void InActiveNodeColor(SkillTreeNode node)
-    {
-        node.NodeIcon.DOColor(Color.black, 1f);
-        node.NodeIcon.DOFade(0f, 1f);
-        node.NodeButton.interactable = false;
+        Outline outline = node.GetComponentInChildren<Outline>();
+        Color lineColor = outline.effectColor;
+        Color targetColor = isActive ? node.branchColor : Color.white;
+
+        DOTween.To(() => lineColor, color => outline.effectColor = color, targetColor, 0.2f);
+        node.NodeIcon.DOColor(targetColor, 0.2f);
     }
 }

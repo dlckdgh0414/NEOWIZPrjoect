@@ -24,8 +24,8 @@ public class NodeSO : ScriptableObject
     [TextArea]
     public string description;
 
-    [HideInInspector] public bool isPurchase;
-    [HideInInspector] public bool isActive;
+    public bool isPurchase { get; set; } = false;
+    public bool isActive {get; set;}
     public SkillTreeNode SkillTreeNode { get; set; }
 
     private void OnValidate()
