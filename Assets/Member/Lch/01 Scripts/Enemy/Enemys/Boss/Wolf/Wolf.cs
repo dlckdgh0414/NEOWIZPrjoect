@@ -98,6 +98,13 @@ public class Wolf : BTBoss
         }
     }
 
+    [ContextMenu("TestHoling")]
+    private void TestHowling()
+    {
+        _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Howling);
+    }
+
+    [ContextMenu("Rush")]
     private void RushTimer()
     {
         _currentTimer += Time.deltaTime;

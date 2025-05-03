@@ -654,6 +654,7 @@ Transform:
   - {fileID: 3871547739689684355}
   - {fileID: 2611669160355065044}
   - {fileID: 326693613652306090}
+  - {fileID: 4984583255059623670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5926563740254641755
@@ -737,11 +738,65 @@ MonoBehaviour:
   - rid: 4070495699247562845
   - rid: 4070495857065328722
   - rid: 4070495857065328723
+  - rid: 63589235742998729
+  - rid: 63589235742998730
+  - rid: 63589235742998731
+  - rid: 63589235742998732
+  - rid: 63589235742998733
+  - rid: 63589235960841208
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 63589235742998729
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4269011525305814541
+          m_Value1: 1086184627335786409
+        Name: BitingAttack
+        m_Value: {fileID: 5817697578759282933}
+    - rid: 63589235742998730
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7289022057467444278
+          m_Value1: 17317530190336218688
+        Name: Scaratch
+        m_Value: {fileID: 4582348968043914794}
+    - rid: 63589235742998731
+      type: {class: 'BlackboardVariable`1[[EntityFeedbackData, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1931192516883440643
+          m_Value1: 772320655167320469
+        Name: HitFeedbackData
+        m_Value: {fileID: 2684069484058439047}
+    - rid: 63589235742998732
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17482137385749088481
+          m_Value1: 4832305268799709684
+        Name: Center
+        m_Value: {fileID: 0}
+    - rid: 63589235742998733
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7586336547669311432
+          m_Value1: 1326847374849443233
+        Name: CatchAttack
+        m_Value: {fileID: 1755979304903240112}
+    - rid: 63589235960841208
+      type: {class: 'BlackboardVariable`1[[Blade.Enemies.NavMovement, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 369722109578867126
+          m_Value1: 5336493506445044131
+        Name: Movement
+        m_Value: {fileID: 8079557012053056224}
     - rid: 4070495699247562845
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -2779,6 +2834,54 @@ Transform:
   - {fileID: 1728094231009592286}
   m_Father: {fileID: 790681705638010851}
   m_LocalEulerAnglesHint: {x: 6.579727, y: -6.26267, z: 47.27533}
+--- !u!1 &7643497808497663156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4984583255059623670}
+  - component: {fileID: 7868392316086575324}
+  m_Layer: 7
+  m_Name: Howling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4984583255059623670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7643497808497663156}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3390576517559877279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7868392316086575324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7643497808497663156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c907a5e0d09057e42922a670710fed15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 597664934574219263, guid: 52773df5068fa0e4c9c611012fe14468, type: 3}
+  firePoint: {fileID: 3390576517559877279}
+  bulletSpeed: 10
+  rotationStep: 10
 --- !u!1 &7789190292968990497
 GameObject:
   m_ObjectHideFlags: 0

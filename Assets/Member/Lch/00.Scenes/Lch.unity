@@ -539,17 +539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c1232795da3a247b688069161dbfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &470611438 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8079557012053056224, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-  m_PrefabInstance: {fileID: 478664493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14efaeb4faf29434f9e12061a13f384f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &478664493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -562,42 +551,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
-    - target: {fileID: 1835059206873098655, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: 'managedReferences[63589228288934071]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[Blade.Enemies.NavMovement,
+      propertyPath: 'managedReferences[63589237700690389]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[WolfHollwingAttackCompo,
         Assembly-CSharp]]'
       objectReference: {fileID: 0}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: managedReferences[63589228288934071].Name
-      value: Movement
+      propertyPath: managedReferences[63589237700690389].Name
+      value: HolingAttack
       objectReference: {fileID: 0}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
       propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: managedReferences[63589228288934071].m_Value
-      value: 
-      objectReference: {fileID: 470611438}
-    - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: managedReferences[4070495857065328726].m_Value
+      propertyPath: managedReferences[63589235742998732].m_Value
       value: 
       objectReference: {fileID: 1971041495}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[14]'
-      value: 63589228288934071
+      propertyPath: managedReferences[63589237700690389].m_Value
+      value: 
+      objectReference: {fileID: 1054639338}
+    - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[9]'
+      value: 63589237700690389
       objectReference: {fileID: 0}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: managedReferences[63589228288934071].GUID.m_Value0
-      value: 590399283074911947
+      propertyPath: managedReferences[63589237700690389].GUID.m_Value0
+      value: 745439263586031635
       objectReference: {fileID: 0}
     - target: {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: managedReferences[63589228288934071].GUID.m_Value1
-      value: 15943144703497693617
+      propertyPath: managedReferences[63589237700690389].GUID.m_Value1
+      value: 4733066187420820769
       objectReference: {fileID: 0}
     - target: {fileID: 3390576517559877279, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
       propertyPath: m_LocalPosition.x
@@ -651,48 +636,11 @@ PrefabInstance:
       propertyPath: 'pillars.Array.data[2]'
       value: 
       objectReference: {fileID: 408125999}
-    - target: {fileID: 8079557012053056224, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 478664496}
-    m_RemovedComponents:
-    - {fileID: 2932421551555754710, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1835059206873098655, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 478664497}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
---- !u!1 &478664494 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1835059206873098655, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-  m_PrefabInstance: {fileID: 478664493}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &478664496 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 8575022293396668447, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
-  m_PrefabInstance: {fileID: 478664493}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &478664497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478664494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Graph: {fileID: -146333362564786102, guid: 7f3c1f00611e0734eacb5a9304fef315, type: 2}
-  m_BlackboardVariableOverridesList: []
-  m_IsInitialised: 0
-  m_IsStarted: 0
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &511125336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,6 +1640,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6987173842793295057, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
   m_PrefabInstance: {fileID: 1030654855}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1054639338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7868392316086575324, guid: 3ea515166217f3b429b2d16e15b66491, type: 3}
+  m_PrefabInstance: {fileID: 478664493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c907a5e0d09057e42922a670710fed15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1124361028 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5069067968680304602, guid: 3e49bbe5900e2a042849518988019e75, type: 3}

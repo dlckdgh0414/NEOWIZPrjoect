@@ -18,12 +18,6 @@ public partial class RushToTargetAction : Action
     {
         WolfEnemy.Value.IsRush = true;
         Mover.Value.Speed *= 2f;
-        if (Physics.Raycast(WolfEnemy.Value.transform.position, WolfEnemy.Value.transform.forward, out RaycastHit hitInfo, MaxDistance.Value, WhatIsWall.Value))
-        {
-            //_moveDir = hitInfo.point - transform.position;
-            //_moveDir.y = 0;
-            //_moveDir.Normalize();
-        }
         return Status.Success;
     }
 }
