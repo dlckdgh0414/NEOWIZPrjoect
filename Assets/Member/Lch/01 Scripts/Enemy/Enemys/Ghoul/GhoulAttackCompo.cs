@@ -12,6 +12,7 @@ public class GhoulAttackCompo : Attack
     }
     public override void EnemyAttack(Transform target, Entity entity)
     {
+        _entity = entity;
         attackTrigger.enabled = true;
     }
 
@@ -19,9 +20,8 @@ public class GhoulAttackCompo : Attack
     {
         if (other.gameObject.TryGetComponent(out Player player))
         {
-            IDamgable damgable = player.GetComponentInChildren<IDamgable>();
             CameraManager.Instance.ShakeCamera(damge, 0.15f);
-            damgable.ApplyDamage(damge,false,0,_entity);
+            player.ApplyDamage(damge,false,0,_entity);
             attackTrigger.enabled = false;
         }
     }

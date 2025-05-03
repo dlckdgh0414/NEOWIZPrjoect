@@ -10,18 +10,15 @@ using Random = UnityEngine.Random;
 public partial class HowlingWolfAction : Action
 {
     [SerializeReference] public BlackboardVariable<Wolf> Self;
-    [SerializeReference] public BlackboardVariable<WolfHowlingSoul> Soul;
     [SerializeReference] public BlackboardVariable<float> SpawnRange;
     private float _currentSpawnTime = 0f;
     private float _currentHowlingEndTime = 0f;
     private float _spawnTime = 0.3f;
     private float _howlingEnd = 7f;
-    private WolfHowlingSoul _soul;
 
     protected override Status OnStart()
     {
         Self.Value.OffPillar();
-        _soul = Soul.Value.GetComponent<WolfHowlingSoul>();
         return Status.Running;
     }
 
@@ -33,10 +30,6 @@ public partial class HowlingWolfAction : Action
         _currentHowlingEndTime += Time.deltaTime;
         if (_currentSpawnTime >= _spawnTime)
         {
-            Debug.Log(xRange);
-            Debug.Log(yRange);
-            _soul = GameObject.Instantiate(Soul,new Vector3(xRange,0,yRange).normalized * SpawnRange,Quaternion.identity) as WolfHowlingSoul;
-            _soul.SetDir(Self.Value.transform);
             _currentSpawnTime = 0f;
         }
         if(_currentHowlingEndTime >= _howlingEnd)

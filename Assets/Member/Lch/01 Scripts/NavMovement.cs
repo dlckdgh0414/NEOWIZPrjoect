@@ -52,6 +52,8 @@ namespace Blade.Enemies
         public void SetStop(bool isStop) => agent.isStopped = isStop;
         public void SetVelocity(Vector3 velocity) => agent.velocity = velocity;
         public void SetSpeed(float speed) => agent.speed = speed;
+        public void SetSpeedMultiply(float value) => agent.speed *= value;
+        public void SetSpeedDivide(float value) => agent.speed /= value;
         public void SetDestination(Vector3 destination) => agent.SetDestination(destination);
     }
 }
