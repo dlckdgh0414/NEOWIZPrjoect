@@ -31,7 +31,7 @@ public class PlayerAttackState : PlayerState
     {
         AttackDataSO currentAtkData = _attackCompo.GetCurrentAttackData();
         Vector3 playerDiretion = GetPlayerDirection();
-        _player.transform.rotation = Quaternion.LookRotation(playerDiretion); //이거 나중에 쓰인다.
+        _player.transform.rotation = Quaternion.LookRotation(playerDiretion);
 
         Vector3 movement = playerDiretion * currentAtkData.movementPower;
     
