@@ -76,7 +76,7 @@ public class Wolf : BTBoss
                 {
                     return;
                 }
-                if (IsPhase2&&_phase2Enum != WolfPhase2AttackEnum.Rush_Upgrade && _phase2Enum != WolfPhase2AttackEnum.Catch)
+                if (IsPhase2&&_phase2Enum != WolfPhase2AttackEnum.Rush_Upgrade && _phase2Enum != WolfPhase2AttackEnum.Parrying)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
                 }
@@ -121,7 +121,7 @@ public class Wolf : BTBoss
                 return;
             }
 
-            if (IsPhase2 && _phase2Enum != WolfPhase2AttackEnum.Howling || _phase2Enum != WolfPhase2AttackEnum.Catch)
+            if (IsPhase2 && _phase2Enum != WolfPhase2AttackEnum.Howling || _phase2Enum != WolfPhase2AttackEnum.Parrying)
             {
                 _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Rush_Upgrade);
                 _currentTimer = 0;
