@@ -3,10 +3,10 @@ using UnityEngine;
 public class SoulBullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
-    private Rigidbody _rbCompo;
+    public Rigidbody _rbCompo { get; set; }
     [SerializeField] private float damge;
     private Vector3 _mover = Vector3.zero;
-    private Entity _entity;
+    public Entity _entity { get; set; }
     [SerializeField] private LayerMask _whatIsSheld;
     [SerializeField] private LayerMask _whatIsEnemy;
     public bool _isReflect { get; set; } = false;
