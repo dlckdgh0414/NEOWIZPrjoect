@@ -7,9 +7,10 @@ public class WolfHollwingAttackCompo : Attack
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float rotationStep = 10f;
     private float currentRotation = 0f;
+    private Entity _entity;
     public override void EnemyAttack(Transform target, Entity entity)
     {
-      
+      _entity = entity;
     }
 
     public void FireFourWay()
@@ -21,8 +22,7 @@ public class WolfHollwingAttackCompo : Attack
             Vector3 dir = rot * Vector3.forward;
 
             GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(dir));
-            bulletObj.GetComponent<WolfBullet>().speed = bulletSpeed;
-            bulletObj.GetComponent<WolfBullet>().Fire(dir);
+            bulletObj.GetComponent<WolfBullet>().Fire(dir,_entity);
         }
 
         currentRotation += rotationStep;

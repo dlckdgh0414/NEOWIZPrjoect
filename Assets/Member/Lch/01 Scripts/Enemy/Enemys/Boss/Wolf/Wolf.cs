@@ -72,7 +72,7 @@ public class Wolf : BTBoss
         if (_health.currentHealth <= _hollwingHp && Time.time >= _lastHollwing + hollwingTime)
         {
                 if (_state.Value == BTBossState.STUN
-               || _state.Value == BTBossState.HIT)
+               || _state.Value == BTBossState.HIT || _phase2Enum == WolfPhase2AttackEnum.Parrying)
                 {
                     return;
                 }
@@ -98,6 +98,8 @@ public class Wolf : BTBoss
         }
     }
 
+    #region TestAttack
+
     [ContextMenu("TestHoling")]
     private void TestHowling()
     {
@@ -110,6 +112,14 @@ public class Wolf : BTBoss
         _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Rush);
 
     }
+
+    [ContextMenu("Parrying")]
+    private void TestParrying()
+    {
+        _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Parrying);
+    }
+
+    #endregion
     private void RushTimer()
     {
         _currentTimer += Time.deltaTime;
