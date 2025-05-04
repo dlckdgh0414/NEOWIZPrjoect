@@ -14,6 +14,7 @@ public class SkillTreeTooltip : MonoBehaviour
     private Button _purchaseBtn;
     private Transform _background;
     private Transform _textArea;
+    private Transform _purchaseArea;
     private TextMeshProUGUI _description;
     private TextMeshProUGUI _fruitsPrice;
     private TextMeshProUGUI _fruitsName;
@@ -30,9 +31,10 @@ public class SkillTreeTooltip : MonoBehaviour
         _background = transform.Find("Background");
         _icon = _background.Find("FruitsIcon/Icon").GetComponent<Image>();
         _textArea = _background.Find("TextArea");
+        _purchaseArea = _background.Find("PurchaseArea");
         _description = _textArea.Find("Description").GetComponent<TextMeshProUGUI>();
-        _fruitsPrice = _textArea.Find("FruitsPrice").GetComponent<TextMeshProUGUI>();
         _fruitsName = _textArea.Find("FruitsName").GetComponent<TextMeshProUGUI>();
+        _fruitsPrice = _purchaseArea.Find("FruitsPrice").GetComponent<TextMeshProUGUI>();
         
         _purchaseBtn = _background.GetComponentInChildren<Button>();
         _purchaseText = _purchaseBtn.GetComponentInChildren<TextMeshProUGUI>();
