@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public abstract class PlayerCanAttackState : PlayerState
 {
     public PlayerCanAttackState(Entity entity, int animationHash) : base(entity, animationHash)
@@ -15,13 +17,18 @@ public abstract class PlayerCanAttackState : PlayerState
         _player.PlayerInput.OnAttackPressd -= HandleAttackPressed;
         base.Exit();
     }
-
+    
     private void HandleAttackPressed()
     {
-        if (!_player._isSkilling)
+        if (!_player._isSkilling && !_player.isUsePowerAttack)
         {
             _player._movement.StopImmediately();
             _player.ChangeState("ATTACK");
+        }
+        else if(!_player._isSkilling && _player.isUsePowerAttack)
+        {
+            _player._movement.StopImmediately();
+            _player.ChangeState("SWING");
         }
     }
 }

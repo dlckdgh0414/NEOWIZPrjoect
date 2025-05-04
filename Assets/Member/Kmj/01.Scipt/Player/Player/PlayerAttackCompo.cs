@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
@@ -22,12 +24,18 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
     private float _attackSpeed = 0.3f;
     private float _lastAttackTime;
+    private float attackHoldTime = 0f;
+
+    [field: SerializeField] public float MaxHoldTime { get; set; } 
 
     public bool useMouseDirection = false;
 
     public int ComboCounter { get; set; } = 0;
 
+    [field: SerializeField] public Transform swingTrm;
     private Player _player;
+        
+    private Coroutine _chargeRoutine;
 
     public float AttackSpeed
     {
@@ -48,6 +56,8 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
         _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
+        _player.PlayerInput.OnAttackTimeCountEvent += StartCharge;
+        _player.PlayerInput.OnAttackPressd += StopCharge;
     }
 
     private void Start()
@@ -70,6 +80,22 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         }
         _entityAnimator.SetParam(_comboCounterHash, ComboCounter);
     }
+    
+    private void StartCharge()
+    {
+        if (_chargeRoutine == null)
+            _chargeRoutine = StartCoroutine(HoldAttackCoroutine());
+    }
+
+    private void StopCharge()
+    {
+        if (_chargeRoutine != null)
+        {
+            StopCoroutine(_chargeRoutine);
+            _chargeRoutine = null;
+        }
+    }
+
 
     private void HandleAttackTrigger()
     {
@@ -98,4 +124,19 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         return attackDataList[ComboCounter];
     }
 
+    private IEnumerator HoldAttackCoroutine()
+    {
+        attackHoldTime = 0f;
+        _player.isUsePowerAttack = false;
+        
+        while (true)
+        {
+            attackHoldTime += Time.deltaTime;
+            if (attackHoldTime >= MaxHoldTime)
+            {
+                _player.isUsePowerAttack = true;
+            }
+            yield return null;
+        }
+    }
 }
