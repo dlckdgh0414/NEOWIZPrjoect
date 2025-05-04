@@ -16,7 +16,7 @@ public partial class RushToTargetAction : Action
 
     protected override Status OnStart()
     {
-        WolfEnemy.Value.IsRush = true;
+        
         Mover.Value.Speed *= 2f;
         return Status.Success;
     }

@@ -9,7 +9,7 @@ public class WolfHollwingAttackCompo : Attack
     private float currentRotation = 0f;
     public override void EnemyAttack(Transform target, Entity entity)
     {
-        
+      
     }
 
     public void FireFourWay()

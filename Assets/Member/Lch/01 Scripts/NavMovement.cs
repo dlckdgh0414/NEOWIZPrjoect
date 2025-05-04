@@ -6,7 +6,7 @@ namespace Blade.Enemies
 {
     public class NavMovement : MonoBehaviour , IEntityComponet
     {
-        [SerializeField] private NavMeshAgent agent;
+        [field:SerializeField] public NavMeshAgent agent;
         [SerializeField] private float moveSpeed = 4f;
         [SerializeField] private float stopOffset = 0.05f;
 

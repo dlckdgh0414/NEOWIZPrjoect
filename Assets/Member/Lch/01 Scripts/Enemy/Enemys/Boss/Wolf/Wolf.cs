@@ -105,6 +105,11 @@ public class Wolf : BTBoss
     }
 
     [ContextMenu("Rush")]
+    private void TestRush()
+    {
+        _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Rush);
+
+    }
     private void RushTimer()
     {
         _currentTimer += Time.deltaTime;
@@ -135,6 +140,7 @@ public class Wolf : BTBoss
     {
         if (IsRush)
         {
+            Debug.Log(collision.gameObject.name);
             if(collision.gameObject.TryGetComponent(out Player player))
             {
                 IDamgable damgable = player.GetComponentInChildren<IDamgable>();
@@ -142,6 +148,7 @@ public class Wolf : BTBoss
             }
             if (collision.gameObject.CompareTag("Wall"))
             {
+                Debug.Log("dfdf");
                  IsRushStop = true;
                 _iSRushTimerStart = true;
                 IsStun = false;
