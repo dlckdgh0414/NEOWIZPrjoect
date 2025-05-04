@@ -15,11 +15,20 @@ public class BarrerCompo : MonoBehaviour
     {
         if (((1 << other.transform.gameObject.layer) & _whatIsBlockObj) != 0 && isPalling)
         {
-            other.TryGetComponent(out SoulBullet bullet);
+            Rigidbody rb = other.attachedRigidbody;
 
+            other.TryGetComponent(out SoulBullet bullet);
             bullet._isReflect = true;
-            Vector3 reflectDir = (bullet._entity.transform.position - bullet.transform.position).normalized;
-            bullet._rbCompo.linearVelocity = reflectDir * bullet._rbCompo.linearVelocity.magnitude; 
+            
+            if (rb != null)
+            {
+                Vector3 currentVelocity = rb.linearVelocity;
+                
+                Vector3 bounceDirection = - currentVelocity.normalized;
+                float forceMagnitude = currentVelocity.magnitude;
+                
+                rb.AddForce(bounceDirection * forceMagnitude * 2f, ForceMode.VelocityChange);
+            }
         }
         else if ((1 << other.transform.gameObject.layer & _whatIsBlockObj) != 0)
         {

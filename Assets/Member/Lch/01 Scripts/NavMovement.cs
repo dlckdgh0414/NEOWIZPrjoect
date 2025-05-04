@@ -49,7 +49,7 @@ namespace Blade.Enemies
             return lookRotation;
         }
 
-        public void SetStop(bool isStop) => agent.isStopped = isStop;
+       public void SetStop(bool isStop) => agent.isStopped = isStop;
         public void SetVelocity(Vector3 velocity) => agent.velocity = velocity;
         public void SetSpeed(float speed) => agent.speed = speed;
         public void SetSpeedMultiply(float value) => agent.speed *= value;
