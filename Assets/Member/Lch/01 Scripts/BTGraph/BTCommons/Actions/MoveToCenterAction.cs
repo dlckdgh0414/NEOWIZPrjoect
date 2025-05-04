@@ -3,19 +3,19 @@ using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
+using Blade.Enemies;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "MoveToCenter", story: "[Mover] to [Center]", category: "Action", id: "6a79034eebf019ece01888101ae04d5d")]
 public partial class MoveToCenterAction : Action
 {
-    [SerializeReference] public BlackboardVariable<EnemyMover> Mover;
+    [SerializeReference] public BlackboardVariable<NavMovement> Mover;
     [SerializeReference] public BlackboardVariable<Transform> Center;
 
     protected override Status OnStart()
     {
-        Mover.Value.CanMauanMove =false;
-        Mover.Value.CenterDir(Center.Value);
-        Mover.Value.Speed *= 3f;
+        Mover.Value.SetDestination(Center.Value.position);
+        Mover.Value.SetSpeedMultiply(3f);
         return Status.Running;
     }
 
@@ -23,7 +23,7 @@ public partial class MoveToCenterAction : Action
     {
         if(Mover.Value.IsArrived)
         {
-            Mover.Value.StopMover();
+            Mover.Value.SetStop(true);
             return Status.Success;
         }
 
@@ -32,8 +32,7 @@ public partial class MoveToCenterAction : Action
 
     protected override void OnEnd()
     {
-        Mover.Value.CanMauanMove = true;
-        Mover.Value.Speed /= 3f;
+        Mover.Value.SetSpeedDivide(3);
         base.OnEnd();
     }
 }

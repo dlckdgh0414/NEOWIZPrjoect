@@ -1,18 +1,27 @@
 using UnityEngine;
 
-public class WolfHollwingAttackCompo : Attack
+public class TestBulletParretn : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private float bulletSpeed = 10f;
-    [SerializeField] private float rotationStep = 10f;
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float bulletSpeed = 10f;
+    public float fireInterval = 0.3f;
+    public float rotationStep = 10f;
+
+    private float timer = 0f;
     private float currentRotation = 0f;
-    public override void EnemyAttack(Transform target, Entity entity)
+
+    void Update()
     {
-      
+        timer += Time.deltaTime;
+        if (timer >= fireInterval)
+        {
+            FireFourWay();
+            timer = 0f;
+        }
     }
 
-    public void FireFourWay()
+    void FireFourWay()
     {
         for (int i = 0; i < 4; i++)
         {

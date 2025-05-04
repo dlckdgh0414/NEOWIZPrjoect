@@ -97,6 +97,53 @@ Transform:
   - {fileID: 5213333956409923794}
   m_Father: {fileID: 3500453171158967740}
   m_LocalEulerAnglesHint: {x: -78.28412, y: -82.651886, z: -102.15412}
+--- !u!1 &375386422912304012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326693613652306090}
+  - component: {fileID: 8079557012053056224}
+  m_Layer: 7
+  m_Name: Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &326693613652306090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375386422912304012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3390576517559877279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8079557012053056224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375386422912304012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14efaeb4faf29434f9e12061a13f384f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 8575022293396668447}
+  moveSpeed: 4
+  stopOffset: 0.05
 --- !u!1 &545521175159786845
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +526,7 @@ Transform:
   m_GameObject: {fileID: 1570258539992524410}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.86, y: 0, z: -0.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -579,13 +626,14 @@ GameObject:
   - component: {fileID: 1018620653986038347}
   - component: {fileID: 2932421551555754710}
   - component: {fileID: 5252477733626690406}
+  - component: {fileID: 8575022293396668447}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3390576517559877279
 Transform:
   m_ObjectHideFlags: 0
@@ -599,13 +647,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 767774301436348433}
   - {fileID: 7011549631650826200}
   - {fileID: 661017030227169506}
   - {fileID: 6799240302218557342}
   - {fileID: 3594495349441991178}
   - {fileID: 3871547739689684355}
   - {fileID: 2611669160355065044}
+  - {fileID: 326693613652306090}
+  - {fileID: 4984583255059623670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5926563740254641755
@@ -629,8 +678,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
-  delectRange: 0
-  attackRange: 0
+  delectRange: 45.49
+  attackRange: 9.4
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
   IsHit: 0
   IsStun: 0
@@ -689,22 +738,74 @@ MonoBehaviour:
   - rid: 4070495699247562845
   - rid: 4070495857065328722
   - rid: 4070495857065328723
-  - rid: 4070495934678303090
-  - rid: 4070495857065328725
-  - rid: 4070495857065328726
-  - rid: 4070495857065328727
-  - rid: 4070495857065328728
-  - rid: 4070495857065328730
-  - rid: 4070495857065328731
-  - rid: 4070495857065328732
-  - rid: 4070495857065328733
-  - rid: 4070495886471332415
-  - rid: 4070495934678303464
+  - rid: 63589235742998729
+  - rid: 63589235742998730
+  - rid: 63589235742998731
+  - rid: 63589235742998732
+  - rid: 63589235742998733
+  - rid: 63589235960841208
+  - rid: 63589237700690389
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 63589235742998729
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4269011525305814541
+          m_Value1: 1086184627335786409
+        Name: BitingAttack
+        m_Value: {fileID: 5817697578759282933}
+    - rid: 63589235742998730
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7289022057467444278
+          m_Value1: 17317530190336218688
+        Name: Scaratch
+        m_Value: {fileID: 4582348968043914794}
+    - rid: 63589235742998731
+      type: {class: 'BlackboardVariable`1[[EntityFeedbackData, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1931192516883440643
+          m_Value1: 772320655167320469
+        Name: HitFeedbackData
+        m_Value: {fileID: 2684069484058439047}
+    - rid: 63589235742998732
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17482137385749088481
+          m_Value1: 4832305268799709684
+        Name: Center
+        m_Value: {fileID: 0}
+    - rid: 63589235742998733
+      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7586336547669311432
+          m_Value1: 1326847374849443233
+        Name: CatchAttack
+        m_Value: {fileID: 1755979304903240112}
+    - rid: 63589235960841208
+      type: {class: 'BlackboardVariable`1[[Blade.Enemies.NavMovement, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 369722109578867126
+          m_Value1: 5336493506445044131
+        Name: Movement
+        m_Value: {fileID: 8079557012053056224}
+    - rid: 63589237700690389
+      type: {class: 'BlackboardVariable`1[[WolfHollwingAttackCompo, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 745439263586031635
+          m_Value1: 4733066187420820769
+        Name: HolingAttack
+        m_Value: {fileID: 7868392316086575324}
     - rid: 4070495699247562845
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -729,94 +830,6 @@ MonoBehaviour:
           m_Value1: 14906843008837672211
         Name: StunTime
         m_Value: 3
-    - rid: 4070495857065328725
-      type: {class: 'BlackboardVariable`1[[EntityFeedbackData, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1931192516883440643
-          m_Value1: 772320655167320469
-        Name: HitFeedbackData
-        m_Value: {fileID: 2684069484058439047}
-    - rid: 4070495857065328726
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17482137385749088481
-          m_Value1: 4832305268799709684
-        Name: Center
-        m_Value: {fileID: 0}
-    - rid: 4070495857065328727
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 7289022057467444278
-          m_Value1: 17317530190336218688
-        Name: Scaratch
-        m_Value: {fileID: 4582348968043914794}
-    - rid: 4070495857065328728
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 4269011525305814541
-          m_Value1: 1086184627335786409
-        Name: BitingAttack
-        m_Value: {fileID: 5817697578759282933}
-    - rid: 4070495857065328730
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 11796456446166271674
-          m_Value1: 12880313040470640108
-        Name: DetectRange
-        m_Value: 45
-    - rid: 4070495857065328731
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1888006722131403562
-          m_Value1: 2249348467468881975
-        Name: AttackRange
-        m_Value: 6
-    - rid: 4070495857065328732
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 3632856259204285587
-          m_Value1: 11857164642831694203
-        Name: AtackCooldown
-        m_Value: 2
-    - rid: 4070495857065328733
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 2758122370683908461
-          m_Value1: 17231996186908483483
-        Name: CatchValue
-        m_Value: 100
-    - rid: 4070495886471332415
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 7586336547669311432
-          m_Value1: 1326847374849443233
-        Name: CatchAttack
-        m_Value: {fileID: 1755979304903240112}
-    - rid: 4070495934678303090
-      type: {class: 'BlackboardVariable`1[[WolfHowlingSoul, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 15721764237689396654
-          m_Value1: 13182183433501799976
-        Name: Soul
-        m_Value: {fileID: 7474267052536336481, guid: 52773df5068fa0e4c9c611012fe14468, type: 3}
-    - rid: 4070495934678303464
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 4982681046860803189
-          m_Value1: 10313220831404851158
-        Name: SpawnRange
-        m_Value: 10
 --- !u!65 &5252477733626690406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -836,8 +849,30 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.284311, y: 3.6136286, z: 6.914707}
-  m_Center: {x: 1.120785, y: 1.9113086, z: 1.5729313}
+  m_Size: {x: 4.284311, y: 3.6136286, z: 8.012329}
+  m_Center: {x: 1.120785, y: 1.9113086, z: 1.0241203}
+--- !u!195 &8575022293396668447
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835059206873098655}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 2.03
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 3.27
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1942737302064696158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,57 +1948,6 @@ Transform:
   - {fileID: 5614262780566904295}
   m_Father: {fileID: 8006807027139660162}
   m_LocalEulerAnglesHint: {x: -0.0000007605951, y: 0.0000014863444, z: 65.62175}
---- !u!1 &5157621787039299358
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 767774301436348433}
-  - component: {fileID: 1435630911326492113}
-  m_Layer: 0
-  m_Name: EnemyMover
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &767774301436348433
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5157621787039299358}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3390576517559877279}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1435630911326492113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5157621787039299358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850f488691acab84e8de53e8d339b93a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rbCompo: {fileID: 1018620653986038347}
-  <Speed>k__BackingField: 5
-  CanMauanMove: 1
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 256
-  stopThreshold: 0.8
 --- !u!1 &5243454695163243314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,6 +2843,54 @@ Transform:
   - {fileID: 1728094231009592286}
   m_Father: {fileID: 790681705638010851}
   m_LocalEulerAnglesHint: {x: 6.579727, y: -6.26267, z: 47.27533}
+--- !u!1 &7643497808497663156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4984583255059623670}
+  - component: {fileID: 7868392316086575324}
+  m_Layer: 7
+  m_Name: Howling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4984583255059623670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7643497808497663156}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3390576517559877279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7868392316086575324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7643497808497663156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c907a5e0d09057e42922a670710fed15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 597664934574219263, guid: 52773df5068fa0e4c9c611012fe14468, type: 3}
+  firePoint: {fileID: 3390576517559877279}
+  bulletSpeed: 10
+  rotationStep: 10
 --- !u!1 &7789190292968990497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,6 +3234,7 @@ MonoBehaviour:
   hpBar: {fileID: 2549546838646686921}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
+  _statCompo: {fileID: 0}
 --- !u!114 &291715196199689012
 MonoBehaviour:
   m_ObjectHideFlags: 0
