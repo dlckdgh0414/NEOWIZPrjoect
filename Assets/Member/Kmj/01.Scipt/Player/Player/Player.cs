@@ -34,6 +34,7 @@ public class Player : Entity
     {
         base.Awake();
          _stateMachine = new EntityStateMachine(this,stateDatas);
+         _attackCompo = GetCompo<PlayerAttackCompo>();
         _skillCompo = GetCompo<EntitySkillCompo>();
         _movement = GetCompo<CharacterMovement>();
         _triggerCompo = GetCompo<EntityAnimatorTrigger>();

@@ -1529,6 +1529,37 @@ Transform:
   - {fileID: 2010588171}
   m_Father: {fileID: 1230003454}
   m_LocalEulerAnglesHint: {x: -0.04366094, y: 1.3797332, z: 2.0955775}
+--- !u!1 &451357819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451357820}
+  m_Layer: 10
+  m_Name: ShootingTrm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &451357820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451357819}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1556794719}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466677527
 GameObject:
   m_ObjectHideFlags: 0
@@ -4803,6 +4834,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2396920747593593304, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: swingTrm
+      value: 
+      objectReference: {fileID: 451357820}
+    - target: {fileID: 2396920747593593304, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: <MaxHoldTime>k__BackingField
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3036315967863216786, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: statOverrides.Array.size
       value: 5
@@ -4833,7 +4872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6232885789080637854, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: stateDatas.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6232885789080637854, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: <_soul>k__BackingField
@@ -4843,6 +4882,10 @@ PrefabInstance:
       propertyPath: 'stateDatas.Array.data[6]'
       value: 
       objectReference: {fileID: 11400000, guid: 652268e0aa77ca645a0765d5b9ea01d1, type: 2}
+    - target: {fileID: 6232885789080637854, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      propertyPath: 'stateDatas.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e1d96af4acbc6f4a94fa5ecad1606ec, type: 2}
     - target: {fileID: 6414677187495235117, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4892,7 +4935,10 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 5035951790457132044, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6987173842793295057, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451357820}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9131525379987269386, guid: 3e49bbe5900e2a042849518988019e75, type: 3}
       insertIndex: 1
