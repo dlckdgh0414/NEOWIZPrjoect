@@ -25,6 +25,7 @@ public class Player : Entity
     public bool isFollowingAttack { get; set; } = false;
 
     public bool isUsePowerAttack { get; set; } = false;
+    
     [field : SerializeField] public MousePlayer _soul { get; private set; }
 
     [SerializeField] private LayerMask _whatIsEnemey;

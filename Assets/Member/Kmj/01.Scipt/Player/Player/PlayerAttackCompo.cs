@@ -56,6 +56,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
         _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
+        _triggerCompo.OnSwingAttackTrigger += HandleSwing;
         _player.PlayerInput.OnAttackTimeCountEvent += StartCharge;
         _player.PlayerInput.OnAttackPressd += StopCharge;
     }
@@ -109,6 +110,11 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
             Debug.Log("nice");
             CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
         }
+    }
+
+    private void HandleSwing()
+    {
+        _player._soul.rbCompo.AddForce(_player.transform.forward * 700, ForceMode.Impulse);
     }
 
 

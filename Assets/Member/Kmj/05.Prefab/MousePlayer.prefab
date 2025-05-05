@@ -1021,6 +1021,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1584790875530309156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2497337646981496519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3041232076843610874}
+  - component: {fileID: 1412957460611087713}
+  - component: {fileID: 958706324934819747}
+  m_Layer: 3
+  m_Name: Type
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3041232076843610874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497337646981496519}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2163126731132633029}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1412957460611087713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497337646981496519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f0a28b42cc6a34ba88fc0d5a1281d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentType: 3
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 8320
+  _entityRenderer: {fileID: 8180438131997767392}
+  _typeMaterials:
+  - {fileID: 2100000, guid: 10396160ee136f64f910751d53894212, type: 2}
+  - {fileID: -5292243816520023523, guid: d55ced56a33bdbb4a99c8b3ea9384e48, type: 3}
+--- !u!136 &958706324934819747
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2497337646981496519}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.3090833
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5588506, z: -0}
 --- !u!1 &2508691894942061912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,7 +2926,6 @@ GameObject:
   - component: {fileID: 2163126731132633029}
   - component: {fileID: 8156640532259982566}
   - component: {fileID: 1483830004248013574}
-  - component: {fileID: 1602314354489352631}
   m_Layer: 3
   m_Name: MousePlayer
   m_TagString: Player
@@ -2866,7 +2941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6455541648188846568}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 40.853035, y: 1.8811641, z: -25.45218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2879,6 +2954,7 @@ Transform:
   - {fileID: 5432708449111065799}
   - {fileID: 5053389315783178939}
   - {fileID: 6745237986534377927}
+  - {fileID: 3041232076843610874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &8156640532259982566
@@ -2942,29 +3018,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!136 &1602314354489352631
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6455541648188846568}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.17854
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.58927, z: -0}
 --- !u!1 &6459277299728379441
 GameObject:
   m_ObjectHideFlags: 0

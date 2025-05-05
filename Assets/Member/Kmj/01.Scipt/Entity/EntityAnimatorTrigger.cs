@@ -7,7 +7,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     public Action OnAnimationEndTrigger;
     public Action OnAttackTrigger;
 
-    public Action OnAttackTriggerEnd;
+    public Action OnAttackTriggerEnd, OnSwingAttackTrigger;
 
     public event Action OnAttackVFXTrigger;
 
@@ -41,7 +41,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     private void PlayerStrongAttack() => OnStrongAttackTrigger?.Invoke();
     private void AttackEnd() => OnAttackTriggerEnd?.Invoke();
 
-
+    private void SwingAttack() => OnSwingAttackTrigger?.Invoke();
     private void BarrierPressed() => OnBarrierPressed?.Invoke();
 
 
