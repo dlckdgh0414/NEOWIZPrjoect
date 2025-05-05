@@ -20,8 +20,20 @@ public class MousePlayerAttackState : EntityState
         Collider[] collider = Physics.OverlapBox(_player.transform.position, _player._attackCompo._boxSize,
              Quaternion.identity, _player._whatIsEnemy);
 
-        collider.ToList().ForEach(enemy => enemy.GetComponent<IDamgable>().
-        ApplyDamage(10, true, 0, _player));
+        foreach (var Obj in collider)
+        {
+            if (Obj.TryGetComponent(out IDamgable damage))
+            {
+                Debug.Log("공격됨");
+                damage.ApplyDamage(10, true, 0, _player);
+            }
+            else if (Obj.TryGetComponent(out InteractionObj Interaction))
+            {
+                Debug.Log("상호작용됨");
+                Interaction.InteractEvent.Invoke();    
+            }
+        }
+        
 
     }
 
