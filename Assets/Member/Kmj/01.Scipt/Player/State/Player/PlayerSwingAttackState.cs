@@ -13,7 +13,7 @@ namespace Member.Kmj._01.Scipt.Player.State.Player
         {
             base.Enter();
 
-            _player._soul._typeCompo.CurrentType = SoulType.Fire;
+            _player._soul._typeCompo.CurrentType = AttriType.Fire;
             _player._soul.transform.position = _player._attackCompo.swingTrm.position;
             _player._soul.ChangeState("STOP");
             
