@@ -17,7 +17,7 @@ public class MousePlayer : Entity
     public MouseMoveCompo _moveCompo { get; private set; }
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
     
-    public MousePlayerType _typeCompo { get; private set; }
+    public AttributeType _typeCompo { get; private set; }
 
     public Player player;
 
@@ -41,7 +41,7 @@ public class MousePlayer : Entity
         _attackCompo = GetComponentInChildren<MouseAttackCompo>();
         _moveCompo = GetCompo<MouseMoveCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
-        _typeCompo = GetComponentInChildren<MousePlayerType>();
+        _typeCompo = GetComponentInChildren<AttributeType>();
         _isSkilling = false;
     }
 
