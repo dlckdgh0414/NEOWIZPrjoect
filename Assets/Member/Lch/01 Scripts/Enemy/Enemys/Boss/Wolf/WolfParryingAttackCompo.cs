@@ -59,6 +59,7 @@ public class WolfParryingAttackCompo : Attack
                 float forceMagnitude = currentVelocity.magnitude;
 
                 rb.AddForce(bounceDirection * forceMagnitude * 2f, ForceMode.VelocityChange);
+                ParryingCount++;
             }
         }
     }

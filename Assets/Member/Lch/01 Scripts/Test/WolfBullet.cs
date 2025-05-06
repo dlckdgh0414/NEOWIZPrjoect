@@ -24,7 +24,7 @@ public class WolfBullet : MonoBehaviour
 
     void Update()
     {
-        _rbCompo.linearVelocity = _direction * Time.deltaTime;
+        _rbCompo.linearVelocity = _direction * speed;
         _timer += Time.deltaTime;
 
         if (_timer >= lifeTime)

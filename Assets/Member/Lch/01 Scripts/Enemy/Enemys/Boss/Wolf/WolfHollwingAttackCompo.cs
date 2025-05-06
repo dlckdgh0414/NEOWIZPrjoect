@@ -10,7 +10,7 @@ public class WolfHollwingAttackCompo : Attack
     private Entity _entity;
     public override void EnemyAttack(Transform target, Entity entity)
     {
-      _entity = entity;
+        _entity = entity;
     }
 
     public void FireFourWay()

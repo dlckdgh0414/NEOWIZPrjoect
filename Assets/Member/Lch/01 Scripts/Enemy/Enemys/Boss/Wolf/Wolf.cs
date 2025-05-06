@@ -21,6 +21,7 @@ public class Wolf : BTBoss
     public bool IsRush  = false;
     public bool IsRushStop  = false;
     private bool _iSRushTimerStart = true;
+    private bool _isPhaseing = true;
     [SerializeField] private float hollwingTime;
     private EntityHealth _health;
     public Animator mainAnim;
@@ -50,7 +51,10 @@ public class Wolf : BTBoss
         _phase2Enum = phase2Enum.Value;
         BlackboardVariable<bool> IsPhase2CheckVariable
             = GetBlackboardVariable<bool>("IsPhase2");
+        BlackboardVariable<bool> IsPhasingCheckVariable =
+            GetBlackboardVariable<bool>("IsPhaseing");
         IsPhase2 = IsPhase2CheckVariable.Value;
+        _isPhaseing = IsPhasingCheckVariable.Value;
         _hollwingHp = _health.maxHealth - 15f;
         _lastHollwing = Time.time;
     }
@@ -61,31 +65,38 @@ public class Wolf : BTBoss
         {
             IsPhase2 = true;
         }
-        if (_iSRushTimerStart)
+        if (_isPhaseing)
         {
-            RushTimer();
+            if (_iSRushTimerStart)
+            {
+                RushTimer();
+            }
+            HowlingTimer();
         }
-        HowlingTimer();
     }
     private void HowlingTimer()
     {
-        if (_health.currentHealth <= _hollwingHp && Time.time >= _lastHollwing + hollwingTime)
+        if (_health.currentHealth <= _hollwingHp)
         {
+            if (Time.time >= _lastHollwing + hollwingTime)
+            {
                 if (_state.Value == BTBossState.STUN
-               || _state.Value == BTBossState.HIT || _phase2Enum == WolfPhase2AttackEnum.Parrying)
+             || _state.Value == BTBossState.HIT || _phase2Enum == WolfPhase2AttackEnum.Parrying)
                 {
                     return;
                 }
-                if (IsPhase2&&_phase2Enum != WolfPhase2AttackEnum.Rush_Upgrade && _phase2Enum != WolfPhase2AttackEnum.Parrying)
+                if (IsPhase2 && _phase2Enum != WolfPhase2AttackEnum.Rush_Upgrade)
                 {
                     _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Howling);
                 }
-                else if(_phase1Enum != WolfPhase1AttackEnum.Rush)
+                else if (_phase1Enum != WolfPhase1AttackEnum.Rush)
                 {
                     _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Howling);
                 }
-               _lastHollwing = Time.time;
-               _hollwingHp -= 15f;
+                _lastHollwing = Time.time;
+                _hollwingHp -= 15f;
+            }
+              
         }
     }
 
@@ -131,12 +142,12 @@ public class Wolf : BTBoss
                 return;
             }
 
-            if (IsPhase2 && _phase2Enum != WolfPhase2AttackEnum.Howling || _phase2Enum != WolfPhase2AttackEnum.Parrying)
+            if (IsPhase2 && _phase2Enum != WolfPhase2AttackEnum.Howling && _phase2Enum != WolfPhase2AttackEnum.Parrying)
             {
                 _phase2Change.SendEventMessage(WolfPhase2AttackEnum.Rush_Upgrade);
                 _currentTimer = 0;
             }
-            else
+            else if(_phase1Enum != WolfPhase1AttackEnum.Howling)
             {
                 _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Rush);
                 _currentTimer = 0;
