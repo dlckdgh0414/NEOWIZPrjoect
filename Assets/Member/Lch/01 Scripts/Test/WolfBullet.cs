@@ -2,24 +2,32 @@ using UnityEngine;
 
 public class WolfBullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public float lifeTime = 5f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float lifeTime = 5f;
+    private Rigidbody _rbCompo;
 
-    private float timer = 0f;
-    private Vector3 direction;
+    private float _timer = 0f;
+    private Vector3 _direction;
 
-    public void Fire(Vector3 dir)
+    private Entity _entity;
+    public void Fire(Vector3 dir,Entity entity)
     {
-        direction = dir.normalized;
-        timer = 0f;
+        _entity = entity;
+        _direction = dir.normalized;
+        _timer = 0f;
+    }
+
+    private void Awake()
+    {
+        _rbCompo = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        transform.position += direction * speed * Time.deltaTime;
-        timer += Time.deltaTime;
+        _rbCompo.linearVelocity = _direction * speed;
+        _timer += Time.deltaTime;
 
-        if (timer >= lifeTime)
+        if (_timer >= lifeTime)
             Destroy(gameObject);
     }
 }

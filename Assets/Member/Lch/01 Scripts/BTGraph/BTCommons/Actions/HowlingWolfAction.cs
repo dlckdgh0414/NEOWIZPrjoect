@@ -19,6 +19,7 @@ public partial class HowlingWolfAction : Action
     protected override Status OnStart()
     {
         Self.Value.OffPillar();
+        HowlingAttack.Value.EnemyAttack(null, Self.Value);
         return Status.Running;
     }
 

@@ -30,8 +30,7 @@ public class TestBulletParretn : MonoBehaviour
             Vector3 dir = rot * Vector3.forward;
 
             GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(dir));
-            bulletObj.GetComponent<WolfBullet>().speed = bulletSpeed;
-            bulletObj.GetComponent<WolfBullet>().Fire(dir);
+            //bulletObj.GetComponent<WolfBullet>().Fire(dir);
         }
 
         currentRotation += rotationStep;

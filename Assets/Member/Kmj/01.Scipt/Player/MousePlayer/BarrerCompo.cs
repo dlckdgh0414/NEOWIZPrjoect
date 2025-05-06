@@ -17,8 +17,9 @@ public class BarrerCompo : MonoBehaviour
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            other.TryGetComponent(out SoulBullet bullet);
+            other.TryGetComponent(out Bullet bullet);
             bullet._isReflect = true;
+
             
             if (rb != null)
             {
