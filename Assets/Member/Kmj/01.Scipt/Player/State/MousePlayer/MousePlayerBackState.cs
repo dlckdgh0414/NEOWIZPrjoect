@@ -14,7 +14,6 @@ public class MousePlayerBackState : EntityState
         _player.isUseDashSkill = false;
         base.Enter();
         Debug.Log("back");
-        LookPlayer();
     }
 
     private void LookPlayer()
@@ -28,7 +27,7 @@ public class MousePlayerBackState : EntityState
     public override void Update()
     {
         base.Update();
-
+        LookPlayer();
         _player._moveCompo.MoveBack(_player.player.transform.position);
 
 
