@@ -1,4 +1,5 @@
 using System;
+using Code.Entities;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
