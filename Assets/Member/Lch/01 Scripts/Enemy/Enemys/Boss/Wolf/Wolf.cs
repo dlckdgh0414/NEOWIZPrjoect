@@ -1,5 +1,6 @@
 using Unity.Behavior;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Wolf : BTBoss
 {
@@ -65,14 +66,26 @@ public class Wolf : BTBoss
         {
             IsPhase2 = true;
         }
-        if (_isPhaseing)
-        {
-            if (_iSRushTimerStart)
-            {
-                RushTimer();
-            }
-            HowlingTimer();
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        { 
+            TestHowling();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            TestRush();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            TestParrying();
+        }
+        //if (_isPhaseing)
+        //{
+        //    if (_iSRushTimerStart)
+        //    {
+        //        RushTimer();
+        //    }
+        //    HowlingTimer();
+        //}
     }
     private void HowlingTimer()
     {
@@ -121,6 +134,8 @@ public class Wolf : BTBoss
     private void TestRush()
     {
         _phaseChange.SendEventMessage(WolfPhase1AttackEnum.Rush);
+        _iSRushTimerStart = false;
+        IsStun = true;
 
     }
 

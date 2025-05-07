@@ -26,6 +26,7 @@ public partial class HowlingWolfAction : Action
     protected override Status OnUpdate()
     {
         _currentSpawnTime += Time.deltaTime;
+        _currentHowlingEndTime += Time.deltaTime;
         if (_currentSpawnTime >= _spawnTime)
         {
            HowlingAttack.Value.FireFourWay();

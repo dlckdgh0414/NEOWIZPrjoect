@@ -509,7 +509,6 @@ GameObject:
   - component: {fileID: 7011549631650826200}
   - component: {fileID: 9184257758267511975}
   - component: {fileID: 5102444859983361750}
-  - component: {fileID: 2467817121165133396}
   m_Layer: 0
   m_Name: Viusal
   m_TagString: Untagged
@@ -568,19 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7625bac25ef367a42bf60d9c4fc8662a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2467817121165133396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570258539992524410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 893ea680cc26ce94b97d87ed48c038eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!1 &1661810477642707423
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,8 +666,9 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
-  delectRange: 45.49
-  attackRange: 9.4
+  delectRange: 71.8
+  attackRange: 5.36
+  IsMark: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
   IsHit: 0
   IsStun: 0
@@ -704,7 +691,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835059206873098655}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -747,8 +734,9 @@ MonoBehaviour:
   - rid: 63589235742998733
   - rid: 63589235960841208
   - rid: 63589237700690389
-  - rid: 63589261075808756
-  - rid: 63589261075808757
+  - rid: 63589261075809068
+  - rid: 63589261075809077
+  - rid: 63589261075809078
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -810,15 +798,23 @@ MonoBehaviour:
           m_Value1: 4733066187420820769
         Name: HolingAttack
         m_Value: {fileID: 7868392316086575324}
-    - rid: 63589261075808756
-      type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+    - rid: 63589261075809068
+      type: {class: 'BlackboardVariable`1[[WolfParryingAttackCompo, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 13733214740176816493
-          m_Value1: 1636195652292549460
-        Name: Parrying
+          m_Value0: 1715277688801627406
+          m_Value1: 3013494181657258030
+        Name: ParryingAttack
         m_Value: {fileID: 5723301092975217001}
-    - rid: 63589261075808757
+    - rid: 63589261075809077
+      type: {class: 'BlackboardVariable`1[[WolfParryingBullet, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6095074297179170894
+          m_Value1: 14198081457252912596
+        Name: Bullet
+        m_Value: {fileID: 1365850605035722258, guid: d83a2b553fa3bfc48b07b81d8b7ac246, type: 3}
+    - rid: 63589261075809078
       type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -1083,6 +1079,37 @@ Transform:
   - {fileID: 8455117637548983734}
   m_Father: {fileID: 1726115866722794278}
   m_LocalEulerAnglesHint: {x: -21.691576, y: 0.13624473, z: -90.16496}
+--- !u!1 &2404438797817771212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3482055477872509518}
+  m_Layer: 7
+  m_Name: FirePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3482055477872509518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2404438797817771212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4984583255059623670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2456855341113626472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +2950,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3482055477872509518}
   m_Father: {fileID: 3390576517559877279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7868392316086575324
@@ -2939,7 +2967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 597664934574219263, guid: 52773df5068fa0e4c9c611012fe14468, type: 3}
-  firePoint: {fileID: 3390576517559877279}
+  firePoint: {fileID: 3482055477872509518}
   bulletSpeed: 10
   rotationStep: 10
 --- !u!1 &7789190292968990497
@@ -3246,7 +3274,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6564485156243610691}
   - component: {fileID: 5723301092975217001}
-  m_Layer: 7
+  - component: {fileID: 8468124403259242031}
+  - component: {fileID: 9194794355313843279}
+  m_Layer: 0
   m_Name: Parrying
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3262,7 +3292,7 @@ Transform:
   m_GameObject: {fileID: 9164768932078598351}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3280,6 +3310,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbe42c17d1d10947a7e8f961658e8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _whatIsBlockObj:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!65 &8468124403259242031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164768932078598351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.6903663, y: 3.5328677, z: 14.228188}
+  m_Center: {x: 0.059002638, y: 1.2664338, z: -0.91761017}
+--- !u!54 &9194794355313843279
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164768932078598351}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &9203510201228680017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,7 +3410,7 @@ MonoBehaviour:
   hpBar: {fileID: 2549546838646686921}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
-  _statCompo: {fileID: 0}
+  _statCompo: {fileID: 268116053319173272}
 --- !u!114 &291715196199689012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3344,7 +3425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 1a73a3ef19c3ffb4a9cfec038d8b94ec, type: 2}
   IsUseOverride: 1
-  overrideValue: 100
+  overrideValue: 1500
 --- !u!1001 &6879278306969992752
 PrefabInstance:
   m_ObjectHideFlags: 0
