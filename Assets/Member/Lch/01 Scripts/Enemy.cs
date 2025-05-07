@@ -8,6 +8,8 @@ public abstract class Enemy : Entity
     [field:SerializeField] public float delectRange;
     [field:SerializeField] public float attackRange;
 
+    public bool IsMark = false;
+
     [field: SerializeField] public EntityFinderSO PlayerFinder { get; protected set; }
 
     protected override void AfterInitialize()
