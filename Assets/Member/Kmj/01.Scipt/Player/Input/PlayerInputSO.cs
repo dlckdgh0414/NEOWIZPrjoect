@@ -9,7 +9,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
 
     public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
         ,OnSheldPressd,OnHandleFollowSoulPressed,OnRollingPressed, OnSheldCanceld
-        ,OnMouseAttackkeyPressed;
+        ,OnMouseAttackkeyPressed, OnAttackTimeCountEvent;
 
     public event Action OnSkillTreeOpen;
 
@@ -38,7 +38,9 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if(context.performed)
+            OnAttackTimeCountEvent?.Invoke();
+        if (context.canceled)
             OnAttackPressd?.Invoke();
     }
 

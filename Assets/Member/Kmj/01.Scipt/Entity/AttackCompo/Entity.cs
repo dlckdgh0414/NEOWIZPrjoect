@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-public abstract class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour,IDamgable
 {
 
     public delegate void OnDamageHandler(float damage, bool isHit,int stunLevel,Entity dealer);
@@ -58,4 +58,7 @@ public abstract class Entity : MonoBehaviour
     protected abstract void HandleHit();
     protected abstract void HandleDead();
     protected abstract void HandleStun();
+
+    public void ApplyDamage(float damage, bool isHit, int stunLevel, Entity delear)
+        =>OnDamage?.Invoke(damage, isHit, stunLevel, delear);
 }

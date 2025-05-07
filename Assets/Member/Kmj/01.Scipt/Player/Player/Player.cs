@@ -16,22 +16,26 @@ public class Player : Entity
     public PlayerAttackCompo _attackCompo { get; private set; }
     
     public EntitySkillCompo _skillCompo { get; private set; }
+    
     public float rollingVelocity = 12f;
     public bool _isSkilling { get;  set; }
 
     public bool isDoingFollow { get; set; }
 
     public bool isFollowingAttack { get; set; } = false;
+
+    public bool isUsePowerAttack { get; set; } = false;
+    
     [field : SerializeField] public MousePlayer _soul { get; private set; }
 
     [SerializeField] private LayerMask _whatIsEnemey;
     private EntityStateMachine _stateMachine;
-
     
     protected override void Awake()
     {
         base.Awake();
          _stateMachine = new EntityStateMachine(this,stateDatas);
+         _attackCompo = GetCompo<PlayerAttackCompo>();
         _skillCompo = GetCompo<EntitySkillCompo>();
         _movement = GetCompo<CharacterMovement>();
         _triggerCompo = GetCompo<EntityAnimatorTrigger>();
