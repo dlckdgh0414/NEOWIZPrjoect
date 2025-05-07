@@ -19,7 +19,7 @@ public class MouseMoveCompo : MonoBehaviour, IEntityComponet
     }
 
     /// <summary>
-    /// Å¸°ÙÀÇ ¹æÇâÀ¸·Î ÀÌµ¿ÇÏ´Â ÄÚµå
+    /// Entityë°©í–¥ìœ¼ë¡œ ê³µê²©í•˜ë ¤ ê°€ëŠ” ì½”ë“œ
     /// </summary>
     /// <param name="target"></param>
     public void MoveToAttackEntity(Vector3 target)

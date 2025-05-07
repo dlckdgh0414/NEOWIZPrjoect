@@ -17,7 +17,7 @@ public abstract class PlayerCanAttackState : PlayerState
         _player.PlayerInput.OnAttackPressd -= HandleAttackPressed;
         base.Exit();
     }
-    
+
     private void HandleAttackPressed()
     {
         if (!_player._isSkilling && !_player.isUsePowerAttack)
@@ -25,7 +25,7 @@ public abstract class PlayerCanAttackState : PlayerState
             _player._movement.StopImmediately();
             _player.ChangeState("ATTACK");
         }
-        else if(!_player._isSkilling && _player.isUsePowerAttack)
+        else if (!_player._isSkilling && _player.isUsePowerAttack)
         {
             _player._movement.StopImmediately();
             _player.ChangeState("SWING");

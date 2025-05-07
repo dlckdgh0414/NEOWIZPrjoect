@@ -15,6 +15,10 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
     private readonly int _attackSpeedHash = Animator.StringToHash("ATTACK_SPEED");
     private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
+    
+    [SerializeField]private ParticleSystem slash1;
+    [SerializeField]private ParticleSystem slash2;
+    [SerializeField]private ParticleSystem slash3;
 
     [SerializeField] private StatSO _atkDamage;
     [SerializeField] private EntityStat _stat;
@@ -145,6 +149,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
     private IEnumerator HoldAttackCoroutine()
     {
+        _player.ChangeState("CHARGE");
         attackHoldTime = 0f;
         _player.isUsePowerAttack = false;
         
