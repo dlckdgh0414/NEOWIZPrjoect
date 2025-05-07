@@ -190,6 +190,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHealth: 10
   <currentHealth>k__BackingField: 10
+  _statCompo: {fileID: 0}
 --- !u!114 &7387856606269536632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +220,7 @@ GameObject:
   - component: {fileID: 8672492656756377026}
   - component: {fileID: 5421250785688940312}
   - component: {fileID: 5306333619180518382}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Enemy_Soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,8 +272,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
-  delectRange: 0
-  attackRange: 0
+  delectRange: 8
+  attackRange: 8
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
 --- !u!54 &4144773570229658505
 Rigidbody:
@@ -345,6 +346,7 @@ MonoBehaviour:
   - rid: 4070495594112352487
   - rid: 4070495594112352488
   - rid: 6363091981924040894
+  - rid: 4070496017517903969
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -373,7 +375,7 @@ MonoBehaviour:
           m_Value0: 17383060759116095315
           m_Value1: 3553221849102443985
         Name: MinDistance
-        m_Value: 3
+        m_Value: 1.6
     - rid: 4070495594112352488
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -381,7 +383,7 @@ MonoBehaviour:
           m_Value0: 1760055818965008918
           m_Value1: 4457010121442176603
         Name: BackSetpPower
-        m_Value: 5
+        m_Value: 1.2
     - rid: 4070496017377919957
       type: {class: 'BlackboardVariable`1[[RayCastToTarget, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -398,6 +400,14 @@ MonoBehaviour:
           m_Value1: 11394302006382887668
         Name: PatolPoints
         m_Value: {fileID: 6553644235351166926}
+    - rid: 4070496017517903969
+      type: {class: 'BlackboardVariable`1[[Blade.Enemies.NavMovement, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6492889734436589717
+          m_Value1: 4786631047925819785
+        Name: Movement
+        m_Value: {fileID: 1194718214228201221}
     - rid: 6363091981924040894
       type: {class: 'BlackboardVariable`1[[Attack, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

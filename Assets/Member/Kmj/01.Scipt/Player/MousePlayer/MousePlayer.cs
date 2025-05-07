@@ -1,4 +1,5 @@
 using System;
+using Member.Kmj._01.Scipt.Player.MousePlayer;
 using UnityEngine;
 
 public class MousePlayer : Entity
@@ -15,6 +16,8 @@ public class MousePlayer : Entity
     public MouseAttackCompo _attackCompo { get; private set; }
     public MouseMoveCompo _moveCompo { get; private set; }
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
+    
+    public AttributeType _typeCompo { get; private set; }
 
     public Player player;
 
@@ -23,6 +26,9 @@ public class MousePlayer : Entity
     public bool _isSkilling { get;  set; } = false;
 
     public bool isUseDashSkill { get; set; } = false;
+    
+    
+    public bool isUseSheld { get; set; }
 
 
 
@@ -35,6 +41,7 @@ public class MousePlayer : Entity
         _attackCompo = GetComponentInChildren<MouseAttackCompo>();
         _moveCompo = GetCompo<MouseMoveCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
+        _typeCompo = GetComponentInChildren<AttributeType>();
         _isSkilling = false;
     }
 

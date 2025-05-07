@@ -49,6 +49,7 @@ MonoBehaviour:
   nearPillar2: {fileID: 3025969237821516343}
   chain: {fileID: 8261357998870088664}
   chain2: {fileID: 4151352320740930218}
+  _beforMat: {fileID: 0}
   IsOnPillar: 0
 --- !u!1 &1338458825045728723
 GameObject:
@@ -61,7 +62,6 @@ GameObject:
   - component: {fileID: 9011217367771353229}
   - component: {fileID: 6667246935213188933}
   - component: {fileID: 6666258248313339499}
-  - component: {fileID: 6762482039746508519}
   - component: {fileID: 261150370696737137}
   m_Layer: 9
   m_Name: Pillar
@@ -139,27 +139,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6762482039746508519
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338458825045728723}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &261150370696737137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -793,6 +772,7 @@ MonoBehaviour:
   nearPillar2: {fileID: 6308321523974018016}
   chain: {fileID: 4151352320740930218}
   chain2: {fileID: 2568355953590477335}
+  _beforMat: {fileID: 0}
   IsOnPillar: 0
 --- !u!1 &8261357998870088664
 GameObject:
@@ -966,4 +946,5 @@ MonoBehaviour:
   nearPillar2: {fileID: 3926017971445903577}
   chain: {fileID: 2568355953590477335}
   chain2: {fileID: 8261357998870088664}
+  _beforMat: {fileID: 0}
   IsOnPillar: 0

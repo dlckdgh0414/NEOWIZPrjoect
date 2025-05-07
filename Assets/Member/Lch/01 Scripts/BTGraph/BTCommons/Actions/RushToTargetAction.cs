@@ -12,11 +12,12 @@ public partial class RushToTargetAction : Action
     [SerializeReference] public BlackboardVariable<EnemyMover> Mover;
     [SerializeReference] public BlackboardVariable<float> MaxDistance;
     [SerializeReference] public BlackboardVariable<Wolf> WolfEnemy;
+    [SerializeReference] public BlackboardVariable<LayerMask> WhatIsWall;
+
     protected override Status OnStart()
     {
-        WolfEnemy.Value.IsRush = true;
+        
         Mover.Value.Speed *= 2f;
-        Mover.Value.RushDir(Target.Value,MaxDistance.Value);
         return Status.Success;
     }
 }

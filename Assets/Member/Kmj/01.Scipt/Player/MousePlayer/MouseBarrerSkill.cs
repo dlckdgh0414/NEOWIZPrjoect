@@ -23,7 +23,7 @@ public class MouseBarrerSkill : SkillCompo
 
     protected override void Skill()
     {
-        if (!_player._isSkilling)
+        if (!_player._isSkilling && _player.isUseSheld)
         {
             _player.ChangeState("SHELD");
             _barrierEffect.SetActive(true);

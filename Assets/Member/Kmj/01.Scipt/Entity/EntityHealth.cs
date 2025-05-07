@@ -11,7 +11,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
     public event Action<Vector2> OnKnockback;
 
     private Entity _entity;
-    private EntityStat _statCompo;
+    [SerializeField] private EntityStat _statCompo;
     private EntityFeedbackData _feedbackData;
 
     private void OnDestroy()
@@ -57,14 +57,14 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
         _feedbackData.LastEntityWhoHit = delear;
         _feedbackData.LastStunLevel = StunLevel;
 
-        if(hpBar != null)
+        if (hpBar != null)
         {
             hpBar.ApplyHealth(currentHealth);
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Debug.Log("аж╠щ");
+            Debug.Log("О©╫ж╠О©╫");
             _entity.OnDead?.Invoke();
         }
     }

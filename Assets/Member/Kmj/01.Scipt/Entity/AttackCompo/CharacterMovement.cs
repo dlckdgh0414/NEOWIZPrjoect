@@ -52,7 +52,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     public void MoveToEntity(Vector3 target)
     {
         _entity.transform.position =
-           Vector3.MoveTowards(_entity.transform.position, target, 26 * Time.deltaTime);
+           Vector3.MoveTowards(_entity.transform.position, target, 60 * Time.deltaTime);
     }
 
     public void LookAt(Vector3 entity)
