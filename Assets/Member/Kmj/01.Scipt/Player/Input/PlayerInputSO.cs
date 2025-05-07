@@ -9,7 +9,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
 
     public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
         ,OnSheldPressd,OnHandleFollowSoulPressed,OnRollingPressed, OnSheldCanceld
-        ,OnMouseAttackkeyPressed, OnAttackTimeCountEvent;
+        ,OnMouseAttackkeyPressed, OnAttackTimeCountEvent, OnChargeAttackPressed, OnChargeAttackCanceled;
 
     public event Action OnSkillTreeOpen;
 
@@ -39,9 +39,8 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public void OnAttack(InputAction.CallbackContext context)
     {
         if(context.performed)
-            OnAttackTimeCountEvent?.Invoke();
-        if (context.canceled)
             OnAttackPressd?.Invoke();
+        
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -112,6 +111,14 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         if(context.performed)
             OnSkillTreeOpen?.Invoke();
+    }
+
+    public void OnChargeSklil(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            OnChargeAttackPressed?.Invoke();
+        else if(context.canceled)
+            OnChargeAttackCanceled?.Invoke();
     }
 
     public void OnClickAttack(InputAction.CallbackContext context)
