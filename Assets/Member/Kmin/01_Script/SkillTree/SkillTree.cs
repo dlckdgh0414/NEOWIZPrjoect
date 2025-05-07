@@ -10,6 +10,7 @@ public class SkillTree : MonoBehaviour
     public SkillTreeSO skillTreeSO;
     [SerializeField] private GameEventChannelSO eventChannelSO;
     [SerializeField] private EntityStat statCompo;
+    [SerializeField] private EntitySkillCompo skillCompo;
     
     private List<SkillTreeNode> _fruitsList;
     private SkillTreeNode _selectedNode;
@@ -35,6 +36,14 @@ public class SkillTree : MonoBehaviour
 
     private void HandleNodePurchase(SkillTreePurchaseEvent evt)
     {
+        SkillCompo skill = evt.node.SkillCompo;
+
+        if (skillCompo != null)
+        {
+            if (skillCompo.SkillList.ContainsValue(skill))
+                skillCompo.SkillList.Add(skillCompo.name, skill);
+        }
+        
         NodeSO nodeSO = evt.node.GetNodeSO();
         StatSO targetStat = statCompo.GetStat(nodeSO.statSO);
         targetStat.AddModifier(this, nodeSO.upgradeValue);
