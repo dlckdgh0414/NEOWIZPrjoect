@@ -8,7 +8,10 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     [SerializeField] private LayerMask whatIsGround;
 
     public event Action OnAttackPressd, OnJumpPressd, OnInteracetPressd, OnSprintPressd
-        ,OnSheldPressd,OnStrongAttackPressed,OnRollingPressed, OnSheldCanceld;
+        ,OnSheldPressd,OnHandleFollowSoulPressed,OnRollingPressed, OnSheldCanceld
+        ,OnMouseAttackkeyPressed, OnAttackTimeCountEvent;
+
+    public event Action OnSkillTreeOpen;
 
     public event Action OnClickMovePressed;
 
@@ -35,7 +38,9 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if(context.performed)
+            OnAttackTimeCountEvent?.Invoke();
+        if (context.canceled)
             OnAttackPressd?.Invoke();
     }
 
@@ -68,23 +73,17 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
         _screenPos = context.ReadValue<Vector2>();
     }
 
-    public Vector3 GetWorldPosition()
+    public Vector3 GetWorldPosition(out RaycastHit hit)
     {
         Camera main = Camera.main;
         Debug.Assert(main != null, "No main camera in this scene");
 
         Ray cameraRay = main.ScreenPointToRay(_screenPos);
-        if (Physics.Raycast(cameraRay, out RaycastHit hit, main.farClipPlane, whatIsGround))
+        if (Physics.Raycast(cameraRay, out hit, main.farClipPlane, whatIsGround))
         {
             _worldPos = hit.point;
         }
         return _worldPos;
-    }
-
-    public void OnClickMove(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-            OnClickMovePressed?.Invoke();
     }
 
     public void OnSheldSkill(InputAction.CallbackContext context)
@@ -106,6 +105,18 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public void OnStrongAttackSkill(InputAction.CallbackContext context)
     {
         if (context.performed)
-            OnStrongAttackPressed?.Invoke();
+            OnHandleFollowSoulPressed?.Invoke();
+    }
+
+    public void OnOpenSkillTree(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            OnSkillTreeOpen?.Invoke();
+    }
+
+    public void OnClickAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnMouseAttackkeyPressed?.Invoke();
     }
 }

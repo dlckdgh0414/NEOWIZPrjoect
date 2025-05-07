@@ -342,6 +342,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHealth: 10
   <currentHealth>k__BackingField: 10
+  _statCompo: {fileID: 0}
 --- !u!4 &20908362
 Transform:
   m_ObjectHideFlags: 0
@@ -2123,6 +2124,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2047110630}
   m_LocalEulerAnglesHint: {x: 13.389102, y: 1.8012367, z: 17.95265}
+--- !u!1001 &244125855
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5373051402080148791, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_Name
+      value: SkillTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 791.31213
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.7981205
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.6886206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269863933542382744, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830155631225133800, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222172324106863888, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 967258562}
+    - target: {fileID: 8222172324106863888, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222172324106863888, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5000
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83e0e9e3a08bf0749b2a0c9e132dc180, type: 3}
 --- !u!1 &252488966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4835,8 +4909,6 @@ MonoBehaviour:
   m_Graph: {fileID: -146333362564786102, guid: 82ebf73c79a9ead4f94bb294f347e6cf, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4070495565551239864
-  - rid: 4070495565551240136
-  - rid: 4070495565551240137
   - rid: 4070495565551240138
   - rid: 4070495594112352487
   - rid: 4070495594112352488
@@ -4854,22 +4926,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 639392960}
-    - rid: 4070495565551240136
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 11796456446166271674
-          m_Value1: 12880313040470640108
-        Name: DetectRange
-        m_Value: 15
-    - rid: 4070495565551240137
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1888006722131403562
-          m_Value1: 2249348467468881975
-        Name: AttackRange
-        m_Value: 0
     - rid: 4070495565551240138
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -4946,6 +5002,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
+  delectRange: 0
+  attackRange: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
 --- !u!1 &641141701
 GameObject:
@@ -8769,6 +8827,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
+  delectRange: 0
+  attackRange: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
 --- !u!54 &1074127024
 Rigidbody:
@@ -12661,6 +12721,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
+  delectRange: 0
+  attackRange: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
 --- !u!54 &1568499893
 Rigidbody:
@@ -12727,8 +12789,6 @@ MonoBehaviour:
   m_Graph: {fileID: -146333362564786102, guid: 7edc04917a204f340900ea8217ab5d3b, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4070495481338003767
-  - rid: 4070495525162189494
-  - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
   - rid: 4070495888905339834
@@ -12745,22 +12805,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 1568499890}
-    - rid: 4070495525162189494
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 11796456446166271674
-          m_Value1: 12880313040470640108
-        Name: DetectRange
-        m_Value: 7
-    - rid: 4070495525162189495
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1888006722131403562
-          m_Value1: 2249348467468881975
-        Name: AttackRange
-        m_Value: 1
     - rid: 4070495528948597418
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -13981,6 +14025,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
+  _statCompo: {fileID: 0}
 --- !u!1 &1746014446
 GameObject:
   m_ObjectHideFlags: 0
@@ -15248,6 +15293,85 @@ Transform:
   - {fileID: 902371547}
   m_Father: {fileID: 31457421}
   m_LocalEulerAnglesHint: {x: 12.7262, y: -20.00858, z: 67.96625}
+--- !u!1 &1916254872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916254875}
+  - component: {fileID: 1916254874}
+  - component: {fileID: 1916254873}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1916254873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916254872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
+--- !u!114 &1916254874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916254872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1916254875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916254872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927059410
 GameObject:
   m_ObjectHideFlags: 0
@@ -15785,6 +15909,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
+  _statCompo: {fileID: 0}
 --- !u!1 &2002511954
 GameObject:
   m_ObjectHideFlags: 0
@@ -20342,6 +20467,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
+  delectRange: 0
+  attackRange: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
 --- !u!4 &3424429743594388176
 Transform:
@@ -21998,6 +22125,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
+  _statCompo: {fileID: 0}
 --- !u!4 &5183103934007979870
 Transform:
   m_ObjectHideFlags: 0
@@ -22834,6 +22962,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
+  delectRange: 0
+  attackRange: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
 --- !u!1 &5636129486612986946
 GameObject:
@@ -22913,6 +23043,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHealth: 10
   <currentHealth>k__BackingField: 10
+  _statCompo: {fileID: 0}
 --- !u!1 &5673907117469232701
 GameObject:
   m_ObjectHideFlags: 0
@@ -23181,6 +23312,8 @@ MonoBehaviour:
   OnStun:
     m_PersistentCalls:
       m_Calls: []
+  delectRange: 0
+  attackRange: 0
   <PlayerFinder>k__BackingField: {fileID: 11400000, guid: 1c001272e874725409402e89321783c2, type: 2}
   IsHit: 0
   IsStun: 0
@@ -23641,6 +23774,7 @@ MonoBehaviour:
   hpBar: {fileID: 2549546838434090809}
   maxHealth: 0
   <currentHealth>k__BackingField: 0
+  _statCompo: {fileID: 0}
 --- !u!1 &6398706420932734091
 GameObject:
   m_ObjectHideFlags: 0
@@ -23823,7 +23957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6727780771125191930
 GameObject:
   m_ObjectHideFlags: 0
@@ -25123,8 +25257,6 @@ MonoBehaviour:
   m_Graph: {fileID: -146333362564786102, guid: 7edc04917a204f340900ea8217ab5d3b, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 4070495481338003767
-  - rid: 4070495525162189494
-  - rid: 4070495525162189495
   - rid: 4070495528948597418
   - rid: 4070495545898041598
   - rid: 4070495888905339834
@@ -25141,22 +25273,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 6714865482302129006}
-    - rid: 4070495525162189494
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 11796456446166271674
-          m_Value1: 12880313040470640108
-        Name: DetectRange
-        m_Value: 7
-    - rid: 4070495525162189495
-      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1888006722131403562
-          m_Value1: 2249348467468881975
-        Name: AttackRange
-        m_Value: 1
     - rid: 4070495528948597418
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -27037,3 +27153,5 @@ SceneRoots:
   - {fileID: 1236078857}
   - {fileID: 1844794807}
   - {fileID: 1238298562}
+  - {fileID: 244125855}
+  - {fileID: 1916254875}

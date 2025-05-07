@@ -276,12 +276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e34bf24773461f48bc2b36cc3958cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitsList:
-  - {fileID: 6836131844431817379}
-  - {fileID: 4404786735794105615}
-  - {fileID: 3877418327988401737}
-  - {fileID: 8916281712933301174}
-  - {fileID: 6017259961484177745}
   skillTreeSO: {fileID: 11400000, guid: 79c4fe27fe45e92499867107171d3904, type: 2}
   eventChannelSO: {fileID: 11400000, guid: fe38f0f1bdd81fd48a4faab089f3aa04, type: 2}
 --- !u!114 &2055878966115450520
@@ -560,20 +554,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42b3840a8424e4185ecf3db4597a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitsSO: {fileID: 11400000, guid: 1ac77d4365e21e144b1a23287b80dd4d, type: 2}
-  fillNodeImage: {fileID: 0}
-  connectedFruits: []
-  isRootFruits: 0
+  nodeSO: {fileID: 0}
+  nodeImage: {fileID: 0}
   width: 10
-  connectColor: {r: 0.47656485, g: 0.28616333, b: 1, a: 1}
-  <ConnectedNode>k__BackingField:
-  - {fileID: 6467998230998572543}
-  - {fileID: 2657835968945214655}
-  - {fileID: 9109545747140485426}
-  <FillNode>k__BackingField:
-  - {fileID: 6472522145766188585}
-  - {fileID: 6364738636095701682}
-  - {fileID: 4731441307767638429}
+  branchImage: {fileID: 0}
+  ConnectedNodes: []
+  <IsRootNode>k__BackingField: 0
+  <ConnectedBranch>k__BackingField: []
+  <FillBranch>k__BackingField: []
+  branchColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &1140382461018130712
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,8 +628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1005,8 +993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: -50, y: -250}
+  m_AnchoredPosition: {x: 0, y: -74.5}
+  m_SizeDelta: {x: -50, y: -151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6051786943941840581
 CanvasRenderer:
@@ -1130,9 +1118,8 @@ MonoBehaviour:
     fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsaa fdfdaa fdsfa dsfa dsa fds
     fdsaaafafaaa fd
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cdfe354f633b94d43bc0d5678240e79f, type: 2}
-  m_sharedMaterial: {fileID: -1213074281117479483, guid: cdfe354f633b94d43bc0d5678240e79f,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1265,8 +1252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1649,9 +1635,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "150\uC6D0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cdfe354f633b94d43bc0d5678240e79f, type: 2}
-  m_sharedMaterial: {fileID: -1213074281117479483, guid: cdfe354f633b94d43bc0d5678240e79f,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1980,8 +1965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2174,9 +2158,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Kenshi Yonezu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cdfe354f633b94d43bc0d5678240e79f, type: 2}
-  m_sharedMaterial: {fileID: -1213074281117479483, guid: cdfe354f633b94d43bc0d5678240e79f,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2309,8 +2292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2460,8 +2442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2639,8 +2620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2836,8 +2816,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2987,8 +2966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3213,8 +3191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3274,19 +3251,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42b3840a8424e4185ecf3db4597a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitsSO: {fileID: 11400000, guid: 0965aef67a7121d478fd6bad7c1535a9, type: 2}
-  fillNodeImage: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
-  connectedFruits:
-  - {fileID: 6836131844431817379}
-  - {fileID: 4404786735794105615}
-  - {fileID: 3877418327988401737}
-  - {fileID: 8916281712933301174}
-  isRootFruits: 1
+  nodeSO: {fileID: 0}
+  nodeImage: {fileID: 0}
   width: 30
-  connectColor: {r: 1, g: 1, b: 1, a: 0}
-  <ConnectedNode>k__BackingField: []
-  <FillNode>k__BackingField: []
+  branchImage: {fileID: 0}
+  ConnectedNodes: []
+  <IsRootNode>k__BackingField: 0
+  <ConnectedBranch>k__BackingField: []
+  <FillBranch>k__BackingField: []
+  branchColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &6747613722003496349
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,20 +3522,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42b3840a8424e4185ecf3db4597a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitsSO: {fileID: 11400000, guid: 92c390d6250b8a54cbe3a7e1103661ce, type: 2}
-  fillNodeImage: {fileID: 0}
-  connectedFruits: []
-  isRootFruits: 0
+  nodeSO: {fileID: 0}
+  nodeImage: {fileID: 0}
   width: 10
-  connectColor: {r: 0.551525, g: 0.28627455, b: 1, a: 1}
-  <ConnectedNode>k__BackingField:
-  - {fileID: 5026570431919928533}
-  - {fileID: 3265907623951762354}
-  - {fileID: 6619404669164282757}
-  <FillNode>k__BackingField:
-  - {fileID: 1431128801448231166}
-  - {fileID: 1389620590926177940}
-  - {fileID: 2701980429060865397}
+  branchImage: {fileID: 0}
+  ConnectedNodes: []
+  <IsRootNode>k__BackingField: 0
+  <ConnectedBranch>k__BackingField: []
+  <FillBranch>k__BackingField: []
+  branchColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &7914491299581868063
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,20 +3914,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42b3840a8424e4185ecf3db4597a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitsSO: {fileID: 11400000, guid: fbad40caa2747f7458d3b313a514800b, type: 2}
-  fillNodeImage: {fileID: 0}
-  connectedFruits: []
-  isRootFruits: 0
+  nodeSO: {fileID: 0}
+  nodeImage: {fileID: 0}
   width: 10
-  connectColor: {r: 0.3649604, g: 0.28627455, b: 1, a: 1}
-  <ConnectedNode>k__BackingField:
-  - {fileID: 8907772443234613338}
-  - {fileID: 3746847093942560563}
-  - {fileID: 5868471144001031504}
-  <FillNode>k__BackingField:
-  - {fileID: 1293289273805807159}
-  - {fileID: 766653513011508961}
-  - {fileID: 4474664305468073507}
+  branchImage: {fileID: 0}
+  ConnectedNodes: []
+  <IsRootNode>k__BackingField: 0
+  <ConnectedBranch>k__BackingField: []
+  <FillBranch>k__BackingField: []
+  branchColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &8285639031839601701
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,20 +4306,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a42b3840a8424e4185ecf3db4597a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitsSO: {fileID: 11400000, guid: bfe0e16f56e92e143a29aff6d1e178c9, type: 2}
-  fillNodeImage: {fileID: 0}
-  connectedFruits: []
-  isRootFruits: 0
+  nodeSO: {fileID: 0}
+  nodeImage: {fileID: 0}
   width: 10
-  connectColor: {r: 0.30370098, g: 0.047169685, b: 1, a: 1}
-  <ConnectedNode>k__BackingField:
-  - {fileID: 1254909501918184700}
-  - {fileID: 5498422605555005791}
-  - {fileID: 7231005319151981066}
-  <FillNode>k__BackingField:
-  - {fileID: 1080844098772233712}
-  - {fileID: 1708865754199186677}
-  - {fileID: 3376812262031927614}
+  branchImage: {fileID: 0}
+  ConnectedNodes: []
+  <IsRootNode>k__BackingField: 0
+  <ConnectedBranch>k__BackingField: []
+  <FillBranch>k__BackingField: []
+  branchColor: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &8511159208346342344
 GameObject:
   m_ObjectHideFlags: 0
@@ -4500,8 +4458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4651,8 +4608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4743,6 +4699,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventChannel: {fileID: 11400000, guid: fe38f0f1bdd81fd48a4faab089f3aa04, type: 2}
+  skillTree: {fileID: 0}
+  selectNodeCount: {fileID: 0}
 --- !u!1 &8811617045211291955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,8 +4766,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

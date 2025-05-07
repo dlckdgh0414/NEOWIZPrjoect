@@ -5,6 +5,10 @@ public abstract class Enemy : Entity
 {
     protected BehaviorGraphAgent btAgent;
     protected Rigidbody _rbCompo;
+    [field:SerializeField] public float delectRange;
+    [field:SerializeField] public float attackRange;
+
+    public bool IsMark = false;
 
     [field: SerializeField] public EntityFinderSO PlayerFinder { get; protected set; }
 
@@ -25,7 +29,6 @@ public abstract class Enemy : Entity
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        PlayerFinder.ClearSetTargets();
     }
 
     public BlackboardVariable<T> GetBlackboardVariable<T>(string key)
@@ -36,5 +39,13 @@ public abstract class Enemy : Entity
         }
 
         return default;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, delectRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

@@ -1,20 +1,26 @@
+﻿using System;
 using UnityEngine;
 
-public class StatOverride : MonoBehaviour
+namespace Member.Kmj._01.Scipt.Stat
 {
-    [SerializeField] private StatSO stat;
-    [SerializeField] private bool IsUseOverride;
-    [SerializeField] private float overrideValue;
-
-    public StatOverride(StatSO stat) => this.stat = stat;
-
-    public StatSO CreateSet()
+    [Serializable]
+    public class StatOverride
     {
-        StatSO newStat = stat.Clone() as StatSO;
+        [SerializeField] private StatSO stat;
+        [SerializeField] private bool isUseOverride;
+        [SerializeField] private float overrideValue;
 
-        if (IsUseOverride)
-            newStat.BaseValue = overrideValue;
+        public StatOverride(StatSO stat) => this.stat = stat;
 
-        return newStat;
+        public StatSO CreateStat()
+        {
+            StatSO newStat = stat.Clone() as StatSO;
+            Debug.Assert(newStat != null, $"{stat.statName} clone failed");
+
+            if (isUseOverride)
+                newStat.BaseValue = overrideValue;
+
+            return newStat;
+        }
     }
 }

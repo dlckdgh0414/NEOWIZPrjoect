@@ -17,7 +17,9 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     [SerializeField] private StatSO _atkDamage;
     [SerializeField] private EntityStat _stat;
 
-    private float atkDamage;
+    [field: SerializeField] public Transform swingTrm { get; set; }
+
+    public float atkDamage { get; set; }
     private EntityAnimatorTrigger _triggerCompo;
 
     private float _attackSpeed = 0.3f;
@@ -26,6 +28,8 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     public bool useMouseDirection = false;
 
     public int ComboCounter { get; set; } = 0;
+
+    private Player _player;
 
     public float AttackSpeed
     {
@@ -40,6 +44,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     public void Initialize(Entity entity)
     {
         _entity = entity;
+        _player = entity as Player;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
         AttackSpeed = 0.7f;
         damageCast.InitCaster(_entity);
@@ -94,6 +99,5 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         Debug.Assert(attackDataList.Length > ComboCounter, "Combo counter is out of range");
         return attackDataList[ComboCounter];
     }
-
 
 }

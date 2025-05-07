@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class MousePlayerMoveState : MousePlayerCanMove
+public class MousePlayerMoveState : MousePlayerCanAttack
 {
 
     private Vector3 dir = Vector3.zero;
 
-    private MousePlayerEnergy _energyCompo;
     private MousePlayerSkillCompo _skillCompo;
     public MousePlayerMoveState(Entity entity, int animationHash) : base(entity, animationHash)
     {
-        _energyCompo = _entity.GetComponentInChildren<MousePlayerEnergy>();
-        _skillCompo = entity.GetComponentInChildren<MousePlayerSkillCompo>();
     }
 
     public override void Enter()
@@ -19,44 +16,32 @@ public class MousePlayerMoveState : MousePlayerCanMove
 
         _player.rbCompo.linearVelocity = Vector3.zero;
 
-        dir = _player.MoveToMousePosition(_player);
+        dir = _player.PlayerInput.GetWorldPosition(out RaycastHit hit);
 
-        _energyCompo.UseEnergy(15);
-
-        _energyCompo.StartSkill(0.2f);
-
-        if (_energyCompo.energy <= 0)
-        {
-            _player.ChangeState("IDLE");
-        }
         _player.LookAtMouse();
+        _player.isUseDashSkill = true;
 
     }
 
     public override void Update()
     {
         base.Update();
-        
-        _player.transform.position = Vector3.MoveTowards(_player.transform.position,
-            dir, 25f * Time.deltaTime);
 
-        if(_energyCompo.energy <= 0)
+        _player._moveCompo.MoveToAttackEntity(dir);
+
+        _player.LookAtMouse();
+
+        if (Vector3.Distance(_player.transform.position, dir) <= 1)
         {
-            _player.ChangeState("IDLE");
-        }
-
-        
-
-        if (_player.transform.position == dir)
-        {
-            _player.ChangeState("IDLE");
+            _player.ChangeState("ATTACK");
         }
 
     }
 
     public override void Exit()
     {
-        _energyCompo.CancelSkill();
+        // _energyCompo.CancelSkill();
+        _player._moveCompo.StopImmediately();
         base.Exit();
     }
 }

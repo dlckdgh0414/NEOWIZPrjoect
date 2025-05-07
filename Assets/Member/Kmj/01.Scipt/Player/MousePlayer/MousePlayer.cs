@@ -1,6 +1,6 @@
 using System;
+using Member.Kmj._01.Scipt.Player.MousePlayer;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MousePlayer : Entity
 {
@@ -8,19 +8,40 @@ public class MousePlayer : Entity
 
     [SerializeField] private StateDataSO[] stateDatas;
 
-    [field: SerializeField] public Rigidbody rbCompo;
     private EntityStateMachine _stateMachine;
+
+    public MouseBarrerSkill _barrerSkill { get; private set;}
+   
+  //  public EntitySkillCompo _skillCompo { get; private set; }
+    public MouseAttackCompo _attackCompo { get; private set; }
+    public MouseMoveCompo _moveCompo { get; private set; }
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
+    
+    public AttributeType _typeCompo { get; private set; }
+
+    public Player player;
+
+    [field: SerializeField] public Rigidbody rbCompo;
 
     public bool _isSkilling { get;  set; } = false;
-    public EntitySkillCompo _skillCompo { get; private set; }
+
+    public bool isUseDashSkill { get; set; } = false;
+    
+    
+    public bool isUseSheld { get; set; }
+
+
 
     protected override void Awake()
     {
         base.Awake();
         rbCompo = GetComponentInChildren<Rigidbody>();
-        _skillCompo = GetCompo<EntitySkillCompo>();
+    //    _skillCompo = GetCompo<EntitySkillCompo>();
+        _barrerSkill = GetComponentInChildren<MouseBarrerSkill>();
+        _attackCompo = GetComponentInChildren<MouseAttackCompo>();
+        _moveCompo = GetCompo<MouseMoveCompo>();
         _stateMachine = new EntityStateMachine(this, stateDatas);
+        _typeCompo = GetComponentInChildren<AttributeType>();
         _isSkilling = false;
     }
 
@@ -36,8 +57,7 @@ public class MousePlayer : Entity
 
     public Vector3 MoveToMousePosition(MousePlayer _player)
     {
-        Vector3 targetPos = PlayerInput.GetWorldPosition();
-        //targetPos.y = transform.position.y;
+        Vector3 targetPos = PlayerInput.GetWorldPosition(out RaycastHit hitInfo);
         return targetPos;
     }
 
@@ -47,7 +67,7 @@ public class MousePlayer : Entity
 
     public void LookAtMouse()
     {
-        Vector3 targetPos = PlayerInput.GetWorldPosition();
+        Vector3 targetPos = PlayerInput.GetWorldPosition(out RaycastHit hitInfo);
         Vector3 direction = targetPos - transform.position;
         direction.y = 0;
 

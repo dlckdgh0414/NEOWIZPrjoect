@@ -3,11 +3,14 @@ using UnityEngine;
 public class SoulBullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
-    private Rigidbody _rbCompo;
+    public Rigidbody _rbCompo { get; set; }
     [SerializeField] private float damge;
     private Vector3 _mover = Vector3.zero;
-    private Entity _entity;
-    
+    public Entity _entity { get; set; }
+    [SerializeField] private LayerMask _whatIsSheld;
+    [SerializeField] private LayerMask _whatIsEnemy;
+    public bool _isReflect { get; set; } = false;
+
     public void SetDir(Transform target,Entity entity)
     {
         _entity = entity;
@@ -24,13 +27,21 @@ public class SoulBullet : MonoBehaviour
         _rbCompo.linearVelocity = _mover * bulletSpeed;
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.TryGetComponent(out Player player))
+        if((1 << other.transform.gameObject.layer & _whatIsEnemy) != 0 && _isReflect)
         {
-            IDamgable damgable = player.GetComponentInChildren<IDamgable>();
+            IDamgable damgable = other.GetComponentInChildren<IDamgable>();
             CameraManager.Instance.ShakeCamera(1, 0.15f);
             damgable.ApplyDamage(damge, false, 0, _entity);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.TryGetComponent(out Player player))
+        {
+            CameraManager.Instance.ShakeCamera(1, 0.15f);
+            player.ApplyDamage(damge, false, 0, _entity);
             Destroy(gameObject);
         }
     }

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 [CreateAssetMenu(fileName = "StatSO", menuName = "SO/StatSO")]
 public class StatSO : ScriptableObject, ICloneable
@@ -49,7 +47,7 @@ public class StatSO : ScriptableObject, ICloneable
         set
         {
             float prevValue = Value;
-            baseValue = Mathf.Clamp(value, MinValue, MaxValue); //µé¾î¿Â °ªÀ» clamp
+            baseValue = Mathf.Clamp(value, MinValue, MaxValue); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ clamp
             TryInvokeValueChangedEvent(Value, prevValue);
         }
     }
@@ -58,11 +56,16 @@ public class StatSO : ScriptableObject, ICloneable
 
     public void AddModifier(object key, float value)
     {
-        if (_modifyDictionary.ContainsKey(key)) return;
-        float prevValue = Value; //ÀÌÀü °ªÀ» ²À ±â¾ïÇØ³ù´Ù°¡
+        float prevValue = Value; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø³ï¿½ï¿½Ù°ï¿½
+        
+        Debug.Log($"{name} ìŠ¤íƒ¯ {value} ë³€ê²½");
 
         _modifiedValue += value;
-        _modifyDictionary.Add(key, value);
+
+        if (_modifyDictionary.ContainsKey(key) == false)
+            _modifyDictionary.Add(key, value);
+        
+        Debug.Log(value);
 
         TryInvokeValueChangedEvent(Value, prevValue);
     }
@@ -89,7 +92,7 @@ public class StatSO : ScriptableObject, ICloneable
 
     private void TryInvokeValueChangedEvent(float current, float prevValue)
     {
-        //ÀÌÁø°ª°ú ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é ÀÌº¥Æ® ÀÎº¸Å©
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½Îºï¿½Å©
         if (Mathf.Approximately(current, prevValue) == false)
             OnValueChange?.Invoke(this, current, prevValue);
     }

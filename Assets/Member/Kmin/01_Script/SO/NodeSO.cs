@@ -6,7 +6,6 @@ public enum UpgradeType
 {
     Int, Float, String
 }
-
 public enum NodeType
 {
     Normal, Choice, Reqire
@@ -18,12 +17,15 @@ public class NodeSO : ScriptableObject
     public string fruitsName;
     public int price;
     public Sprite icon;
-    public string upgradeValue;
+    public float upgradeValue;
+    public StatSO statSO;
+    public NodeType NodeType;
     public UpgradeType UpgradeType;
     [TextArea]
     public string description;
 
-    public bool isActive;
+    public bool isPurchase { get; set; } = false;
+    public bool isActive {get; set;}
     public SkillTreeNode SkillTreeNode { get; set; }
 
     private void OnValidate()

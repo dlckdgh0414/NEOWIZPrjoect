@@ -14,15 +14,5 @@ public class TypeLoader : MonoBehaviour
 
         return types as T[];
     }
-
-    /*public static ScriptableObject LoadScriptableObject<T>(T type, string name)
-    {
-        Type[] soTypes = AppDomain.CurrentDomain.GetAssemblies()
-            .SelectMany(a => a.GetTypes())
-            .Where(t => t.IsSubclassOf(typeof(ScriptableObject)) 
-                        && !t.IsAbstract && t.IsSubclassOf(type.GetType()))
-            .ToArray();
-        
-        //return soTypes.Select()
-    }*/
 }
+    

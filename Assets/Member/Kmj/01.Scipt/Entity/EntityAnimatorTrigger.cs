@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 {
-
+    
     public Action OnAnimationEndTrigger;
     public Action OnAttackTrigger;
 
-    public Action OnAttackTriggerEnd;
+    public Action OnAttackTriggerEnd, OnSwingAttackTrigger;
 
     public event Action OnAttackVFXTrigger;
 
@@ -17,6 +17,8 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     public event Action OnAttackDash;
 
     public event Action<bool> OnRollingStatusChange;
+
+    public event Action<bool> OnManualRotationTrigger;
 
     private Entity _entity;
 
@@ -39,7 +41,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     private void PlayerStrongAttack() => OnStrongAttackTrigger?.Invoke();
     private void AttackEnd() => OnAttackTriggerEnd?.Invoke();
 
-
+    private void SwingAttack() => OnSwingAttackTrigger?.Invoke();
     private void BarrierPressed() => OnBarrierPressed?.Invoke();
 
 
@@ -47,4 +49,7 @@ public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
     {
         OnAttackTrigger?.Invoke();
     }
+
+    private void StartManualRotation() => OnManualRotationTrigger?.Invoke(true);
+    private void StopManualRotation() => OnManualRotationTrigger?.Invoke(false);
 }

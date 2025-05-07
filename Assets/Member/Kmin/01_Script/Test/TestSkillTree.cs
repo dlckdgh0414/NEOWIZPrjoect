@@ -1,16 +1,20 @@
+using System;
 using UnityEngine;
 
 public class TestSkillTree : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private PlayerInputSO input;
+    [SerializeField] private Canvas canvas;
+    private bool _isOpen;
+
+    private void Awake()
     {
-        
+        input.OnSkillTreeOpen += HandleSkillTreeOpen;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void HandleSkillTreeOpen()
     {
-        
+        _isOpen = !_isOpen;
+        canvas.gameObject.SetActive(_isOpen);
     }
 }

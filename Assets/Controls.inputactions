@@ -60,7 +60,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ClickMove",
+                    "name": "ClickAttack",
                     "type": "Button",
                     "id": "12b8d1a0-6f06-4291-a002-99d749a8e1a0",
                     "expectedControlType": "",
@@ -90,6 +90,15 @@
                     "name": "StrongAttackSkill",
                     "type": "Button",
                     "id": "048bc804-b31b-4fa2-9015-c0ff541167bd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenSkillTree",
+                    "type": "Button",
+                    "id": "488076d1-5f29-4adf-8120-c461aa2d6e70",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -269,7 +278,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ClickMove",
+                    "action": "ClickAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -305,6 +314,17 @@
                     "action": "StrongAttackSkill",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4b8bdf3-5b88-4df5-afe9-b4acb9060758",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenSkillTree",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -334,7 +354,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "15cef263-9014-4fd5-94d9-4e4a6234a6ef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
