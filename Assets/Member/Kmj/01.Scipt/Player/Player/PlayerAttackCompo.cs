@@ -57,7 +57,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         _entity = entity;
         _player = entity as Player;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
-        AttackSpeed = 1f;
+        AttackSpeed = 1.5f;
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
         _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;

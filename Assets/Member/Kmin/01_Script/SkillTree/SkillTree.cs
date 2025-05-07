@@ -36,8 +36,8 @@ public class SkillTree : MonoBehaviour
     private void HandleNodePurchase(SkillTreePurchaseEvent evt)
     {
         NodeSO nodeSO = evt.node.GetNodeSO();
-        statCompo.IncreaseBaseValue(nodeSO.statSO, nodeSO.upgradeValue);
-        Debug.Log($"{nodeSO.statSO.name} Increase {nodeSO.upgradeValue}");
+        StatSO targetStat = statCompo.GetStat(nodeSO.statSO);
+        targetStat.AddModifier(this, nodeSO.upgradeValue);
         ConnectColor(evt.node);
     }
 

@@ -14,7 +14,7 @@ public class EntityStat : MonoBehaviour, IEntityComponet
     public void Initialize(Entity entity)
     {
         Owner = entity;
-        //½ºÅÈµéÀ» º¹Á¦ÇÏ°í ¿À¹ö¶óÀÌµåÇØ¼­ ´Ù½Ã ÀúÀåÇØÁØ´Ù.
+        //ï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½Ø¼ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
         _stats = statOverrides.Select(stat => stat.CreateSet()).ToArray();
     }
 
@@ -34,7 +34,14 @@ public class EntityStat : MonoBehaviour, IEntityComponet
 
     public void SetBaseValue(StatSO stat, float value) => GetStat(stat).BaseValue = value;
     public float GetBaseValue(StatSO stat) => GetStat(stat).BaseValue;
-    public void IncreaseBaseValue(StatSO stat, float value) => GetStat(stat).BaseValue += value;
+
+    public void IncreaseBaseValue(StatSO stat, float value)
+    {
+        Debug.Log($":Prev StatValue : {stat.Value}");
+        GetStat(stat).BaseValue += value;
+        Debug.Log($":After : {stat.Value}");
+    }
+
     public void AddModifier(StatSO stat, object key, float value) => GetStat(stat).AddModifier(key, value);
     public void RemoveModifier(StatSO stat, object key) => GetStat(stat).RemoveModifier(key);
 

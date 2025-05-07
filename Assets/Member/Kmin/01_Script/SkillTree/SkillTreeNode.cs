@@ -28,7 +28,6 @@ public class SkillTreeNode : MonoBehaviour, INode
         NodeButton = GetComponentInChildren<Button>();
         NodeIcon = NodeButton.transform.Find("Icon").GetComponent<Image>();
 
-        nodeSO.statSO = _statCompo.GetStat(nodeSO.statSO);
         nodeSO.isPurchase = false;
 
         ConnectedNodes.ForEach(f => { f.ParentNode = this; });
@@ -158,7 +157,7 @@ public class SkillTreeNode : MonoBehaviour, INode
 
     private void OnValidate()
     {
-        nodeImage.sprite = nodeSO.icon;
+        //nodeImage.sprite = nodeSO.icon;
 
         if (FillBranch == null)
             return;
