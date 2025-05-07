@@ -11,6 +11,8 @@ public class SkillTreeNode : MonoBehaviour, INode
     [SerializeField] private float width = 10;
     [SerializeField] private Sprite branchImage;
 
+    private EntityStat _statCompo;
+
     [field: SerializeField] public List<SkillTreeNode> ConnectedNodes;
     [field: SerializeField] public bool IsRootNode { get; private set; }
     [field: SerializeField, HideInInspector] public List<Image> ConnectedBranch { get; private set; }
@@ -25,6 +27,8 @@ public class SkillTreeNode : MonoBehaviour, INode
     {
         NodeButton = GetComponentInChildren<Button>();
         NodeIcon = NodeButton.transform.Find("Icon").GetComponent<Image>();
+
+        nodeSO.statSO = _statCompo.GetStat(nodeSO.statSO);
         nodeSO.isPurchase = false;
 
         ConnectedNodes.ForEach(f => { f.ParentNode = this; });
