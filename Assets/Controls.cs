@@ -125,6 +125,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChargeSklil"",
+                    ""type"": ""Button"",
+                    ""id"": ""4db40146-ca6d-459d-b7aa-f3d2337a06b4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -345,6 +354,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenSkillTree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd949097-542e-4d01-8e3c-38486cf3a878"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChargeSklil"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -943,6 +963,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Rolling = m_Player.FindAction("Rolling", throwIfNotFound: true);
         m_Player_StrongAttackSkill = m_Player.FindAction("StrongAttackSkill", throwIfNotFound: true);
         m_Player_OpenSkillTree = m_Player.FindAction("OpenSkillTree", throwIfNotFound: true);
+        m_Player_ChargeSklil = m_Player.FindAction("ChargeSklil", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1033,6 +1054,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Rolling;
     private readonly InputAction m_Player_StrongAttackSkill;
     private readonly InputAction m_Player_OpenSkillTree;
+    private readonly InputAction m_Player_ChargeSklil;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -1048,6 +1070,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Rolling => m_Wrapper.m_Player_Rolling;
         public InputAction @StrongAttackSkill => m_Wrapper.m_Player_StrongAttackSkill;
         public InputAction @OpenSkillTree => m_Wrapper.m_Player_OpenSkillTree;
+        public InputAction @ChargeSklil => m_Wrapper.m_Player_ChargeSklil;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1090,6 +1113,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @OpenSkillTree.started += instance.OnOpenSkillTree;
             @OpenSkillTree.performed += instance.OnOpenSkillTree;
             @OpenSkillTree.canceled += instance.OnOpenSkillTree;
+            @ChargeSklil.started += instance.OnChargeSklil;
+            @ChargeSklil.performed += instance.OnChargeSklil;
+            @ChargeSklil.canceled += instance.OnChargeSklil;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1127,6 +1153,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @OpenSkillTree.started -= instance.OnOpenSkillTree;
             @OpenSkillTree.performed -= instance.OnOpenSkillTree;
             @OpenSkillTree.canceled -= instance.OnOpenSkillTree;
+            @ChargeSklil.started -= instance.OnChargeSklil;
+            @ChargeSklil.performed -= instance.OnChargeSklil;
+            @ChargeSklil.canceled -= instance.OnChargeSklil;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1320,6 +1349,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnRolling(InputAction.CallbackContext context);
         void OnStrongAttackSkill(InputAction.CallbackContext context);
         void OnOpenSkillTree(InputAction.CallbackContext context);
+        void OnChargeSklil(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
