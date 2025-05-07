@@ -22,7 +22,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private float atkDamage;
     private EntityAnimatorTrigger _triggerCompo;
 
-    private float _attackSpeed = 0.3f;
+    private float _attackSpeed = 1f;
     private float _lastAttackTime;
     private float attackHoldTime = 0f;
 
@@ -36,6 +36,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private Player _player;
         
     private Coroutine _chargeRoutine;
+    [SerializeField] private Vector3 _boxSize;
 
     public float AttackSpeed
     {
@@ -52,7 +53,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         _entity = entity;
         _player = entity as Player;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
-        AttackSpeed = 0.7f;
+        AttackSpeed = 1f;
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
         _triggerCompo.OnAttackTriggerEnd += HandleAttackTrigger;
@@ -73,7 +74,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
     public void Attack()
     {
-        bool comboCounterOver = ComboCounter > 2;
+        bool comboCounterOver = ComboCounter > 1;
         bool comboWindowExhaust = Time.time >= _lastAttackTime + comboWindow;
         if (comboCounterOver || comboWindowExhaust)
         {
@@ -103,13 +104,25 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         Vector2 knockbackForce = new Vector2(6,6);
         bool success = damageCast.CastDamage(atkDamage);
 
+        Collider[] collider = Physics.OverlapBox(transform.position, _boxSize,
+            Quaternion.identity,_whatIsEnemy);
 
-        if (success)
+        foreach (var Obj in collider)
+        {
+            if (Obj.TryGetComponent(out IDamgable damage))
+            {
+                Debug.Log("공격됨");
+                damage.ApplyDamage(10, true, 0, _player);
+                CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
+            }
+        }
+
+        /*if (success)
         {
             print(atkDamage);
             Debug.Log("nice");
             CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
-        }
+        }*/
     }
 
     private void HandleSwing()
@@ -144,5 +157,12 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
             }
             yield return null;
         }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position,_boxSize);
+        Gizmos.color = Color.white;
     }
 }

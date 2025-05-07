@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EntityAnimatorTrigger : MonoBehaviour, IEntityComponet
 {
-
+    
     public Action OnAnimationEndTrigger;
     public Action OnAttackTrigger;
 
