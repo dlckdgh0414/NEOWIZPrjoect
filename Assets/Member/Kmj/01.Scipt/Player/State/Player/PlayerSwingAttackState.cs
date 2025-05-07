@@ -25,6 +25,7 @@ namespace Member.Kmj._01.Scipt.Player.State.Player
         public override void Update()
         {
             _player._movement.CanMove = true;
+            
             if (_isTriggerCall)
             {
                 _player.ChangeState("IDLE");
