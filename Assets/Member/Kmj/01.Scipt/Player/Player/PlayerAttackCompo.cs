@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
@@ -66,21 +68,23 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private void HandleAttackTrigger()
     {
         Vector2 knockbackForce = new Vector2(6, 6);
-        bool success = damageCast.CastDamage(atkDamage);
+     //   bool success = damageCast.CastDamage(atkDamage);
 
         Collider[] collider = Physics.OverlapBox(transform.position, _boxsize,
             Quaternion.identity, _whatIsEnemy);
-
-        if (success)
-            foreach (var Obj in collider)
+        foreach (var Obj in collider)
+        {
+            if (Obj.TryGetComponent(out IDamgable damage))
             {
-                if (Obj.TryGetComponent(out IDamgable damage))
-                {
-                    Debug.Log("공격됨");
-                    damage.ApplyDamage(10, true, 0, _player);
-                    CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
-                }
+                 Debug.Log("공격됨");
+                 damage.ApplyDamage(10, true, 0, _player);
+                 CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
             }
+            else
+            {
+                print("왔는데 없음");
+            }
+        }
     }
     
     public void Attack()
@@ -110,6 +114,9 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     }
     private void HandleSwing()
     {
+        _player._movement.StopImmediately();
+        _player._movement.CanMove = false;
+        
         _player._soul.rbCompo.AddForce(_player.transform.forward * 700, ForceMode.Impulse);
     }
 
@@ -141,5 +148,12 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
             }
             yield return null;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(transform.position, _boxsize);
+        Gizmos.color = Color.white;
     }
 }
