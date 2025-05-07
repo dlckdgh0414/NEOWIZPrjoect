@@ -1,3 +1,4 @@
+using Code.Entities;
 using UnityEngine;
 
 public class PlayerAttackCompo : MonoBehaviour, IEntityComponet

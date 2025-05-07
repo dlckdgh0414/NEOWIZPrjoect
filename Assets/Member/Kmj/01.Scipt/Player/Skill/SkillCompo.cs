@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Code.Entities;
 using UnityEngine;
 
 public abstract class SkillCompo : MonoBehaviour
