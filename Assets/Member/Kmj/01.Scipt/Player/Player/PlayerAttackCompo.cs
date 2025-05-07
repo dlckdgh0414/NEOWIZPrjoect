@@ -1,4 +1,3 @@
-using Code.Entities;
 using UnityEngine;
 
 public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
@@ -18,7 +17,9 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     [SerializeField] private StatSO _atkDamage;
     [SerializeField] private EntityStat _stat;
 
-    private float atkDamage;
+    [field: SerializeField] public Transform swingTrm { get; set; }
+
+    public float atkDamage { get; set; }
     private EntityAnimatorTrigger _triggerCompo;
 
     private float _attackSpeed = 0.3f;

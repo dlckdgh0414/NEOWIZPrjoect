@@ -56,11 +56,16 @@ public class StatSO : ScriptableObject, ICloneable
 
     public void AddModifier(object key, float value)
     {
-        if (_modifyDictionary.ContainsKey(key)) return;
         float prevValue = Value; //���� ���� �� ����س��ٰ�
+        
+        Debug.Log($"{name} 스탯 {value} 변경");
 
         _modifiedValue += value;
-        _modifyDictionary.Add(key, value);
+
+        if (_modifyDictionary.ContainsKey(key) == false)
+            _modifyDictionary.Add(key, value);
+        
+        Debug.Log(value);
 
         TryInvokeValueChangedEvent(Value, prevValue);
     }

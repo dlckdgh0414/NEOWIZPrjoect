@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Code.Entities;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine.UI;
 
 public class SkillTreeNode : MonoBehaviour, INode

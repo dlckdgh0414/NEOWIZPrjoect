@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Core.StatSystem;
+using Member.Kmj._01.Scipt.Stat;
 using UnityEngine;
 
-namespace Code.Entities
-{
     public class EntityStat : MonoBehaviour, IEntityComponet
     {
 
@@ -80,4 +78,3 @@ namespace Code.Entities
         }
         #endregion
     }
-}

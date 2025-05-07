@@ -1,5 +1,4 @@
 using System;
-using Code.Entities;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
@@ -44,6 +43,7 @@ public class EntityHealth : MonoBehaviour, IDamgable, IEntityComponet,IAfterInit
     private void HandleHpChange(StatSO stat, float current, float previous)
     {
         maxHealth = current;
+        Debug.Log(currentHealth);
         currentHealth = Mathf.Clamp(currentHealth + current - previous, 1f, maxHealth);
     }
 

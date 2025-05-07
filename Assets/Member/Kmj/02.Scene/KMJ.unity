@@ -4995,7 +4995,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statOverrides:
-  - {fileID: 1764490111}
+  - stat: {fileID: 0}
+    isUseOverride: 0
+    overrideValue: 0
 --- !u!1 &1575457261
 GameObject:
   m_ObjectHideFlags: 0
@@ -9656,6 +9658,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
+      propertyPath: <swingTrm>k__BackingField
+      value: 
+      objectReference: {fileID: 5400817967354438588}
+    - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: attackDataList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -9763,6 +9769,11 @@ PrefabInstance:
       addedObject: {fileID: 2249509429271487206}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
+--- !u!4 &5400817967354438588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 699122511584359337, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
+  m_PrefabInstance: {fileID: 5400817967354438587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5417512378936623257
 Transform:
   m_ObjectHideFlags: 0

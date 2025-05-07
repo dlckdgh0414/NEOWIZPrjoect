@@ -1,4 +1,3 @@
-using Code.Entities;
 using UnityEngine;
 
 public class MouseMoveCompo : MonoBehaviour, IEntityComponet
