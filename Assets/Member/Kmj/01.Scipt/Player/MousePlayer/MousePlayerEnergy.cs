@@ -1,4 +1,5 @@
 using System.Collections;
+using Code.Entities;
 using UnityEngine;
 
 public class MousePlayerEnergy : MonoBehaviour

@@ -1,3 +1,4 @@
+using Code.Entities;
 using UnityEngine;
 
 public class MouseMoveCompo : MonoBehaviour, IEntityComponet
@@ -19,7 +20,7 @@ public class MouseMoveCompo : MonoBehaviour, IEntityComponet
     }
 
     /// <summary>
-    /// Entity방향으로 공격하려 가는 코드
+    /// Ÿ���� �������� �̵��ϴ� �ڵ�
     /// </summary>
     /// <param name="target"></param>
     public void MoveToAttackEntity(Vector3 target)
