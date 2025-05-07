@@ -1,5 +1,4 @@
 
-using Code.Entities;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour, IEntityComponet
