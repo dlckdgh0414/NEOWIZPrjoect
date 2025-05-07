@@ -33,7 +33,7 @@ public class SkillTreeTooltip : MonoBehaviour
         _textArea = _background.Find("TextArea");
         _purchaseArea = _background.Find("PurchaseArea");
         _description = _textArea.Find("Description").GetComponent<TextMeshProUGUI>();
-        _fruitsName = _textArea.Find("FruitsName").GetComponent<TextMeshProUGUI>();
+        _fruitsName = _background.Find("Name").GetComponent<TextMeshProUGUI>();
         _fruitsPrice = _purchaseArea.Find("FruitsPrice").GetComponent<TextMeshProUGUI>();
         
         _purchaseBtn = _background.GetComponentInChildren<Button>();
