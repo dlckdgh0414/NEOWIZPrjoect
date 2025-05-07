@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class SkillSOCompo : MonoBehaviour
 {
-    [field:SerializeField] public SkillCompo SkillSO { get; set; }
+    [field:SerializeField] public SkillSO SkillSO { get; set; }
 }

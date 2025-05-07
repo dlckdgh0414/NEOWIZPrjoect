@@ -17,9 +17,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     public SkillTreeNode ParentNode { get; private set; }
     public Button NodeButton { get; private set; }
     public Image NodeIcon { get; private set; }
-    public SkillCompo SkillCompo { get; private set; }
-
-
+    public SkillSO SkillCompo { get; private set; }
     
     public Color branchColor = Color.magenta;
 
@@ -27,7 +25,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     {
         NodeButton = GetComponentInChildren<Button>();
         NodeIcon = NodeButton.transform.Find("Icon").GetComponent<Image>();
-        SkillCompo = GetComponent<SkillCompo>();
+        SkillCompo = GetComponent<SkillSOCompo>().SkillSO;
 
         nodeSO.isPurchase = false;
 
@@ -44,7 +42,8 @@ public class SkillTreeNode : MonoBehaviour, INode
 
     public NodeSO GetNodeSO() => nodeSO;
 
-    #region ConnectLineOnEditor
+    #region ConnectNode
+    #if UNITY_EDITOR
 
     [ContextMenu("ConnectLine")]
     private void ConnectLine()
@@ -154,6 +153,7 @@ public class SkillTreeNode : MonoBehaviour, INode
             : new Vector2(distance + width, width);
     }
 
+    #endif
     #endregion
 
     private void OnValidate()

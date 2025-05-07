@@ -36,12 +36,11 @@ public class SkillTree : MonoBehaviour
 
     private void HandleNodePurchase(SkillTreePurchaseEvent evt)
     {
-        SkillCompo skill = evt.node.SkillCompo;
+        SkillSO skill = evt.node.SkillCompo;
 
         if (skillCompo != null)
         {
-            if (skillCompo.SkillList.ContainsValue(skill))
-                skillCompo.SkillList.Add(skillCompo.name, skill);
+            skillCompo.AddSkill(skill);
         }
         
         NodeSO nodeSO = evt.node.GetNodeSO();
