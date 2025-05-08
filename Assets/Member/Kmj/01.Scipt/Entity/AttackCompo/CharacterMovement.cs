@@ -70,7 +70,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
             if (CanManualMovement)
             {
-                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity = Quaternion.Euler(0, 45f, 0) * _movementDirection;
                 _velocity *= moveSpeed;
             }
             else
@@ -80,7 +80,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
             if(IsRolling)
             {
-                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity = Quaternion.Euler(0, 45f, 0) * _movementDirection;
                 _velocity *= rollingSpeed;
             }
 
