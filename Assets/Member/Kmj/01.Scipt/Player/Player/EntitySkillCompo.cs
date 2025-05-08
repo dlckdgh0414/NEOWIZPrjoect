@@ -53,6 +53,7 @@ public class EntitySkillCompo : MonoBehaviour, IEntityComponet
     
     public void AddSkill(SkillSO skillSO)
     {
+        if (skillSO == null) return;
         _skillList.Add(skillSO);
 
         var type = Type.GetType(skillSO.className);
