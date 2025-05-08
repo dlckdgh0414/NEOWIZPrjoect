@@ -17,7 +17,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     public SkillTreeNode ParentNode { get; private set; }
     public Button NodeButton { get; private set; }
     public Image NodeIcon { get; private set; }
-    public SkillSO SkillCompo { get; private set; }
+    public SkillSOCompo SkillCompo;
     
     public Color branchColor = Color.magenta;
 
@@ -25,7 +25,6 @@ public class SkillTreeNode : MonoBehaviour, INode
     {
         NodeButton = GetComponentInChildren<Button>();
         NodeIcon = NodeButton.transform.Find("Icon").GetComponent<Image>();
-        SkillCompo = GetComponent<SkillSOCompo>().SkillSO;
 
         nodeSO.isPurchase = false;
 

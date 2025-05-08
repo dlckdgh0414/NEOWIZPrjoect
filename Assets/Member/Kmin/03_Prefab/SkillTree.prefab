@@ -846,7 +846,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &6830155631225133800
 MonoBehaviour:
@@ -1363,6 +1363,7 @@ MonoBehaviour:
   skillTreeSO: {fileID: 0}
   eventChannelSO: {fileID: 11400000, guid: 0084445227c99e74d91685fa5a9cbd18, type: 2}
   statCompo: {fileID: 0}
+  skillCompo: {fileID: 0}
 --- !u!1 &1393187331807681724
 GameObject:
   m_ObjectHideFlags: 0
@@ -9892,6 +9893,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 84d73c94fa548734f866d688366a85d9, type: 2}
     - target: {fileID: 8142010040938486163, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
+      propertyPath: SkillCompo
+      value: 
+      objectReference: {fileID: 3008851457079520372}
+    - target: {fileID: 8142010040938486163, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
       propertyPath: isRootNode
       value: 0
       objectReference: {fileID: 0}
@@ -9980,19 +9985,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1980179938230373617, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1406355319671879680}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7915496759306555835, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3008851457079520372}
   m_SourcePrefab: {fileID: 100100000, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
 --- !u!114 &1082363533832919282 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8142010040938486163, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
   m_PrefabInstance: {fileID: 9222080214983491937}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1306632427128934618}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a42b3840a8424e4185ecf3db4597a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1306632427128934618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7915496759306555835, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
+  m_PrefabInstance: {fileID: 9222080214983491937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3008851457079520372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306632427128934618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be6416297278e44eb253aae75b1df75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SkillSO>k__BackingField: {fileID: 11400000, guid: 5536334956050224393bd7f42c631f85, type: 2}
 --- !u!224 &7241904963149647248 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1980179938230373617, guid: ea54f076541bf5749b790599459ae4fb, type: 3}
