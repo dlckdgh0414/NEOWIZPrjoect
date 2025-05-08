@@ -9693,18 +9693,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: _boxSize.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: _boxSize.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: _boxSize.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: _boxsize.x
       value: 3
       objectReference: {fileID: 0}
@@ -9716,6 +9704,10 @@ PrefabInstance:
       propertyPath: _boxsize.z
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
+      propertyPath: _markDamage
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b7ea53a2c95573438f1638962485d6e, type: 2}
     - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: comboWindow
       value: 1
@@ -9729,16 +9721,8 @@ PrefabInstance:
       value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: <swingTrm>k__BackingField
-      value: 
-      objectReference: {fileID: 5400817967354438588}
-    - target: {fileID: 3127739883777682059, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: attackDataList.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3215255069953574257, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: IsUseOverride
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3427146118257225165, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9788,6 +9772,10 @@ PrefabInstance:
       propertyPath: _soul
       value: 
       objectReference: {fileID: 6707909618545415293}
+    - target: {fileID: 4212750121738610535, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
+      propertyPath: _triggerCompo
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4522480483023010745, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: stateDatas.Array.size
       value: 9
@@ -9812,10 +9800,6 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7596412793370274084, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: IsUseOverride
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7694707386280327746, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9826,7 +9810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: statOverrides.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: statOverrides.Array.data[0].stat
@@ -9851,19 +9835,7 @@ PrefabInstance:
     - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: statOverrides.Array.data[5].stat
       value: 
-      objectReference: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
-    - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: statOverrides.Array.data[6].stat
-      value: 
-      objectReference: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
-    - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: statOverrides.Array.data[7].stat
-      value: 
-      objectReference: {fileID: 11400000, guid: 37197b27ffab7694fa83cb499161314a, type: 2}
-    - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: statOverrides.Array.data[8].stat
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 6b7ea53a2c95573438f1638962485d6e, type: 2}
     - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: statOverrides.Array.data[0].isUseOverride
       value: 1
@@ -9910,19 +9882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: statOverrides.Array.data[5].overrideValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: statOverrides.Array.data[6].isUseOverride
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: statOverrides.Array.data[7].isUseOverride
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8179007666211024967, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-      propertyPath: statOverrides.Array.data[8].isUseOverride
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8248755667751822378, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
       propertyPath: m_IsActive
@@ -9950,11 +9910,6 @@ PrefabInstance:
       addedObject: {fileID: 2249509429271487206}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
---- !u!4 &5400817967354438588 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 699122511584359337, guid: 4c4faad35712f7748b5bc36cffc092fb, type: 3}
-  m_PrefabInstance: {fileID: 5400817967354438587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5417512378936623257
 Transform:
   m_ObjectHideFlags: 0
