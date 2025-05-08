@@ -19,13 +19,17 @@ public class MousePlayerAttackState : EntityState
 
         Collider[] collider = Physics.OverlapBox(_player.transform.position, _player._attackCompo._boxSize,
              Quaternion.identity, _player._whatIsEnemy);
+        
+        Collider[] collider2 = Physics.OverlapBox(_player.transform.position, _player._attackCompo._boxSize,
+            Quaternion.identity, _player._whatIsSoulEnemy);
+        
 
         foreach (var Obj in collider)
         {
-            if (Obj.TryGetComponent(out IDamgable damage))
+            if (Obj.TryGetComponent(out Enemy enemy) && enemy.IsMark == false)
             {
-                Debug.Log("공격됨");
-                damage.ApplyDamage(10, true, 0, _player);
+                Debug.Log("마크 공격됨");
+                enemy.IsMark = true;
             }
             else if (Obj.TryGetComponent(out InteractionObj Interaction))
             {
@@ -34,7 +38,14 @@ public class MousePlayerAttackState : EntityState
             }
         }
         
-
+        foreach (var Obj in collider2)
+        {
+            if (Obj.TryGetComponent(out IDamgable damage))
+            {
+                Debug.Log("공격됨");
+                damage.ApplyDamage(10,true,0,_player);
+            }
+        }
     }
 
     public override void Update()

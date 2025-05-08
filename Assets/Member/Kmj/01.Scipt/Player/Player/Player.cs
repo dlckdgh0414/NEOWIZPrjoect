@@ -29,6 +29,9 @@ public class Player : Entity
     [field : SerializeField] public MousePlayer _soul { get; private set; }
 
     [SerializeField] private LayerMask _whatIsEnemey;
+    
+    
+    
     private EntityStateMachine _stateMachine;
     
     protected override void Awake()

@@ -17,6 +17,8 @@ public class MousePlayer : Entity
     public MouseMoveCompo _moveCompo { get; private set; }
     [field: SerializeField] public LayerMask _whatIsEnemy { get; private set; }
     
+    [field: SerializeField] public LayerMask _whatIsSoulEnemy {get; private set;}
+    
     public AttributeType _typeCompo { get; private set; }
 
     public Player player;
