@@ -19,9 +19,12 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private readonly int _comboCounterHash = Animator.StringToHash("COMBO_COUNTER");
 
     [SerializeField] private StatSO _atkDamage;
+    [SerializeField] private StatSO _markDamage;
     [SerializeField] private EntityStat _stat;
 
     public float atkDamage { get; set; }
+    
+    public float markDamage { get; set; }
     private EntityAnimatorTrigger _triggerCompo;
 
     private float _attackSpeed = 0.3f;
@@ -40,6 +43,7 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
     private Player _player;
         
     private Coroutine _chargeRoutine;
+    
 
     public float AttackSpeed
     {
@@ -56,6 +60,11 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
         _entity = entity;
         _player = entity as Player;
         _entityAnimator = entity.GetCompo<EntityAnimator>();
+
+        atkDamage = _stat.GetStat(_atkDamage).Value;
+
+        markDamage = _stat.GetStat(_markDamage).Value;
+        
         AttackSpeed = 0.7f;
         damageCast.InitCaster(_entity);
         _triggerCompo = entity.GetCompo<EntityAnimatorTrigger>();
@@ -72,13 +81,28 @@ public class PlayerAttackCompo : MonoBehaviour, IEntityComponet
 
         Collider[] collider = Physics.OverlapBox(transform.position, _boxsize,
             Quaternion.identity, _whatIsEnemy);
+        
+        
         foreach (var Obj in collider)
         {
             if (Obj.TryGetComponent(out IDamgable damage))
             {
-                 Debug.Log("공격됨");
-                 damage.ApplyDamage(10, true, 0, _player);
-                 CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
+
+                if (Obj.TryGetComponent(out Enemy enemy) && enemy.IsMark)
+                {
+                    Debug.Log("표식 공격됨");
+                    
+                    damage.ApplyDamage(markDamage, true, 0, _player);
+                    CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
+
+                    enemy.IsMark = false;
+                }
+                else
+                {
+                    Debug.Log("공격됨");
+                    damage.ApplyDamage(10, true, 0, _player);
+                    CameraManager.Instance.ShakeCamera(atkDamage / 2, AttackSpeed / 2);
+                }
             }
             else
             {
