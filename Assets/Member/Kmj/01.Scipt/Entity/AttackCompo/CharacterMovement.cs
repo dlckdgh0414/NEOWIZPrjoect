@@ -45,8 +45,11 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
     {
         CalculateMovement();
 
+        _rbcompo.linearVelocity = new Vector3(transform.TransformDirection(_velocity).x,
+            _rbcompo.linearVelocity.y, transform.TransformDirection(_velocity).z);
 
-        _rbcompo.linearVelocity = new Vector3(_velocity.x, _rbcompo.linearVelocity.y, _velocity.z);
+
+        //_rbcompo.linearVelocity = new Vector3(_velocity.x, _rbcompo.linearVelocity.y, _velocity.z);
     }
 
     public void MoveToEntity(Vector3 target)
@@ -70,7 +73,7 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
             if (CanManualMovement)
             {
-                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity = Quaternion.Euler(0, 0, 0) * _movementDirection;
                 _velocity *= moveSpeed;
             }
             else
@@ -80,18 +83,18 @@ public class CharacterMovement : MonoBehaviour, IEntityComponet
 
             if(IsRolling)
             {
-                _velocity = Quaternion.Euler(0, -45f, 0) * _movementDirection;
+                _velocity = Quaternion.Euler(0, 0f, 0) * _movementDirection;
                 _velocity *= rollingSpeed;
             }
 
 
-            if (_velocity.magnitude > 0)
+            /*if (_velocity.magnitude > 0)
             {
                 var targetRotation = Quaternion.LookRotation(_velocity);
                 targetRotation.z = 0;
                 Transform parent = _entity.transform;
                 parent.rotation = Quaternion.Lerp(parent.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
-            }
+            }*/
         }
     }
 
