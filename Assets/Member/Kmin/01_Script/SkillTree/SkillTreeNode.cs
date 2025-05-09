@@ -9,9 +9,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     [SerializeField] private Image nodeImage;
     [SerializeField] private float width = 10;
     [SerializeField] private Sprite branchImage;
-
-    private EntityStat _statCompo;
-
+    
     [field: SerializeField] public List<SkillTreeNode> ConnectedNodes;
     [field: SerializeField] public bool IsRootNode { get; private set; }
     [field: SerializeField, HideInInspector] public List<Image> ConnectedBranch { get; private set; }
@@ -19,6 +17,7 @@ public class SkillTreeNode : MonoBehaviour, INode
     public SkillTreeNode ParentNode { get; private set; }
     public Button NodeButton { get; private set; }
     public Image NodeIcon { get; private set; }
+    public SkillSOCompo SkillCompo;
     
     public Color branchColor = Color.magenta;
 
@@ -42,7 +41,8 @@ public class SkillTreeNode : MonoBehaviour, INode
 
     public NodeSO GetNodeSO() => nodeSO;
 
-    #region ConnectLineOnEditor
+    #region ConnectNode
+    #if UNITY_EDITOR
 
     [ContextMenu("ConnectLine")]
     private void ConnectLine()
@@ -152,6 +152,7 @@ public class SkillTreeNode : MonoBehaviour, INode
             : new Vector2(distance + width, width);
     }
 
+    #endif
     #endregion
 
     private void OnValidate()
